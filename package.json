@@ -1,0 +1,26 @@
+{
+  "name": "smis-teacher-parents",
+  "version": "1.0.0",
+  "description": "teachers and parent",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JAMBO-CHIDZIWISANO/school-information-management.git"
+  },
+  "author": "jambo chidziwisano",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JAMBO-CHIDZIWISANO/school-information-management/issues"
+  },
+  "homepage": "https://github.com/JAMBO-CHIDZIWISANO/school-information-management#readme",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.16.1"
+  }
+}
