@@ -2,6 +2,8 @@ const express = require("express");
 
 const bodyParser = require("body-parser")
 
+
+
 const db = require("./models");
 db.sequelize.sync();
 
@@ -29,7 +31,7 @@ app.get('/', (req, res)=>{
 });
 
 require("./routes/auth.routes")(app);
-//require("./routes/user.routes")(app);
+require("./routes/user.routes")(app);
 
 //Set port, listen for requests
 const PORT =  process.env.PORT || 4000

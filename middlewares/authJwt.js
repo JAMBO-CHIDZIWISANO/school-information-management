@@ -2,6 +2,8 @@ const jwt = require("jsonwebtoken");
 const config = require("../config/auth.config.js");
 const db = require("../models");
 const User = db.user;
+
+//verify login token
 verifyToken = (req, res, next) => {
   let token = req.headers["x-access-token"];
   if (!token) {
@@ -9,6 +11,7 @@ verifyToken = (req, res, next) => {
       message: "No token provided!"
     });
   }
+  //token provided but visit unauthorized role
   jwt.verify(token, config.secret, (err, decoded) => {
     if (err) {
       return res.status(401).send({
@@ -19,6 +22,8 @@ verifyToken = (req, res, next) => {
     next();
   });
 };
+
+//admin role
 isAdmin = (req, res, next) => {
   User.findByPk(req.userId).then(user => {
     user.getRoles().then(roles => {
@@ -35,6 +40,8 @@ isAdmin = (req, res, next) => {
     });
   });
 };
+
+//teacher role
 isTeacher = (req, res, next) => {
   User.findByPk(req.userId).then(user => {
     user.getRoles().then(roles => {
@@ -50,7 +57,9 @@ isTeacher = (req, res, next) => {
     });
   });
 };
-isModeratorOrAdmin = (req, res, next) => {
+
+//accessed by all two users of the system
+isTeacherOrAdmin = (req, res, next) => {
   User.findByPk(req.userId).then(user => {
     user.getRoles().then(roles => {
       for (let i = 0; i < roles.length; i++) {
@@ -72,7 +81,7 @@ isModeratorOrAdmin = (req, res, next) => {
 const authJwt = {
   verifyToken: verifyToken,
   isAdmin: isAdmin,
-  isModerator: isTeacher,
-  isModeratorOrAdmin: isModeratorOrAdmin
+  isTeacher: isTeacher,
+  isTeacherOrAdmin: isTeacherOrAdmin
 };
 module.exports = authJwt;
