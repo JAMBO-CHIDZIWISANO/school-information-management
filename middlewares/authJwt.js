@@ -58,6 +58,41 @@ isTeacher = (req, res, next) => {
   });
 };
 
+//student role
+isStudent = (req, res, next) => {
+  User.findByPk(req.userId).then(user => {
+    user.getRoles().then(roles => {
+      for (let i = 0; i < roles.length; i++) {
+        if (roles[i].name === "student") {
+          next();
+          return;
+        }
+      }
+      res.status(403).send({
+        message: "Require Student Role!"
+      });
+    });
+  });
+};
+
+//parent role 
+isParent = (req, res, next) => {
+  User.findByPk(req.userId).then(user => {
+    user.getRoles().then(roles => {
+      for (let i = 0; i < roles.length; i++) {
+        if (roles[i].name === "parent") {
+          next();
+          return;
+        }
+      }
+      res.status(403).send({
+        message: "Require Parent Role!"
+      });
+    });
+  });
+};
+
+
 //accessed by all two users of the system
 isTeacherOrAdmin = (req, res, next) => {
   User.findByPk(req.userId).then(user => {
@@ -71,9 +106,18 @@ isTeacherOrAdmin = (req, res, next) => {
           next();
           return;
         }
+        if (roles[i].name === "student") {
+          next();
+          return;
+        }
+        if (roles[i].name === "parent") {
+          next();
+          return;
+        }
       }
+      
       res.status(403).send({
-        message: "Require Teacher or Admin Role!"
+        message: "Require Teacher or student or parent or Admin Role!"
       });
     });
   });
@@ -82,6 +126,9 @@ const authJwt = {
   verifyToken: verifyToken,
   isAdmin: isAdmin,
   isTeacher: isTeacher,
+  isStudent: isStudent,
+  isParent: isParent,
   isTeacherOrAdmin: isTeacherOrAdmin
+
 };
 module.exports = authJwt;

@@ -32,4 +32,20 @@ module.exports = function(app) {
     [authJwt.verifyToken, authJwt.isAdmin],
     controller.adminBoard
   );
+
+  //get student content
+  app.get(
+    "/api/school/student",
+    [authJwt.verifyToken, authJwt.isStudent],
+    controller.studentBoard
+    );
+  
+
+  //get parent content
+  app.get(
+    "/api/school/parent",
+    [authJwt.verifyToken, authJwt.isParent],
+    controller.parentBoard
+  );
+
 };

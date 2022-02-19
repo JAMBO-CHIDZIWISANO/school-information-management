@@ -19,5 +19,13 @@ module.exports = {
   //teachers board
   teacherBoard: (req, res) => {
     res.status(200).send("teacher Content.");
+  },
+
+  studentBoard: (req, res) => {
+    res.status(200).send("student Content.");
+  },
+
+  parentBoard: (req, res) => {
+    res.status(200).send("parent Content.");
   }
 }
