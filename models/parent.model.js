@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
     const Parent = sequelize.define("parents", {
-        teacherId: {
+        parentId: {
             type: Sequelize.INTEGER,
             primaryKey: true
         },

@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
     const Student = sequelize.define("students", {
-        teacherId: {
+        studentId: {
             type: Sequelize.INTEGER,
             primaryKey: true
         },
@@ -15,10 +15,10 @@ module.exports = (sequelize, Sequelize) => {
         },
         gender: {
             type: Sequelize.STRING
-      },
-      address: {
-        type: Sequelize.STRING
-      }
+        },
+        address: {
+            type: Sequelize.STRING
+        }
       
 
     });

@@ -18,6 +18,9 @@ module.exports = (sequelize, Sequelize) => {
       },
       qualification: {
         type: Sequelize.STRING
+      },
+      joinDate: {
+          type: Sequelize.DATE
       }
       
 
