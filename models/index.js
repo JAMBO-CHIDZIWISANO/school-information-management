@@ -193,5 +193,9 @@ db.term.hasMany(db.attendance, {
   targetKey: "termId"
 });
 
+db.subject.hasMany(db.mark, {
+  foreignKey: "subjectId",
+  targetKey: "subjectId"
+});
 
 module.exports = db;
