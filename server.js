@@ -18,10 +18,9 @@ var corsOptions = {
 
 app.use(cors(corsOptions));
 
-//app.use(express.json)
 
 //parse request of content-type - application/x-www-form-urlencoded
-app.use(express.urlencoded({ extended: true}));
+app.use(bodyParser.urlencoded({ extended: true}));
 
 app.use(bodyParser.json())
 
