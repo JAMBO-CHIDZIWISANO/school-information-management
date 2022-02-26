@@ -1,5 +1,5 @@
 const req = require("express/lib/request");
-const { school, message } = require("../models");
+const { school } = require("../models");
 const db = require("../models");
 
 const School = db.school;
@@ -81,10 +81,11 @@ exports.update = (req, res) => {
             res.send({
                 message: "school successfully added"
             });
-        }else{
-            res.send({
-                message: "cannot update school with id=${schoolId}."
-            })
+        }
+        else{
+            res.status(404).send({
+                message: `not found school with id=${schoolId}.`
+            });
         }
     }).catch(error =>{
         res.status(500).send({
