@@ -1,37 +1,37 @@
-import React, {useRef, useState}from 'react'
+import React, { useState}from 'react'
 import { Link } from 'react-router-dom'
-import CheckButton from "react-validation/build/button"
 import AuthService from '../services/auth.service';
 
 const Login = (props) => {
 
 
-    const form = useRef();
-    const checkBtn = useRef();
-    
+    //initializing the password and username state
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+    //initializing error msg and data loading
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
     
+    //function that handle username inpute changes
     const onChangeUsername = (e) =>{
         const username = e.target.value;
         setUsername(username);
     }
 
+    //function that handles password input changes
     const onChangePassword = (e) =>{
         const password = e.target.value;
         setPassword(password)
     };
 
+    //function that handles login upon pressing login btn
     const handleLogin = (e) => {
         e.preventDefault();
         setMessage("");
         setLoading(true);
 
-        //form.current.validateAll();
-        
+            //checking the authentications of the users
             AuthService.login(username, password).then(
                 ()=>{
                     props.history.push("/profile")
@@ -119,18 +119,24 @@ const Login = (props) => {
                         <span>Sign in</span>
                     </button>
 
+                    {/* showing the error message 
+                    if not connected to server,
+                    user input wrong username 
+                    or password
+                    */}
                     {message && (
-            <div className="">
-              <div className="alert alert-danger" role="alert">
-                {message}
-              </div>
-            </div>
+                    <div className="">
+                        <div className="alert alert-danger" role="alert">
+                        {message}
+                        </div>
+                    </div>
           )}
                     
                     
-                    {/*router link*/}
+                    {/*router link for password reset
+                    not working currently*/}
                     <span className='text-white'>
-                    <a href='#'>reset password</a>
+                    <a href='/'>reset password</a>
                     </span>
                     
                     </div>

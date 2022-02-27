@@ -24,9 +24,11 @@ ReactDOM.render(
 
         {/*the protected boards of the users after logged in*/}
         <Route path='/admin' element={<BoardAdmin/>}/>
-        <Route path='/teacher' element={<BoardParent/>}/>
+        
+        <Route path='/parent' element={<BoardParent/>}/>
         <Route path='/student' element={<BoardStudent/>}/>
-        <Route path='/parent' element={<BoardTeacher/>}/>
+        <Route path='/teacher' element={<BoardTeacher/>}/>
+        <Route path='/user' element={<BoardUser/>}/>
       </Routes>
     </Router>,
 
