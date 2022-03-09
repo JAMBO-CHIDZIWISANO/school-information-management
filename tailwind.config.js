@@ -25,7 +25,12 @@ module.exports = {
     extend: {
       backgroundImage: {
         'hero-img': 'url("./components/assets/school.jpg")'
+      },
+      spacing: {
+        "17": "4rem",
+        "18": "4.5rem"
       }
+
     },
   },
   plugins: [],

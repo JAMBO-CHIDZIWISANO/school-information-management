@@ -1,3 +1,4 @@
+import { Home, MenuOutlined } from "@material-ui/icons";
 import React, { useState, useEffect } from "react";
 import UserService from "../services/user.service";
 const BoardAdmin = () => {
@@ -20,9 +21,23 @@ const BoardAdmin = () => {
   }, []);
   return (
     <div className="container">
-      <header className="jumbotron">
-        <h3>{content}</h3>
+      <header className="divide-y ml-18">
+        
+        
+          <div className="uppercase">
+            {content}
+          </div>
+
+          
+
+         
+        
+        
+        
       </header>
+      <div>
+     
+        </div>
     </div>
   );
 };

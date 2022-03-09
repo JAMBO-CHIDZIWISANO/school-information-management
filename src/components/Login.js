@@ -1,8 +1,8 @@
 import React, { useState}from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import AuthService from '../services/auth.service';
 
-const Login = (props) => {
+const Login = () => {
 
 
     //initializing the password and username state
@@ -25,17 +25,27 @@ const Login = (props) => {
         setPassword(password)
     };
 
+    const currentUser = AuthService.getCurrentUser();
+
+
+    const navigate = useNavigate()
+
     //function that handles login upon pressing login btn
     const handleLogin = (e) => {
         e.preventDefault();
         setMessage("");
         setLoading(true);
 
+      
+            
+        
             //checking the authentications of the users
             AuthService.login(username, password).then(
                 ()=>{
-                    props.history.push("/profile")
+                    
+                   navigate("/teacher")
                     window.location.reload();
+                    
                 },
                  (error)=>{
                     const resMessage = 
@@ -65,11 +75,13 @@ const Login = (props) => {
         
         <div className=
         'flex flex-wrap justify-center'>
-                
+           
+           
                 <form  
                     onSubmit={handleLogin}
                     className=
                     'shadown-md bg-black/50 rounded px-8 py-8 pt-6'>
+        
 
                     <div className='mb-5'>
                         <label htmlFor='username' className=

@@ -9,12 +9,12 @@ import BoardTeacher from './components/BoardTeacher';
 import BoardUser from './components/BoardUser';
 
 //import { AuthProvider } from './components/context/AuthProvider';
-import {BrowserRouter as Router, Routes,  Route} from 'react-router-dom'
+import {BrowserRouter, Routes,  Route} from 'react-router-dom'
 import Login from './components/Login';
 //import "bootstrap/dist/css/bootstrap.min.css";
 ReactDOM.render(
 
-    <Router>
+    <BrowserRouter>
       <Routes>
         {/*home page*/}
         <Route path='/' element={<App/>}/>
@@ -30,7 +30,7 @@ ReactDOM.render(
         <Route path='/teacher' element={<BoardTeacher/>}/>
         <Route path='/user' element={<BoardUser/>}/>
       </Routes>
-    </Router>,
+    </BrowserRouter>,
 
    
 
