@@ -20,11 +20,11 @@ export const AppSideBar = [
     icon: < AiIcons.AiFillHome/>,
     cName: 'nav-text'
    },
-//    {title: 'events ',
-//     path: '/events',
-//     icon: < AiIcons.AiFillCalendar/>,
-//     cName: 'nav-text'
-//    },
+   {title: 'Comments ',
+    path: '/comments',
+    icon: < AiIcons.AiFillCalendar/>,
+    cName: 'nav-text'
+   },
    {title: 'teacher',
     path: '/teacher',
     icon: < IoIcons.IoIosPeople/>,
