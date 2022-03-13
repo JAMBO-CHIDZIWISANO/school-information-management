@@ -23,7 +23,7 @@ app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: true}));
 
 app.use(bodyParser.json())
-
+require("./routes/teacher.routes")(app);
 //simple get route
 app.get('/', (req, res)=>{
     res.json({message:'helloworld'});

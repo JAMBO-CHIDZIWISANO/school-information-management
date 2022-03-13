@@ -9,6 +9,7 @@ module.exports = {
   //all user can access
   userBoard: (req, res) => {
     res.status(200).send("User Content.");
+    
   },
 
   //admin board
@@ -19,6 +20,7 @@ module.exports = {
   //teachers board
   teacherBoard: (req, res) => {
     res.status(200).send("teacher Content.");
+
   },
 
   studentBoard: (req, res) => {

@@ -25,12 +25,14 @@ exports.signup = (req, res) => {
             res.send({ message: "User was registered successfully!" });
           });
         });
-      } else {
-        // user role = 1
-        user.setRoles([1]).then(() => {
-          res.send({ message: "User was registered successfully!" });
-        });
-      }
+      } 
+      
+      // else {
+      //   // user role = 1
+      //   user.setRoles([1]).then(() => {
+      //     res.send({ message: "User was registered successfully!" });
+      //   });
+      // }
     })
     .catch(err => {
       res.status(500).send({ message: err.message });

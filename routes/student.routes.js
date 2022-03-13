@@ -17,7 +17,7 @@ module.exports = app =>{
     // router.put("/:schoolId", school.update);
 
 
-    app.use("/api/school/student", router);
+    app.use("/api/student", router);
 
 
 }
