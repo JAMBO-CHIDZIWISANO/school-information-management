@@ -1,29 +1,11 @@
-import React, { useState, useEffect } from "react";
-import UserService from "../services/user.service";
+import React from 'react'
+
 const BoardStudent = () => {
-  const [content, setContent] = useState("");
-  useEffect(() => {
-    UserService.getStudentBoard().then(
-      (response) => {
-        setContent(response.data);
-      },
-      (error) => {
-        const _content =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
-          error.message ||
-          error.toString();
-        setContent(_content);
-      }
-    );
-  }, []);
   return (
-    <div className="container">
-      <header className="jumbotron">
-        <h3>{content}</h3>
-      </header>
+    <div>
+      <h2>student</h2>
     </div>
-  );
-};
-export default BoardStudent;
+  )
+}
+
+export default BoardStudent
