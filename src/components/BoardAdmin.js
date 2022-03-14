@@ -1,8 +1,8 @@
-<<<<<<< Updated upstream
-import React from 'react'
-import Display from './AdminPanel/Display'
-import App from './AdminPanel/src/App'
-=======
+// <<<<<<< Updated upstream
+// import React from 'react'
+// import Display from './AdminPanel/Display'
+// import App from './AdminPanel/src/App'
+// =======
 import React, { useState } from 'react';
 import Tabs, { tabsClasses }  from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -50,7 +50,8 @@ function a11yProps(index) {
     'aria-controls': `full-width-tabpanel-${index}`,
   };
 }
->>>>>>> Stashed changes
+
+// >>>>>>> Stashed changes
 
 const BoardAdmin = () => {
 
@@ -71,13 +72,11 @@ const BoardAdmin = () => {
   };
 
   return (
-<<<<<<< Updated upstream
-    <div>
-      <h1>Admin</h1>
-      <Display />
-      <App />
+    //   <div>
+    // //   <h1>Admin</h1>
+    // //   <Display />
+    // //   <App />
       
-=======
     
     <div >
 
@@ -135,7 +134,6 @@ const BoardAdmin = () => {
       </SwipeableViews>
 
     </Box>
->>>>>>> Stashed changes
     </div>
   );
 }
