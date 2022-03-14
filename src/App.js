@@ -1,6 +1,9 @@
 import "./AppStyle.css";
  
 import "./AppSideBar"
+import ListItemIcon from '@mui/material/ListItemIcon';
+import MenuItem from '@mui/material/MenuItem';
+import Logout from '@mui/icons-material/Logout';
 import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
@@ -8,6 +11,7 @@ import * as AiIcons from "react-icons/ai";
 //import {AppSideBar} from './AppSideBar';
 import { IconContext } from "react-icons/lib";
 import AuthService from "./services/auth.service"
+import { Person } from "@mui/icons-material";
 
 
       
@@ -45,20 +49,36 @@ function App() {
 
         <>
         <IconContext.Provider value={{color: '#fff'}}>
-        <div className="navbar">
-            <Link to="#" className="menu-bars">
+        <div className="navbar" >
+            <Link to="#" className="px-4">
                 <FaIcons.FaBars onClick={showSidebar}/>
             </Link>
-            {currentUser ?(
-                      <div>
-                        <li><Link to="/profile">profile</Link></li>
-                        <li><a href='/' onClick={logOut}> LogOut</a></li>
-                      </div>
-                ):(
-                        <>
-                        
-                        </>      
-            )}
+
+            <div className="d-flex ms-auto order-5">
+              {currentUser ?(
+                        <div className="list-unstyled d-flex">
+                          <li><Link to="/profile">
+                          <MenuItem>
+                            < ListItemIcon>
+                              <Person fontSize="small" />
+                            </ListItemIcon>
+                            Profile
+                          </MenuItem></Link></li>
+                          <li><a href='/' onClick={logOut}> 
+                          <MenuItem>
+                            < ListItemIcon>
+                              <Logout fontSize="small" />
+                            </ListItemIcon>
+                            Logout
+                          </MenuItem> 
+                    </a></li>
+                        </div>
+                  ):(
+                          <>
+                          
+                          </>      
+              )}
+            </div>
         </div>
         <nav className={sidebar ? 'navi-menu active': 'navi-menu'}>
             <ul className="nav-menu-items list-unstyled " onClick={showSidebar}>

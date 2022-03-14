@@ -65,7 +65,7 @@ const Login = () => {
                     <div className="">
                         <div className="row g-0">
 
-                            <div className="col-md-6 col-lg-5 d-none d-md-block">
+                            <div className="card card-body col-md-6 col-lg-5 d-none d-md-block ">
                                 <img
                                     src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp"
                                     alt='"login form'
@@ -79,8 +79,8 @@ const Login = () => {
                                     <form onSubmit={handleLogin} >
 
                                         <div className="d-flex align-items-center mb-3 pb-1">
-                                            <i className="fas fa-cubes fa-2x me-3">h</i>
-                                            <span className="h1 fw-bold mb-0">Logo</span>
+                                            <i className="fas fa-cubes fa-2x me-3"></i>
+                                            <span className="h1 fw-bold mb-0"><h2>BANGULA SECONDARY SCHOOL</h2></span>
                                         </div>
 
                                         <h5 className="fw-normal mb-3 pb-3">Sign In</h5>
@@ -90,15 +90,17 @@ const Login = () => {
                                                 className="form-label" 
                                                 htmlFor="username">Username
                                             </label>
+                                             
                                             <input 
                                                 type="text" 
+                                                autoComplete="falsee"
                                                 placeholder="Enter your Username"
                                                 onChange={onChangeUsername}
                                                 name="username"
                                                 value={username}
                                                 required
                                                 id="username" 
-                                                className="form-control formm-control-lg" />    
+                                                className="form-control form-control-lg" />    
                                         </div> 
 
                                         <div className="form-outline mb-4">
@@ -106,6 +108,7 @@ const Login = () => {
                                                 className="form-label" 
                                                 htmlFor="password">Password
                                             </label>
+                                            
                                             <input 
                                                 type="password" 
                                                 placeholder="*****"
