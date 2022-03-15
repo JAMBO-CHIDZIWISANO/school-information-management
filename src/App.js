@@ -10,7 +10,7 @@ import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 //import {AppSideBar} from './AppSideBar';
 import { IconContext } from "react-icons/lib";
-import AuthService from "./services/auth.service"
+import AuthService from "./Components/services/auth.service"
 import { Person } from "@mui/icons-material";
 
 
@@ -99,6 +99,14 @@ function App() {
                   <Link to="/admin" className="nav-text">
                     <AiIcons.AiFillHome/>
                     Admin
+                   </Link>
+                </li>
+                )}
+                {showAdminBoard&&(
+                  <li>
+                  <Link to="/admin/sms" className="nav-text">
+                    <AiIcons.AiFillHome/>
+                    sms
                    </Link>
                 </li>
                 )}

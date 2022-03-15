@@ -1,7 +1,7 @@
 
 import React, { useState}from 'react'
 import { useNavigate } from 'react-router-dom'
-import AuthService from './services/auth.service';
+import AuthService from './Components/services/auth.service';
 
 const Login = () => {
     
@@ -65,7 +65,7 @@ const Login = () => {
                     <div className="">
                         <div className="row g-0">
 
-                            <div className="card card-body col-md-6 col-lg-5 d-none d-md-block ">
+                            <div className=" col-md-6 col-lg-5 d-none d-md-block ">
                                 <img
                                     src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp"
                                     alt='"login form'
