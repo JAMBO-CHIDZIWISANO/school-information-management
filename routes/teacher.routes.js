@@ -6,23 +6,23 @@ module.exports = app =>{
     var router = require("express").Router();
 
     //create new school
-    //router.post("/add", school.create);
+    router.delete("/:teacherId", teacher.deleteTeacher);
 
     //get all schools
-   //router.get("/get", school.findAll);
+    router.get("/getAllTeachers", teacher.findAllTeachers);
 
     //get one school
-    //router.get("/:schoolId", school.findOne);
+    router.get("/:teacherId", teacher.findOneTeacher);
 
     //update school
-    //router.put("/:schoolId", school.update);
+    router.put("/:teacherId", teacher.updateTeacherById);
 
-    router.post("/add", teacher.create);
-
-
+    router.post("/addTeacher", teacher.create);
 
 
-    app.use("/api/school/teacher", router);
+
+
+    app.use("/api/smis/", router);
 
 
 }

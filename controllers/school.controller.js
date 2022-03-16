@@ -1,5 +1,4 @@
-const req = require("express/lib/request");
-const { school } = require("../models");
+const school  = require("../models");
 const db = require("../models");
 
 const School = db.school;

@@ -23,10 +23,9 @@ app.use(cors(corsOptions));
 
 
 //parse request of content-type - application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.urlencoded({ extended: false}));
 
 app.use(bodyParser.json())
-//require("./routes/teacher.routes")(app);
 //simple get route
 app.get('/', (req, res)=>{
     res.json({message:'helloworld'});
@@ -70,6 +69,8 @@ require("./routes/auth.routes")(app);
 require("./routes/user.routes")(app);
 require("./routes/school.routes")(app);
 require("./routes/student.routes")(app);
+require("./routes/teacher.routes")(app);
+require("./routes/user_rolesroutes")(app)
 
 //require("./routes/smsroutes")(app);
 

@@ -21,7 +21,7 @@ exports.add = (req, res)=>{
     if (err)
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Teacher."
+          err.message || "Some error occurred while creating the users role."
       });
     else res.send(data);
   });

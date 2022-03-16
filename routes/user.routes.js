@@ -1,7 +1,7 @@
 const { authJwt } = require("../middlewares");
 const controller = require("../controllers/user.controller");
 
-const school = require("../controllers/school.controller")
+//const school = require("../controllers/school.controller")
 const teacher = require("../mysqlcontroller/teacher.controller")
 
 module.exports = function(app) {

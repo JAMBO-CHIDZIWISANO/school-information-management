@@ -1,12 +1,12 @@
 const sql = require("../models/mysqldb.js");
 
-const User_roles = function(user_roles){
-    this.userId = user_roles.userId;
-    this.roleId = user_roles.roleId;
+const UserRoles = function(userRoles){
+    this.userId = userRoles.userId;
+    this.roleId = userRoles.roleId;
 }
 
 //insrt a teacherinto a system
-User_roles.add = (newUser_roles, result)=> {
+UserRoles.add = (newUser_roles, result)=> {
     
     sql.query("INSERT INTO user_roles SET ?", newUser_roles, (err, res)=>{
         if(err){
@@ -20,3 +20,5 @@ User_roles.add = (newUser_roles, result)=> {
         
     })
 }
+
+module.exports = UserRoles;
