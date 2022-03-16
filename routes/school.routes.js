@@ -12,7 +12,7 @@ module.exports = app =>{
 //    router.get("/get", school.findAll);
 
 //     //get one school
-//     router.get("/:schoolId", school.findOne);
+//     router.get("/te/:schoolId", school.findOne);
 
 //     //update school
 //     router.put("/:schoolId", school.update);
