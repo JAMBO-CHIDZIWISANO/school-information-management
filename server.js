@@ -2,6 +2,9 @@ const express = require("express");
 
 const bodyParser = require("body-parser")
 
+require('dotenv').config();
+
+var AWS = require('aws-sdk');
 
 
 const db = require("./models");
@@ -23,16 +26,52 @@ app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: true}));
 
 app.use(bodyParser.json())
-require("./routes/teacher.routes")(app);
+//require("./routes/teacher.routes")(app);
 //simple get route
 app.get('/', (req, res)=>{
     res.json({message:'helloworld'});
 });
 
+//sms text notification
+app.get('/api/school/sms', (req, res) => {
+
+    console.log("Message = " + req.body.message);
+    console.log("Number = " + req.body.number);
+    console.log("Subject = " + req.body.subject);
+
+    //passing parameters
+    var params = {
+        Message: req.body.message,
+        PhoneNumber: '+' + req.body.number,
+        MessageAttributes: {
+            'AWS.SNS.SMS.SenderID': {
+                'DataType': 'String',
+                'StringValue': req.body.subject
+            }
+        }
+    };
+
+    //publishing text to the SNS api
+    var publishTextPromise = new AWS.SNS({ apiVersion: '2010-03-31' }).publish(params).promise();
+
+    //stringfying the data and also catching errors
+    publishTextPromise.then(
+        function (data) {
+            res.end(JSON.stringify({ MessageID: data.MessageId }));
+        }).catch(
+            function (err) {
+                res.end(JSON.stringify({ Error: err }));
+            });
+
+});
+
+
 require("./routes/auth.routes")(app);
 require("./routes/user.routes")(app);
 require("./routes/school.routes")(app);
 require("./routes/student.routes")(app);
+
+//require("./routes/smsroutes")(app);
 
 //Set port, listen for requests
 const PORT =  process.env.PORT || 4000

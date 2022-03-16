@@ -40,7 +40,7 @@ exports.create = (req, res) =>{
 exports.findAll = (req, res) =>{
     const schoolName = req.query.schoolName;
     var condition = schoolName ? {
-        schoolName: {[Op.like]: '%${schoolName}%'}}
+        schoolName: {[Op.like]: `%${schoolName}%`}}
         : null
 
         school.findAll({where: condition})
