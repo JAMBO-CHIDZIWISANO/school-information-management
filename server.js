@@ -70,7 +70,8 @@ require("./routes/user.routes")(app);
 require("./routes/school.routes")(app);
 require("./routes/student.routes")(app);
 require("./routes/teacher.routes")(app);
-require("./routes/user_rolesroutes")(app)
+require("./routes/user_rolesroutes")(app);
+require("./routes/parent.routes")(app);
 
 //require("./routes/smsroutes")(app);
 
