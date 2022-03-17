@@ -4,7 +4,7 @@ module.exports = app =>{
 
     var router = require("express").Router();
 
-    router.delete("/post/:commentId", comment.deleteComment);
+    router.delete("/comment/:commentId", comment.deleteComment);
 
     // //create new school
     router.post("/addComment", comment.create);

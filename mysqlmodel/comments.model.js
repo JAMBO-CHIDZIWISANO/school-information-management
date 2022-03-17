@@ -3,7 +3,7 @@ const sql = require("../models/mysqldb")
 //constructor 
 const Comment = function(comment) {
     this.commentId = comment.commentId;
-    this.ccommentBody = comment.ccommentBody;
+    this.commentBody = comment.commentBody;
     this.teacherId = comment.teacherId;
     this.parentId = comment.parentId;
     

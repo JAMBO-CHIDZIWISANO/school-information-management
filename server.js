@@ -73,7 +73,7 @@ require("./routes/teacher.routes")(app);
 require("./routes/user_rolesroutes")(app);
 require("./routes/parent.routes")(app);
 require("./routes/post.routes")(app);
-require("./routes/post.routes")(app);
+require("./routes/comments.routes")(app);
 
 //require("./routes/smsroutes")(app);
 
