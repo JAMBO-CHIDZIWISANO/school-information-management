@@ -9,13 +9,13 @@ module.exports = app =>{
     router.post("/add", school.create);
 
     //get all schools
-//    router.get("/get", school.findAll);
+   //router.get("/get", school.findAll);
 
-//     //get one school
-//     router.get("/te/:schoolId", school.findOne);
+     //get one school
+    // router.get("/te/:schoolId", school.findOne);
 
-//     //update school
-//     router.put("/:schoolId", school.update);
+     //update school
+     //router.put("/:schoolId", school.update);
 
 
 

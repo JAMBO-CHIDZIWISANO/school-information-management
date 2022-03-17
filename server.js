@@ -72,6 +72,8 @@ require("./routes/student.routes")(app);
 require("./routes/teacher.routes")(app);
 require("./routes/user_rolesroutes")(app);
 require("./routes/parent.routes")(app);
+require("./routes/post.routes")(app);
+require("./routes/post.routes")(app);
 
 //require("./routes/smsroutes")(app);
 
