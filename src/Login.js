@@ -111,7 +111,7 @@ const Login = () => {
                                             
                                             <input 
                                                 type="password" 
-                                                placeholder="*****"
+                                                placeholder="Enter your Password"
                                                 name='password'
                                                 value={password}
                                                 onChange={onChangePassword}

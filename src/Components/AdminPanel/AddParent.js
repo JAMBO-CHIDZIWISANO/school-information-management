@@ -1,46 +1,27 @@
 import React, { useState, useRef } from "react";
-//import Form from "react-validation/build/form";
-//import Input from "react-validation/build/input";
-//import CheckButton from "react-validation/build/button";
-//import { isEmail } from "validator";
+
 import AuthService from "../services/auth.service";
-// const required = (value) => {
-//   if (!value) {
+import { Form, Card, Button } from "react-bootstrap";
+
+// const vusername = (value) => {
+//   if (value.length < 3 || value.length > 20) {
 //     return (
 //       <div className="alert alert-danger" role="alert">
-//         This field is required!
+//         The username must be between 3 and 20 characters.
 //       </div>
 //     );
 //   }
 // };
-// const validEmail = (value) => {
-//   if (!isEmail(value)) {
+// const vpassword = (value) => {
+//   if (value.length < 6 || value.length > 40) {
 //     return (
 //       <div className="alert alert-danger" role="alert">
-//         This is not a valid email.
+//         The password must be between 6 and 40 characters.
 //       </div>
 //     );
 //   }
 // };
-const vusername = (value) => {
-  if (value.length < 3 || value.length > 20) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        The username must be between 3 and 20 characters.
-      </div>
-    );
-  }
-};
-const vpassword = (value) => {
-  if (value.length < 6 || value.length > 40) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        The password must be between 6 and 40 characters.
-      </div>
-    );
-  }
-};
-const AddTeacher = (props) => {
+const AddParent = (props) => {
   const form = useRef();
   //const checkBtn = useRef();
   const [username, setUsername] = useState("");
@@ -51,8 +32,7 @@ const AddTeacher = (props) => {
   const [middlename, setMiddlename] = useState("");
   const [lastname, setLastname] = useState("");
   const [gender, setGender] = useState("");
-  const [qualification, setQualification] = useState("");
-  const [joinDate, setJoinDate] = useState("");
+  const [phone, setPhone] = useState("");
 
   // setting out error messages
   const [successful, setSuccessful] = useState(false);
@@ -91,15 +71,11 @@ const AddTeacher = (props) => {
     const username = e.target.value;
     setUsername(username);
   };
-  const onChangeQualification = (e) => {
+  const onChangePhone = (e) => {
     const username = e.target.value;
     setUsername(username);
   };
-  const onChangeJoinDate = (e) => {
-    const username = e.target.value;
-    setUsername(username);
-  };
-
+  
   const handleRegister = (e) => {
     e.preventDefault();
     setMessage("");
@@ -127,8 +103,10 @@ const AddTeacher = (props) => {
   return (
     
       <div className="container">
-        <div className="col-md-6">
-        <h3 className="text-center" >Teacher Sign Up Form</h3><hr/>
+        <div  className="col-md-6">
+        {/* <div className="col-xs-6 col-sm-6 col-md-6"> */}
+        <br></br> <br></br>
+        <h3 className="text-center" >Parent Sign Up Form</h3><hr/>
         <form onSubmit={handleRegister}>
           {!successful && (
             <div>
@@ -183,77 +161,41 @@ const AddTeacher = (props) => {
         </form>
       </div>
       <br></br> <br></br>
-      <div className="col-md-6">
-      <h3 className="text-center" >Additional Information</h3><hr/>
-      <form autoComplete="off" >
+
+      <div className="col-md-6" >
+      <form autoComplete="off">
           {!successful && (
             
               <div className="form-group" >
-                <label htmlFor="firstname">Firstname</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="firstname"
-                  value={username}
-                  onChange={onChangeFirstname}
-                  required
+                <strong>Firstname</strong>
+                <input type="text" className="form-control" name="firstname" 
+                    value={username}  onChange={onChangeFirstname} required
                 />
-             
               <div className="form-group">
-                <label htmlFor="middlename">Middle Name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="middlename"
-                  value={middlename}
-                  onChange={onChangeMiddlename}
-                  required
+                <strong>Middle Name</strong>
+                <input type="text" className="form-control" name="middlename"
+                    value={middlename} onChange={onChangeMiddlename} required
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="lastname">Lastname</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="lastname"
-                  value={lastname}
-                  onChange={onChangeLastname}
-                  required
+                <strong htmlFor="lastname">Lastname</strong>
+                <input type="text" className="form-control" name="lastname"
+                    value={lastname} onChange={onChangeLastname} required
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="gender">Gender</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="gender"
-                  value={gender}
-                  onChange={onChangeGender}
-                  required
+                <strong>Gender</strong>
+                <input type="text" className="form-control" name="gender"
+                    value={gender} onChange={onChangeGender} required
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="qualification">Qualification</label>
-                <input
-                  type="qualification"
-                  className="form-control"
-                  name="qualification"
-                  value={qualification}
-                  onChange={onChangeQualification}
-                  required
+                <strong>Phone Number</strong>
+                <input type="phone" className="form-control" name="phone"
+                    value={phone} onChange={onChangePhone} required
                 />
               </div>
-              <div className="form-group">
-                <label htmlFor="joinDate">Join Date</label>
-                <input
-                  type="joinDate"
-                  className="form-control"
-                  name="joinDate"
-                  value={joinDate}
-                  onChange={onChangeJoinDate}
-                  required
-                />
-              </div>
+              
               <div className="form-group">
                 <button className="btn btn-primary btn-block">Submit</button>
               </div>
@@ -269,10 +211,12 @@ const AddTeacher = (props) => {
               </div>
             </div>
           )}
-         {/* <CheckButton style={{ display: "none" }} ref={checkBtn} /> */}
         </form>
         </div>
-    </div>
+        
+        </div>
+        
+   
   );
 };
-export default AddTeacher;
+export default AddParent;

@@ -82,6 +82,7 @@ const Display = () => {
                 })}
             </tbody>
         </table>
+        
     </div>
   )
 }

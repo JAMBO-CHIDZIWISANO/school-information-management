@@ -13,6 +13,8 @@ import { useTheme } from '@mui/material/styles';
 import SwipeableViews from 'react-swipeable-views';
 import PropTypes from 'prop-types';
 import AddTeacher from './AdminPanel/AddTeacher';
+import AddStudent from './AdminPanel/AddStudent'
+import AddParent from './AdminPanel/AddParent'
 
 //function that holds properties of the tab panel
 function TabPanel(props) {
@@ -122,12 +124,14 @@ const BoardAdmin = () => {
         {/* content components of the admin board */}
         <TabPanel value={value} index={0} dir={theme.direction}>
             <AddTeacher/>
+           
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
         <Display />
+        <AddStudent />
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
-          parent
+        <AddParent />
         </TabPanel>
         <TabPanel value={value} index={3} dir={theme.direction}>
         <App />

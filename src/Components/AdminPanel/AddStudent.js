@@ -1,27 +1,7 @@
 import React, { useState, useRef } from "react";
-//import Form from "react-validation/build/form";
-//import Input from "react-validation/build/input";
-//import CheckButton from "react-validation/build/button";
-//import { isEmail } from "validator";
+
 import AuthService from "../services/auth.service";
-// const required = (value) => {
-//   if (!value) {
-//     return (
-//       <div className="alert alert-danger" role="alert">
-//         This field is required!
-//       </div>
-//     );
-//   }
-// };
-// const validEmail = (value) => {
-//   if (!isEmail(value)) {
-//     return (
-//       <div className="alert alert-danger" role="alert">
-//         This is not a valid email.
-//       </div>
-//     );
-//   }
-// };
+
 const vusername = (value) => {
   if (value.length < 3 || value.length > 20) {
     return (
@@ -40,7 +20,7 @@ const vpassword = (value) => {
     );
   }
 };
-const AddTeacher = (props) => {
+const AddStudent = (props) => {
   const form = useRef();
   //const checkBtn = useRef();
   const [username, setUsername] = useState("");
@@ -125,15 +105,15 @@ const AddTeacher = (props) => {
   };
 
   return (
-    
       <div className="container">
-        <div className="col-md-6">
-        <h3 className="text-center" >Teacher Sign Up Form</h3><hr/>
+            <div className="col-md-6">
+            <h3 className="text-center" >Student Sign Up Form</h3><hr/>
+
         <form onSubmit={handleRegister}>
           {!successful && (
             <div>
               <div className="form-group" >
-                <label htmlFor="username">Username</label>
+                <strong htmlFor="username">Username</strong>
                 <input
                   type="text"
                   className="form-control"
@@ -144,7 +124,7 @@ const AddTeacher = (props) => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="email">Email</label>
+                <strong htmlFor="email">Email</strong>
                 <input
                   type="text"
                   className="form-control"
@@ -155,7 +135,7 @@ const AddTeacher = (props) => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="password">Password</label>
+                <strong htmlFor="password">Password</strong>
                 <input
                   type="password"
                   className="form-control"
@@ -182,80 +162,51 @@ const AddTeacher = (props) => {
           )}
         </form>
       </div>
-      <br></br> <br></br>
+      <br/><br/>
       <div className="col-md-6">
       <h3 className="text-center" >Additional Information</h3><hr/>
+
       <form autoComplete="off" >
           {!successful && (
             
               <div className="form-group" >
-                <label htmlFor="firstname">Firstname</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="firstname"
-                  value={username}
-                  onChange={onChangeFirstname}
-                  required
+                <strong htmlFor="firstname">Firstname</strong>
+                <input type="text" className="form-control" name="firstname"
+                    value={username} onChange={onChangeFirstname} required
                 />
              
               <div className="form-group">
-                <label htmlFor="middlename">Middle Name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="middlename"
-                  value={middlename}
-                  onChange={onChangeMiddlename}
-                  required
+                <strong htmlFor="middlename">Middle Name</strong>
+                <input type="text" className="form-control" name="middlename"
+                    value={middlename} onChange={onChangeMiddlename} required
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="lastname">Lastname</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="lastname"
-                  value={lastname}
-                  onChange={onChangeLastname}
-                  required
+                <strong htmlFor="lastname">Lastname</strong>
+                <input type="text" className="form-control" name="lastname"
+                    value={lastname} onChange={onChangeLastname} required
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="gender">Gender</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="gender"
-                  value={gender}
-                  onChange={onChangeGender}
-                  required
+                <strong htmlFor="gender">Gender</strong>
+                <input type="text" className="form-control" name="gender"
+                    value={gender} onChange={onChangeGender} required
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="qualification">Qualification</label>
-                <input
-                  type="qualification"
-                  className="form-control"
-                  name="qualification"
-                  value={qualification}
-                  onChange={onChangeQualification}
-                  required
+                <strong htmlFor="qualification">Qualification</strong>
+                <input type="qualification" className="form-control" name="qualification"
+                    value={qualification} onChange={onChangeQualification} required
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="joinDate">Join Date</label>
-                <input
-                  type="joinDate"
-                  className="form-control"
-                  name="joinDate"
-                  value={joinDate}
-                  onChange={onChangeJoinDate}
-                  required
+                <strong htmlFor="joinDate">Join Date</strong>
+                <input type="joinDate" className="form-control" name="joinDate"
+                    value={joinDate} onChange={onChangeJoinDate} required
                 />
               </div>
               <div className="form-group">
-                <button className="btn btn-primary btn-block">Submit</button>
+                <button className="btn btn-primary btn-block">Register</button>
               </div>
             </div>
           )}
@@ -269,10 +220,9 @@ const AddTeacher = (props) => {
               </div>
             </div>
           )}
-         {/* <CheckButton style={{ display: "none" }} ref={checkBtn} /> */}
         </form>
         </div>
     </div>
   );
 };
-export default AddTeacher;
+export default AddStudent;
