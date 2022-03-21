@@ -32,10 +32,9 @@ exports.create = (req, res)=>{
 exports.findAllPosts =(req, res) => {
   const postTitle = req.query.postTitle;
   Post.findAllPosts(postTitle, (err, data) => {
-    if (err)
-      res.status(500).send({
+    if (err) res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving posts."
+        err.message || "Some error occurred while retrieving posts."
       });
     else res.send(data);
   });

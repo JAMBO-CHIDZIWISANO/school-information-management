@@ -1,5 +1,5 @@
 const express = require("express");
-
+const morgan = require("morgan")
 const bodyParser = require("body-parser")
 
 require('dotenv').config();
@@ -19,8 +19,9 @@ var corsOptions = {
     origin: "http://localhost:4001"
 };
 
+app.use(morgan('dev'))
 app.use(cors(corsOptions));
-
+ 
 
 //parse request of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false}));

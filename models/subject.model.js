@@ -1,7 +1,7 @@
 module.exports = (sequelize, Sequelize) => {
     const Subject = sequelize.define("subjects", {
-      subjectId: {
-        type: Sequelize.INTEGER,
+      subjectCode: {
+        type: Sequelize.STRING,
         primaryKey: true
       },
       subjectName: {

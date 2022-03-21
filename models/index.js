@@ -89,11 +89,11 @@ db.school.hasMany(db.teacher, {
 db.student.belongsToMany(db.subject, {
   through: "student_subjects",
   foreignKey: "studentId",
-  otherKey: "subjectId"
+  otherKey: "subjectCode"
 });
 db.subject.belongsToMany(db.student, {
   through: "student_subjects",
-  foreignKey: "subjectId",
+  foreignKey: "subjectCode",
   otherKey: "studentId"
 });
 
@@ -101,11 +101,11 @@ db.subject.belongsToMany(db.student, {
 db.teacher.belongsToMany(db.subject, {
   through: "teacher_subjects",
   foreignKey: "teacherId",
-  otherKey: "subjectId"
+  otherKey: "subjectCode"
 });
 db.subject.belongsToMany(db.teacher, {
   through: "teacher_subjects",
-  foreignKey: "subjectId",
+  foreignKey: "subjectCode",
   otherKey: "teacherId"
 });
 
@@ -117,8 +117,8 @@ db.classroom.hasOne(db.classlesson, {
 
 //one to many subject and lesson
 db.subject.hasMany(db.classlesson, {
-  foreignKey: ("subjectId"),
-  targetKey: "subjectId"
+  foreignKey: ("subjectCode"),
+  targetKey: "subjectCode"
 });
 
 //one to many teacher and post
@@ -197,8 +197,8 @@ db.term.hasMany(db.attendance, {
 });
 
 db.subject.hasMany(db.mark, {
-  foreignKey: "subjectId",
-  targetKey: "subjectId"
+  foreignKey: "subjectCode",
+  targetKey: "subjectCode"
 });
 
 module.exports = db;

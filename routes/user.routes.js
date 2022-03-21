@@ -12,36 +12,36 @@ module.exports = function(app) {
     );
     next();
   });
-  app.post("/api/school/addteacher",
+  app.post("/api/smis/addteacher",
   [authJwt.verifyToken, authJwt.isTeacher],
   teacher.create);
 //get public content
-  app.get("/api/school/all", controller.allAccess);
+  app.get("/api/smis/all", controller.allAccess);
 
   //accesses by all users content
   app.get(
-    "/api/school/user",
+    "/api/smis/user",
     [authJwt.verifyToken],
     controller.userBoard
   );
 
   //get teacher content
   app.get(
-    "/api/school/teacher",
+    "/api/smis/teacher",
     [authJwt.verifyToken, authJwt.isTeacher],
     controller.teacherBoard
   );
 
   //get to admin content
   app.get(
-    "/api/school/admin",
+    "/api/smis/admin",
     [authJwt.verifyToken, authJwt.isAdmin],
-    controller.adminBoard
+    controller.adminBoard,
   );
 
   //get student content
   app.get(
-    "/api/school/student",
+    "/api/smis/student",
     [authJwt.verifyToken, authJwt.isStudent],
     controller.studentBoard
     );
@@ -49,7 +49,7 @@ module.exports = function(app) {
 
   //get parent content
   app.get(
-    "/api/school/parent",
+    "/api/smis/parent",
     [authJwt.verifyToken, authJwt.isParent],
     controller.parentBoard
   );
@@ -58,7 +58,7 @@ module.exports = function(app) {
   /* teachers routes*/
 
   //post teacher personal details
-  app.post("/api/school/addteacher",
+  app.post("/api/smis/addteacher",
   [authJwt.verifyToken, authJwt.isTeacher],
   teacher.create);
 
