@@ -1,48 +1,11 @@
 import React, { useState, useRef } from "react";
-//import Form from "react-validation/build/form";
-//import Input from "react-validation/build/input";
-//import CheckButton from "react-validation/build/button";
-//import { isEmail } from "validator";
+
 import AuthService from "../services/auth.service";
-// const required = (value) => {
-//   if (!value) {
-//     return (
-//       <div className="alert alert-danger" role="alert">
-//         This field is required!
-//       </div>
-//     );
-//   }
-// };
-// const validEmail = (value) => {
-//   if (!isEmail(value)) {
-//     return (
-//       <div className="alert alert-danger" role="alert">
-//         This is not a valid email.
-//       </div>
-//     );
-//   }
-// };
-const vusername = (value) => {
-  if (value.length < 3 || value.length > 20) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        The username must be between 3 and 20 characters.
-      </div>
-    );
-  }
-};
-const vpassword = (value) => {
-  if (value.length < 6 || value.length > 40) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        The password must be between 6 and 40 characters.
-      </div>
-    );
-  }
-};
-const AddTeacher = (props) => {
+
+const AddTeacher = () => {
   const form = useRef();
   //const checkBtn = useRef();
+  const [id, setId] =useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -58,6 +21,11 @@ const AddTeacher = (props) => {
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState("");
   // handling events
+
+  const onChangeId =(e)=>{
+    const id = e.target.value;
+    setId(id);
+  }
   const onChangeUsername = (e) => {
     const username = e.target.value;
     setUsername(username);
@@ -105,7 +73,7 @@ const AddTeacher = (props) => {
     setMessage("");
     setSuccessful(false);
     //form.current.validateAll();
-      AuthService.register(username, email, password).then(
+      AuthService.registerTeacher(id, username, email, password).then(
         (response) => {
           setMessage(response.data.message);
           setSuccessful(true);
@@ -132,6 +100,18 @@ const AddTeacher = (props) => {
         <form onSubmit={handleRegister}>
           {!successful && (
             <div>
+              <div className="form-group" >
+                <label htmlFor="id">User Id</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="id"
+                  value={id}
+                  onChange={onChangeId}
+                  required
+                />
+              </div>
+
               <div className="form-group" >
                 <label htmlFor="username">Username</label>
                 <input
