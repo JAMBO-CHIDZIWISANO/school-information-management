@@ -246,7 +246,7 @@ const AddTeacher = (props) => {
               <div className="form-group">
                 <label htmlFor="joinDate">Join Date</label>
                 <input
-                  type="joinDate"
+                  type="date"
                   className="form-control"
                   name="joinDate"
                   value={joinDate}
@@ -269,7 +269,6 @@ const AddTeacher = (props) => {
               </div>
             </div>
           )}
-         {/* <CheckButton style={{ display: "none" }} ref={checkBtn} /> */}
         </form>
         </div>
     </div>
