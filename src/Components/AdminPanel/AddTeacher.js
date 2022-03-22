@@ -212,7 +212,17 @@ const AddTeacher = () => {
       <div className="col-md-6">
       <h3 className="text-center" >Personal Details</h3><hr/>
       <form autoComplete="false" onSubmit={handleAdd} >
-
+      <div className="form-group">
+              <label htmlFor="userId">user id </label>
+              <input
+                type="userId"
+                className="form-control"
+                name="userId"
+                value={userId}
+                onChange={onChangeUserId}
+                required
+              />
+            </div>
               <div className="form-group" >
                 <label htmlFor="teacherId">teacher id</label>
                 <input
@@ -289,7 +299,7 @@ const AddTeacher = () => {
               <div className="form-group">
                 <label htmlFor="joinDate">Join Date</label>
                 <input
-                  type="joinDate"
+                  type="date"
                   className="form-control"
                   name="joinDate"
                   value={joinDate}
@@ -298,30 +308,11 @@ const AddTeacher = () => {
                 />
               </div>
 
-              <div className="form-group">
-              <label htmlFor="userId">user id </label>
-              <input
-                type="userId"
-                className="form-control"
-                name="userId"
-                value={userId}
-                onChange={onChangeUserId}
-                required
-              />
-            </div>
+             
               <div className="form-group">
                 <button className="btn btn-primary btn-block">Submit</button>
               </div>
-           {message && (
-            <div className="form-group">
-              <div
-                className={ successful ? "alert alert-success" : "alert alert-danger" }
-                role="alert">
-                {message}
-              </div>
-            </div>
-          )}
-
+           
         </form>
         </div>
     </div>

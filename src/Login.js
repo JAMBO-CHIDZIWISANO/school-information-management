@@ -2,6 +2,7 @@
 import React, { useState}from 'react'
 import { useNavigate } from 'react-router-dom'
 import AuthService from './Components/services/auth.service';
+import pic from './assets/login.jpeg'
 
 const Login = () => {
     
@@ -67,7 +68,7 @@ const Login = () => {
 
                             <div className=" col-md-6 col-lg-5 d-none d-md-block ">
                                 <img
-                                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp"
+                                    src={pic}
                                     alt='"login form'
                                     className="img-fluid"
                                 />
