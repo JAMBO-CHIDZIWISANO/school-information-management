@@ -1,48 +1,35 @@
 import React, { useState, useRef } from "react";
-
+import userService from "../services/user.service";
 import AuthService from "../services/auth.service";
 
-const vusername = (value) => {
-  if (value.length < 3 || value.length > 20) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        The username must be between 3 and 20 characters.
-      </div>
-    );
-  }
-};
-const vpassword = (value) => {
-  if (value.length < 6 || value.length > 40) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        The password must be between 6 and 40 characters.
-      </div>
-    );
-  }
-};
-const AddStudent = (props) => {
-  const form = useRef();
-  //const checkBtn = useRef();
+const AddStudent = () => {
+
+  const [id, setId] = useState("")
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // form2- teacher details registration
+
+  // form2- student details registration
+  const [studentId, setStudentId] = useState("")
   const [firstname, setFirstname] = useState("");
   const [middlename, setMiddlename] = useState("");
   const [lastname, setLastname] = useState("");
   const [gender, setGender] = useState("");
-  const [qualification, setQualification] = useState("");
-  const [joinDate, setJoinDate] = useState("");
-
+  const [address, setAddress] = useState("");
+  const [userId, setUserId]= useState("")
   // setting out error messages
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState("");
+
   // handling events
+  const onChangeId = (e)=>{
+    const id = e.target.value;
+    setId(id)
+  }
   const onChangeUsername = (e) => {
     const username = e.target.value;
     setUsername(username);
   };
-
   const onChangeEmail = (e) => {
     const email = e.target.value;
     setEmail(email);
@@ -53,31 +40,36 @@ const AddStudent = (props) => {
     setPassword(password);
   };
 
+
+  const onChangeStudentId=(e)=>{
+    const studentId = e.target.value;
+    setStudentId(studentId)
+  }
   const onChangeFirstname = (e) => {
-    const username = e.target.value;
-    setUsername(username);
+    const firstname = e.target.value;
+    setFirstname(firstname);
   };
 
   const onChangeMiddlename = (e) => {
-    const username = e.target.value;
-    setUsername(username);
+    const middlename = e.target.value;
+    setMiddlename(middlename);
   };
 
   const onChangeLastname = (e) => {
-    const username = e.target.value;
-    setUsername(username);
+    const lastname = e.target.value;
+    setLastname(lastname);
   };
   const onChangeGender = (e) => {
-    const username = e.target.value;
-    setUsername(username);
+    const gender = e.target.value;
+    setGender(gender);
   };
-  const onChangeQualification = (e) => {
-    const username = e.target.value;
-    setUsername(username);
+  const onChangeAddress = (e) => {
+    const address = e.target.value;
+    setAddress(address);
   };
-  const onChangeJoinDate = (e) => {
-    const username = e.target.value;
-    setUsername(username);
+  const onChangeUserId = (e) => {
+    const userId = e.target.value;
+    setUserId(userId);
   };
 
   const handleRegister = (e) => {
@@ -85,7 +77,31 @@ const AddStudent = (props) => {
     setMessage("");
     setSuccessful(false);
     //form.current.validateAll();
-      AuthService.register(username, email, password).then(
+      AuthService.registerStudent(id, username, email, password).then(
+        (response) => {
+          setMessage(response.data.message);
+          setSuccessful(true);
+        },
+        (error) => {
+          const resMessage =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
+          setMessage(resMessage);
+          setSuccessful(false);
+        }
+      );
+    
+  };
+
+  const addStudent = (e) => {
+    e.preventDefault();
+    setMessage("");
+    setSuccessful(false);
+    //form.current.validateAll();
+      userService.studentPersonalDetails(studentId, firstname, middlename, lastname, gender,address, userId ).then(
         (response) => {
           setMessage(response.data.message);
           setSuccessful(true);
@@ -112,6 +128,17 @@ const AddStudent = (props) => {
         <form onSubmit={handleRegister}>
           {!successful && (
             <div>
+              <div className="form-group" >
+                <strong htmlFor="id">student id</strong>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="id"
+                  value={id}
+                  onChange={onChangeId}
+                  required
+                />
+              </div>
               <div className="form-group" >
                 <strong htmlFor="username">Username</strong>
                 <input
@@ -166,14 +193,22 @@ const AddStudent = (props) => {
       <div className="col-md-6">
       <h3 className="text-center" >Additional Information</h3><hr/>
 
-      <form autoComplete="off" >
-          {!successful && (
+      <form autoComplete="off" onSubmit={addStudent}>
+          
+
+              <div className="form-group" >
+              <strong htmlFor="studentId">student Id</strong>
+              <input type="text" className="form-control" name="firstname"
+                value={studentId} onChange={onChangeStudentId} required
+              />
+              </div>
             
               <div className="form-group" >
                 <strong htmlFor="firstname">Firstname</strong>
                 <input type="text" className="form-control" name="firstname"
-                    value={username} onChange={onChangeFirstname} required
+                    value={firstname} onChange={onChangeFirstname} required
                 />
+              </div>
              
               <div className="form-group">
                 <strong htmlFor="middlename">Middle Name</strong>
@@ -181,45 +216,50 @@ const AddStudent = (props) => {
                     value={middlename} onChange={onChangeMiddlename} required
                 />
               </div>
+
               <div className="form-group">
                 <strong htmlFor="lastname">Lastname</strong>
                 <input type="text" className="form-control" name="lastname"
                     value={lastname} onChange={onChangeLastname} required
                 />
               </div>
+
               <div className="form-group">
                 <strong htmlFor="gender">Gender</strong>
                 <input type="text" className="form-control" name="gender"
                     value={gender} onChange={onChangeGender} required
                 />
               </div>
+
               <div className="form-group">
-                <strong htmlFor="qualification">Qualification</strong>
-                <input type="qualification" className="form-control" name="qualification"
-                    value={qualification} onChange={onChangeQualification} required
+                <strong htmlFor="address">Address</strong>
+                <input type="text" className="form-control" name="address"
+                    value={address} onChange={onChangeAddress} required
                 />
               </div>
+
               <div className="form-group">
-                <strong htmlFor="joinDate">Join Date</strong>
-                <input type="joinDate" className="form-control" name="joinDate"
-                    value={joinDate} onChange={onChangeJoinDate} required
+                <strong htmlFor="userId">userId</strong>
+                <input type="number" className="form-control" name="userId"
+                    value={userId} onChange={onChangeUserId} required
                 />
               </div>
+
               <div className="form-group">
                 <button className="btn btn-primary btn-block">Register</button>
               </div>
-            </div>
-          )}
+          
           {message && (
             <div className="form-group">
               <div
-                className={ successful ? "alert alert-success" : "alert alert-danger" }
+                className= "alert alert-success alert alert-danger" 
                 role="alert"
               >
                 {message}
               </div>
             </div>
           )}
+          
         </form>
         </div>
     </div>

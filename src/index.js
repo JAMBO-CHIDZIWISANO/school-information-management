@@ -14,7 +14,7 @@ import BoardParent from "./Components/BoardParent";
 import BoardUser from "./Components/BoardUser";
 import Profile from "./Components/Profile";
 
-import Message from "./Components/AdminPanel/Message"
+import Announcements from "./Components/AdminPanel/Announcements"
 
 ReactDOM.render(
     <Router>
@@ -26,7 +26,7 @@ ReactDOM.render(
         <Route path="/teacher" element={<BoardTeacher/>} />
         <Route path="/student" element={<BoardStudent/>} />
         <Route path="/parent" element={<BoardParent/>} />
-        <Route path="/admin/sms" element={<Message/>} />
+        <Route path="/admin/announcements" element={<Announcements/>} />
         {/* <Route path="/comments" element={<Comments/>} /> */}
         
       </Routes>

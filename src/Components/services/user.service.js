@@ -2,7 +2,7 @@ import axios from "axios";
 import authHeader from "./auth-header";
 
 //api url
-const API_URL = "http://localhost:4000/api/school/";
+const API_URL = "http://localhost:4000/api/smis/";
 
 //get public content board from the server
 const getPublicContent = () => {
@@ -34,6 +34,47 @@ const getParentBoard = () => {
   return axios.get(API_URL + "parent", { headers: authHeader() });
 };
 
+//add teacher
+const teacherPersonalDetails = (teacherId, firstname, middlename, lastname, gender,qualification, joinDate, userId ) => {
+
+  return axios.post(API_URL + "addTeacher", {
+    teacherId, 
+    firstname, 
+    middlename, 
+    lastname, 
+    gender,
+    qualification, 
+    joinDate, 
+    userId
+  })
+}
+
+//add student
+const studentPersonalDetails = (studentId, firstname, middlename, lastname, gender,address, userId ) => {
+
+  return axios.post(API_URL + "addStudent", {
+    studentId, 
+    firstname, 
+    middlename, 
+    lastname, 
+    gender,
+    address, 
+    userId
+  })
+}
+
+const parentPersonalDetails = (parentId, firstname, middlename, lastname, gender,address, userId ) => {
+
+  return axios.post(API_URL + "addParent", {
+    parentId, 
+    firstname, 
+    middlename, 
+    lastname, 
+    gender,
+    address, 
+    userId
+  })
+}
 
 export default {
   getPublicContent,
@@ -41,5 +82,9 @@ export default {
   getTeacherBoard,
   getAdminBoard,
   getParentBoard,
-  getStudentBoard
+  getStudentBoard,
+  teacherPersonalDetails,
+  studentPersonalDetails,
+  parentPersonalDetails
+
 };

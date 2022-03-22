@@ -84,11 +84,11 @@ const BoardAdmin = () => {
     <div >
 
       {/* box that hold views of admin panel board  */}
-      <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
+      <Box sx={{ width: '100%', bgcolor: 'background.primary' }}>
 
       {/* app bar for admin */}
       <AppBar position="static">
-      <Tabs centered
+      <Tabs 
         value={value}
         onChange={handleChange}
         variant="scrollable"
