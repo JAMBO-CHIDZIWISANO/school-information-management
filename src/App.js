@@ -100,20 +100,13 @@ function App() {
                   <li>
                   <Link to="/admin/announcements" className="nav-text">
                     <AiIcons.AiFillHome/>
-                    sms
+                    announcements
                    </Link>
                 </li>
                 )}
                 
 
-                {/* <li>
-                <Link to="/profile" className="nav-text">
-                  
-                  <AiIcons.AiFillHome/>
-                    Profile
-                    
-                  </Link>
-                </li> */}
+                
                 
                 {showTeacherBoard &&(
                   <li>
@@ -142,18 +135,6 @@ function App() {
                   </li>
                 )}
                 
-                {/* {currentUser ?(
-                      <div>
-                        <li><Link to="/profile">profile</Link></li>
-                        <li><a href='/' onClick={logOut}> LogOut</a></li>
-                      </div>
-                ):(
-                      
-                        <>
-                        <li><Link to='/login'>Login</Link></li>
-                        </>
-                      
-                    )} */}
                 
             </ul>
 

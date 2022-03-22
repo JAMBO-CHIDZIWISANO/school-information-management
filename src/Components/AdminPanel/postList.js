@@ -14,24 +14,15 @@ function PostList() {
     <div className="container-fluid p-3">
       <table className="table table-sm mt-3">
         <thead className="thead-dark">
-          {/* <th>Id</th>
+        <tr>
+          <th>Id</th>
           <th>Title</th>
           <th>Body</th>
-          <th>post By</th> */}
+          <th>post By</th>
+        </tr>
         </thead>
         <tbody>
-          {postsList.map(x => 
-          <tr>
-            <td>{x.postId}</td>
-            <td>{x.posstTitle}</td>
-            <td>{x.postBody}</td>
-            <td>{x.teacherId}</td>
-          </tr>)}
-          {postsList.length == 0 && <tr>
-            <td className="text-center" colSpan="4">
-              <b>No data found to display.</b>
-            </td>
-          </tr>}
+          
         </tbody>
       </table>
 
