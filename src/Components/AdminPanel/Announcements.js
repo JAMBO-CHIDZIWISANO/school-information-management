@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react'
-
+import PostList from './postList';
 class Announcements extends Component {
 
 
@@ -131,7 +131,7 @@ class Announcements extends Component {
       </div>
       
       <div>
-        hjkl
+        <PostList/>
         
       </div>
 
