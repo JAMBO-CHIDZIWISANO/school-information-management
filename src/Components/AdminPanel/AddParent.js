@@ -4,7 +4,7 @@ import AuthService from "../services/auth.service";
 
 
 const AddParent = () => {
-  
+
   const [id, setId] = useState("")
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -74,7 +74,7 @@ const AddParent = () => {
     const userId = e.target.value;
     setUserId(userId);
   };
-  
+
   const handleRegister = (e) => {
     e.preventDefault();
     setMessage("");
@@ -96,7 +96,7 @@ const AddParent = () => {
           setSuccessful(false);
         }
       );
-    
+
   };
 
   const addParent = (e) => {
@@ -120,11 +120,11 @@ const AddParent = () => {
           setSuccessful(false);
         }
       );
-    
+
   };
 
   return (
-    
+
       <div className="container">
         <div  className="col-md-6">
         {/* <div className="col-xs-6 col-sm-6 col-md-6"> */}
@@ -214,7 +214,7 @@ const AddParent = () => {
                 value={firstname} onChange={onChangeFirstname} required
             />
           </div>
-         
+
           <div className="form-group">
             <strong htmlFor="middlename">Middle Name</strong>
             <input type="text" className="form-control" name="middlename"
@@ -249,11 +249,11 @@ const AddParent = () => {
                 value={userId} onChange={onChangeUserId} required
             />
           </div>
-              
+
             <div className="form-group">
                 <button className="btn btn-primary btn-block">Submit</button>
               </div>
-          
+
           {message && (
             <div className="form-group">
               <div
@@ -266,10 +266,10 @@ const AddParent = () => {
           )}
         </form>
         </div>
-        
+
         </div>
-        
-   
+
+
   );
 };
 export default AddParent;

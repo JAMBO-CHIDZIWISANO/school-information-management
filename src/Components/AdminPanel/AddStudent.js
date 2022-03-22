@@ -93,7 +93,7 @@ const AddStudent = () => {
           setSuccessful(false);
         }
       );
-    
+
   };
 
   const addStudent = (e) => {
@@ -117,7 +117,7 @@ const AddStudent = () => {
           setSuccessful(false);
         }
       );
-    
+
   };
 
   return (
@@ -194,7 +194,7 @@ const AddStudent = () => {
       <h3 className="text-center" >Additional Information</h3><hr/>
 
       <form autoComplete="off" onSubmit={addStudent}>
-          
+
 
               <div className="form-group" >
               <strong htmlFor="studentId">student Id</strong>
@@ -202,14 +202,14 @@ const AddStudent = () => {
                 value={studentId} onChange={onChangeStudentId} required
               />
               </div>
-            
+
               <div className="form-group" >
                 <strong htmlFor="firstname">Firstname</strong>
                 <input type="text" className="form-control" name="firstname"
                     value={firstname} onChange={onChangeFirstname} required
                 />
               </div>
-             
+
               <div className="form-group">
                 <strong htmlFor="middlename">Middle Name</strong>
                 <input type="text" className="form-control" name="middlename"
@@ -248,7 +248,7 @@ const AddStudent = () => {
               <div className="form-group">
                 <button className="btn btn-primary btn-block">Register</button>
               </div>
-          
+
           {message && (
             <div className="form-group">
               <div
@@ -259,10 +259,10 @@ const AddStudent = () => {
               </div>
             </div>
           )}
-          
+
         </form>
         </div>
     </div>
   );
 };
-export default AddStudent;
+export default AddStudent

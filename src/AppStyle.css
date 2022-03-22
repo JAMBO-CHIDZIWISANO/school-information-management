@@ -1,3 +1,4 @@
+
 .navbar {
     background-color:#1a83ff;
     height: 80px;
@@ -10,7 +11,7 @@
     margin-left: 2rem;
     font-size: 2rem;
     background: none; 
-    
+
 }
 
 .navi-menu {
@@ -35,7 +36,7 @@
 
 .nav-text  {
     display: flex;
-    
+
     justify-content: center;
     align-items: center;
     color: white;

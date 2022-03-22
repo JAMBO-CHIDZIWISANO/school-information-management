@@ -121,7 +121,7 @@ const Login = () => {
 
                                         <div className="pt-1 mb-4">
                                             <button 
-                                                className="btn btn-primary btn-lg btn-block"
+                                                className="btn btn-dark btn-lg btn-block"
                                                 >
                                                 {loading&&( <span className='spinner-border spinner-border-sm'></span>)}
                                                 <span>Sign in</span>

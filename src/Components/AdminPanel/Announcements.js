@@ -129,10 +129,10 @@ class Announcements extends Component {
             </div>
           </form>
       </div>
-      
+
       <div>
         <PostList/>
-        
+
       </div>
 
       <div>
@@ -144,3 +144,4 @@ class Announcements extends Component {
 }
 
 export default Announcements
+ 

@@ -99,7 +99,7 @@ const AddTeacher = () => {
           setSuccessful(false);
         }
       );
-    
+
   };
 
   const handleAdd = (e)=>{
@@ -133,14 +133,14 @@ const AddTeacher = () => {
   }
 
   return (
-    
+
     <div className="container">
       <div className="col-md-6">
         <h3 className="text-center" >Teacher Sign Up Form</h3><hr/>
-        
+
         <form onSubmit={handleRegister}>
           {!successful && (
-            
+
           <div>
             <div className="form-group" >
               <label htmlFor="id">User Id</label>
@@ -212,7 +212,7 @@ const AddTeacher = () => {
       <div className="col-md-6">
       <h3 className="text-center" >Personal Details</h3><hr/>
       <form autoComplete="false" onSubmit={handleAdd} >
-          
+
               <div className="form-group" >
                 <label htmlFor="teacherId">teacher id</label>
                 <input
@@ -224,7 +224,7 @@ const AddTeacher = () => {
                   required
                 />
               </div>
-            
+
               <div className="form-group" >
                 <label htmlFor="firstname">Firstname</label>
                 <input
@@ -321,10 +321,10 @@ const AddTeacher = () => {
               </div>
             </div>
           )}
-         
+
         </form>
         </div>
     </div>
   );
 };
-export default AddTeacher;
+export default AddTeacher; 

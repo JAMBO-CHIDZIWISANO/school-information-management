@@ -100,12 +100,20 @@ function App() {
                   <li>
                   <Link to="/admin/announcements" className="nav-text">
                     <AiIcons.AiFillHome/>
-                    announcements
+                    sms
                    </Link>
                 </li>
                 )}
                 
 
+                {/* <li>
+                <Link to="/profile" className="nav-text">
+                  
+                  <AiIcons.AiFillHome/>
+                    Profile
+                    
+                  </Link>
+                </li> */}
                 
                 {showTeacherBoard &&(
                   <li>
