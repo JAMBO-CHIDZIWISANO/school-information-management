@@ -56,7 +56,7 @@ function App() {
 
             <div className="d-flex ms-auto order-5">
               {currentUser ?(
-                        <div className="list-unstyled d-flex">
+                        <div className="list-unstyled d-flex nav-text">
                           <li><Link to="/profile">
                           <MenuItem>
                             < ListItemIcon>
@@ -87,13 +87,7 @@ function App() {
                         <AiIcons.AiOutlineClose/>
                     </Link>
                 </li>
-                {/* <li>
-                  <Link to="/" className="">
-                   <AiIcons.AiFillHome/>
-                    Login
-                  
-                  </Link>
-                </li> */}
+                
                 {showAdminBoard&&(
                   <li>
                   <Link to="/admin" className="nav-text">
@@ -104,22 +98,14 @@ function App() {
                 )}
                 {showAdminBoard&&(
                   <li>
-                  <Link to="/admin/sms" className="nav-text">
+                  <Link to="/admin/announcements" className="nav-text">
                     <AiIcons.AiFillHome/>
-                    sms
+                    announcements
                    </Link>
                 </li>
                 )}
                 
 
-                {/* <li>
-                <Link to="/profile" className="nav-text">
-                  
-                  <AiIcons.AiFillHome/>
-                    Profile
-                    
-                  </Link>
-                </li> */}
                 
                 {showTeacherBoard &&(
                   <li>

@@ -1,43 +1,33 @@
-import React, { useState, useRef } from "react";
-
+import React, { useState } from "react";
+import userService from "../services/user.service";
 import AuthService from "../services/auth.service";
-import { Form, Card, Button } from "react-bootstrap";
 
-// const vusername = (value) => {
-//   if (value.length < 3 || value.length > 20) {
-//     return (
-//       <div className="alert alert-danger" role="alert">
-//         The username must be between 3 and 20 characters.
-//       </div>
-//     );
-//   }
-// };
-// const vpassword = (value) => {
-//   if (value.length < 6 || value.length > 40) {
-//     return (
-//       <div className="alert alert-danger" role="alert">
-//         The password must be between 6 and 40 characters.
-//       </div>
-//     );
-//   }
-// };
-const AddParent = (props) => {
-  const form = useRef();
-  //const checkBtn = useRef();
+
+const AddParent = () => {
+  
+  const [id, setId] = useState("")
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   // form2- teacher details registration
+  const [parentId, setParentId] = useState("")
   const [firstname, setFirstname] = useState("");
   const [middlename, setMiddlename] = useState("");
   const [lastname, setLastname] = useState("");
   const [gender, setGender] = useState("");
-  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+  const [userId, setUserId]= useState("")
 
   // setting out error messages
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState("");
+
   // handling events
+  const onChangeId = (e)=>{
+    const id = e.target.value;
+    setId(id)
+  }
   const onChangeUsername = (e) => {
     const username = e.target.value;
     setUsername(username);
@@ -53,27 +43,36 @@ const AddParent = (props) => {
     setPassword(password);
   };
 
+
+  const onChangeParentId=(e)=>{
+    const parentId = e.target.value;
+    setParentId(parentId)
+  }
   const onChangeFirstname = (e) => {
-    const username = e.target.value;
-    setUsername(username);
+    const firstname = e.target.value;
+    setFirstname(firstname);
   };
 
   const onChangeMiddlename = (e) => {
-    const username = e.target.value;
-    setUsername(username);
+    const middlename = e.target.value;
+    setMiddlename(middlename);
   };
 
   const onChangeLastname = (e) => {
-    const username = e.target.value;
-    setUsername(username);
+    const lastname = e.target.value;
+    setLastname(lastname);
   };
   const onChangeGender = (e) => {
-    const username = e.target.value;
-    setUsername(username);
+    const gender = e.target.value;
+    setGender(gender);
   };
-  const onChangePhone = (e) => {
-    const username = e.target.value;
-    setUsername(username);
+  const onChangeAddress = (e) => {
+    const address = e.target.value;
+    setAddress(address);
+  };
+  const onChangeUserId = (e) => {
+    const userId = e.target.value;
+    setUserId(userId);
   };
   
   const handleRegister = (e) => {
@@ -81,7 +80,31 @@ const AddParent = (props) => {
     setMessage("");
     setSuccessful(false);
     //form.current.validateAll();
-      AuthService.register(username, email, password).then(
+      AuthService.registerParent(id, username, email, password).then(
+        (response) => {
+          setMessage(response.data.message);
+          setSuccessful(true);
+        },
+        (error) => {
+          const resMessage =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
+          setMessage(resMessage);
+          setSuccessful(false);
+        }
+      );
+    
+  };
+
+  const addParent = (e) => {
+    e.preventDefault();
+    setMessage("");
+    setSuccessful(false);
+    //form.current.validateAll();
+      userService.parentPersonalDetails(parentId, firstname, middlename, lastname, gender,address, userId).then(
         (response) => {
           setMessage(response.data.message);
           setSuccessful(true);
@@ -110,6 +133,19 @@ const AddParent = (props) => {
         <form onSubmit={handleRegister}>
           {!successful && (
             <div>
+
+<div className="form-group" >
+                <strong htmlFor="id">parent id</strong>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="id"
+                  value={id}
+                  onChange={onChangeId}
+                  required
+                />
+              </div>
+
               <div className="form-group" >
                 <label htmlFor="username">Username</label>
                 <input
@@ -163,48 +199,65 @@ const AddParent = (props) => {
       <br></br> <br></br>
 
       <div className="col-md-6" >
-      <form autoComplete="off">
-          {!successful && (
-            
-              <div className="form-group" >
-                <strong>Firstname</strong>
-                <input type="text" className="form-control" name="firstname" 
-                    value={username}  onChange={onChangeFirstname} required
-                />
-              <div className="form-group">
-                <strong>Middle Name</strong>
-                <input type="text" className="form-control" name="middlename"
-                    value={middlename} onChange={onChangeMiddlename} required
-                />
-              </div>
-              <div className="form-group">
-                <strong htmlFor="lastname">Lastname</strong>
-                <input type="text" className="form-control" name="lastname"
-                    value={lastname} onChange={onChangeLastname} required
-                />
-              </div>
-              <div className="form-group">
-                <strong>Gender</strong>
-                <input type="text" className="form-control" name="gender"
-                    value={gender} onChange={onChangeGender} required
-                />
-              </div>
-              <div className="form-group">
-                <strong>Phone Number</strong>
-                <input type="phone" className="form-control" name="phone"
-                    value={phone} onChange={onChangePhone} required
-                />
-              </div>
+      <form autoComplete="off" onSubmit={addParent}>
+
+      <div className="form-group" >
+            <strong htmlFor="parentId">parent Id</strong>
+            <input type="text" className="form-control" name="parentId"
+                value={parentId} onChange={onChangeParentId} required
+            />
+          </div>
+
+            <div className="form-group" >
+            <strong htmlFor="firstname">Firstname</strong>
+            <input type="text" className="form-control" name="firstname"
+                value={firstname} onChange={onChangeFirstname} required
+            />
+          </div>
+         
+          <div className="form-group">
+            <strong htmlFor="middlename">Middle Name</strong>
+            <input type="text" className="form-control" name="middlename"
+                value={middlename} onChange={onChangeMiddlename} required
+            />
+          </div>
+
+          <div className="form-group">
+            <strong htmlFor="lastname">Lastname</strong>
+            <input type="text" className="form-control" name="lastname"
+                value={lastname} onChange={onChangeLastname} required
+            />
+          </div>
+
+          <div className="form-group">
+            <strong htmlFor="gender">Gender</strong>
+            <input type="text" className="form-control" name="gender"
+                value={gender} onChange={onChangeGender} required
+            />
+          </div>
+
+          <div className="form-group">
+            <strong htmlFor="address">Address</strong>
+            <input type="text" className="form-control" name="address"
+                value={address} onChange={onChangeAddress} required
+            />
+          </div>
+
+          <div className="form-group">
+            <strong htmlFor="userId">userId</strong>
+            <input type="number" className="form-control" name="userId"
+                value={userId} onChange={onChangeUserId} required
+            />
+          </div>
               
-              <div className="form-group">
+            <div className="form-group">
                 <button className="btn btn-primary btn-block">Submit</button>
               </div>
-            </div>
-          )}
+          
           {message && (
             <div className="form-group">
               <div
-                className={ successful ? "alert alert-success" : "alert alert-danger" }
+                className= "alert alert-success alert alert-danger" 
                 role="alert"
               >
                 {message}
