@@ -76,7 +76,6 @@ const Display = () => {
                                        <button className="btn btn-view" >View</button>
                                     </Link>
                                 </td>
-
                         </tr>
                     )
                 })}

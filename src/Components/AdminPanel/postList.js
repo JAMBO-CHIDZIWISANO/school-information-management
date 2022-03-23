@@ -1,63 +1,56 @@
 import axios from "axios";
 import React, {useEffect, useState} from "react";
-function PostList() {
-  const [postsList, setPostsList] = useState([]);
 
-  useEffect(() => {
-    axios.get('http://localhost:4000/api/smis/getAllPosts').then(res => {
-      setPostsList(res.data.data);
-    }).catch(err => console.log("Couldn't fetch data. Error: " + err))
+const PostList = () => {
+  const [data, setData] = useState([]);
 
-  }, []);
+  const loadData = async () => {
+      const response = await axios.get("http://localhost:4000/api/smis/getAllPosts");
+      setData(response.data);    
+  };
+  // refresh window
+  // useEffect(() => {
+  //   axios.get('http://localhost:4000/api/smis/getAllPosts').then(res => {
+  //     setPostsList(res.data.data);
+  //   }).catch(err => console.log("Couldn't fetch data. Error: " + err))
+
+  // }, []);
+      useEffect(() => {
+          loadData();
+      }, []);
 
   return (
-    <div className="container-fluid p-3">
-      <table className="table table-sm mt-3">
-        <thead className="thead-dark">
-{/* <<<<<<< Updated upstream
-=======
-// <<<<<<< HEAD */}
+    <div>
+      <table className="table">
+        <thead>
+
           <tr>
-          <th style={{textAlign: "center"}}>No. </th>
-          <th style={{textAlign: "center"}}>posstTitle</th>
-          <th style={{textAlign: "center"}}>postBody</th>
-          <th style={{textAlign: "center"}}>teacherId</th>
-          <th style={{textAlign: "center"}}>PostId</th>
-          <th style={{textAlign: "center"}}>Action</th>
-                     
+            <th style={{textAlign: "center"}}>No. </th>
+            <th style={{textAlign: "center"}}>Post Title</th>
+            <th style={{textAlign: "center"}}>Post Body</th>
+            <th style={{textAlign: "center"}}>Action</th> 
                     
           </tr>
           </thead>
-        
-          {postsList.map((item, index) => {
+
+          <tbody>
+          {data.map((item, index) => {
             return (
               <tr key={item.postId}>
                 <th scope="row">{index+1}</th>
-                <td>{item.posstTitle}</td>
+                <td>{item.postTitle}</td>
                 <td>{item.postBody}</td>
-                <td>{item.teacherId}</td>
-           
-            <td className="text-center" colSpan="4">
-              <b>No data found to display.</b>
-            </td>
+              {/* <b>No data found to display.</b> */}
+              <td>
+                    <button className="btn btn-edit" >Edit</button>
+             
+                    <button className="btn btn-view" >View</button>
+            
+              </td>
+          
           </tr>
             )
         })}
-    <thead>
-{/* >>>>>>> Stashed changes */}
-        <tr>
-          <th>Id</th>
-          <th>Title</th>
-          <th>Body</th>
-          <th>post By</th>
-        </tr>
-        </thead>
-        <tbody>
-          
-{/* <<<<<<< Updated upstream
-=======
->>>>>>> beb8eb4e37f71e3f3207ca88de921a5d0e595112
->>>>>>> Stashed changes */}
         </tbody>
       </table>
 
