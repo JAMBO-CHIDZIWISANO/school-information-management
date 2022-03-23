@@ -7,22 +7,22 @@ const API_URL = "http://localhost:4000/api/auth/";
 
 
 
-const registerTeacher = (id, username, email, password ) => {
+const registerTeacher = ( username, email, password ) => {
   const roles= ["teacher"]
 
   return axios.post(API_URL + "signup", {
-    id,
+    
     username,
     email,
     password,
     roles,
   })
 }
-const registerAdmin = (id, username, email, password ) => {
+const registerAdmin = ( username, email, password ) => {
   const roles= ["admin"]
 
   return axios.post(API_URL + "signup", {
-    id,
+    
     username,
     email,
     password,
@@ -30,22 +30,22 @@ const registerAdmin = (id, username, email, password ) => {
     
   })
 }
-const registerStudent = (id, username, email, password ) => {
+const registerStudent = ( username, email, password ) => {
   const roles= ["student"]
 
   return axios.post(API_URL + "signup", {
-    id,
+    
     username,
     email,
     password,
     roles,
   })
 }
-const registerParent = (id, username, email, password ) => {
+const registerParent = ( username, email, password ) => {
   const roles= ["parent"]
 
   return axios.post(API_URL + "signup", {
-    id,
+    
     username,
     email,
     password,
@@ -83,7 +83,6 @@ const getCurrentUser = () => {
     registerAdmin,
     registerParent,
     registerStudent,
-    
     login,
     logout,
     getCurrentUser,

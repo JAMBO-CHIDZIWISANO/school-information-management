@@ -5,7 +5,6 @@ import AuthService from "../services/auth.service";
 
 const AddParent = () => {
 
-  const [id, setId] = useState("")
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,10 +23,7 @@ const AddParent = () => {
   const [message, setMessage] = useState("");
 
   // handling events
-  const onChangeId = (e)=>{
-    const id = e.target.value;
-    setId(id)
-  }
+  
   const onChangeUsername = (e) => {
     const username = e.target.value;
     setUsername(username);
@@ -80,7 +76,7 @@ const AddParent = () => {
     setMessage("");
     setSuccessful(false);
     //form.current.validateAll();
-      AuthService.registerParent(id, username, email, password).then(
+      AuthService.registerParent( username, email, password).then(
         (response) => {
           setMessage(response.data.message);
           setSuccessful(true);
@@ -134,17 +130,6 @@ const AddParent = () => {
           {!successful && (
             <div>
 
-<div className="form-group" >
-                <strong htmlFor="id">parent id</strong>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="id"
-                  value={id}
-                  onChange={onChangeId}
-                  required
-                />
-              </div>
 
               <div className="form-group" >
                 <label htmlFor="username">Username</label>

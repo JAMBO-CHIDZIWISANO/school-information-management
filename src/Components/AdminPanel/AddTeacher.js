@@ -5,7 +5,7 @@ import AuthService from "../services/auth.service";
 
 const AddTeacher = () => {
 
-  const [id, setId] =useState("");
+  //const [id, setId] =useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,10 +24,10 @@ const AddTeacher = () => {
   const [message, setMessage] = useState("");
   // handling events
 
-  const onChangeId =(e)=>{
-    const id = e.target.value;
-    setId(id);
-  }
+  // const onChangeId =(e)=>{
+  //   const id = e.target.value;
+  //   setId(id);
+  // }
   const onChangeUsername = (e) => {
     const username = e.target.value;
     setUsername(username);
@@ -83,7 +83,7 @@ const AddTeacher = () => {
     e.preventDefault();
     setMessage("");
     setSuccessful(false);
-      AuthService.registerTeacher(id, username, email, password).then(
+      AuthService.registerTeacher(username, email, password).then(
         (response) => {
           setMessage(response.data.message);
           setSuccessful(true);
@@ -142,7 +142,7 @@ const AddTeacher = () => {
           {!successful && (
 
           <div>
-            <div className="form-group" >
+            {/* <div className="form-group" >
               <label htmlFor="id">User Id</label>
               <input
                 type="text"
@@ -152,7 +152,7 @@ const AddTeacher = () => {
                 onChange={onChangeId}
                 required
               />
-            </div>
+            </div> */}
 
             <div className="form-group" >
               <label htmlFor="username">Username</label>
@@ -213,9 +213,9 @@ const AddTeacher = () => {
       <h3 className="text-center" >Personal Details</h3><hr/>
       <form autoComplete="false" onSubmit={handleAdd} >
       <div className="form-group">
-              <label htmlFor="userId">user id </label>
+              <label htmlFor="userId">Username </label>
               <input
-                type="userId"
+                type="text"
                 className="form-control"
                 name="userId"
                 value={userId}

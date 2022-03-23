@@ -4,7 +4,6 @@ import AuthService from "../services/auth.service";
 
 const AddStudent = () => {
 
-  const [id, setId] = useState("")
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,10 +21,10 @@ const AddStudent = () => {
   const [message, setMessage] = useState("");
 
   // handling events
-  const onChangeId = (e)=>{
-    const id = e.target.value;
-    setId(id)
-  }
+  // const onChangeId = (e)=>{
+  //   const id = e.target.value;
+  //   setId(id)
+  // }
   const onChangeUsername = (e) => {
     const username = e.target.value;
     setUsername(username);
@@ -77,7 +76,7 @@ const AddStudent = () => {
     setMessage("");
     setSuccessful(false);
     //form.current.validateAll();
-      AuthService.registerStudent(id, username, email, password).then(
+      AuthService.registerStudent( username, email, password).then(
         (response) => {
           setMessage(response.data.message);
           setSuccessful(true);
@@ -128,7 +127,7 @@ const AddStudent = () => {
         <form onSubmit={handleRegister}>
           {!successful && (
             <div>
-              <div className="form-group" >
+              {/* <div className="form-group" >
                 <strong htmlFor="id">student id</strong>
                 <input
                   type="text"
@@ -138,7 +137,7 @@ const AddStudent = () => {
                   onChange={onChangeId}
                   required
                 />
-              </div>
+              </div> */}
               <div className="form-group" >
                 <strong htmlFor="username">Username</strong>
                 <input
@@ -240,7 +239,7 @@ const AddStudent = () => {
 
               <div className="form-group">
                 <strong htmlFor="userId">userId</strong>
-                <input type="number" className="form-control" name="userId"
+                <input type="text" className="form-control" name="userId"
                     value={userId} onChange={onChangeUserId} required
                 />
               </div>
