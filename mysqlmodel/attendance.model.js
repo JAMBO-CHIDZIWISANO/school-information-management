@@ -3,9 +3,9 @@ const sql = require("../models/mysqldb")
 //constructor 
 const Attendance= function(attendance) {
     this.attendenceId = attendance.attendenceId;
-    this.absentDate = attendance.absentDate;
+    this.attendanceDate = attendance.attendanceDate;
+    this.present = attendance.present;
     this.absentReason = attendance.absentReason;
-    this.presentDate = attendance.presentDate;
     this.studentId= attendance.studentId;
     this.classId = attendance.classId;
     this.termId = attendance.termId;
@@ -30,7 +30,7 @@ Attendance.create = (newAttendance, result)=> {
 
 //retrieving one attendance
 Attendance.findAttendanceById = (attendenceId, result) => {
-    sql.query(`SELECT presentDate, absentDate, absentReason FROM student_attendances WHERE attendenceId = ${attendenceId}`, (err, res) => {
+    sql.query(`SELECT students.firstname, students.lastname, student_attendances.present,  student_attendances.absentReason FROM student_attendances join students on  students.studentId=student_attendances.studentId WHERE attendenceId = ${attendenceId}`, (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(err, null);
@@ -46,9 +46,23 @@ Attendance.findAttendanceById = (attendenceId, result) => {
     });
   };
 
+  Attendance.getAllPresent = result => {
+    sql.query("SELECT students.firstname, students.lastname, student_attendances.present,  student_attendances.absentReason FROM student_attendances join students on  students.studentId=student_attendances.studentId WHERE present =true", (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+  
+      console.log("present students: ", res);
+      result(null, res);
+    });
+  };
+
+  
   //retrieving all attendance
   Attendance.findAllAttendances = (attendenceId, result) => {
-    let query = "SELECT presentDate, absentDate, absentReason FROM student_attendances";
+    let query = "SELECT students.firstname, students.lastname, student_attendances.present,  student_attendances.absentReason FROM student_attendances join students on  students.studentId=student_attendances.studentId";
     if (attendenceId) {
       query += ` WHERE attendenceId LIKE '%${attendenceId}%'`;
     }
@@ -67,10 +81,11 @@ Attendance.findAttendanceById = (attendenceId, result) => {
   Attendance.updateAttendanceById = (attendenceId, attendance, result) => {
     
     sql.query(
-      "UPDATE student_attendances SET presentDate = ?, absentDate = ?, absentReason= ? WHERE attendenceId = ?",
+      "UPDATE student_attendances SET attendanceDate=?, present = ?, absent = ?, absentReason= ? WHERE attendenceId = ?",
       
-      [ attendance.presentDate, 
-        attendance.absentDate, 
+      [ attendance.present, 
+        attendance.attendanceDate,
+        attendance.absent, 
         attendance.absentReason,
         attendenceId],
 

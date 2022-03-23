@@ -11,12 +11,12 @@ exports.create = (req, res)=>{
 
     const attendance = new Attendance({
       attendenceId: req.body.attendenceId,
-        absentDate: req.body.absentDate,
-        absentReason: req.body.absentReason,
-        presentDate: req.body.presentDate,
-        studentId: req.body.studentId,
-        classId: req.body.classId,
-        termId: req.body.termId,
+      attendanceDate: req.body.attendanceDate,
+      absentReason: req.body.absentReason,
+      present: req.body.present || false,
+      studentId: req.body.studentId,
+      classId: req.body.classId,
+      termId: req.body.termId,
     });
 
       // Save Attendance in the database
@@ -30,6 +30,8 @@ exports.create = (req, res)=>{
   });
 }
 
+
+
 // Retrieve all Attendance from the database (with condition).
 exports.findAllAttendances =(req, res) => {
   const attendenceId = req.query.attendenceId;
@@ -42,6 +44,16 @@ exports.findAllAttendances =(req, res) => {
   });
 };
 
+exports.findAllPresent = (req, res) => {
+  Attendance.getAllPresent((err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving tutorials."
+      });
+    else res.send(data);
+  });
+};
 //retrieve one Attendance using their id
 exports.findOneAttendance = (req, res) => {
     Attendance.findAttendanceById(req.params.attendenceId, (err, data) => {

@@ -4,15 +4,17 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.INTEGER,
         primaryKey: true
       },
-      absentDate: {
-        type: Sequelize.DATE
+      attendanceDate:{
+        type: Sequelize.DATE,
+      },
+      present: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
       },
       absentReason: {
           type: Sequelize.STRING
       },
-      presentDate: {
-        type: Sequelize.DATE
-      }
+      
     });
     return SAtttendance;
   };
