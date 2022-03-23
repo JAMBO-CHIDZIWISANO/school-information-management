@@ -10,14 +10,13 @@ exports.create = (req, res)=>{
     }
 
     const mark = new Mark({
-        attendanceId: req.body.attendanceId,
-        absentDate: req.body.absentDate,
-        absentReason: req.body.absentReason,
-        presentDate: req.body.presentDate,
-        studentId: req.body.studentId,
-        address: req.body.address,
-        classId: req.body.classId,
-        termId: req.body.termId,
+      markId: req.body.markId,
+      marks: req.body.marks,
+      status: req.body.status,
+      termId: req.body.termId,
+      studentId: req.body.studentId,
+      subjectCode: req.body.subjectCode,
+      classId: req.body.classId,
       });
 
       // Save Mmark in the database
@@ -33,8 +32,8 @@ exports.create = (req, res)=>{
 
 // Retrieve all Mark from the database (with condition).
 exports.findAllMarks =(req, res) => {
-  const lastname = req.query.lastname;
-  Mark.findAllMarks(lastname, (err, data) => {
+  const status = req.query.status;
+  Mark.findAllMarks(status, (err, data) => {
     if (err)
       res.status(500).send({
         message:

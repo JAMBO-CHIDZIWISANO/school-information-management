@@ -2,7 +2,7 @@ const sql = require("../models/mysqldb")
 
 //constructor 
 const Attendance= function(attendance) {
-    this.attendanceId = attendance.attendanceId;
+    this.attendenceId = attendance.attendenceId;
     this.absentDate = attendance.absentDate;
     this.absentReason = attendance.absentReason;
     this.presentDate = attendance.presentDate;
@@ -22,15 +22,15 @@ Attendance.create = (newAttendance, result)=> {
             return;
         }
         
-    console.log("created attendance: ", { attendanceId: res.insertAttendanceId, ...newAttendance });
-    result(null, { attendanceId: res.insertAttendanceId, ...newAttendance });
+    console.log("created attendance: ", { attendenceId: res.insertAttendanceId, ...newAttendance });
+    result(null, { attendenceId: res.insertAttendenceId, ...newAttendance });
         
     })
 }
 
 //retrieving one attendance
-Attendance.findAttendanceById = (attendanceId, result) => {
-    sql.query(`SELECT presentDate, absentDate, absentReason FROM student_attendances WHERE attendanceId = ${attendanceId}`, (err, res) => {
+Attendance.findAttendanceById = (attendenceId, result) => {
+    sql.query(`SELECT presentDate, absentDate, absentReason FROM student_attendances WHERE attendenceId = ${attendenceId}`, (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(err, null);
@@ -47,10 +47,10 @@ Attendance.findAttendanceById = (attendanceId, result) => {
   };
 
   //retrieving all attendance
-  Attendance.findAllAttendances = (attendanceId, result) => {
+  Attendance.findAllAttendances = (attendenceId, result) => {
     let query = "SELECT presentDate, absentDate, absentReason FROM student_attendances";
-    if (attendanceId) {
-      query += ` WHERE attendanceId LIKE '%${attendanceId}%'`;
+    if (attendenceId) {
+      query += ` WHERE attendenceId LIKE '%${attendenceId}%'`;
     }
     sql.query(query, (err, res) => {
       if (err) {
@@ -64,15 +64,15 @@ Attendance.findAttendanceById = (attendanceId, result) => {
   };
 
   //update attendance by their id
-  Attendance.updateAttendanceById = (attendanceId, attendance, result) => {
+  Attendance.updateAttendanceById = (attendenceId, attendance, result) => {
     
     sql.query(
-      "UPDATE student_attendances SET presentDate = ?, absentDate = ? absentReason= ? WHERE attendanceId = ?",
+      "UPDATE student_attendances SET presentDate = ?, absentDate = ?, absentReason= ? WHERE attendenceId = ?",
       
       [ attendance.presentDate, 
         attendance.absentDate, 
         attendance.absentReason,
-        attendanceId],
+        attendenceId],
 
       (err, res) => {
         if (err) {
@@ -87,18 +87,18 @@ Attendance.findAttendanceById = (attendanceId, result) => {
           return;
         }
         console.log("updated attendance: ", 
-        { attendanceId: attendanceId, ...attendance });
-        result(null, { attendanceId: attendanceId, ...attendance });
+        { attendenceId: attendenceId, ...attendance });
+        result(null, { attendenceId: attendenceId, ...attendance });
       }
     );
   }
 
   //delete al attendance by id
-  Attendance.deleteAttendance = (attendanceId, result) => {
+  Attendance.deleteAttendance = (attendenceId, result) => {
     
-    sql.query("DELETE FROM student_attendances WHERE attendanceId = ?", 
+    sql.query("DELETE FROM student_attendances WHERE attendenceId = ?", 
     
-    attendanceId, (err, res) => {
+    attendenceId, (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(null, err);
@@ -109,7 +109,7 @@ Attendance.findAttendanceById = (attendanceId, result) => {
         result({ kind: "not_found" }, null);
         return;
       }
-      console.log("deleted attendance with attendanceId: ", attendanceId);
+      console.log("deleted attendance with attendenceId: ", attendenceId);
       result(null, res);
     });
   };

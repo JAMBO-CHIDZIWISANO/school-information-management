@@ -46,7 +46,8 @@ exports.findOneSubject = (req, res) => {
         res.status(404).send({
           message: `Not found Subject with id ${req.params.subjectCode}.`
         });
-      } else {
+      } 
+      else {
         res.status(500).send({
           message: "Error retrieving Subject with id " + req.params.subjectCode
         });

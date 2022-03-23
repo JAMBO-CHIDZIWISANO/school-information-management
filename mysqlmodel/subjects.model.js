@@ -23,7 +23,7 @@ Subject.create = (newSubject, result)=> {
 
 //retrieving one subject
 Subject.findSubjectById = (subjectCode, result) => {
-    sql.query(`SELECT subjectCode, subjectName FROM subjects WHERE subjectCode = ${subjectCode}`, (err, res) => {
+    sql.query(`SELECT subjectCode, subjectName FROM subjects WHERE subjectCode LIKE '%${subjectCode}%'`, (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(err, null);
@@ -57,7 +57,7 @@ Subject.findSubjectById = (subjectCode, result) => {
   };
 
   //update subject by their id
-  subjectCode.updateSubjectById = (subjectCode, subject, result) => {
+  Subject.updateSubjectById = (subjectCode, subject, result) => {
     
     sql.query(
       "UPDATE subjects SET SubjectName = ? WHERE subjectCode = ?",

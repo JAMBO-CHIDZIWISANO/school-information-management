@@ -75,7 +75,10 @@ require("./routes/user_rolesroutes")(app);
 require("./routes/parent.routes")(app);
 require("./routes/post.routes")(app);
 require("./routes/comments.routes")(app);
-
+require("./routes/attendance.routes")(app)
+require("./routes/marks.routes")(app)
+require("./routes/subject.routes")(app)
+//1615 6283 7958 9581 4372
 //require("./routes/smsroutes")(app);
 
 //Set port, listen for requests
