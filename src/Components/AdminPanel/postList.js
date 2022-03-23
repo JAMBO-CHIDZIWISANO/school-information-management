@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, {useEffect, useState} from "react";
+import { toast } from "react-toastify";
+
 
 const PostList = () => {
   const [data, setData] = useState([]);
@@ -9,15 +11,21 @@ const PostList = () => {
       setData(response.data);    
   };
   // refresh window
-  // useEffect(() => {
-  //   axios.get('http://localhost:4000/api/smis/getAllPosts').then(res => {
-  //     setPostsList(res.data.data);
-  //   }).catch(err => console.log("Couldn't fetch data. Error: " + err))
 
-  // }, []);
       useEffect(() => {
           loadData();
       }, []);
+    
+  // deleting user
+  const deletePost = (postId) => {
+    if (window.confirm("Are you sure you want to delete this User ?")
+    ) {
+      axios.delete(`http://localhost:4000/api/smis/post/${postId}`);
+      toast.success("User Deleted Successfully");
+      // refreshing the window
+      setTimeout(() => loadData(), 500);
+    }
+};
 
   return (
     <div>
@@ -43,8 +51,8 @@ const PostList = () => {
               {/* <b>No data found to display.</b> */}
               <td>
                     <button className="btn btn-edit" >Edit</button>
-             
-                    <button className="btn btn-view" >View</button>
+                    <button className="btn btn-delete" onClick={() => deletePost(item.id)}>Delete</button>
+
             
               </td>
           
