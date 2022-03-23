@@ -201,7 +201,7 @@ exports.signin = (req, res) => {
           message: "Invalid Password!"
         });
       }
-      var token = jwt.sign({ id: user.id }, config.secret, {
+      var token = jwt.sign({ username: user.username }, config.secret, {
         expiresIn: 3600  //1h
       });
 
@@ -212,7 +212,7 @@ exports.signin = (req, res) => {
           authorities.push("ROLE_" + roles[i].name.toUpperCase());
         }
         res.status(200).send({
-          id: user.id,
+        
           username: user.username,
           email: user.email,
           roles: authorities,
