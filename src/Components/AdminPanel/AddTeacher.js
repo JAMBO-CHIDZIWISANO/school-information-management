@@ -13,8 +13,8 @@ const AddTeacher = () => {
   // form2- teacher details registration
   const [teacherId, setTeacherId] = useState("");
   const [firstname, setFirstname] = useState("");
-  const [middlename, setMiddlename] = useState("");
-  const [lastname, setLastname] = useState("");
+  const [surname, setSurname] = useState("");
+  const [phoneNo, setPhone] = useState("");
   const [gender, setGender] = useState("");
   const [qualification, setQualification] = useState("");
   const [joinDate, setJoinDate] = useState("");
@@ -51,14 +51,14 @@ const AddTeacher = () => {
     setFirstname(firstname);
   };
 
-  const onChangeMiddlename = (e) => {
-    const middlename = e.target.value;
-    setMiddlename(middlename);
+  const onChangeSurname = (e) => {
+    const surname = e.target.value;
+    setSurname(surname);
   };
 
-  const onChangeLastname = (e) => {
-    const lastname = e.target.value;
-    setLastname(lastname);
+  const onChangePhoneNo = (e) => {
+    const phoneNo = e.target.value;
+    setPhone(phoneNo);
   };
   const onChangeGender = (e) => {
     const gender = e.target.value;
@@ -109,8 +109,8 @@ const AddTeacher = () => {
     setSuccessful(false);
       userService.teacherPersonalDetails(teacherId, 
                   firstname, 
-                  middlename, 
-                  lastname, 
+                  surname, 
+                  phoneNo, 
                   gender,
                   qualification, 
                   joinDate, 
@@ -213,8 +213,9 @@ const AddTeacher = () => {
                 required
               />
             </div>
+            
               <div className="form-group" >
-                <label htmlFor="teacherId">teacher id</label>
+                <label htmlFor="teacherId">repeat username</label>
                 <input
                   type="text"
                   className="form-control"
@@ -238,26 +239,26 @@ const AddTeacher = () => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="middlename">Middle Name</label>
+                <label htmlFor="surname">surname</label>
                 <input
                   type="text"
-                  id="middlename"
+                  id="surname"
                   className="form-control"
                   name="middlename"
-                  value={middlename}
-                  onChange={onChangeMiddlename}
+                  value={surname}
+                  onChange={onChangeSurname}
                   required
                 />
               </div>
 
               <div className="form-group">
-                <label htmlFor="lastname">Lastname</label>
+                <label htmlFor="phoneNo">Phone No</label>
                 <input
-                  type="text"
+                  type="tel"
                   className="form-control"
-                  name="lastname"
-                  value={lastname}
-                  onChange={onChangeLastname}
+                  name="phoneNo"
+                  value={phoneNo}
+                  onChange={onChangePhoneNo}
                   required
                 />
               </div>

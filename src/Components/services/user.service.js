@@ -36,13 +36,13 @@ const getParentBoard = () => {
 };
 
 //add teacher
-const teacherPersonalDetails = (teacherId, firstname, middlename, lastname, gender,qualification, joinDate, userId ) => {
+const teacherPersonalDetails = (teacherId, firstname, surname, phoneNo, gender,  qualification, joinDate, userId ) => {
 
   return axios.post(API_URL + "addTeacher", {
     teacherId, 
     firstname, 
-    middlename, 
-    lastname, 
+    surname, 
+    phoneNo, 
     gender,
     qualification, 
     joinDate, 
