@@ -216,8 +216,13 @@ const AddParent = () => {
 
           <div className="form-group">
             <strong htmlFor="gender">Gender</strong>
-            <input type="text" className="form-control" name="gender"
-                value={gender} onChange={onChangeGender} required
+            <input 
+              type="text" 
+              className="form-control" 
+              name="gender"
+              value={gender} 
+              onChange={onChangeGender} 
+              required
             />
           </div>
 

@@ -124,10 +124,10 @@ const BoardAdmin = () => {
         {/* content components of the admin board */}
         <TabPanel value={value} index={0} dir={theme.direction}>
             <AddTeacher/>
-           
+            <Display/>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-        <Display />
+       
         <AddStudent />
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>

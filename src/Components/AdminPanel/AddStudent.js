@@ -20,10 +20,7 @@ const AddStudent = () => {
   const [message, setMessage] = useState("");
 
   // handling events
-  // const onChangeId = (e)=>{
-  //   const id = e.target.value;
-  //   setId(id)
-  // }
+  
   const onChangeUsername = (e) => {
     const username = e.target.value;
     setUsername(username);
@@ -95,7 +92,6 @@ const AddStudent = () => {
     e.preventDefault();
     setMessage("");
     setSuccessful(false);
-    //form.current.validateAll();
       userService.studentPersonalDetails(studentId, firstname, surname, DoB, gender, userId ).then(
         (response) => {
           setMessage(response.data.message);

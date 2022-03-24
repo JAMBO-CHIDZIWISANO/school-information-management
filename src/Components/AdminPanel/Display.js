@@ -18,10 +18,10 @@ const Display = () => {
     }, []);
 
     // deleting user
-    const deleteUser = (id) => {
+    const deleteUser = (teacherId) => {
         if (window.confirm("Are you sure you want to delete this User ?")
         ) {
-          axios.delete(`http://localhost:5000/api/remove/${id}`);
+          axios.delete(`http://localhost:4000/api/smis/teacher/'%${teacherId}'`);
           toast.success("User Deleted Successfully");
           // refreshing the window
           setTimeout(() => loadData(), 500);
@@ -30,13 +30,7 @@ const Display = () => {
 
   return (
     <div style={{marginTop: "40px"}}>
-        {/* button for adding teachers */}
-        <Link to={"/"}>
-               <button type="button" className="btn btn-home">Back To Home</button>
-            </Link>
-        <Link to={"/addUsers"}>
-            <button className="btn btn-users" >Register Teachers</button>
-        </Link>
+       
 
        
         <h1>LIST OF TEACHERS</h1>
@@ -45,7 +39,7 @@ const Display = () => {
                 <tr>
                     <th style={{textAlign: "center"}}>No. </th>
                     <th style={{textAlign: "center"}}>Firstname</th>
-                    <th style={{textAlign: "center"}}>Middle Name</th>
+                    <th style={{textAlign: "center"}}> </th>
                     <th style={{textAlign: "center"}}>Surname</th>
                     <th style={{textAlign: "center"}}>Gender</th>
                     <th style={{textAlign: "center"}}>Qualification</th>
