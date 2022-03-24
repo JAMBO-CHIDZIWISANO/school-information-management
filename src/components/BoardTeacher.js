@@ -1,9 +1,9 @@
 import React from 'react'
-
+import AttendanceForm from './teacherPanel/AttendanceForm'
 const BoardTeacher = () => {
   return (
-    <div>
-      <h2>teacher</h2>
+    <div className="container">
+      <AttendanceForm/>
     </div>
   )
 }
