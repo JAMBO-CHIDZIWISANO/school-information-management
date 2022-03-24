@@ -141,18 +141,8 @@ const AddTeacher = () => {
         <form onSubmit={handleRegister}>
           {!successful && (
 
-          <div>
-            {/* <div className="form-group" >
-              <label htmlFor="id">User Id</label>
-              <input
-                type="text"
-                className="form-control"
-                name="id"
-                value={id}
-                onChange={onChangeId}
-                required
-              />
-            </div> */}
+          <div className="" >
+            
 
             <div className="form-group" >
               <label htmlFor="username">Username</label>
