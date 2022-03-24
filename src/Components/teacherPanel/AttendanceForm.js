@@ -6,7 +6,7 @@ class AttendanceForm extends Component {
         super(props);
         this.onChangeAttendanceId = this.onChangeAttendanceId.bind(this);
         this.onChangeAttendanceDate = this.onChangeAttendanceDate.bind(this);
-        this.onChangePresent = this.onChangePostPresent.bind(this);
+        this.onChangePresent = this.onChangePresent.bind(this);
         this.onChangeAbsentReason = this.onChangeAbsentReason.bind(this)
         this.onChangeClassId = this.onChangeClassId.bind(this)
         this.onChangeStudentId = this.onChangeStudentId.bind(this)
@@ -136,6 +136,42 @@ class AttendanceForm extends Component {
                   id='termId'
                   placeholder="term"/>
               </div>
+    
+              <div className='form-group'>
+                <label htmlFor='studentId'>student </label>
+                <input
+                  name='studentId'
+                  value={this.state.studentId}
+                  onChange={this.onChangeStudentId}
+                  className='form-control form-control-sm'
+                  id='studentId'
+                  placeholder="class"/>
+              </div>
+    
+              <div className='form-group'>
+                <label htmlFor='present'>present</label>
+                <input
+                  name='present'
+                  
+                  value={this.state.present}
+                  onChange={this.onChangePresent}
+                  className='form-control form-control-sm'
+                  id='present'
+                  />
+              </div>
+    
+              <div className='form-group'>
+                <label htmlFor='absentReason'>absent Reason</label>
+                <input
+                  name='absentReason'
+                  value={this.state.absentReason}
+                  onChange={this.onChangeAbsentReason}
+                  className='form-control form-control-sm'
+                  id='absentReason'
+                  placeholder="absentReason"/>
+              </div>
+
+              
     
               <div>
                 <input 
