@@ -4,10 +4,10 @@ const sql = require("../models/mysqldb")
 const Parent = function(parent) {
     this.parentId = parent.parentId;
     this.firstname = parent.firstname;
-    this.middlename = parent.middlename;
-    this.lastname = parent.lastname;
+    this.surname = parent.surname;
     this.gender = parent.gender;
     this.address = parent.address;
+    this.PhoneNo = parent.PhoneNo;
     this.userId = parent.userId;
     this.messageId = parent.messageId
 
@@ -31,7 +31,7 @@ Parent.create = (newParent, result)=> {
 
 //retrieving one parent
 Parent.findParentById = (parentId, result) => {
-    sql.query(`SELECT * FROM parents WHERE parentId = ${parentId}`, (err, res) => {
+    sql.query(`SELECT * FROM parents WHERE parentId LIKE '%${parentId}'%`, (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(err, null);
@@ -48,10 +48,10 @@ Parent.findParentById = (parentId, result) => {
   };
 
   //retrieving all parents
-  Parent.findAllParents = (lastname, result) => {
+  Parent.findAllParents = (surname, result) => {
     let query = "SELECT * FROM parents";
-    if (lastname) {
-      query += ` WHERE lastname LIKE '%${lastname}%'`;
+    if (surname) {
+      query += ` WHERE lastname LIKE '%${surname}%'`;
     }
     sql.query(query, (err, res) => {
       if (err) {
@@ -68,11 +68,11 @@ Parent.findParentById = (parentId, result) => {
   Parent.updateParentById = (parentId, parent, result) => {
     
     sql.query(
-      "UPDATE parents SET firstname = ?, middlename = ?, lastname = ?, gender = ?, address = ?, userId = ? WHERE parentId = ?",
+      `UPDATE parents SET firstname = ?, surname = ?, phoneNo = ?, gender = ?, address = ?, userId = ? WHERE parentId LIKE '${parentId}'`
       
       [ parent.firstname, 
-        parent.middlename, 
-        parent.lastname, 
+        parent.PhoneNo, 
+        parent.surname, 
         parent.gender, 
         parent.address, 
         parent.userId, 
@@ -100,7 +100,7 @@ Parent.findParentById = (parentId, result) => {
   //delete al parent by id
   Parent.deleteParent = (parentId, result) => {
     
-    sql.query("DELETE FROM parents WHERE parentId = ?", 
+    sql.query(`DELETE FROM parents WHERE parentId LIKE '%${parentId}'`, 
     
     parentId, (err, res) => {
       if (err) {

@@ -4,12 +4,9 @@ const sql = require("../models/mysqldb")
 const Student = function(student) {
     this.studentId = student.studentId;
     this.firstname = student.firstname;
-    this.middlename = student.middlename;
-    this.lastname = student.lastname;
+    this.surname = student.surname;
+    this.DoB = student.DoB;
     this.gender = student.gender;
-    this.address = student.address;
-    // this.createdAt = student.createdAt;
-    // this.updatedAt = student.updatedAt;
     this.userId = student.userId;
     this.parentId = student.parentId;
     this.schoolId = student.schoolId;
@@ -35,7 +32,7 @@ Student.create = (newStudent, result)=> {
 
 //retrieving one student
 Student.findStudentById = (studentId, result) => {
-    sql.query(`SELECT * FROM students WHERE studentId = ${studentId}`, (err, res) => {
+    sql.query(`SELECT * FROM students WHERE studentId LIKE '%${studentId}%'`, (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(err, null);
@@ -52,10 +49,10 @@ Student.findStudentById = (studentId, result) => {
   };
 
   //retrieving all students
-  Student.findAllStudents = (lastname, result) => {
+  Student.findAllStudents = (surname, result) => {
     let query = "SELECT * FROM students";
-    if (lastname) {
-      query += ` WHERE lastname LIKE '%${lastname}%'`;
+    if (surname) {
+      query += ` WHERE lastname LIKE '%${surname}%'`;
     }
     sql.query(query, (err, res) => {
       if (err) {
@@ -72,13 +69,13 @@ Student.findStudentById = (studentId, result) => {
   Student.updateStudentById = (studentId, student, result) => {
     
     sql.query(
-      "UPDATE students SET firstname = ?, middlename = ?, lastname = ?, gender = ?, address = ?, classId = ? WHERE studentId = ?",
+      `UPDATE students SET firstname = ?, DoB = ?, surname = ?, gender = ?, address = ?, classId = ? WHERE studentId LIKE '%${studentId}'`,
       
       [ student.firstname, 
-        student.middlename, 
-        student.lastname, 
+        student.surname, 
         student.gender, 
-        student.address, 
+        student.address,
+        student.DoB, 
         student.classId, 
         studentId],
 
@@ -104,7 +101,7 @@ Student.findStudentById = (studentId, result) => {
   //delete al student by id
   Student.deleteStudent = (studentId, result) => {
     
-    sql.query("DELETE FROM students WHERE studentId = ?", 
+    sql.query(`DELETE FROM students WHERE studentId LIKE '%${studentId}'`, 
     
     studentId, (err, res) => {
       if (err) {

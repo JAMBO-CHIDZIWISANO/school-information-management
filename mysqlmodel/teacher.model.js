@@ -4,9 +4,9 @@ const sql = require("../models/mysqldb")
 const Teacher = function(teacher) {
     this.teacherId = teacher.teacherId;
     this.firstname = teacher.firstname;
-    this.middlename = teacher.middlename;
-    this.lastname = teacher.lastname;
+    this.surname = teacher.surname;
     this.gender = teacher.gender;
+    this.phoneNo = teacher.phoneNo;
     this.qualification = teacher.qualification;
     this.joinDate = teacher.joinDate;
 
@@ -30,7 +30,7 @@ Teacher.create = (newTeacher, result)=> {
 
 //retrieving one teacher
 Teacher.findTeacherById = (teacherId, result) => {
-    sql.query(`SELECT * FROM teachers WHERE teacherId = ${teacherId}`, (err, res) => {
+    sql.query(`SELECT * FROM teachers WHERE teacherId LIKE '%${teacherId}%'`, (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(err, null);
@@ -47,10 +47,10 @@ Teacher.findTeacherById = (teacherId, result) => {
   };
 
   //retrieving all teachers
-  Teacher.findAllTeachers = (lastname, result) => {
+  Teacher.findAllTeachers = (surname, result) => {
     let query = "SELECT * FROM teachers";
-    if (lastname) {
-      query += ` WHERE lastname LIKE '%${lastname}%'`;
+    if (surname) {
+      query += ` WHERE lastname LIKE '%${surname}%'`;
     }
     sql.query(query, (err, res) => {
       if (err) {
@@ -67,12 +67,12 @@ Teacher.findTeacherById = (teacherId, result) => {
   Teacher.updateTeacherById = (teacherId, teacher, result) => {
     
     sql.query(
-      "UPDATE teachers SET firstname = ?, middlename = ?, lastname = ?, gender = ?, qualification = ?, joinDate = ? WHERE teacherId = ?",
+      `UPDATE teachers SET firstname = ?, surname = ?, gender = ?, qualification = ?, joinDate = ? WHERE teacherId LIKE '%${teacherId}'`,
       
       [ teacher.firstname, 
-        teacher.middlename, 
-        teacher.lastname, 
+        teacher.surname, 
         teacher.gender, 
+        teacher.phoneNo,
         teacher.qualification, 
         teacher.joinDate, 
         teacherId],

@@ -12,10 +12,9 @@ exports.create = (req, res)=>{
     const student = new Student({
         studentId: req.body.studentId,
         firstname: req.body.firstname,
-        middlename: req.body.middlename,
-        lastname: req.body.lastname,
+        surname: req.body.surname,
+        DoB: req.body.DoB,
         gender: req.body.gender,
-        address: req.body.address,
         userId: req.body.userId,
         parentId: req.body.parentId,
         schoolId: req.body.schoolId,

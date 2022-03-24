@@ -12,9 +12,7 @@ module.exports = function(app) {
     );
     next();
   });
-  app.post("/api/smis/addteacher",
-  [authJwt.verifyToken, authJwt.isTeacher],
-  teacher.create);
+  
 //get public content
   app.get("/api/smis/all", controller.allAccess);
 
@@ -57,10 +55,7 @@ module.exports = function(app) {
 
   /* teachers routes*/
 
-  //post teacher personal details
-  app.post("/api/smis/addteacher",
-  [authJwt.verifyToken, authJwt.isTeacher],
-  teacher.create);
+
 
   /* school detailes routes*/
   

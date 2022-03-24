@@ -12,8 +12,8 @@ exports.create = (req, res)=>{
     const parent = new Parent({
         parentId: req.body.parentId,
         firstname: req.body.firstname,
-        middlename: req.body.middlename,
-        lastname: req.body.lastname,
+        surname: req.body.surname,
+        phoneNo: req.body.phoneNo,
         gender: req.body.gender,
         address: req.body.address,
         userId: req.body.userId,
