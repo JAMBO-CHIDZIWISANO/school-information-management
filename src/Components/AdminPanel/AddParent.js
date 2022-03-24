@@ -12,8 +12,8 @@ const AddParent = () => {
   // form2- teacher details registration
   const [parentId, setParentId] = useState("")
   const [firstname, setFirstname] = useState("");
-  const [middlename, setMiddlename] = useState("");
-  const [lastname, setLastname] = useState("");
+  const [surname, setSurname] = useState("");
+  const [phoneNo, setPhoneNo] = useState("");
   const [gender, setGender] = useState("");
   const [address, setAddress] = useState("");
   const [userId, setUserId]= useState("")
@@ -49,14 +49,14 @@ const AddParent = () => {
     setFirstname(firstname);
   };
 
-  const onChangeMiddlename = (e) => {
-    const middlename = e.target.value;
-    setMiddlename(middlename);
+  const onChangeSurname = (e) => {
+    const surname = e.target.value;
+    setSurname(surname);
   };
 
-  const onChangeLastname = (e) => {
-    const lastname = e.target.value;
-    setLastname(lastname);
+  const onChangePhoneNo = (e) => {
+    const phoneNo = e.target.value;
+    setPhoneNo(phoneNo);
   };
   const onChangeGender = (e) => {
     const gender = e.target.value;
@@ -100,7 +100,7 @@ const AddParent = () => {
     setMessage("");
     setSuccessful(false);
     //form.current.validateAll();
-      userService.parentPersonalDetails(parentId, firstname, middlename, lastname, gender,address, userId).then(
+      userService.parentPersonalDetails(parentId, firstname, surname, phoneNo, gender,address, userId).then(
         (response) => {
           setMessage(response.data.message);
           setSuccessful(true);
@@ -201,16 +201,16 @@ const AddParent = () => {
           </div>
 
           <div className="form-group">
-            <strong htmlFor="middlename">Middle Name</strong>
-            <input type="text" className="form-control" name="middlename"
-                value={middlename} onChange={onChangeMiddlename} required
+            <strong htmlFor="surname">Middle Name</strong>
+            <input type="text" className="form-control" name="surname"
+                value={surname} onChange={onChangeSurname} required
             />
           </div>
 
           <div className="form-group">
-            <strong htmlFor="lastname">Lastname</strong>
-            <input type="text" className="form-control" name="lastname"
-                value={lastname} onChange={onChangeLastname} required
+            <strong htmlFor="phoneNo">Lastname</strong>
+            <input type="tel" className="form-control" name="phoneNo"
+                value={phoneNo} onChange={onChangePhoneNo} required
             />
           </div>
 
@@ -230,7 +230,7 @@ const AddParent = () => {
 
           <div className="form-group">
             <strong htmlFor="userId">userId</strong>
-            <input type="number" className="form-control" name="userId"
+            <input type="text" className="form-control" name="userId"
                 value={userId} onChange={onChangeUserId} required
             />
           </div>

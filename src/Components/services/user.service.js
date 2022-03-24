@@ -51,26 +51,25 @@ const teacherPersonalDetails = (teacherId, firstname, surname, phoneNo, gender, 
 }
 
 //add student
-const studentPersonalDetails = (studentId, firstname, middlename, lastname, gender,address, userId ) => {
+const studentPersonalDetails = (studentId, firstname, surname, DoB, gender, userId ) => {
 
   return axios.post(API_URL + "addStudent", {
     studentId, 
     firstname, 
-    middlename, 
-    lastname, 
+    surname, 
+    DoB, 
     gender,
-    address, 
     userId
   })
 }
 
-const parentPersonalDetails = (parentId, firstname, middlename, lastname, gender,address, userId ) => {
+const parentPersonalDetails = (parentId, firstname, surname, phoneNo, gender,address, userId ) => {
 
   return axios.post(API_URL + "addParent", {
     parentId, 
     firstname, 
-    middlename, 
-    lastname, 
+    surname, 
+    phoneNo, 
     gender,
     address, 
     userId

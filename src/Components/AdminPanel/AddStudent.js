@@ -11,10 +11,9 @@ const AddStudent = () => {
   // form2- student details registration
   const [studentId, setStudentId] = useState("")
   const [firstname, setFirstname] = useState("");
-  const [middlename, setMiddlename] = useState("");
-  const [lastname, setLastname] = useState("");
+  const [surname, setSurname] = useState("");
+  const [DoB, setDoB] = useState("");
   const [gender, setGender] = useState("");
-  const [address, setAddress] = useState("");
   const [userId, setUserId]= useState("")
   // setting out error messages
   const [successful, setSuccessful] = useState(false);
@@ -49,23 +48,20 @@ const AddStudent = () => {
     setFirstname(firstname);
   };
 
-  const onChangeMiddlename = (e) => {
-    const middlename = e.target.value;
-    setMiddlename(middlename);
+  const onChangeSurname = (e) => {
+    const surname = e.target.value;
+    setSurname(surname);
   };
 
-  const onChangeLastname = (e) => {
-    const lastname = e.target.value;
-    setLastname(lastname);
+  const onChangeDoB = (e) => {
+    const DoB = e.target.value;
+    setDoB(DoB);
   };
   const onChangeGender = (e) => {
     const gender = e.target.value;
     setGender(gender);
   };
-  const onChangeAddress = (e) => {
-    const address = e.target.value;
-    setAddress(address);
-  };
+  
   const onChangeUserId = (e) => {
     const userId = e.target.value;
     setUserId(userId);
@@ -100,7 +96,7 @@ const AddStudent = () => {
     setMessage("");
     setSuccessful(false);
     //form.current.validateAll();
-      userService.studentPersonalDetails(studentId, firstname, middlename, lastname, gender,address, userId ).then(
+      userService.studentPersonalDetails(studentId, firstname, surname, DoB, gender, userId ).then(
         (response) => {
           setMessage(response.data.message);
           setSuccessful(true);
@@ -127,17 +123,7 @@ const AddStudent = () => {
         <form onSubmit={handleRegister}>
           {!successful && (
             <div>
-              {/* <div className="form-group" >
-                <strong htmlFor="id">student id</strong>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="id"
-                  value={id}
-                  onChange={onChangeId}
-                  required
-                />
-              </div> */}
+             
               <div className="form-group" >
                 <strong htmlFor="username">Username</strong>
                 <input
@@ -210,16 +196,24 @@ const AddStudent = () => {
               </div>
 
               <div className="form-group">
-                <strong htmlFor="middlename">Middle Name</strong>
-                <input type="text" className="form-control" name="middlename"
-                    value={middlename} onChange={onChangeMiddlename} required
+                <strong htmlFor="surname">Surname</strong>
+                <input 
+                  type="text" 
+                  className="form-control" 
+                  name="surname"
+                  value={surname} 
+                  onChange={onChangeSurname} required
                 />
               </div>
 
               <div className="form-group">
-                <strong htmlFor="lastname">Lastname</strong>
-                <input type="text" className="form-control" name="lastname"
-                    value={lastname} onChange={onChangeLastname} required
+                <strong htmlFor="DoB">Date of Birth</strong>
+                <input 
+                  type="date" 
+                  className="form-control" 
+                  name="DoB"
+                  value={DoB} 
+                  onChange={onChangeDoB} required
                 />
               </div>
 
@@ -227,13 +221,6 @@ const AddStudent = () => {
                 <strong htmlFor="gender">Gender</strong>
                 <input type="text" className="form-control" name="gender"
                     value={gender} onChange={onChangeGender} required
-                />
-              </div>
-
-              <div className="form-group">
-                <strong htmlFor="address">Address</strong>
-                <input type="text" className="form-control" name="address"
-                    value={address} onChange={onChangeAddress} required
                 />
               </div>
 
