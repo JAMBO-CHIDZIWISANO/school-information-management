@@ -9,6 +9,7 @@ const Teacher = function(teacher) {
     this.phoneNo = teacher.phoneNo;
     this.qualification = teacher.qualification;
     this.joinDate = teacher.joinDate;
+    this.userId = teacher.userId;
 
     
 }

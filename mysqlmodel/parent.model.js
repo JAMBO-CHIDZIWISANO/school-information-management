@@ -7,7 +7,7 @@ const Parent = function(parent) {
     this.surname = parent.surname;
     this.gender = parent.gender;
     this.address = parent.address;
-    this.PhoneNo = parent.PhoneNo;
+    this.phoneNo = parent.phoneNo;
     this.userId = parent.userId;
     this.messageId = parent.messageId
 

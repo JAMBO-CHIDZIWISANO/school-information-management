@@ -12,11 +12,12 @@ exports.create = (req, res)=>{
     const teacher = new Teacher({
         teacherId: req.body.teacherId,
         firstname: req.body.firstname,
-        middlename: req.body.middlename,
-        lastname: req.body.lastname,
+        surname: req.body.surname,
+        phoneNo: req.body.phoneNo,
         gender: req.body.gender,
         qualification: req.body.qualification,
-        joinDate: req.body.joinDate
+        joinDate: req.body.joinDate,
+        userId: req.body.userId
       });
 
       // Save teacher in the database
@@ -32,8 +33,8 @@ exports.create = (req, res)=>{
 
 // Retrieve all teachers from the database (with condition).
 exports.findAllTeachers =(req, res) => {
-  const lastname = req.query.lastname;
-  Teacher.findAllTeachers(lastname, (err, data) => {
+  const surname = req.query.surname;
+  Teacher.findAllTeachers(surname, (err, data) => {
     if (err)
       res.status(500).send({
         message:
