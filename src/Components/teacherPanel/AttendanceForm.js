@@ -152,7 +152,7 @@ class AttendanceForm extends Component {
                 <label htmlFor='present'>present</label>
                 <input
                   name='present'
-                  
+                  placeholder='present'
                   value={this.state.present}
                   onChange={this.onChangePresent}
                   className='form-control form-control-sm'

@@ -15,6 +15,7 @@ import PropTypes from 'prop-types';
 import AddTeacher from './AdminPanel/AddTeacher';
 import AddStudent from './AdminPanel/AddStudent'
 import AddParent from './AdminPanel/AddParent'
+import AddSubject from './AdminPanel/AddSubject'
 
 //function that holds properties of the tab panel
 function TabPanel(props) {
@@ -75,12 +76,6 @@ const BoardAdmin = () => {
   };
 
   return (
-    //   <div>
-    // //   <h1>Admin</h1>
-    // //  
-    // //   
-      
-    
     <div >
 
       {/* box that hold views of admin panel board  */}
@@ -108,8 +103,8 @@ const BoardAdmin = () => {
         <Tab label="Add Teacher" {...a11yProps(0)} />
         <Tab label="Add Student" {...a11yProps(1)} />
         <Tab label="Add Parent" {...a11yProps(2)} />
-        <Tab label="School Details" {...a11yProps(3)} />
-      
+        <Tab label="Add Subjects" {...a11yProps(3)} />
+        <Tab label="School Details" {...a11yProps(4)} />      
         
       </Tabs>
       </AppBar>
@@ -134,6 +129,9 @@ const BoardAdmin = () => {
         <AddParent />
         </TabPanel>
         <TabPanel value={value} index={3} dir={theme.direction}>
+        <App />
+        </TabPanel>
+        <TabPanel value={value} index={4} dir={theme.direction}>
         <App />
         </TabPanel>
       </SwipeableViews>
