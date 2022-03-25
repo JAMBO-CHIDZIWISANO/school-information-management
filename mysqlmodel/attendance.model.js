@@ -47,7 +47,7 @@ Attendance.findAttendanceById = (attendenceId, result) => {
   };
 
   Attendance.getAllPresent = result => {
-    sql.query("SELECT students.firstname, students.lastname, student_attendances.present,  student_attendances.absentReason FROM student_attendances join students on  students.studentId=student_attendances.studentId WHERE present =true", (err, res) => {
+    sql.query("SELECT students.firstname, students.surname, student_attendances.attendanceDate, student_attendances.present,  student_attendances.absentReason FROM student_attendances join students on  students.studentId=student_attendances.studentId WHERE present =true", (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(null, err);
@@ -58,11 +58,25 @@ Attendance.findAttendanceById = (attendenceId, result) => {
       result(null, res);
     });
   };
+  // retrieving absent names
+  Attendance.getAllAbsent = result => {
+    sql.query("SELECT students.firstname, students.surname, student_attendances.present,  student_attendances.absentReason FROM student_attendances join students on  students.studentId=student_attendances.studentId WHERE present =false", (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+  
+      console.log("Absent students: ", res);
+      result(null, res);
+    });
+  };
+
 
   
   //retrieving all attendance
   Attendance.findAllAttendances = (attendenceId, result) => {
-    let query = "SELECT students.firstname, students.lastname, student_attendances.present,  student_attendances.absentReason FROM student_attendances join students on  students.studentId=student_attendances.studentId";
+    let query = "SELECT students.firstname, students.surname, student_attendances.present,  student_attendances.absentReason FROM student_attendances join students on  students.studentId=student_attendances.studentId";
     if (attendenceId) {
       query += ` WHERE attendenceId LIKE '%${attendenceId}%'`;
     }

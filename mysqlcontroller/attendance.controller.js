@@ -43,13 +43,24 @@ exports.findAllAttendances =(req, res) => {
     else res.send(data);
   });
 };
-
+// get all present
 exports.findAllPresent = (req, res) => {
   Attendance.getAllPresent((err, data) => {
     if (err)
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving tutorials."
+          err.message || "Some error occurred while retrieving present students."
+      });
+    else res.send(data);
+  });
+};
+// get all absent
+exports.findAllAbsent = (req, res) => {
+  Attendance.getAllAbsent((err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Absent students."
       });
     else res.send(data);
   });

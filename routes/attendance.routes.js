@@ -12,8 +12,10 @@ module.exports = app =>{
     // //get all students
     router.get("/getAllAttendances", attendance.findAllAttendances);
 
-    router.get("/getAllPresent", attendance.findAllPresent);
-
+   // route for  all present
+   router.get("/getAllPresent", attendance.findAllPresent);
+   // route for all absent
+   router.get("/getAllAbsent", attendance.findAllAbsent);
 
     // //get one school
     router.get("/attendance/:attendenceId", attendance.findOneAttendance);
