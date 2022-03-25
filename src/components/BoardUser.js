@@ -2,8 +2,8 @@ import React from 'react'
 import Posts from './Posts'
 const BoardUser = () => {
   return (
-    <div>
-      <Posts/>
+    <div className='container mt-4'>
+      <Posts />
     </div>
   )
 }
