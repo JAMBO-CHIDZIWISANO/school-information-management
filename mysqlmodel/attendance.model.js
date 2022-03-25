@@ -2,7 +2,6 @@ const sql = require("../models/mysqldb")
 
 //constructor 
 const Attendance= function(attendance) {
-    this.attendenceId = attendance.attendenceId;
     this.attendanceDate = attendance.attendanceDate;
     this.present = attendance.present;
     this.absentReason = attendance.absentReason;
@@ -30,7 +29,7 @@ Attendance.create = (newAttendance, result)=> {
 
 //retrieving one attendance
 Attendance.findAttendanceById = (attendenceId, result) => {
-    sql.query(`SELECT students.firstname, students.lastname, student_attendances.present,  student_attendances.absentReason FROM student_attendances join students on  students.studentId=student_attendances.studentId WHERE attendenceId = ${attendenceId}`, (err, res) => {
+    sql.query(`SELECT students.firstname, students.surname, student_attendances.present,  student_attendances.absentReason FROM student_attendances join students on  students.studentId=student_attendances.studentId WHERE attendenceId = ${attendenceId}`, (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(err, null);

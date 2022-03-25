@@ -10,7 +10,6 @@ exports.create = (req, res)=>{
     }
 
     const attendance = new Attendance({
-      attendenceId: req.body.attendenceId,
       attendanceDate: req.body.attendanceDate,
       absentReason: req.body.absentReason,
       present: req.body.present || false,
