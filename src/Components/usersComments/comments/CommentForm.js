@@ -1,4 +1,8 @@
 import { useState } from "react";
+import Comments from './Comments'
+import Comment from './Comment'
+
+
 import './index.css'
 
 const CommentForm = ({
@@ -10,12 +14,30 @@ const CommentForm = ({
 }) => {
   const [text, setText] = useState(initialText);
   const isTextareaDisabled = text.length === 0;
+
+  // fetching and displying comments from database
+
+  // const PostList = () => {
+  //   const [data, setData] = useState([]);
+  
+  //   const loadData = async () => {
+  //       const response = await axios.get("http://localhost:4000/api/smis/getAllPosts");
+  //       setData(response.data);    
+  //   };
+  //   // refresh window
+  
+  //       useEffect(() => {
+  //           loadData();
+  //       }, []);
+  
+   
   const onSubmit = (event) => {
     event.preventDefault();
     handleSubmit(text);
     setText("");
   };
   return (
+    <div>
     <form onSubmit={onSubmit}>
       <textarea
         className="comment-form-textarea"
@@ -35,7 +57,10 @@ const CommentForm = ({
         </button>
       )}
     </form>
+        <div></div>
+    </div>
   );
+
 };
 
 export default CommentForm;

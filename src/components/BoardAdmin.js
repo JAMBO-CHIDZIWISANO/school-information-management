@@ -1,7 +1,6 @@
 // <<<<<<< Updated upstream
 // import React from 'react'
 import Display from './AdminPanel/Display'
-import App from './AdminPanel/src/App'
 // =======
 import React, { useState } from 'react';
 import Tabs, { tabsClasses }  from '@mui/material/Tabs';
@@ -13,9 +12,10 @@ import { useTheme } from '@mui/material/styles';
 import SwipeableViews from 'react-swipeable-views';
 import PropTypes from 'prop-types';
 import AddTeacher from './AdminPanel/AddTeacher';
-import AddStudent from './AdminPanel/AddStudent'
-import AddParent from './AdminPanel/AddParent'
-import AddSubject from './AdminPanel/AddSubject'
+import AddStudent from './AdminPanel/AddStudent';
+import AddParent from './AdminPanel/AddParent';
+import AddSubject from './AdminPanel/AddSubject';
+import SchoolDetails from './AdminPanel/SchoolDetails';
 
 //function that holds properties of the tab panel
 function TabPanel(props) {
@@ -129,10 +129,10 @@ const BoardAdmin = () => {
         <AddParent />
         </TabPanel>
         <TabPanel value={value} index={3} dir={theme.direction}>
-        <App />
+        <AddSubject />
         </TabPanel>
         <TabPanel value={value} index={4} dir={theme.direction}>
-        <App />
+        <SchoolDetails />
         </TabPanel>
       </SwipeableViews>
 

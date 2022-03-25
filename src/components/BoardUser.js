@@ -1,9 +1,15 @@
 import React from 'react'
+import CommentForm from './usersComments/comments/CommentForm'
+
+
 
 const BoardUser = () => {
   return (
-    <div>
-      user
+    <div className="container">
+     
+      <CommentForm />
+      
+
     </div>
   )
 }

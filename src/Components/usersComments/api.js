@@ -1,9 +1,14 @@
+
+import AuthService from '../services/auth.service'
 export const getComments = async () => {
   return [
+
     {
+      // get username
+  
       id: "1",
       body: "First comment",
-      username: "Jack",
+      username: AuthService.getCurrentUser(),
       userId: "1",
       parentId: null,
       createdAt: "2021-08-16T23:00:33.010+02:00",
