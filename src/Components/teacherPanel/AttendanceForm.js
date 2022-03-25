@@ -4,7 +4,6 @@ class AttendanceForm extends Component {
 
     constructor(props){
         super(props);
-        this.onChangeAttendanceId = this.onChangeAttendanceId.bind(this);
         this.onChangeAttendanceDate = this.onChangeAttendanceDate.bind(this);
         this.onChangePresent = this.onChangePresent.bind(this);
         this.onChangeAbsentReason = this.onChangeAbsentReason.bind(this)
@@ -15,7 +14,6 @@ class AttendanceForm extends Component {
         this.onSubmit = this.onSubmit.bind(this);
     
         this.state = {
-          attendenceId:"",
           attendanceDate: "",
           classId: "",
           termId:"",
@@ -25,9 +23,7 @@ class AttendanceForm extends Component {
         }
       }
     
-      onChangeAttendanceId(e){
-        this.setState({attendenceId: e.target.value})
-      }
+     
       onChangeAttendanceDate(e){
         this.setState({ attendanceDate: e.target.value})
       }
@@ -50,7 +46,6 @@ class AttendanceForm extends Component {
       onSubmit(e){
         e.preventDefault()
         const data = {
-            attendenceId:this.state.attendenceId,
             attendanceDate: this.state.attendanceDate,
             classId:this.state.classId,
             termId:this.state.termId,
@@ -67,7 +62,6 @@ class AttendanceForm extends Component {
             console.log(error)
           });
         this.setState({
-            attendenceId:"",
             attendanceDate: "",
             classId: "",
             termId:"",
@@ -91,17 +85,7 @@ class AttendanceForm extends Component {
           <div className='px-5 wrapper mt-4 '>
             <form onSubmit={this.onSubmit} className=' mt-4'>
     
-              <div className='form-group'>
-                <label htmlFor='attendenceId'>Id</label>
-                <input   
-                  type="text"
-                  name='attendanceId'
-                  value={this.state.attendenceId}
-                  onChange={this.onChangeAttendanceId}
-                  className='form-control form-control-sm mt-2'
-                  id='attendanceId'
-                  placeholder='attendance Id'/>
-              </div>
+              
     
               <div className='form-group'>
                 <label htmlFor='attendanceDate'>attendance Date</label>

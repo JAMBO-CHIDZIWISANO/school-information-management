@@ -6,23 +6,19 @@ class Announcements extends Component {
 
   constructor(props){
     super(props);
-    this.onChangePostId = this.onChangePostId.bind(this);
     this.onChangeTitle = this.onChangeTitle.bind(this);
     this.onChangePostBody = this.onChangePostBody.bind(this);
     this.onChangeTeacherId = this.onChangeTeacherId.bind(this)
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      postId:"",
       postTitle: "",
       postBody: "",
       teacherId:""
     }
   }
 
-  onChangePostId(e){
-    this.setState({postId: e.target.value})
-  }
+ 
   onChangeTitle(e){
     this.setState({ postTitle: e.target.value})
   }
@@ -36,7 +32,6 @@ class Announcements extends Component {
   onSubmit(e){
     e.preventDefault()
     const data = {
-      postId: this.state.postId,
       postTitle: this.state.postTitle,
       postBody: this.state.postBody,
       teacherId: this.state.teacherId
@@ -49,7 +44,6 @@ class Announcements extends Component {
         console.log(error)
       });
     this.setState({
-      postId: "",
       postTitle: "",
       postBody: "",
       teacherId: ""
@@ -77,15 +71,15 @@ class Announcements extends Component {
       <div className='px-5 wrapper mt-4 '>
         <form onSubmit={this.onSubmit} className=' mt-4'>
 
-          <div className='form-group'>
-            <label htmlFor='postId'>Id</label>
-            <input   
-              name='postId'
-              value={this.state.postId}
-              onChange={this.onChangePostId}
-              className='form-control form-control-sm mt-2'
-              id='postId'
-              placeholder='postId'/>
+        <div className='form-group'>
+            <label htmlFor='teacherId'>Enter you Username </label>
+            <input
+              name='teacherId'
+              value={this.state.teacherId}
+              onChange={this.onChangeTeacherId}
+              className='form-control form-control-sm'
+              id='teacherId'
+              placeholder="username..."/>
           </div>
 
           <div className='form-group'>
@@ -110,16 +104,7 @@ class Announcements extends Component {
               placeholder='post body'/>
           </div>
 
-          <div className='form-group'>
-            <label htmlFor='teacherId'>Who post code: </label>
-            <input
-              name='teacherId'
-              value={this.state.teacherId}
-              onChange={this.onChangeTeacherId}
-              className='form-control form-control-sm'
-              id='teacherId'
-              placeholder="posters` id"/>
-          </div>
+          
 
           <div>
             <input 
