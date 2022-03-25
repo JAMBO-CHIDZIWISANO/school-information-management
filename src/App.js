@@ -105,7 +105,14 @@ function App() {
                 </li>
                 )}
                 
-
+                {currentUser &&(
+                  <li>
+                    <Link to="/comments" className="nav-text">
+                      <AiIcons.AiFillHome/>
+                      posts
+                    </Link>
+                  </li>
+                )}
                 
                 
                 {showTeacherBoard &&(

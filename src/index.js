@@ -26,8 +26,8 @@ ReactDOM.render(
         <Route path="/teacher" element={<BoardTeacher/>} />
         <Route path="/student" element={<BoardStudent/>} />
         <Route path="/parent" element={<BoardParent/>} />
+        <Route path="/comments" element={<BoardUser/>} />
         <Route path="/admin/announcements" element={<Announcements/>} />
-
         {/* <Route path="/comments" element={<Comments/>} /> */}
         
       </Routes>

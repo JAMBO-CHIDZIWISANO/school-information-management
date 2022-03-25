@@ -8,7 +8,6 @@ const BoardTeacher = () => {
     <div className="container">
       <AttendanceForm/>
       <AttendanceList />
-
       <EnterMarks/>
     </div>
   )
