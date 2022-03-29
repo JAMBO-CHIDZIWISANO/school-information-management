@@ -122,3 +122,16 @@ img{
     color: black;
 }
 
+.subjects{
+    width:fit-content;
+    height: auto;
+    border: 2px solid blue;
+    margin: 8px;
+   
+    padding: 8px;
+
+}
+
+.subjects h3{
+    margin: 2px;
+}
