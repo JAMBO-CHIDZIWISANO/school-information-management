@@ -60,7 +60,13 @@ const studentPersonalDetails = (studentId, firstname, surname, DoB, gender, user
     DoB, 
     gender,
     userId
+  }).then(res => {
+    if (res.status === 200)
+      alert('Student successfully created')
+    else
+      Promise.reject()
   })
+  .catch(err => alert('Something went wrong'))
 }
 
 const parentPersonalDetails = (parentId, firstname, surname, phoneNo, gender,address, userId ) => {
