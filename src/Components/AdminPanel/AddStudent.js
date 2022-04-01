@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import userService from "../services/user.service";
 import AuthService from "../services/auth.service";
-import { setSelectionRange } from "@testing-library/user-event/dist/utils";
 //import StudentList from "./StudentList";
 
 const AddStudent = () => {
@@ -17,9 +16,6 @@ const AddStudent = () => {
   const [DoB, setDoB] = useState("");
   const [gender, setGender] = useState("");
   const [userId, setUserId]= useState("")
-  const [parentId, setParentId]= useState("")
-  const [schoolId, setSchoolId]= useState("")
-  const [classId, setClassId]= useState("")
   // setting out error messages
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState("");
@@ -69,21 +65,6 @@ const AddStudent = () => {
     setUserId(userId);
   };
 
-  const onChangeParentId = (e) => {
-    const parentId = e.target.value;
-    setParentId(parentId);
-  };
-
-  const onChangeSchoolId = (e) => {
-    const schoolId = e.target.value;
-    setSchoolId(schoolId);
-  };
-
-  const onChangeClassId = (e) => {
-    const classId = e.target.value;
-    setClassId(classId);
-  };
-
   const handleRegister = (e) => {
     e.preventDefault();
     setMessage("");
@@ -112,7 +93,7 @@ const AddStudent = () => {
     e.preventDefault();
     setMessage("");
     setSuccessful(false);
-      userService.studentPersonalDetails(studentId, firstname, surname, DoB, gender, userId, parentId, schoolId, classId ).then(
+      userService.studentPersonalDetails(studentId, firstname, surname, DoB, gender, userId ).then(
         (response) => {
           setMessage(response.data.message);
           setSuccessful(true);
@@ -196,15 +177,9 @@ const AddStudent = () => {
 
       <form autoComplete="off" onSubmit={addStudent}>
 
-              <div className="form-group">
-                <strong htmlFor="userId">userId</strong>
-                <input type="text" className="form-control" name="userId"
-                    value={userId} onChange={onChangeUserId} required
-                />
-              </div>
 
               <div className="form-group" >
-              <strong htmlFor="studentId">username</strong>
+              <strong htmlFor="studentId">student Id</strong>
               <input type="text" className="form-control" name="firstname"
                 value={studentId} onChange={onChangeStudentId} required
               />
@@ -247,30 +222,11 @@ const AddStudent = () => {
               </div>
 
               <div className="form-group">
-                <strong htmlFor="schoolId">school code</strong>
-                <input type="text" className="form-control" name="schoolId"
-                    value={schoolId} onChange={onChangeSchoolId} required
-                    placeholder="create school Id 1"
+                <strong htmlFor="userId">userId</strong>
+                <input type="text" className="form-control" name="userId"
+                    value={userId} onChange={onChangeUserId} required
                 />
               </div>
-
-              <div className="form-group">
-                <strong htmlFor="classId">class</strong>
-                <input type="text" className="form-control" name="classId"
-                    value={classId} onChange={onChangeClassId} required
-                    placeholder="write 1 to 4"
-                />
-              </div>
-
-              <div className="form-group">
-                <strong htmlFor="parentId">parent username</strong>
-                <input type="text" className="form-control" name="parentId"
-                    value={parentId} onChange={onChangeParentId} required
-                    placeholder="parent username"
-                />
-              </div>
-
-              
 
               <div className="form-group">
                 <button className="btn btn-primary btn-block">Register</button>

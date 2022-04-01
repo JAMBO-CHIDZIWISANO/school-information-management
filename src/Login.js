@@ -55,8 +55,6 @@ const Login = () => {
                 );
         };
     
-    
-
   return (
     
     <section className='vh-100'  >
@@ -137,7 +135,6 @@ const Login = () => {
                                             </div>
                                          )}
                                         </div> 
-
                                     </form>
                                 </div>
                             </div>

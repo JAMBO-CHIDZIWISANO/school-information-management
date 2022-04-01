@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import userService from "../services/user.service";
 import AuthService from "../services/auth.service";
 
@@ -135,6 +136,21 @@ const AddTeacher = () => {
   return (
 
     <div className="container">
+      <hr />
+      <div style={{textAlign: "right"}}>
+      <Link to={"/admin"}> 
+          <input type="button" value="Back" className="btn btn-primary btn-block" />
+        </Link>
+        <Link to={"/admin/viewTeachers"}> 
+          <input type="button" value="View Teachers" className="btn btn-primary btn-block" />
+        </Link>
+    
+        <Link to={"/manage-teachers"}> 
+          <input type="button" value="Manage Teachers" className="btn btn-primary btn-block" />
+        </Link>
+      </div>
+      <hr/>
+
       <div className="col-md-6">
         <h3 className="text-center" >Teacher Sign Up Form</h3><hr/>
 
@@ -145,7 +161,7 @@ const AddTeacher = () => {
             
 
             <div className="form-group" >
-              <label htmlFor="username">Username</label>
+              <strong htmlFor="username">Username</strong>
               <input
                 type="text"
                 className="form-control"
@@ -157,7 +173,7 @@ const AddTeacher = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="email">Email</label>
+              <strong htmlFor="email">Email</strong>
               <input
                 type="text"
                 className="form-control"
@@ -169,7 +185,7 @@ const AddTeacher = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="password">Password</label>
+              <strong htmlFor="password">Password</strong>
               <input
                 type="password"
                 className="form-control"
@@ -203,7 +219,7 @@ const AddTeacher = () => {
       <h3 className="text-center" >Personal Details</h3><hr/>
       <form autoComplete="false" onSubmit={handleAdd} >
       <div className="form-group">
-              <label htmlFor="userId">Username </label>
+              <strong htmlFor="userId">Username </strong>
               <input
                 type="text"
                 className="form-control"
@@ -215,7 +231,7 @@ const AddTeacher = () => {
             </div>
             
               <div className="form-group" >
-                <label htmlFor="teacherId">repeat username</label>
+                <strong htmlFor="teacherId">repeat username</strong>
                 <input
                   type="text"
                   className="form-control"
@@ -227,7 +243,7 @@ const AddTeacher = () => {
               </div>
 
               <div className="form-group" >
-                <label htmlFor="firstname">Firstname</label>
+                <strong htmlFor="firstname">Firstname</strong>
                 <input
                   type="text"
                   className="form-control"
@@ -239,7 +255,7 @@ const AddTeacher = () => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="surname">surname</label>
+                <strong htmlFor="surname">surname</strong>
                 <input
                   type="text"
                   id="surname"
@@ -250,9 +266,19 @@ const AddTeacher = () => {
                   required
                 />
               </div>
+              <br/>
+              <div className="form-group">
+                <strong htmlFor="gender">Gender</strong>
+                <select 
+                  value={gender} onChange={onChangeGender} required>
+                  <option></option>
+                  <option>Female</option>
+                  <option>Male</option>
+                </select>
+              </div><br/>
 
               <div className="form-group">
-                <label htmlFor="phoneNo">Phone No</label>
+                <strong htmlFor="phoneNo">Phone No</strong>
                 <input
                   type="tel"
                   className="form-control"
@@ -262,33 +288,20 @@ const AddTeacher = () => {
                   required
                 />
               </div>
+              <br/>
+              <div className="form-group">
+                <strong htmlFor="qualification">Qualification</strong>
+                <select value={qualification} onChange={onChangeQualification}
+                  required>
+                  <option></option>
+                  <option>Diploma</option>
+                  <option>Bachelors Degree</option>
+                  <option>Master's Degree</option>
+                </select>
+              </div><br/>
 
               <div className="form-group">
-                <label htmlFor="gender">Gender</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="gender"
-                  value={gender}
-                  onChange={onChangeGender}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="qualification">Qualification</label>
-                <input
-                  type="qualification"
-                  className="form-control"
-                  name="qualification"
-                  value={qualification}
-                  onChange={onChangeQualification}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="joinDate">Join Date</label>
+                <strong htmlFor="joinDate">Join Date</strong>
                 <input
                   type="date"
                   className="form-control"

@@ -1,4 +1,4 @@
-import CommentForm from "./CommentForm";
+// import CommentForm from "./CommentForm";
 
 // const Comment = ({
 //   comment,
@@ -108,4 +108,4 @@ import CommentForm from "./CommentForm";
 //   );
 // };
 
-export default Comment;
+// export default Comment;

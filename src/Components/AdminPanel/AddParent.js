@@ -10,13 +10,13 @@ const AddParent = () => {
   const [password, setPassword] = useState("");
 
   // form2- teacher details registration
-  const [parentId, setParentId] = useState("")
+  const [parentId, setParentId] = useState(username)
   const [firstname, setFirstname] = useState("");
   const [surname, setSurname] = useState("");
   const [phoneNo, setPhoneNo] = useState("");
   const [gender, setGender] = useState("");
   const [address, setAddress] = useState("");
-  const [userId, setUserId]= useState("")
+  const [userId, setUserId]= useState(username)
 
   // setting out error messages
   const [successful, setSuccessful] = useState(false);
@@ -42,7 +42,7 @@ const AddParent = () => {
 
   const onChangeParentId=(e)=>{
     const parentId = e.target.value;
-    setParentId(parentId)
+    setParentId(username)
   }
   const onChangeFirstname = (e) => {
     const firstname = e.target.value;
@@ -68,7 +68,7 @@ const AddParent = () => {
   };
   const onChangeUserId = (e) => {
     const userId = e.target.value;
-    setUserId(userId);
+    setUserId(username);
   };
 
   const handleRegister = (e) => {
@@ -126,7 +126,7 @@ const AddParent = () => {
         {/* <div className="col-xs-6 col-sm-6 col-md-6"> */}
         <br></br> <br></br>
         <h3 className="text-center" >Parent Sign Up Form</h3><hr/>
-        <form onSubmit={handleRegister}>
+        <form onSubmit={handleRegister} autoComplete="off" >
           {!successful && (
             <div>
 
@@ -139,7 +139,7 @@ const AddParent = () => {
                   name="username"
                   value={username}
                   onChange={onChangeUsername}
-                  required
+                  required  placeholder="Enter username"
                 />
               </div>
               <div className="form-group">
@@ -184,12 +184,13 @@ const AddParent = () => {
       <br></br> <br></br>
 
       <div className="col-md-6" >
-      <form autoComplete="off" onSubmit={addParent}>
+      <form onSubmit={addParent}>
 
       <div className="form-group" >
-            <strong htmlFor="parentId">parent Id</strong>
+            <strong htmlFor="parentId">Username</strong>
             <input type="text" className="form-control" name="parentId"
-                value={parentId} onChange={onChangeParentId} required
+                value={parentId} onChange={onChangeParentId}
+                placeholder="Same as username"
             />
           </div>
 
@@ -216,14 +217,17 @@ const AddParent = () => {
 
           <div className="form-group">
             <strong htmlFor="gender">Gender</strong>
-            <input 
-              type="text" 
+            <select type="text" 
               className="form-control" 
               name="gender"
               value={gender} 
               onChange={onChangeGender} 
-              required
-            />
+              required >
+              <option >Tap to Choose</option>
+              <option >Male</option>
+              <option>Female</option>
+              </select>
+            
           </div>
 
           <div className="form-group">
@@ -236,15 +240,16 @@ const AddParent = () => {
           <div className="form-group">
             <strong htmlFor="userId">userId</strong>
             <input type="text" className="form-control" name="userId"
-                value={userId} onChange={onChangeUserId} required
+                value={userId} onChange={onChangeUserId}
+                placeholder="Same as username" 
             />
           </div>
 
             <div className="form-group">
                 <button className="btn btn-primary btn-block">Submit</button>
-              </div>
+            </div>
 
-          {message && (
+          {/* {message && (
             <div className="form-group">
               <div
                 className= "alert alert-success alert alert-danger" 
@@ -253,7 +258,7 @@ const AddParent = () => {
                 {message}
               </div>
             </div>
-          )}
+          )} */}
         </form>
         </div>
 

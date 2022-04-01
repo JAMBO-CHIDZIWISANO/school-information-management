@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react'
+import {Link} from "react-router-dom";
 import SubjectList from './SubjectList';
 
 class AddSubject extends Component {
@@ -8,20 +9,13 @@ class AddSubject extends Component {
     super(props);
     this.onChangeSubjectCode = this.onChangeSubjectCode.bind(this);
     this.onChangeSubjectName = this.onChangeSubjectName.bind(this);
-    this.onChangeClassName = this.onChangeClassName.bind(this);
-    this.onChangeSchoolTerm = this.onChangeSchoolTerm.bind(this);
-    
-    
+       
     this.onSubmit = this.onSubmit.bind(this);
     this.state = {
       subjectCode: "",
       subjectName: "", 
-      className: "",
-      schoolTerm: "",
-  
     }
   }
-
  
   onChangeSubjectCode(e){
     this.setState({ subjectCode: e.target.value})
@@ -29,21 +23,12 @@ class AddSubject extends Component {
   onChangeSubjectName(e){
     this.setState({subjectName: e.target.value})
   }
-  onChangeClassName(e){
-    this.setState({className: e.target.value})
-  }
-  onChangeSchoolTerm(e){
-    this.setState({schoolTerm: e.target.value})
-  }
- 
+
   onSubmit(e){
     e.preventDefault()
     const data = {
       subjectCode: this.state.subjectCode,
       subjectName: this.state.subjectName,
-      className: this.state.className,
-      schoolTerm: this.state.schoolTerm,
-      
     };
     console.log(data);
 
@@ -75,7 +60,6 @@ class AddSubject extends Component {
     })
     .catch(err => console.log("Couldn't fetch data. Error: " + err))
   }
-  
 
   render(){
 
@@ -83,37 +67,21 @@ class AddSubject extends Component {
 
     <div>
 
-      {/* creating class */}
-      
+      {/* buttons for navigating to manage subjects and view subjects pages class */}
+      <hr />
+      <div style={{textAlign: "right"}}>
+        <Link to={"/view-subjects"}> 
+          <input type="button" value="View Sujects" className="btn btn-primary btn-block" />
+        </Link>
+        <Link to={"/admin/manage-subjects"}> 
+          <input type="button" value="Manage Sujects" className="btn btn-primary btn-block" />
+        </Link>
+      </div>
+      <hr/>
       <div className='px-5 wrapper mt-4 '>
-        <form onSubmit={this.onSubmit} className=' mt-4'>
-
-        <div className='subject'><h2>Create Class and Subject</h2></div>
-        
-        <div className='form-group'>
-        <strong>Select Class below</strong>
-        <select className='classes'value={this.state.className}
-              onChange={this.onChangeClassName} > 
-            <option>Form</option>
-            <option>Form 1</option>
-            <option>Form 2</option>
-            <option>Form 3</option>
-            <option>Form 4</option>
-        </select>
-        </div>
-
-        <div className='form-group'>
-        <strong>Select school Term below</strong>
-        <select className='terms'value={this.state.schoolTerm}
-              onChange={this.onChangeSchoolTerm} > 
-            <option>Term</option>
-            <option>Term 1</option>
-            <option>Term 2</option>
-            <option>Term 3</option>
-        </select>
-        </div>
-
-        <div className='form-group'>
+        <form onSubmit={this.onSubmit} className='col-md-3'>
+        <div className='subject'><h3>Add Subject</h3><hr/></div>
+          <div className='form-group'>
             <strong>Subject Code</strong>
             <input name='subjectCode' value={this.state.subjectCode}
               onChange={this.onChangeSubjectCode}
@@ -131,19 +99,14 @@ class AddSubject extends Component {
 
           <div>
             <input 
-              type="submit"  value="Create Subject" 
+              type="submit"  value="Submit Subject" 
               className="btn btn-primary btn-block" />
             </div>
           </form>
-      </div>
-
+        </div>
       <div>
-
-      </div>
-
-      {/* subject List per class */}
-      <div><SubjectList/></div>
-
+    </div>
+      <hr />
     </div>
   )}
 }

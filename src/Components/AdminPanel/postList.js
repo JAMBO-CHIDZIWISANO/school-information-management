@@ -51,7 +51,7 @@ const PostList = () => {
               {/* <b>No data found to display.</b> */}
               <td>
                     <button className="btn btn-edit" >Edit</button>
-                    <button className="btn btn-delete" onClick={() => deletePost(item.id)}>Delete</button>
+                    <button className="btn btn-delete" onClick={() => deletePost(item.postId)}>Delete</button>
 
             
               </td>
