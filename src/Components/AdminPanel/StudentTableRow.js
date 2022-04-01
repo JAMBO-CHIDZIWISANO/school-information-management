@@ -3,10 +3,11 @@ import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Delete, Edit } from "@mui/icons-material";
-  
 const StudentTableRow = (props) => {
+
   const {studentId, firstname, surname, gender, DoB } = props.obj;
   
+  //delete operation
   const deleteStudent = () => {
     axios
       .delete(
@@ -22,6 +23,7 @@ const StudentTableRow = (props) => {
       .catch((err) => alert("Something went wrong"));
   };
 
+  //update operation
   const updateAPIData = () => {
     axios.put(`http://localhost:4000/api/smis/student/${studentId}`, {
         firstname,
@@ -31,6 +33,7 @@ const StudentTableRow = (props) => {
 }
   
   return (
+    
     <tr>
       <td>{firstname}</td>
       <td>{surname}</td>
@@ -39,9 +42,8 @@ const StudentTableRow = (props) => {
       <td>
         <Link className="edit-link" 
           to={"/edit-student/"}
-          onClick={updateAPIData}>
-
-          <Edit />
+         >
+            <Edit/>
         </Link>
         <Button onClick={deleteStudent} 
           size="sm" variant="danger">

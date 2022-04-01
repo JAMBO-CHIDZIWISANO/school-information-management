@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import userService from "../services/user.service";
 import AuthService from "../services/auth.service";
-import StudentList from "./StudentList";
+//import StudentList from "./StudentList";
 
 const AddStudent = () => {
 
@@ -246,9 +246,7 @@ const AddStudent = () => {
         </form>
         </div>
 
-        <div>
-          <StudentList/>
-        </div>
+       
         
     </div>
   );

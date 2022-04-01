@@ -3,18 +3,18 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Button, Table } from "react-bootstrap";
-import StudentTableRow from "./StudentTableRow";
+import StudentsMarksTableRow from "./StudentsTableRowMarks";
 // import EditStudent from "./EditStudent"
 // import AddStudent from "./AddStudent";
 
-const StudentList = () => {
-  const [students, setStudents] = useState([]);
+const AllStudentsMarks = () => {
+  const [studentsMarks, setStudentsMarks] = useState([]);
   
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/smis/getAllStudents")
+      .get("http://localhost:4000/api/smis/getAllStudentsMarks")
       .then(({ data }) => {
-        setStudents(data);
+        setStudentsMarks(data);
       })
       .catch((error) => {
         console.log(error);
@@ -22,23 +22,15 @@ const StudentList = () => {
   }, []);
   
   const DataTable = () => {
-    return students.map((res, i) => {
-      return <StudentTableRow obj={res} key={i} />;
+    return studentsMarks.map((res, i) => {
+      return <StudentsMarksTableRow obj={res} key={i} />;
     });
   };
   
   return (
     <div>
 
-      <div className="row">
-        <div className="">
-          <Link to="/add-student">
-          <Button variant="primary"><i className="fa fa-plu"> </i>
-            Add Student
-          </Button>
-          </Link>
-        </div>
-      </div>
+     
 
     <div className="row">
     <div className="table-responsive">
@@ -48,9 +40,11 @@ const StudentList = () => {
           <tr>
             <th>Firstname</th>
             <th>Surname</th>
-            <th>Gender</th>
-            <th>DoB</th>
-            <th>Action</th>
+            <th>class</th>
+            <th>subject</th>
+            <th>marks</th>
+            <th>grade</th>
+           
           </tr>
         </thead>
         <tbody>{DataTable()}</tbody>
@@ -66,4 +60,4 @@ const StudentList = () => {
   );
 };
   
-export default StudentList;
+export default AllStudentsMarks;

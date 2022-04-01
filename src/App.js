@@ -54,7 +54,12 @@ function App() {
                 <FaIcons.FaBars onClick={showSidebar}/>
             </Link>
 
+            <div>
+              <h2 className="text-white">School Management Information System</h2>
+            </div>
+
             <div className="d-flex ms-auto order-5">
+
               {currentUser ?(
                         <div className="list-unstyled d-flex nav-text">
                           <li><Link to="/profile">

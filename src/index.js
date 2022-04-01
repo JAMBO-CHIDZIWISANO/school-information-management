@@ -13,6 +13,7 @@ import BoardStudent from "./Components/BoardStudent";
 import BoardParent from "./Components/BoardParent";
 import BoardUser from "./Components/BoardUser";
 import Profile from "./Components/Profile";
+import AddStudent from './Components/AdminPanel/AddStudent';
 
 import Announcements from "./Components/AdminPanel/Announcements"
 
@@ -27,6 +28,7 @@ ReactDOM.render(
         <Route path="/student" element={<BoardStudent/>} />
         <Route path="/parent" element={<BoardParent/>} />
         <Route path="/comments" element={<BoardUser/>} />
+        <Route path='/add-student' element={<AddStudent/>}/>
         <Route path="/admin/announcements" element={<Announcements/>} />
         {/* <Route path="/comments" element={<Comments/>} /> */}
         

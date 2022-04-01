@@ -306,6 +306,7 @@ const AddTeacher = () => {
            
         </form>
         </div>
+
     </div>
   );
 };

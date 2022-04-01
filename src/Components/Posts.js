@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 class Posts extends Component {
-   
+ 
+
     //holding loading state and comments arrays
     constructor(props){
       super(props);
@@ -14,6 +15,8 @@ class Posts extends Component {
         teacherId: "",
         commentBody: ""
       };   
+
+
     }
 
     //handle form input field changes and update state
@@ -51,6 +54,21 @@ class Posts extends Component {
    
     }
 
+  //   state = {
+  //     data : []
+  //   }
+
+  //   async componentDidMount() {
+  //      axios.get("http://localhost:4000/api/smis/gtAllComments")
+  //      .then(response=>{
+  //       this.setState({data:response.data});
+  //       console.log(response)
+  //     }).catch(function (error){
+  //       console.log(error)
+  //     })
+                 
+  // }
+
 
   render(){
     return (
@@ -64,17 +82,19 @@ class Posts extends Component {
             placeholder="😎 Your username"
             name="teacherId"
             type="text"
+            autoComplete='false'
           />
         </div>
 
-        <div className="form-group">
-          <textarea
+        <div className="form-group mt-3">
+          <input
             onChange={this.handleCommentChange}
             value={this.state.commentBody}
             className="form-control"
-            placeholder="🤬 Your Comment"
+            placeholder="write Your Comment"
             name="commentBody"
             rows="5"
+            autoComplete='false'
           />
         </div>
 
