@@ -1,8 +1,5 @@
 import React from "react";
-//import { Button } from "react-bootstrap";
-//import { Link } from "react-router-dom";
-//import axios from "axios";
-//import { Delete, Edit } from "@mui/icons-material";
+
 const StudentsTableRowMarks = (props) => {
 
   const { firstname, surname, classId, subjectCode, marks, mark } = props.obj;

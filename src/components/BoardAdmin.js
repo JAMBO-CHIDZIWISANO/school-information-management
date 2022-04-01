@@ -17,7 +17,15 @@ import AddParent from './AdminPanel/AddParent';
 import AddSubject from './AdminPanel/AddSubject';
 import SchoolDetails from './AdminPanel/SchoolDetails';
 import StudentList from './AdminPanel/StudentList';
-import AllStudentsMarks from './AdminPanel/AllStudentsMarks';
+import Form1ResultsRecords from './StudentDetails/Form1ResultsRecords';
+import Form2ResultsRecords from './StudentDetails/Form2ResultsRecords';
+import Form3ResultsRecords from './StudentDetails/Form3ResultsRecords';
+import Form4ResultsRecords from './StudentDetails/Form4ResultsRecords';
+import Form1Students from './StudentDetails/Form1Students';
+import Form2Students from './StudentDetails/Form2Students';
+import Form3Students from './StudentDetails/Form3Students';
+import Form4Students from './StudentDetails/Form4Students';
+import AllStudentsMarks from './StudentDetails/AllStudentsMarks';
 
 //function that holds properties of the tab panel
 function TabPanel(props) {
@@ -124,9 +132,16 @@ const BoardAdmin = () => {
             <Display/>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-       
+       <AllStudentsMarks/>
+       <Form1ResultsRecords/>
+       <Form2ResultsRecords/>
+       <Form3ResultsRecords/>
+       <Form4ResultsRecords/>
         <StudentList />
-        <AllStudentsMarks/>
+        <Form1Students/>
+        <Form2Students/>
+        <Form3Students/>
+        <Form4Students/>
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
         <AddParent />

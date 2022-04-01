@@ -51,22 +51,28 @@ const teacherPersonalDetails = (teacherId, firstname, surname, phoneNo, gender, 
 }
 
 //add student
-const studentPersonalDetails = (studentId, firstname, surname, DoB, gender, userId ) => {
+const studentPersonalDetails = async (studentId, firstname, surname, DoB, gender, userId,parentId, schoolId, classId ) => {
 
-  return axios.post(API_URL + "addStudent", {
-    studentId, 
-    firstname, 
-    surname, 
-    DoB, 
-    gender,
-    userId
-  }).then(res => {
+  try {
+    const res = await axios.post(API_URL + "addStudent", {
+      studentId,
+      firstname,
+      surname,
+      DoB,
+      gender,
+      userId,
+      parentId,
+      schoolId,
+      classId
+    });
     if (res.status === 200)
-      alert('Student successfully created')
+      alert('Student successfully created');
+
     else
-      Promise.reject()
-  })
-  .catch(err => alert('Something went wrong'))
+      Promise.reject();
+  } catch (err) {
+    return alert('Something went wrong');
+  }
 }
 
 const parentPersonalDetails = (parentId, firstname, surname, phoneNo, gender,address, userId ) => {
