@@ -34,8 +34,8 @@ exports.create = (req, res)=>{
 
 // Retrieve all Students from the database (with condition).
 exports.findAllStudents =(req, res) => {
-  const lastname = req.query.lastname;
-  Student.findAllStudents(lastname, (err, data) => {
+  const surname = req.query.surname;
+  Student.findAllStudents(surname, (err, data) => {
     if (err)
       res.status(500).send({
         message:
@@ -110,8 +110,8 @@ exports.deleteStudent = (req, res) => {
 
 //form 4 students
 exports.findForm4Students =(req, res) => {
-  const lastname = req.query.lastname;
-  Student.findForm4Students(lastname, (err, data) => {
+  const surname = req.query.surname;
+  Student.findForm4Students(surname, (err, data) => {
     if (err)
       res.status(500).send({
         message:
@@ -123,8 +123,8 @@ exports.findForm4Students =(req, res) => {
 
 //form 3 students
 exports.findForm3Students =(req, res) => {
-  const lastname = req.query.lastname;
-  Student.findForm4Students(lastname, (err, data) => {
+  const surname = req.query.surname;
+  Student.findForm4Students(surname, (err, data) => {
     if (err)
       res.status(500).send({
         message:
@@ -136,8 +136,8 @@ exports.findForm3Students =(req, res) => {
 
 //form 2student
 exports.findForm2Students =(req, res) => {
-  const lastname = req.query.lastname;
-  Student.findForm2Students(lastname, (err, data) => {
+  const surname = req.query.surname;
+  Student.findForm2Students(surname, (err, data) => {
     if (err)
       res.status(500).send({
         message:
@@ -149,8 +149,8 @@ exports.findForm2Students =(req, res) => {
 
 //form 1 students
 exports.findForm1Students =(req, res) => {
-  const lastname = req.query.lastname;
-  Student.findForm1Students(lastname, (err, data) => {
+  const surname = req.query.surname;
+  Student.findForm1Students(surname, (err, data) => {
     if (err)
       res.status(500).send({
         message:
