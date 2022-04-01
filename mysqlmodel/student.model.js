@@ -119,4 +119,74 @@ Student.findStudentById = (studentId, result) => {
     });
   };
 
+  // retrieving form 4 students
+  Student.findForm4Students = (surname, result) => {
+    let query = " select users.username, students.firstname, students.surname, users.email from users join  students on users.username=students.userId join classes on students.classId= classes.classId join schools on schools.schoolId=students.schoolId where classes.classId = 4 and schools.schoolId=1;";
+    if (surname) {
+      query += ` WHERE lastname LIKE '%${surname}%'`;
+    }
+    sql.query(query, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+      console.log("students: ", res);
+      result(null, res);
+    });
+  };
+
+  // retrieving form 3 students
+  Student.findForm3Students = (surname, result) => {
+    let query = " select users.username, students.firstname, students.surname, users.email from users join  students on users.username=students.userId join classes on students.classId= classes.classId join schools on schools.schoolId=students.schoolId where classes.classId = 3 and schools.schoolId=1;";
+    if (surname) {
+      query += ` WHERE lastname LIKE '%${surname}%'`;
+    }
+    sql.query(query, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+      console.log("students: ", res);
+      result(null, res);
+    });
+  };
+
+  // retrieving form 2 students
+  Student.findForm2Students = (surname, result) => {
+    let query = " select users.username, students.firstname, students.surname, users.email from users join  students on users.username=students.userId join classes on students.classId= classes.classId join schools on schools.schoolId=students.schoolId where classes.classId = 2 and schools.schoolId=1;";
+    if (surname) {
+      query += ` WHERE lastname LIKE '%${surname}%'`;
+    }
+    sql.query(query, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+      console.log("students: ", res);
+      result(null, res);
+    });
+  };
+
+  // retrieving form 1 students
+  Student.findForm1Students = (surname, result) => {
+    let query = " select users.username, students.firstname, students.surname, users.email from users join  students on users.username=students.userId join classes on students.classId= classes.classId join schools on schools.schoolId=students.schoolId where classes.classId = 1 and schools.schoolId=1;";
+    if (surname) {
+      query += ` WHERE lastname LIKE '%${surname}%'`;
+    }
+    sql.query(query, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+      console.log("students: ", res);
+      result(null, res);
+    });
+  };
+
+
+
 module.exports = Student;

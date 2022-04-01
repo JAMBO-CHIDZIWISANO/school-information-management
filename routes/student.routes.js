@@ -12,6 +12,19 @@ module.exports = app =>{
     // //get all students
     router.get("/getAllStudents", student.findAllStudents);
 
+     // //get all students
+     router.get("/getForm1Students", student.findForm1Students);
+
+     // //get all students
+     router.get("/getForm2Students", student.findForm2Students);
+
+    // //get all students
+    router.get("/getForm3Students", student.findForm3Students);
+
+     // //get all form3 students
+     router.get("/getForm4Students", student.findForm4Students);
+
+
     // //get one school
     router.get("/student/:studentId", student.findOneStudent);
 

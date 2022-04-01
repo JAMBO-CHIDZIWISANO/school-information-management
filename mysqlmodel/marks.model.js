@@ -4,9 +4,8 @@ const sql = require("../models/mysqldb")
 const Mark = function(mark) {
     this.markId = mark.markId;
     this.marks = mark.marks;
-    this.status = mark.status;
+    this.type = mark.type;
     this.termId = mark.termId;
-    this.classId = mark.classId;
     this.studentId = mark.studentId;  
     this.subjectCode = mark.subjectCode;
 }
@@ -62,13 +61,31 @@ Mark.findMarkById = (markId, result) => {
     });
   };
 
+  //retrieve marks of all students at school and all subjects 
+  Mark.findAllStudentsGrades = (markId, result) => {
+    let query = "select students.firstname, students.surname, students.classId, student_marks.subjectCode, student_marks.marks,student_marks.type, case when student_marks.marks>=80 then 'A=distinction' when student_marks.marks>=70 then 'B=very good' when student_marks.marks>=60 then 'C=good' when student_marks.marks>=50 then 'D=average' else 'F=fail' end as 'mark'from student_marks join students on students.studentId=student_marks.studentId group by subjectCode,firstname,surname order by classId;";
+    if (markId) {
+      query += ` WHERE markId LIKE '%${markId}%'`;
+    }
+    sql.query(query, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+      console.log("marks: ", res);
+      result(null, res);
+    });
+  };
+
+
   //update mark by their id
   Mark.updateMarkById = (markId, mark, result) => {
     
     sql.query(
-      "UPDATE student_marks SET status = ?, marks = ?, subjectCode= ? WHERE markId = ?",
+      "UPDATE student_marks SET type = ?, marks = ?, subjectCode= ? WHERE markId = ?",
       
-      [ mark.status, 
+      [ mark.type, 
         mark.marks, 
         mark.subjectCode, 
         markId],
@@ -112,5 +129,90 @@ Mark.findMarkById = (markId, result) => {
       result(null, res);
     });
   };
+
+  //results for form 1 students
+  Mark.findForm1ExamResults = (markId, result) => {
+    let query = "select students.firstname, students.surname, students.classId, student_marks.subjectCode, student_marks.marks,student_marks.type, case when student_marks.marks>=80 then 'A=distinction' when student_marks.marks>=70 then 'B=very good' when student_marks.marks>=60 then 'C=good' when student_marks.marks>=50 then 'D=average' else 'F=fail' end as 'mark'from classes join students on students.classId=classes.classId join student_marks on students.studentId=student_marks.studentId where classes.classId=1 group by subjectCode,firstname,surname order by classId;";
+    if (markId) {
+      query += ` WHERE markId LIKE '%${markId}%'`;
+    }
+    sql.query(query, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+      console.log("marks: ", res);
+      result(null, res);
+    });
+  };
+
+  Mark.findForm1ExamResults = (markId, result) => {
+    let query = "select students.firstname, students.surname, students.classId, student_marks.subjectCode, student_marks.marks,student_marks.type, case when student_marks.marks>=80 then 'A=distinction' when student_marks.marks>=70 then 'B=very good' when student_marks.marks>=60 then 'C=good' when student_marks.marks>=50 then 'D=average' else 'F=fail' end as 'mark'from classes join students on students.classId=classes.classId join student_marks on students.studentId=student_marks.studentId where classes.classId=1 group by subjectCode,firstname,surname order by classId;";
+    if (markId) {
+      query += ` WHERE markId LIKE '%${markId}%'`;
+    }
+    sql.query(query, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+      console.log("marks: ", res);
+      result(null, res);
+    });
+  };
+
+
+  Mark.findForm4ExamResults = (markId, result) => {
+    let query = "select students.firstname, students.surname, students.classId, student_marks.subjectCode, student_marks.marks,student_marks.type, case when student_marks.marks>=80 then 'A=distinction' when student_marks.marks>=70 then 'B=very good' when student_marks.marks>=60 then 'C=good' when student_marks.marks>=50 then 'D=average' else 'F=fail' end as 'mark'from classes join students on students.classId=classes.classId join student_marks on students.studentId=student_marks.studentId where classes.classId=4 group by subjectCode,firstname,surname order by classId;";
+    if (markId) {
+      query += ` WHERE markId LIKE '%${markId}%'`;
+    }
+    sql.query(query, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+      console.log("marks: ", res);
+      result(null, res);
+    });
+  };
+
+
+  Mark.findForm3ExamResults = (markId, result) => {
+    let query = "select students.firstname, students.surname, students.classId, student_marks.subjectCode, student_marks.marks,student_marks.type, case when student_marks.marks>=80 then 'A=distinction' when student_marks.marks>=70 then 'B=very good' when student_marks.marks>=60 then 'C=good' when student_marks.marks>=50 then 'D=average' else 'F=fail' end as 'mark'from classes join students on students.classId=classes.classId join student_marks on students.studentId=student_marks.studentId where classes.classId=3 group by subjectCode,firstname,surname order by classId;";
+    if (markId) {
+      query += ` WHERE markId LIKE '%${markId}%'`;
+    }
+    sql.query(query, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+      console.log("marks: ", res);
+      result(null, res);
+    });
+  };
+
+  //form 2 results
+  Mark.findForm2ExamResults = (markId, result) => {
+    let query = "select students.firstname, students.surname, students.classId, student_marks.subjectCode, student_marks.marks,student_marks.type, case when student_marks.marks>=80 then 'A=distinction' when student_marks.marks>=70 then 'B=very good' when student_marks.marks>=60 then 'C=good' when student_marks.marks>=50 then 'D=average' else 'F=fail' end as 'mark'from classes join students on students.classId=classes.classId join student_marks on students.studentId=student_marks.studentId where classes.classId=2 group by subjectCode,firstname,surname order by classId;";
+    if (markId) {
+      query += ` WHERE markId LIKE '%${markId}%'`;
+    }
+    sql.query(query, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+      console.log("marks: ", res);
+      result(null, res);
+    });
+  };
+
 
 module.exports = Mark;

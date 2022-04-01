@@ -107,3 +107,55 @@ exports.deleteStudent = (req, res) => {
     } else res.send({ message: `student was deleted successfully!` });
   });
 };
+
+//form 4 students
+exports.findForm4Students =(req, res) => {
+  const lastname = req.query.lastname;
+  Student.findForm4Students(lastname, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Students."
+      });
+    else res.send(data);
+  });
+};
+
+//form 3 students
+exports.findForm3Students =(req, res) => {
+  const lastname = req.query.lastname;
+  Student.findForm4Students(lastname, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Students."
+      });
+    else res.send(data);
+  });
+};
+
+//form 2student
+exports.findForm2Students =(req, res) => {
+  const lastname = req.query.lastname;
+  Student.findForm2Students(lastname, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Students."
+      });
+    else res.send(data);
+  });
+};
+
+//form 1 students
+exports.findForm1Students =(req, res) => {
+  const lastname = req.query.lastname;
+  Student.findForm1Students(lastname, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Students."
+      });
+    else res.send(data);
+  });
+};

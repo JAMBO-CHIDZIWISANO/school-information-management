@@ -12,11 +12,10 @@ exports.create = (req, res)=>{
     const mark = new Mark({
       markId: req.body.markId,
       marks: req.body.marks,
-      status: req.body.status,
+      type: req.body.type,
       termId: req.body.termId,
       studentId: req.body.studentId,
       subjectCode: req.body.subjectCode,
-      classId: req.body.classId,
       });
 
       // Save Mmark in the database
@@ -42,6 +41,20 @@ exports.findAllMarks =(req, res) => {
     else res.send(data);
   });
 };
+
+// Retrieve all Mark of the all students
+exports.findAllStudentsGrades =(req, res) => {
+  const status = req.query.status;
+  Mark.findAllStudentsGrades(status, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Marks."
+      });
+    else res.send(data);
+  });
+};
+
 
 //retrieve one Mark using their id
 exports.findOneMark = (req, res) => {
@@ -103,5 +116,57 @@ exports.deleteMark = (req, res) => {
         });
       }
     } else res.send({ message: `mark was deleted successfully!` });
+  });
+};
+
+// Retrieve all Mark of the all students
+exports.findForm1ExamResults =(req, res) => {
+  const status = req.query.status;
+  Mark.findForm1ExamResults(status, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Marks."
+      });
+    else res.send(data);
+  });
+};
+
+// Retrieve all Mark of the all students
+exports.findForm2ExamResults =(req, res) => {
+  const status = req.query.status;
+  Mark.findForm2ExamResults(status, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Marks."
+      });
+    else res.send(data);
+  });
+};
+
+// Retrieve all Mark of the all students
+exports.findForm3ExamResults =(req, res) => {
+  const status = req.query.status;
+  Mark.findForm3ExamResults(status, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Marks."
+      });
+    else res.send(data);
+  });
+};
+
+// Retrieve all Mark of the all students
+exports.findForm4ExamResults =(req, res) => {
+  const status = req.query.status;
+  Mark.findForm4ExamResults(status, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Marks."
+      });
+    else res.send(data);
   });
 };

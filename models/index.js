@@ -163,12 +163,8 @@ db.term.hasMany(db.mark, {
   targetKey: "termId"
 });
 
-// one to many  student and marks
 
-db.class.hasMany(db.mark, {
-  foreignKey: "classId",
-  targetKey: "classId"
-})
+
 // one to many student and marks
 
 db.student.hasMany(db.mark, {
