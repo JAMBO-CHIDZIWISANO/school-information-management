@@ -109,3 +109,12 @@
 // };
 
 // export default Comment;
+import React from 'react'
+
+const Comment = () => {
+  return (
+    <div>Comment Ernest</div>
+  )
+}
+
+export default Comment

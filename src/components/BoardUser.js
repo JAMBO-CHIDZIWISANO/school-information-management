@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import Posts from './Posts'
 import axios from 'axios'
-import CommentForm from './usersComments/comments/CommentForm'
+import CommentForm from './usersComments/CommentForm'
+import MessageScroll from './usersComments/MessageScroll'
  
 
 const BoardUser = () => {
@@ -45,6 +46,8 @@ const BoardUser = () => {
       <div className='card-body'>
       {/* {post.map(items => <p className=''>{items.postBody}</p>)} */}
         <Posts />
+        <CommentForm autoFocus={false} />
+        <MessageScroll/>
         {
           comment.map((item)=>
           <h1>{item.postBody}...{item.commentBody}</h1>
