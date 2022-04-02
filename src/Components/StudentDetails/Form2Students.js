@@ -26,8 +26,8 @@ const Form2Students = () => {
      
 
     <div className="">
-    <div className="table-responsive">
-        <h2>Form 2 Students</h2>
+    <div className="">
+        <h2 className="text-center">Form 2 Students</h2>
       <Table className="table-striped table-hover table-bordered" >
           
         <thead>

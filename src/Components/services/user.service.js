@@ -51,7 +51,7 @@ const teacherPersonalDetails = (teacherId, firstname, surname, phoneNo, gender, 
 }
 
 //add student
-const studentPersonalDetails = (studentId, firstname, surname, DoB, gender, userId ) => {
+const studentPersonalDetails = (studentId, firstname, surname, DoB, gender, userId, parentId, classId, schoolId ) => {
 
   return axios.post(API_URL + "addStudent", {
     studentId, 
@@ -59,7 +59,10 @@ const studentPersonalDetails = (studentId, firstname, surname, DoB, gender, user
     surname, 
     DoB, 
     gender,
-    userId
+    userId,
+    parentId, 
+    classId, 
+    schoolId 
   }).then(res => {
     if (res.status === 200)
       alert('Student successfully created')

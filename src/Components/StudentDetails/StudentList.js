@@ -1,9 +1,13 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import { Button, Table } from "react-bootstrap";
-import StudentTableRow from "./StudentTableRow";
+import {Table } from "react-bootstrap";
+import StudentTableRow from "../AdminPanel/StudentTableRow";
+
+import Form1Students from "./Form1Students"
+import Form2Students from "./Form2Students"
+import Form3Students from "./Form3Students"
+import Form4Students from "./Form4Students"
 // import EditStudent from "./EditStudent"
 // import AddStudent from "./AddStudent";
 
@@ -28,20 +32,12 @@ const StudentList = () => {
   };
   
   return (
-    <div>
-
-      <div className="row">
-        <div className="">
-          <Link to="/add-student">
-          <Button variant="primary"><i className="fa fa-plu"> </i>
-            Add Student
-          </Button>
-          </Link>
-        </div>
-      </div>
+ 
 
     <div className="row">
-    <div className="table-responsive">
+      <h2 className="text-center">Table for All Students</h2>
+    <div className="">
+
 
       <Table className="table-striped table-hover table-bordered" >
         <thead>
@@ -60,9 +56,22 @@ const StudentList = () => {
 
     </div>
 
+    <div>
+      <Form1Students/>
     </div>
 
+    <div>
+      <Form2Students/>
     </div>
+
+    <div>
+    <Form3Students/>
+    </div>
+
+    <div>
+      <Form4Students/>
+    </div>
+  </div>
   );
 };
   

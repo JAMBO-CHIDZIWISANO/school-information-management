@@ -109,6 +109,14 @@ function App() {
                    </Link>
                 </li>
                 )}
+                {showAdminBoard&&(
+                  <li>
+                  <Link to="/admin/students-details" className="nav-text">
+                    <AiIcons.AiFillHome/>
+                    Student Records
+                   </Link>
+                </li>
+                )}
                 
                 {currentUser &&(
                   <li>

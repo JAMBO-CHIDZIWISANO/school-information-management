@@ -26,8 +26,8 @@ const Form2ResultsRecords = () => {
      
 
     <div className="">
-    <div className="table-responsive">
-        <h2>Form Two Examination Results</h2>
+    <div className="">
+        <h2 className="text-center">Form Two Examination Results</h2>
       <Table className="table-striped table-hover table-bordered" >
           
         <thead>

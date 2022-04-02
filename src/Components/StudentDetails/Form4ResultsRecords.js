@@ -26,8 +26,8 @@ const Form4ResultsRecords = () => {
      
 
     <div className="">
-    <div className="table-responsive">
-        <h2>Form Four Examination Results</h2>
+    <div className="">
+        <h2 className="text-center">Form Four Examination Results</h2>
       <Table className="table-striped table-hover table-bordered" >
           
         <thead>

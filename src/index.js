@@ -13,7 +13,6 @@ import BoardStudent from "./Components/BoardStudent";
 import BoardParent from "./Components/BoardParent";
 import BoardUser from "./Components/BoardUser";
 import Profile from "./Components/Profile";
-import AddStudent from './Components/AdminPanel/AddStudent';
 
 import Announcements from "./Components/AdminPanel/Announcements"
 import SubjectList from './Components/AdminPanel/SubjectList';
@@ -23,6 +22,11 @@ import AddSubject from './Components/AdminPanel/AddSubject'
 import ViewTeachers from './Components/AdminPanel/ViewTeachers'
 import AddTeacher from './Components/AdminPanel/AddTeacher'
 
+//import StudentList from "./Components/StudentDetails/StudentList"
+import StudentDetails from "./Components/StudentDetails/StudentDetails"
+import ExamsRecords from "./Components/StudentDetails/ExamsRecords"
+import AddStudent from './Components/StudentDetails/SSecurityDetailsForm';
+import SPersonalDetailsForm from "./Components/StudentDetails/SPersonalDetailsForm"
 
 ReactDOM.render(
     <Router>
@@ -35,7 +39,6 @@ ReactDOM.render(
         <Route path="/student" element={<BoardStudent/>} />
         <Route path="/parent" element={<BoardParent/>} />
         <Route path="/comments" element={<BoardUser/>} />
-        <Route path='/add-student' element={<AddStudent/>}/>
         <Route path="/admin/announcements" element={<Announcements/>} />
         <Route path="/view-subjects" element={<SubjectList/>} />
         <Route path="/admin/manage-subjects" element={<ManageSubjects/>} />
@@ -45,6 +48,11 @@ ReactDOM.render(
         <Route path="/admin/addTeacher" element={<AddTeacher/>} />
         <Route path="/admin" element={<BoardAdmin/>} />
 
+        <Route path="/admin/students-details" element={<StudentDetails/>}/>
+        <Route path='/admin/add-student' element={<AddStudent/>}/>
+        <Route path="/admin/exam-records" element={<ExamsRecords/>}/>
+        <Route path="/admin/spersonal-details" element={<SPersonalDetailsForm/>} />
+        
         
       </Routes>
     </Router>,

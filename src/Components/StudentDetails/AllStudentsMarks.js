@@ -1,11 +1,9 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import { Button, Table } from "react-bootstrap";
+import {  Table } from "react-bootstrap";
 import StudentsMarksTableRow from "./StudentsTableRowMarks";
-// import EditStudent from "./EditStudent"
-// import AddStudent from "./AddStudent";
+
 
 const AllStudentsMarks = () => {
   const [studentsMarks, setStudentsMarks] = useState([]);
