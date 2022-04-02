@@ -124,7 +124,7 @@ exports.findForm4Students =(req, res) => {
 //form 3 students
 exports.findForm3Students =(req, res) => {
   const surname = req.query.surname;
-  Student.findForm4Students(surname, (err, data) => {
+  Student.findForm3Students(surname, (err, data) => {
     if (err)
       res.status(500).send({
         message:
