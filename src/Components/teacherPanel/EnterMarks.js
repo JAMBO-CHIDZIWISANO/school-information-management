@@ -9,13 +9,15 @@ class EnterMarks extends Component {
     super(props);
 
     this.onChangeType = this.onChangeType.bind(this);
-    this.onChangeMarks = this.onChangeMarks.bind(this);
+    this.onChangeStudentScore = this.onChangeStudentScore.bind(this);
+    this.onChangeTotalScore = this.onChangeTotalScore.bind(this);
     this.onChangeStudentId = this.onChangeStudentId.bind(this)
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       type: "",
-      marks: "",
+      student_score: "",
+      total_score:"",
       studentId:"",
       
       selectClass: [],
@@ -77,8 +79,11 @@ class EnterMarks extends Component {
   }
 
  
-  onChangeMarks(e){
-    this.setState({marks: e.target.value})
+  onChangeStudentScore(e){
+    this.setState({student_score: e.target.value})
+  }
+  onChangeTotalScore(e){
+    this.setState({total_score: e.target.value})
   }
   onChangeStudentId(e){
     this.setState({studentId: e.target.value})
@@ -103,7 +108,8 @@ class EnterMarks extends Component {
     e.preventDefault()
     const data = {
        
-        marks: this.state.marks,
+        student_score: this.state.student_score,
+        total_score: this.state.total_score,
         studentId: this.state.studentId,
         type: this.state.type,
         subjectCode: this.state.subjectCode,
@@ -119,7 +125,8 @@ class EnterMarks extends Component {
       });
     this.setState({
        
-        marks: "",
+        student_score: "",
+        total_score:"",
         studentId:"",
         type: this.state.type,
         subjectCode:this.state.subjectCode,
@@ -136,14 +143,25 @@ class EnterMarks extends Component {
         <form onSubmit={this.onSubmit} className=' mt-4'>
 
           <div className='form-group'>
-            <label htmlFor='marks'>Mark</label>
+            <label htmlFor='student_score'>student score</label>
             <input   
-              name='marks'
-              value={this.state.marks}
-              onChange={this.onChangeMarks}
+              name='student_score'
+              value={this.state.student_score}
+              onChange={this.onChangeStudentScore}
               className='form-control form-control-sm'
-              id='marks'
-              placeholder='marks'/>
+              id='student_score'
+              placeholder='student score'/>
+          </div>
+
+          <div className='form-group'>
+            <label htmlFor='student_score'>total score</label>
+            <input   
+              name='total_score'
+              value={this.state.total_score}
+              onChange={this.onChangeTotalScore}
+              className='form-control form-control-sm'
+              id='total_score'
+              placeholder='total score'/>
           </div>
 
           <div className='form-group'>
