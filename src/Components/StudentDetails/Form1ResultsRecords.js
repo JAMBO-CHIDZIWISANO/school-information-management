@@ -33,14 +33,16 @@ const Form1ResultsRecords = () => {
           
         <thead>
           <tr>
-          <th>No.</th>
+            <th>No.</th>
             <th>Firstname</th>
             <th>Surname</th>
-            <th>class</th>
-            <th>subject</th>
-            <th>marks</th>
-            <th>mark</th>
-            <th>type</th>
+            <th>Class</th>
+            <th>Subject</th>
+            <th>Student Score</th>
+            <th>Total Score</th>
+            <th>Percentage (%)</th>
+            <th>Grade</th>
+            <th>Type</th>
            
           </tr>
         </thead>
@@ -52,10 +54,12 @@ const Form1ResultsRecords = () => {
                 <th scope="row">{index+1}</th>
                 <td>{res.firstname}</td>
                 <td>{res.surname}</td>
-                <td>{res.classId}</td>
-                <td>{res.subjectCode}</td>
-                <td>{res.marks}</td>
-                <td>{res.mark}</td>
+                <td>{res.className}</td>
+                <td>{res.subjectName}</td>
+                <td>{res.student_score}</td>
+                <td>{res.total_score}</td>
+                <td>{res.percent}</td>
+                <td>{res.Grade}</td>
                 <td>{res.type}</td>
             </tr>)
         })
