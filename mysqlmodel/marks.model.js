@@ -199,7 +199,7 @@ Mark.findMarkById = (markId, result) => {
 
   //form 2 results
   Mark.findForm2ExamResults = (markId, result) => {
-    let query = "select students.firstname, students.surname, students.classId, student_marks.subjectCode, student_marks.marks,student_marks.type, case when student_marks.marks>=80 then 'A=distinction' when student_marks.marks>=70 then 'B=very good' when student_marks.marks>=60 then 'C=good' when student_marks.marks>=50 then 'D=average' else 'F=fail' end as 'mark'from classes join students on students.classId=classes.classId join student_marks on students.studentId=student_marks.studentId where classes.classId=2 group by subjectCode,firstname,surname order by classId;";
+    let query = "select students.firstname, students.surname, classes.className, subjects.subjectName, student_marks.marks,student_marks.type, case when student_marks.marks>=80 then 'A=distinction' when student_marks.marks>=70 then 'B=very good' when student_marks.marks>=60 then 'C=good' when student_marks.marks>=50 then 'D=average' else 'F=fail' end as 'mark'from classes join students on students.classId=classes.classId join student_marks on students.studentId=student_marks.studentId join subjects on student_marks.subjectCode=subjects.subjectCode where classes.classId=2;";
     if (markId) {
       query += ` WHERE markId LIKE '%${markId}%'`;
     }

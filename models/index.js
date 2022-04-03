@@ -55,7 +55,8 @@ db.user.hasOne(db.student, {
 //parents and users table 1 to 1 relationship
 db.user.hasOne(db.parent, {
     foreignKey: "userId",
-    targetKey: "userId"});
+    targetKey: "userId",
+  });
 
 //many to many relationship between user and role table
 db.role.belongsToMany(db.user, {
@@ -72,19 +73,25 @@ db.user.belongsToMany(db.role, {
 //one to many relationship
 db.parent.hasMany(db.student, {
   foreignKey: "parentId",
-  targetKyKey: "parentId"
+  targetKyKey: "parentId",
+  onDelete: "cascade",
+  onUpdate: "cascade"
 });
 
 //one to many relationship
 db.school.hasMany(db.student, {
   foreignKey: "schoolId",
-  targetKyKey: "schoolId"
+  targetKyKey: "schoolId",
+  onDelete: "cascade",
+  onUpdate: "cascade"
 });
 
 //one to many relationship school and teacher
 db.school.hasMany(db.teacher, {
   foreignKey: "schoolId",
-  targetKyKey: "schoolId"
+  targetKyKey: "schoolId",
+  onDelete: "cascade",
+  onUpdate: "cascade"
 });
 
 //many to many relationships students and subjects
@@ -126,26 +133,32 @@ db.subject.hasMany(db.classlesson, {
 //one to many teacher and post
 db.teacher.hasMany(db.post, {
   foreignKey: "teacherId",
-  targetKey: "teacherId"
+  targetKey: "teacherId",
+  onDelete: "cascade",
+  onUpdate: "cascade"
 });
 
 //one to many teacher and comments
 db.teacher.hasMany(db.comment,{
   foreignKey: "teacherId",
-  targetKey: "teacherId"
+  targetKey: "teacherId",
+  onDelete: "cascade",
+  onUpdate: "cascade"
 });
 
 //one to many parent and comment
 db.parent.hasMany(db.comment, {
   foreignKey: "parentId",
-  targetKey: "parentId"
+  targetKey: "parentId",
+  onDelete: "cascade",
+  onUpdate: "cascade"
 });
 
 // one to many term and marks
 db.term.hasMany(db.mark, {
   foreignKey: "termId",
   targetKey: "termId"
-});
+})
 
 
 
@@ -153,7 +166,9 @@ db.term.hasMany(db.mark, {
 
 db.student.hasMany(db.mark, {
   foreignKey: "studentId",
-  targetKey: "studentId"
+  targetKey: "studentId",
+  onDelete: "cascade",
+  onUpdate: "cascade"
 });
 // one to many class and student
 db.class.hasMany(db.student,{
@@ -164,7 +179,9 @@ db.class.hasMany(db.student,{
 //one to many student and attendance
 db.student.hasMany(db.attendance, {
   foreignKey: "studentId",
-  targetKey: "studentId"
+  targetKey: "studentId",
+  onDelete: "cascade",
+  onUpdate: "cascade"
 });
 
 //one to many  class and 

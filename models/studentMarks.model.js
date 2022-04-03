@@ -6,7 +6,10 @@ module.exports = (sequelize, Sequelize) => {
         autoIncrement: true
       },
       
-      marks: {
+      student_score: {
+        type: Sequelize.INTEGER
+      },
+      total_score: {
         type: Sequelize.INTEGER
       },
       type: {
