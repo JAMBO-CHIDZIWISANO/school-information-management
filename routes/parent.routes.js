@@ -4,20 +4,20 @@ module.exports = app =>{
 
     var router = require("express").Router();
 
+    //delete parent
     router.delete("/parent/:parentId", parent.deleteParent);
 
-    // //create new school
+    // create new parent
     router.post("/addParent", parent.create);
 
-    // //get all students
+    // get all parent
     router.get("/getAllParents", parent.findAllParents);
 
-    // //get one school
+    // get one parent
     router.get("/parent/:parentId", parent.findOneParent);
 
-    // //update student
+    // update parent
     router.put("/parent/:parentId", parent.updateParentById);
-
 
     app.use("/api/smis", router);
 

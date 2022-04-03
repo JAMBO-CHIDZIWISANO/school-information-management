@@ -71,15 +71,14 @@ require("./routes/user.routes")(app);
 require("./routes/school.routes")(app);
 require("./routes/student.routes")(app);
 require("./routes/teacher.routes")(app);
-require("./routes/user_rolesroutes")(app);
 require("./routes/parent.routes")(app);
 require("./routes/post.routes")(app);
 require("./routes/comments.routes")(app);
 require("./routes/attendance.routes")(app)
 require("./routes/marks.routes")(app)
 require("./routes/subject.routes")(app)
-//1615 6283 7958 9581 4372
-//require("./routes/smsroutes")(app);
+require("./routes/classes.routes")(app);
+require("./routes/terms.routes")(app);
 
 //Set port, listen for requests
 const PORT =  process.env.PORT || 4000

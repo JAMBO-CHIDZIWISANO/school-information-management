@@ -4,22 +4,21 @@ module.exports = app =>{
 
     var router = require("express").Router();
 
+    //delete post
     router.delete("/post/:postId", post.deletePost);
 
-    // //create new school
+    // create new post
     router.post("/addPost", post.create);
 
-    // //get all students
+    // get all posts
     router.get("/getAllPosts", post.findAllPosts);
 
-    // //get one school
+    // get one post
     router.get("/post/:postId", post.findOnePost);
 
-    // //update student
+    // update post
     router.put("/post/:postId", post.updatePostById);
 
-
     app.use("/api/smis", router);
-
 
 }

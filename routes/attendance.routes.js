@@ -6,21 +6,22 @@ module.exports = app =>{
 
     router.delete("/attendance/:attendenceId", attendance.deleteAttendance);
 
-    // //create new school
+    // create new attendance
     router.post("/addAttendance", attendance.create);
 
-    // //get all students
+    // get all students on attendance
     router.get("/getAllAttendances", attendance.findAllAttendances);
 
    // route for  all present
    router.get("/getAllPresent", attendance.findAllPresent);
+
    // route for all absent
    router.get("/getAllAbsent", attendance.findAllAbsent);
 
-    // //get one school
+    // attendance for one student
     router.get("/attendance/:attendenceId", attendance.findOneAttendance);
 
-    // //update student
+    // //update student attendance
     router.put("/attendance/:attendenceId", attendance.updateAttendanceById);
 
 

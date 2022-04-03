@@ -105,4 +105,7 @@ Subject.findSubjectById = (subjectCode, result) => {
     });
   };
 
+  
+
+
 module.exports = Subject;

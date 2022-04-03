@@ -31,8 +31,8 @@ exports.create = (req, res)=>{
 
 // Retrieve all tComments from the databas.
 exports.findAllComments =(req, res) => {
-  const lastname = req.query.lastname;
-  Comment.findAllComments(lastname, (err, data) => {
+  const commentBody = req.query.commentBody;
+  Comment.findAllComments(commentBody, (err, data) => {
     if (err)
       res.status(500).send({
         message:

@@ -6,20 +6,18 @@ module.exports = app =>{
 
     router.delete("/comment/:commentId", comment.deleteComment);
 
-    // //create new school
+    // create new comment
     router.post("/addComment", comment.create);
 
-    // //get all students
+    // get all comment
     router.get("/getAllComments", comment.findAllComments);
 
-    // //get one school
+    //get one comment
     router.get("/comment/:commentId", comment.findOneComment);
 
-    // //update student
+    // update student
     router.put("/comment/:commentId", comment.updateCommentById);
 
-
     app.use("/api/smis", router);
-
 
 }

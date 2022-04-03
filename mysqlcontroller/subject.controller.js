@@ -101,3 +101,4 @@ exports.deleteSubject = (req, res) => {
     } else res.send({ message: `Post was deleted successfully!` });
   });
 };
+

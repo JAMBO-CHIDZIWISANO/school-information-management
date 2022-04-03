@@ -37,7 +37,6 @@ db.classlesson = require("../models/classlessons.model")(sequelize,Sequelize);
 db.classroom = require("../models/classrooms.model")(sequelize, Sequelize);
 db.post = require("../models/posts.model")(sequelize, Sequelize);
 db.comment = require("../models/comments.model")(sequelize, Sequelize);
-db.message = require("../models/messages.model")(sequelize, Sequelize);
 db.class = require("../models/class.model")(sequelize, Sequelize);
 db.term = require("../models/terms.model")(sequelize, Sequelize);
 db.mark = require("../models/studentMarks.model")(sequelize, Sequelize);
@@ -140,21 +139,6 @@ db.teacher.hasMany(db.comment,{
 db.parent.hasMany(db.comment, {
   foreignKey: "parentId",
   targetKey: "parentId"
-});
-
-//one to many teacher and message
-
-db.message.hasMany(db.teacher, {
-  foreignKey: "messageId",
-  targetKey: "messageId"
-});
-
-
-// one to many parent and messages
-
-db.message.hasMany(db.parent, {
-  foreignKey: "messageId",
-  targetKey: "messageId"
 });
 
 // one to many term and marks
