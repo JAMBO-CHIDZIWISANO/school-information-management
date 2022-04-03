@@ -4,7 +4,7 @@ import Comment from './comments/Comment'
 import './comments.css'
 
 
-const CommentForm = (props) => {
+const SubCommentsForm = (props) => {
 
   const message = useRef(null);
   // trigger the underline animation
@@ -69,4 +69,4 @@ const CommentForm = (props) => {
     </div>  
     )
   }
-export default CommentForm;
+export default SubCommentsForm;

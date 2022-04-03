@@ -7,6 +7,7 @@ import "./Home.css";
 const ViewTeachers = () => {
     const [data, setData] = useState([]);
 
+    // retrieving teacher information from database
     const loadData = async () => {
         const response = await axios.get("http://localhost:4000/api/smis/getAllTeachers");
         setData(response.data);
@@ -43,7 +44,7 @@ const ViewTeachers = () => {
                 <tr>
                     <th style={{textAlign: "center"}}>No. </th>
                     <th style={{textAlign: "center"}}>Firstname</th>
-                    <th style={{textAlign: "center"}}> </th>
+                    <th style={{textAlign: "center"}}>Middle Name</th>
                     <th style={{textAlign: "center"}}>Surname</th>
                     <th style={{textAlign: "center"}}>Gender</th>
                     <th style={{textAlign: "center"}}>Phone</th>
