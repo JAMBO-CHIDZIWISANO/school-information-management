@@ -11,7 +11,8 @@ exports.create = (req, res)=>{
 
     const mark = new Mark({
       markId: req.body.markId,
-      marks: req.body.marks,
+      student_score: req.body.student_score,
+      total_score: req.body.total_score,
       type: req.body.type,
       termId: req.body.termId,
       studentId: req.body.studentId,
