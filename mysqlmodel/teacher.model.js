@@ -10,6 +10,7 @@ const Teacher = function(teacher) {
     this.qualification = teacher.qualification;
     this.joinDate = teacher.joinDate;
     this.userId = teacher.userId;
+    this.schoolId = teacher.schoolId;
 
     
 }
