@@ -8,7 +8,7 @@ class Posts extends Component {
     constructor(props){
       super(props);
 
-      this.handleUsernameChange = this.handleUsernameChange.bind(this);
+      this.handleTeacherIdChange = this.handleTeacherIdChange.bind(this);
       this.handleCommentChange = this.handleCommentChange.bind(this);
       this.onSubmit = this.onSubmit.bind(this);
 
@@ -21,7 +21,7 @@ class Posts extends Component {
     }
 
     //handle form input field changes and update state
-    handleUsernameChange(e){
+    handleTeacherIdChange(e){
       this.setState({ teacherId: e.target.value});
     };
 
@@ -77,7 +77,7 @@ class Posts extends Component {
       <form onSubmit={this.onSubmit}>
         <div className="form-group">
           <input
-            onChange={this.handleUsernameChange}
+            onChange={this.handleTeacherIdChange}
             value={this.state.teacherId}
             className="form-control"
             placeholder="😎 Your username"

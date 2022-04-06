@@ -1,6 +1,7 @@
 // <<<<<<< Updated upstream
 // import React from 'react'
 import Display from './AdminPanel/ViewTeachers'
+
 // =======
 import React, { useState } from 'react';
 import Tabs, { tabsClasses }  from '@mui/material/Tabs';
@@ -79,7 +80,7 @@ const BoardAdmin = () => {
   };
 
   return (
-    <div >
+    <div className='container'>
 
       {/* box that hold views of admin panel board  */}
       <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>

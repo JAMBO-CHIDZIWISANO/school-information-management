@@ -42,8 +42,7 @@ class AddSubject extends Component {
     this.setState({
       subjectCode: "",
       subjectName: "",
-      className: "",
-      schoolTerm: "",
+      
     })
   } 
 

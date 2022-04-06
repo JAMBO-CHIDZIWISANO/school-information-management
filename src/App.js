@@ -47,7 +47,7 @@ function App() {
 
     return (
 
-        <>
+        <div className="App">
         <IconContext.Provider value={{color: '#fff'}}>
         <div className="navbar" >
             <Link to="#" className="px-4">
@@ -153,14 +153,12 @@ function App() {
                       parent
                     </Link>
                   </li>
-                )}
-                
+                )}  
                 
             </ul>
-
         </nav>
         </IconContext.Provider>
-        </> 
+        </div> 
     );
 }
 

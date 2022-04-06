@@ -1,4 +1,6 @@
-
+.App {
+    background-color: darkgrey;
+}
 .navbar {
     background-color:#1a83ff;
     height: 80px;
@@ -11,7 +13,6 @@
     margin-left: 2rem;
     font-size: 2rem;
     background: none; 
-
 }
 
 .navi-menu {

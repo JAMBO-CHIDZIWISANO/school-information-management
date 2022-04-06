@@ -17,20 +17,44 @@ export default class Profile extends Component {
       <div className="container">
         <header className="">
         </header>
-        
+        <div className="user-profile">
+          <div className="profile-pic">
+            <h1>Your Picture Here</h1>
+          </div>
         <p>
           <strong>username:</strong>{" "}
           {currentUser.username}
         </p>
         <p>
-          <strong>Email:</strong>{" "}
+          <strong>First Name:</strong>{" "}
+          {currentUser.username}
+        </p>
+        <p>
+          <strong>Surname:</strong>{" "}
+          {currentUser.username}
+        </p>
+        <p>
+          <strong>Current Class:</strong>{" "}
+          {currentUser.username}
+        </p>
+        <p>
+          <strong>Physical Address:</strong>{" "}
+          {currentUser.username}
+        </p>
+        <p>
+          <strong>Contact Numbers:</strong>{" "}
           {currentUser.email}
+        </p>
+        <p>
+          <strong>E-mail Address:</strong>{" "}
+          {currentUser.username}
         </p>
         <strong>Authorities:</strong>
         <ul>
           {currentUser.roles &&
             currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
         </ul>
+        </div>
       </div>
     );
   }
