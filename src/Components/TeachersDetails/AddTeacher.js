@@ -1,4 +1,6 @@
+import { PersonAddAlt1Sharp } from "@mui/icons-material";
 import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import userService from "../services/user.service";
 
@@ -88,15 +90,19 @@ const AddTeacher = () => {
     <div className="container">
       <hr />
       <div style={{textAlign: "right"}}>
-      <Link to={"/admin"}> 
-          <input type="button" value="Back" className="btn btn-primary btn-block" />
-        </Link>
-        <Link to={"/admin/viewTeachers"}> 
-          <input type="button" value="View Teachers" className="btn btn-primary btn-block" />
-        </Link>
+
+      <Link to={"/admin/teacher-record"}> 
+        <Button  variant="primary">
+          back
+        </Button>
+      </Link>
+
+        
     
-        <Link to={"/manage-teachers"}> 
-          <input type="button" value="Manage Teachers" className="btn btn-primary btn-block" />
+        <Link to={"/admin/add-sdteacher"}> 
+            <Button variant="primary">
+                <PersonAddAlt1Sharp/>
+            </Button>
         </Link>
       </div>
       <hr/>
@@ -217,7 +223,12 @@ const AddTeacher = () => {
              
               <div className="form-group">
                 <button className="btn btn-primary btn-block">Submit</button>
+                <Link to={"/admin/add-sdteacher"}>
+                <Button variant="primary">add another teacher</Button>
+                </Link>
               </div>
+
+              
            
         </form>
         </div>

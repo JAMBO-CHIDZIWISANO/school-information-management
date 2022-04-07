@@ -21,6 +21,8 @@ import AddSubject from './Components/AdminPanel/AddSubject'
 
 import ViewTeachers from './Components/AdminPanel/ViewTeachers'
 import AddTSecurityDetails from './Components/TeachersDetails/AddTSecurityDetails';
+import Display from './Components/TeachersDetails/DisplayTeachers';
+import AddTeacher from './Components/TeachersDetails/AddTeacher';
 
 
 //import StudentList from "./Components/StudentDetails/StudentList"
@@ -46,7 +48,9 @@ ReactDOM.render(
         <Route path="/admin/addSubject" element={<AddSubject/>} />
         
         <Route path="/admin/viewTeachers" element={<ViewTeachers/>} />
+        <Route path="/admin/teacher-record" element={<Display/>} />
         <Route path="/admin/add-sdteacher" element={<AddTSecurityDetails/>} />
+        <Route path='/admin/add-tpersondetails' element={< AddTeacher/>}/>
         <Route path="/admin" element={<BoardAdmin/>} />
 
         <Route path="/admin/students-details" element={<StudentDetails/>}/>
@@ -54,8 +58,6 @@ ReactDOM.render(
         <Route path="/admin/exam-records" element={<ExamsRecords/>}/>
         <Route path="/admin/spersonal-details" element={<SPersonalDetailsForm/>} />
 
-        
-        
       </Routes>
     </Router>,
     

@@ -12,7 +12,7 @@ import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
 import SwipeableViews from 'react-swipeable-views';
 import PropTypes from 'prop-types';
-import AddTeacher from './AdminPanel/AddTeacher';
+import AddTeacher from './TeachersDetails/AddTeacher';
 //import AddStudent from './AdminPanel/AddStudent';
 import AddParent from './AdminPanel/AddParent';
 import AddSubject from './AdminPanel/AddSubject';

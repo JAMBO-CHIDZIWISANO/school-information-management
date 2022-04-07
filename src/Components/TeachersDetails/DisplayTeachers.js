@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react"
 import {Link} from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
-import "./Home.css";
+//import "./Home.css";
+import { Button, Table } from "react-bootstrap";
+import {  PersonAddAlt1Sharp } from "@mui/icons-material";
 
 const Display = () => {
     const [data, setData] = useState([]);
@@ -18,10 +20,10 @@ const Display = () => {
     }, []);
 
     // deleting user
-    const deleteUser = (teacherId) => {
+    const deleteTeacher = (teacherId) => {
         if (window.confirm("Are you sure you want to delete this User ?")
         ) {
-          axios.delete(`http://localhost:4000/api/smis/teacher/'%${teacherId}'`);
+          axios.delete(`http://localhost:4000/api/smis/teacher/${teacherId}`);
           toast.success("User Deleted Successfully");
           // refreshing the window
           setTimeout(() => loadData(), 500);
@@ -29,10 +31,34 @@ const Display = () => {
     };
 
   return (
-    <div style={{marginTop: "40px"}}>
+    <div style={{marginTop: "40px"}} className="container">
+
+        <div>
+        <hr />
+      <div style={{textAlign: "right"}}>
+
+      <Link to={"/admin/teacher-record"}> 
+        <Button  variant="primary">
+          back
+        </Button>
+      </Link>
+
+        
+    
+        <Link to={"/admin/add-sdteacher"}> 
+            <Button variant="primary">
+                <PersonAddAlt1Sharp/>
+            </Button>
+        </Link>
+      </div>
+      <hr/>
+        </div>
+
+
       
-        <h1>LIST OF TEACHERS</h1>
-        <table className="table">
+        <h1 className="text-center ">LIST OF TEACHERS</h1>
+
+        <Table className="table-hover table-bordered table-striped">
             <thead>
                 <tr>
                     <th style={{textAlign: "center"}}>No. </th>
@@ -51,17 +77,18 @@ const Display = () => {
                         <tr key={item.teacherId} >
                                 <th scope="row">{index+1}</th>
                                 <td>{item.firstname}</td>
-                                <td>{item.middlename}</td>
                                 <td>{item.surname}</td>
                                 <td>{item.gender}</td>
                                 <td>{item.qualification}</td>
                                 <td>{item.joinDate}</td>
                                 <td>
+
+                                
                                     <Link to={`/update/&{item.id}`}>
                                        <button className="btn btn-edit" >Edit</button>
                                     </Link>
 
-                                    <button className="btn btn-delete" onClick={() => deleteUser(item.id)}>Delete</button>
+                                    <button className="btn btn-delete" onClick={() => deleteTeacher(item.teacherId)}>Delete</button>
 
                                     <Link to={`/view/&{item.id}`}>
                                        <button className="btn btn-view" >View</button>
@@ -71,7 +98,7 @@ const Display = () => {
                     )
                 })}
             </tbody>
-        </table>
+        </Table>
         
     </div>
   )

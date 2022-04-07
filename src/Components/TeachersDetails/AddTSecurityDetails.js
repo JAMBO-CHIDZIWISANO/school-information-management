@@ -1,4 +1,6 @@
+import { PersonAddAlt1Sharp } from '@mui/icons-material';
 import React, { useState} from 'react'
+import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AuthService from '../services/auth.service';
 
@@ -53,18 +55,23 @@ const AddTSecurityDetails = () => {
   return (
     <div className='container'>
         <hr />
-        <div style={{textAlign: "right"}}>
-            <Link to={"/admin"}> 
-                <input type="button" value="Back" className="btn btn-primary btn-block" />
-            </Link>
-            <Link to={"/admin/viewTeachers"}> 
-                <input type="button" value="View Teachers" className="btn btn-primary btn-block" />
-            </Link>
-            <Link to={"/manage-teachers"}> 
-                <input type="button" value="Manage Teachers" className="btn btn-primary btn-block" />
-            </Link>
-        </div>
-        <hr/>
+      <div style={{textAlign: "right"}}>
+
+      <Link to={"/admin/teacher-record"}> 
+        <Button  variant="primary">
+          back
+        </Button>
+      </Link>
+
+        
+    
+        <Link to={"/admin/add-sdteacher"}> 
+            <Button variant="primary">
+                <PersonAddAlt1Sharp/>
+            </Button>
+        </Link>
+      </div>
+      <hr/>
 
         <div className="col-md-6">
         <h3 className="text-center" >Teacher Sign Up Form</h3><hr/>
@@ -109,7 +116,15 @@ const AddTSecurityDetails = () => {
 
             <div className="form-group">
               <button className="btn btn-primary btn-block">Sign Up</button>
+
+              <Link to={"/admin/add-tpersondetails"}>
+                <Button variant="primary">next</Button>
+                </Link>
             </div>
+
+            <div>
+                
+              </div>
 
           </div>
           )}

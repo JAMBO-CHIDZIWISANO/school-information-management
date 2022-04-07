@@ -11,7 +11,7 @@ import * as AiIcons from "react-icons/ai";
 //import {AppSideBar} from './AppSideBar';
 import { IconContext } from "react-icons/lib";
 import AuthService from "./Components/services/auth.service"
-import { Person } from "@mui/icons-material";
+import { PeopleAlt, Person } from "@mui/icons-material";
 
 
       
@@ -112,8 +112,16 @@ function App() {
                 {showAdminBoard&&(
                   <li>
                   <Link to="/admin/students-details" className="nav-text">
-                    <AiIcons.AiFillHome/>
+                    <PeopleAlt/>
                     Student Records
+                   </Link>
+                </li>
+                )}
+                {showAdminBoard&&(
+                  <li>
+                  <Link to="/admin/teacher-record" className="nav-text">
+                    <PeopleAlt/>
+                    Teacher Records
                    </Link>
                 </li>
                 )}

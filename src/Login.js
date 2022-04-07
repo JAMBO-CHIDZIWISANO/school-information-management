@@ -58,29 +58,18 @@ const Login = () => {
     
     <section className='vh-100'  >
         <div className="container py-5 ">
-            <div className="row d-flex justify-content-center aligh-items-center h-100">
-                <div className="col col-xl-10">
-                    <div className="">
-                        <div className="row g-0">
-                            <div className=" col-md-6 col-lg-5 d-none d-md-block ">
-                                <img
-                                    src={pic}
-                                    alt='"login form'
-                                    className="img-fluid"
-                                />
-                            </div>
-
-                            <div className="col-md-6 col-lg-7 d-flex align-items-center">
-                                <div className="card-body p-4 p-lg-5 text-black">
+            <div className="d-flex justify-content-center aligh-items-center">
+                <div className=" ">
+                    
+                                <div className=" col-md-10  ">
                         
                                     <form onSubmit={handleLogin} >
 
-                                        <div className="d-flex align-items-center mb-3 pb-1">
-                                            <i className="fas fa-cubes fa-2x me-3"></i>
-                                            <span className="h1 fw-bold mb-0"><h2>BANGULA SECONDARY SCHOOL</h2></span>
+                                        <div className="d-flex align-items-center text-center">
+                                            <span className="h1 fw-bold "><h2>BANGULA SECONDARY SCHOOL</h2></span>
                                         </div>
 
-                                        <h5 className="fw-normal mb-3 pb-3">Sign In</h5>
+                                        <h2 className="fw-normal text-center">Sign In</h2>
                                         
                                         <div className="form-outline mb-4">
                                             <label 
@@ -90,7 +79,7 @@ const Login = () => {
                                              
                                             <input 
                                                 type="text" 
-                                                autoComplete="falsee"
+                                                autoComplete="false"
                                                 placeholder="Enter your Username"
                                                 onChange={onChangeUsername}
                                                 name="username"
@@ -118,7 +107,7 @@ const Login = () => {
 
                                         <div className="pt-1 mb-4">
                                             <button 
-                                                className="btn btn-dark btn-lg btn-block"
+                                                className="btn btn-primary btn-lg btn-block"
                                                 >
                                                 {loading&&( <span className='spinner-border spinner-border-sm'></span>)}
                                                 <span>Sign in</span>
@@ -136,9 +125,7 @@ const Login = () => {
                                     </form>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
+                        
             </div>
         </div>
     </section>

@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {Table } from "react-bootstrap";
-import StudentTableRow from "../AdminPanel/StudentTableRow";
+import StudentTableRow from "./StudentTableRow";
 
 import Form1Students from "./Form1Students"
 import Form2Students from "./Form2Students"
