@@ -112,3 +112,77 @@ class Posts extends Component {
 }
 
 export default Posts
+
+// import axios from "axios";
+// import React, {useEffect, useState} from "react";
+// import { useParams } from "react-router-dom";
+// import { toast } from "react-toastify";
+
+// const SmisComments = () => {
+//   const {smisPostsId} = useParams();
+//   const [data, setData] = useState([]);
+  
+//     const loadData = async () => {
+//       const response = await axios.get(`http://localhost:4000/api/smis/smisPosts/${smisPostsId}`); 
+//       setData(response.data);    
+//   };
+  
+//   // refresh window
+//   useEffect(() => {
+//       loadData();
+//       // loadComments();
+//   }, []);
+ 
+    
+ 
+
+//   // deleting user
+//   const deletePost = (smisPostsId) => {
+//     if (window.confirm("Are you sure you want to delete this User ?")
+//     ) {
+//       axios.delete(`http://localhost:4000/api/smis/smisPost/${smisPostsId}`);
+//       toast.success("User Deleted Successfully");
+//       // refreshing the window
+//       setTimeout(() => loadData(), 500);
+//     }
+// };
+
+//   return (
+//     <div>
+//         <div className="posts">
+//         {data.map((item, index) => {
+//               return (
+//                   <div className="smisposts" >
+//                       Post Title : <h3>{item.username}</h3>
+//                       Post Subject :<h3>{item.title}</h3>
+//                       Post Body : <h3>{item.smisPosts}</h3>
+//                   </div>               
+//               )
+//           })}
+//         </div>
+      
+  
+//         {/* <b>No data found to display.</b>
+//         <td>
+//             <button className="btn btn-edit" >Edit</button>
+//             <button className="btn btn-delete" onClick={() => deletePost(item.smisPostsId)}>Delete</button>
+//         </td>
+//  */}
+
+
+//         <div className="commentsRightside">
+//           <div className="addCommentContainer">
+//             <input type="text" placeholder="comment...." autoComplete="off" />
+//             <button>Add Comment</button>
+//           </div>
+//           <div className="listOfComments">
+//             {/* {comments.map((comment, key) => {
+//               return <div key={key} className="comment">{comment.smisComments}</div>
+//             })} */}
+//           </div>
+//         </div>
+//     </div>
+//   );
+// }
+
+// export default SmisComments

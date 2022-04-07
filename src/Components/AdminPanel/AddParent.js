@@ -53,15 +53,16 @@ const AddParent = () => {
     const surname = e.target.value;
     setSurname(surname);
   };
-
-  const onChangePhoneNo = (e) => {
-    const phoneNo = e.target.value;
-    setPhoneNo(phoneNo);
-  };
+  
   const onChangeGender = (e) => {
     const gender = e.target.value;
     setGender(gender);
   };
+  const onChangePhoneNo = (e) => {
+    const phoneNo = e.target.value;
+    setPhoneNo(phoneNo);
+  };
+
   const onChangeAddress = (e) => {
     const address = e.target.value;
     setAddress(address);
@@ -202,9 +203,9 @@ const AddParent = () => {
           </div>
 
           <div className="form-group">
-            <strong htmlFor="phoneNo">Lastname</strong>
-            <input type="tel" className="form-control" name="phoneNo"
-                value={phoneNo} onChange={onChangePhoneNo} required
+            <strong htmlFor="surname">Surname</strong>
+            <input type="text" className="form-control" name="surname"
+                value={phoneNo} onChange={onChangeSurname} required
             />
           </div>
 

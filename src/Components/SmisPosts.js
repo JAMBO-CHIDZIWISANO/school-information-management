@@ -12,9 +12,9 @@ class SmisPosts extends Component {
        
     this.onSubmit = this.onSubmit.bind(this);
     this.state = {
+      username: "",
       title: "",
       smisPosts: "",
-      username: "",
     }
   }
  
