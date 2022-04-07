@@ -11,10 +11,10 @@ const SmisComments = () => {
   };
   // refresh window
 
-      useEffect(() => {
-          loadData();
-      }, []);
-    
+  useEffect(() => {
+      loadData();
+  }, []);
+
   // deleting user
   const deletePost = (smisPostsId) => {
     if (window.confirm("Are you sure you want to delete this User ?")
@@ -33,9 +33,9 @@ const SmisComments = () => {
 
           <tr>
             <th style={{textAlign: "center"}}>No. </th>
-            <th style={{textAlign: "center"}}>Username</th>
             <th style={{textAlign: "center"}}>Post Title</th>
             <th style={{textAlign: "center"}}>Post Body</th>
+            <th style={{textAlign: "center"}}>Username</th>
             <th style={{textAlign: "center"}}>Action</th> 
                     
           </tr>
@@ -46,9 +46,10 @@ const SmisComments = () => {
             return (
               <tr key={item.smisPostsId}>
                 <th scope="row">{index+1}</th>
-                <td>{item.username}</td>
                 <td>{item.postTitle}</td>
                 <td>{item.postBody}</td>
+                <td>{item.username}</td>
+
               {/* <b>No data found to display.</b> */}
               <td>
                   <button className="btn btn-edit" >Edit</button>

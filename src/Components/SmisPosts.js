@@ -37,7 +37,7 @@ class SmisPosts extends Component {
     };
     console.log(data);
 
-    axios.post("http://localhost:4000/api/smis/AddSmisComment", data)
+    axios.post("http://localhost:4000/api/smis/addSmisPosts", data)
       .then((res)=>{
         console.log(res.data)
       }).catch((error)=>{

@@ -4,17 +4,17 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import "./Home.css";
 
-const Display = () => {
-    const [data, setData] = useState([]);
+const DisplayParents = () => {
+    const [parent, setParent] = useState([]);
 
-    const loadData = async () => {
+    const loadParent = async () => {
         const response = await axios.get("http://localhost:4000/api/smis//getAllTeachers");
-        setData(response.data);
+        setParent(response.data);
         
     };
     // refreshing the window
     useEffect(() => {
-        loadData();
+        loadParent();
     }, []);
 
     // deleting user
@@ -24,29 +24,29 @@ const Display = () => {
           axios.delete(`http://localhost:4000/api/smis/teacher/'%${teacherId}'`);
           toast.success("User Deleted Successfully");
           // refreshing the window
-          setTimeout(() => loadData(), 500);
+          setTimeout(() => loadparent(), 500);
         }
     };
 
   return (
     <div style={{marginTop: "40px"}}>
       
-        <h1>LIST OF TEACHERS</h1>
+        <h1>LIST OF Parents</h1>
         <table className="table">
             <thead>
                 <tr>
-                    <th style={{textAlign: "center"}}>No. </th>
-                    <th style={{textAlign: "center"}}>Firstname</th>
-                    <th style={{textAlign: "center"}}>Surname</th>
-                    <th style={{textAlign: "center"}}>Gender</th>
-                    <th style={{textAlign: "center"}}>Qualification</th>
-                    <th style={{textAlign: "center"}}>Join Date</th>
-                    <th style={{textAlign: "center"}}>Action</th>
+                    <th>No. </th>
+                    <th>Firstname</th>
+                    <th>Surname</th>
+                    <th>Gender</th>
+                    <th>Qualification</th>
+                    <th>Join Date</th>
+                    <th>Action</th>
                 </tr>
             </thead>
 
             <tbody>
-                {data.map((item, index) => {
+                {parent.map((item, index) => {
                     return (
                         <tr key={item.teacherId} >
                                 <th scope="row">{index+1}</th>
@@ -77,4 +77,4 @@ const Display = () => {
   )
 }
 
-export default Display;
+export default DisplayParents;
