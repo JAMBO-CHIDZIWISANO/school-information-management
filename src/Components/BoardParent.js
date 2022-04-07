@@ -1,9 +1,9 @@
 import React from 'react'
+import DisplayParents from './AdminPanel/DisplayParents'
 
 const BoardParent = () => {
   return (
     <div>
-      <h2>parent</h2>
     </div>
   )
 }

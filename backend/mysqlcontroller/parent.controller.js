@@ -17,7 +17,6 @@ exports.create = (req, res)=>{
         gender: req.body.gender,
         address: req.body.address,
         userId: req.body.userId,
-        messageId: req.body.messageId
       });
 
       // Save parent in the database

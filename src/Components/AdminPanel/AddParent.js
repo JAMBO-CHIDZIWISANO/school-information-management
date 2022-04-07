@@ -202,13 +202,6 @@ const AddParent = () => {
           </div>
 
           <div className="form-group">
-            <strong htmlFor="surname">Middle Name</strong>
-            <input type="text" className="form-control" name="surname"
-                value={surname} onChange={onChangeSurname} required
-            />
-          </div>
-
-          <div className="form-group">
             <strong htmlFor="phoneNo">Lastname</strong>
             <input type="tel" className="form-control" name="phoneNo"
                 value={phoneNo} onChange={onChangePhoneNo} required
@@ -226,10 +219,14 @@ const AddParent = () => {
               <option >Tap to Choose</option>
               <option >Male</option>
               <option>Female</option>
-              </select>
-            
+              </select> 
           </div>
-
+          <div className="form-group">
+            <strong htmlFor="phone">Phone Number</strong>
+            <input type="phone" className="form-control" name="phone"
+                value={phoneNo} onChange={onChangePhoneNo} required
+            />
+          </div>
           <div className="form-group">
             <strong htmlFor="address">Address</strong>
             <input type="text" className="form-control" name="address"

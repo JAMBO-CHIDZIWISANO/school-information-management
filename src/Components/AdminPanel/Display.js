@@ -35,13 +35,13 @@ const Display = () => {
         <table className="table">
             <thead>
                 <tr>
-                    <th style={{textAlign: "center"}}>No. </th>
-                    <th style={{textAlign: "center"}}>Firstname</th>
-                    <th style={{textAlign: "center"}}>Surname</th>
-                    <th style={{textAlign: "center"}}>Gender</th>
-                    <th style={{textAlign: "center"}}>Qualification</th>
-                    <th style={{textAlign: "center"}}>Join Date</th>
-                    <th style={{textAlign: "center"}}>Action</th>
+                    <th>No. </th>
+                    <th>Firstname</th>
+                    <th>Surname</th>
+                    <th>Gender</th>
+                    <th>Qualification</th>
+                    <th>Join Date</th>
+                    <th>Action</th>
                 </tr>
             </thead>
 
@@ -51,7 +51,6 @@ const Display = () => {
                         <tr key={item.teacherId} >
                                 <th scope="row">{index+1}</th>
                                 <td>{item.firstname}</td>
-                                <td>{item.middlename}</td>
                                 <td>{item.surname}</td>
                                 <td>{item.gender}</td>
                                 <td>{item.qualification}</td>
@@ -62,10 +61,6 @@ const Display = () => {
                                     </Link>
 
                                     <button className="btn btn-delete" onClick={() => deleteUser(item.id)}>Delete</button>
-
-                                    <Link to={`/view/&{item.id}`}>
-                                       <button className="btn btn-view" >View</button>
-                                    </Link>
                                 </td>
                         </tr>
                     )

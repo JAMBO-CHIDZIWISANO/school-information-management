@@ -1,6 +1,8 @@
 // <<<<<<< Updated upstream
 // import React from 'react'
 import Display from './AdminPanel/ViewTeachers'
+import DisplayParents from './AdminPanel/DisplayParents'
+
 
 // =======
 import React, { useState } from 'react';
@@ -131,6 +133,7 @@ const BoardAdmin = () => {
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
         <AddParent />
+        <DisplayParents />
         </TabPanel>
         <TabPanel value={value} index={3} dir={theme.direction}>
         <AddSubject />
