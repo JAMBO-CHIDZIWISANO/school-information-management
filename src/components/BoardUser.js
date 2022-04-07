@@ -3,6 +3,8 @@ import Posts from './Posts'
 import axios from 'axios'
 import CommentForm from './usersComments/CommentForm'
 import MessageScroll from './usersComments/MessageScroll'
+import SmisPosts from './SmisPosts'
+import SmisComments from './SmisComments'
  
 
 const BoardUser = () => {
@@ -45,9 +47,12 @@ const BoardUser = () => {
     {/* // {post.map(items => <h2 className='card-header'></h2>)} */}
       <div className='card-body'>
       {/* {post.map(items => <p className=''>{items.postBody}</p>)} */}
-        <Posts />
+        {/* <Posts />
         <CommentForm autoFocus={false} />
-        <MessageScroll/>
+        <MessageScroll/> 
+        */}
+        <SmisPosts />
+        <SmisComments/>
         {
           comment.map((item)=>
           <h1>{item.postBody}...{item.commentBody}</h1>
