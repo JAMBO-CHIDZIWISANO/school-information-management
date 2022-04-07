@@ -13,8 +13,9 @@ exports.create = (req, res)=>{
     const post = new Post({
         postId: req.body.postId,
         postTitle: req.body.postTitle,
-        postBody: req.body.postBody,
-        teacherId: req.body.teacherId,
+        surname : req.body.surname,
+        // postBody: req.body.postBody,
+        // teacherId: req.body.teacherId,
     });
 
       // Save post in the database

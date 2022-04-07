@@ -17,8 +17,7 @@ exports.create = (req, res)=>{
         gender: req.body.gender,
         qualification: req.body.qualification,
         joinDate: req.body.joinDate,
-        userId: req.body.userId,
-        schoolId: req.body.schoolId
+        userId: req.body.userId
       });
 
       // Save teacher in the database

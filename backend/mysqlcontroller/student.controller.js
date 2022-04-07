@@ -62,23 +62,6 @@ exports.findOneStudent = (req, res) => {
   });
 };
 
-//logged details of a student
-exports.findLoggedStudent = (req, res) => {
-  Student.findStudentByUsername(req.params.username, (err, data) => {
-    if (err) {
-      if (err.kind === "not_found") {
-        res.status(404).send({
-          message: `Not found student with username ${req.params.username}.`
-        });
-      } else {
-        res.status(500).send({
-          message: "Error retrieving Student with username " + req.params.username
-        });
-      }
-    } else res.send(data);
-  });
-};
-
 
 //update a Student
 exports.updateStudentById = (req, res) => {

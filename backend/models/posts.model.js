@@ -7,11 +7,24 @@ module.exports = (sequelize, Sequelize) => {
       },
 
       postTitle: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
+
       },
       postBody: {
-        type: Sequelize.STRING
-      }
+        type: Sequelize.STRING,
+        allowNull: false,
+
+      },
+      username : {
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
     });
+    Post.associate = (models) => {
+      Post.hasMany(models.Comment, {
+        onDelete: "cascade",
+      });
+    };
     return Post;
   };

@@ -14,9 +14,6 @@ module.exports = app =>{
     // //get all students
     router.get("/getAllStudents", student.findAllStudents);
 
-    //router for logged in student
-    router.get("/studentd/:username", student.findLoggedStudent)
-
      // //get all form 1 students
      router.get("/getForm1Students", student.findForm1Students);
 

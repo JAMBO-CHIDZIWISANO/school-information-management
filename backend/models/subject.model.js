@@ -5,7 +5,8 @@ module.exports = (sequelize, Sequelize) => {
         primaryKey: true
       },
       subjectName: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
       }
     });
     return Subject;

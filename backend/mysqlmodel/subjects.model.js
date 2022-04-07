@@ -5,7 +5,7 @@ const Subject = function(subject) {
     this.subjectCode = subject.subjectCode;
     this.subjectName = subject.subjectName;
 }
-//insrt a teacherinto a system
+//insrt a teacher into a system
 Subject.create = (newSubject, result)=> {
     
     sql.query("INSERT INTO subjects SET ?", newSubject, (err, res)=>{
@@ -39,7 +39,7 @@ Subject.findSubjectById = (subjectCode, result) => {
     });
   };
 
-  //retrieving all teachers
+  //retrieving all subjects
   Subject.findAllSubjects = (subjectCode, result) => {
     let query = "SELECT subjectCode, subjectName FROM subjects";
     if (subjectCode) {

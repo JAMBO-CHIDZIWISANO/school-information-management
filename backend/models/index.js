@@ -42,6 +42,10 @@ db.term = require("../models/terms.model")(sequelize, Sequelize);
 db.mark = require("../models/studentMarks.model")(sequelize, Sequelize);
 db.attendance = require("../models/attendance.model")(sequelize, Sequelize);
 
+db.smiscomments = require("../models/smiscomments.model")(sequelize, Sequelize);
+db.smisposts = require("../models/Smisposts.model")(sequelize, Sequelize);
+
+
 
 //teachers and users table 1 to 1 relationship
 db.user.hasOne(db.teacher, {
@@ -78,6 +82,15 @@ db.parent.hasMany(db.student, {
   onDelete: "cascade",
   onUpdate: "cascade"
 });
+
+//one to many relationship smiscomments and smisposts
+db.smisposts.hasMany(db.smiscomments, {
+  foreignKey: "smisPostsId",
+  targetKyKey: "smisPostsId",
+  onDelete: "cascade",
+  onUpdate: "cascade"
+  
+})
 
 //one to many relationship
 db.school.hasMany(db.student, {

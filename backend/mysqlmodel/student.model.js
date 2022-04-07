@@ -48,24 +48,6 @@ Student.findStudentById = (studentId, result) => {
     });
   };
 
-  //retrieving student details
-  Student.findStudentByUsername = (username, result) => {
-    sql.query(`SELECT students.firstname, students.surname, users.email, classes.className, schools.schoolName, schools.schoolAdress,schools.schoolLocation,schools.schoolPhoneNo from users inner join students on users.username=students.userId inner join schools on students.schoolId=schools.schoolId join classes on students.classId=classes.classId where users.username LIKE  '%${username}%'`, (err, res) => {
-      if (err) {
-        console.log("error: ", err);
-        result(err, null);
-        return;
-      }
-      if (res.length) {
-        console.log("found student: ", res[0]);
-        result(null, res[0]);
-        return;
-      }
-      // not found student with the id
-      result({ kind: "not_found" }, null);
-    });
-  };
-
   //retrieving all students
   Student.findAllStudents = (surname, result) => {
     let query = "SELECT * FROM students";
