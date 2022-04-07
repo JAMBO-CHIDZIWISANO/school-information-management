@@ -61,13 +61,13 @@ const Display = () => {
         <Table className="table-hover table-bordered table-striped">
             <thead>
                 <tr>
-                    <th style={{textAlign: "center"}}>No. </th>
-                    <th style={{textAlign: "center"}}>Firstname</th>
-                    <th style={{textAlign: "center"}}>Surname</th>
-                    <th style={{textAlign: "center"}}>Gender</th>
-                    <th style={{textAlign: "center"}}>Qualification</th>
-                    <th style={{textAlign: "center"}}>Join Date</th>
-                    <th style={{textAlign: "center"}}>Action</th>
+                    <th>No. </th>
+                    <th>Firstname</th>
+                    <th>Surname</th>
+                    <th>Gender</th>
+                    <th>Qualification</th>
+                    <th>Join Date</th>
+                    <th>Action</th>
                 </tr>
             </thead>
 
@@ -93,6 +93,8 @@ const Display = () => {
                                     <Link to={`/view/&{item.id}`}>
                                        <button className="btn btn-view" >View</button>
                                     </Link>
+
+                                    <button className="btn btn-delete" onClick={() => deleteUser(item.id)}>Delete</button>
                                 </td>
                         </tr>
                     )

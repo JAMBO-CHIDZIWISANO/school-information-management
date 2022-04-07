@@ -5,26 +5,27 @@ import axios from "axios";
 import "./Home.css";
 
 const DisplayParents = () => {
-    const [parent, setParent] = useState([]);
+    const [data, setData] = useState([]);
 
-    const loadParent = async () => {
-        const response = await axios.get("http://localhost:4000/api/smis//getAllTeachers");
-        setParent(response.data);
+    const loadData = async () => {
+        const response = await axios.get("http://localhost:4000/api/smis//getAllParents");
+        setData(response.data);
         
     };
     // refreshing the window
     useEffect(() => {
-        loadParent();
+        loadData();
     }, []);
 
     // deleting user
-    const deleteUser = (teacherId) => {
+    const deleteUser = (parentId) => {
         if (window.confirm("Are you sure you want to delete this User ?")
-        ) {
-          axios.delete(`http://localhost:4000/api/smis/teacher/'%${teacherId}'`);
+        ) {     
+          axios.delete(`http://localhost:4000/api/smis/parent/${parentId}`);
+
           toast.success("User Deleted Successfully");
           // refreshing the window
-          setTimeout(() => loadparent(), 500);
+          setTimeout(() => loadData(), 500);
         }
     };
 
@@ -39,33 +40,27 @@ const DisplayParents = () => {
                     <th>Firstname</th>
                     <th>Surname</th>
                     <th>Gender</th>
-                    <th>Qualification</th>
-                    <th>Join Date</th>
+                    <th>Phone Number</th>
+                    <th>Address</th>
                     <th>Action</th>
                 </tr>
             </thead>
 
             <tbody>
-                {parent.map((item, index) => {
+                {data.map((item, index) => {
                     return (
-                        <tr key={item.teacherId} >
+                        <tr key={item.parentId}>
                                 <th scope="row">{index+1}</th>
                                 <td>{item.firstname}</td>
-                                <td>{item.middlename}</td>
                                 <td>{item.surname}</td>
                                 <td>{item.gender}</td>
-                                <td>{item.qualification}</td>
-                                <td>{item.joinDate}</td>
+                                <td>{item.phoneNo}</td>
+                                <td>{item.address}</td>
                                 <td>
                                     <Link to={`/update/&{item.id}`}>
                                        <button className="btn btn-edit" >Edit</button>
                                     </Link>
-
-                                    <button className="btn btn-delete" onClick={() => deleteUser(item.id)}>Delete</button>
-
-                                    <Link to={`/view/&{item.id}`}>
-                                       <button className="btn btn-view" >View</button>
-                                    </Link>
+                                    <button className="btn btn-delete" onClick={() => deleteUser(item.parentId)}>Delete</button>
                                 </td>
                         </tr>
                     )

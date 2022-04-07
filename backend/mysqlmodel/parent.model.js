@@ -9,7 +9,6 @@ const Parent = function(parent) {
     this.address = parent.address;
     this.phoneNo = parent.phoneNo;
     this.userId = parent.userId;
-    this.messageId = parent.messageId
 
     
 }
@@ -99,8 +98,8 @@ Parent.findParentById = (parentId, result) => {
 
   //delete al parent by id
   Parent.deleteParent = (parentId, result) => {
-    
-    sql.query(`DELETE FROM parents WHERE parentId LIKE '%${parentId}'`, 
+       
+    sql.query("DELETE FROM parents WHERE parentId = ?", 
     
     parentId, (err, res) => {
       if (err) {
