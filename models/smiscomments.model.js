@@ -1,15 +1,14 @@
 module.exports = (sequelize, Sequelize) => {
-    const Comment = sequelize.define("comments", {
-      commentId: {
+    const Smiscomments = sequelize.define("smiscomments", {
+        smisCommentsId: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true
       },
-      commentBody: {
+      smisComments: {
         type: Sequelize.STRING,
         allowNull: false,
-        
       }
     });
-    return Comment;
+    return Smiscomments;
   };

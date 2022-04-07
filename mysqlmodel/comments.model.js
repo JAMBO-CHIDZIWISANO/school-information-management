@@ -6,11 +6,9 @@ const Comment = function(comment) {
     this.commentBody = comment.commentBody;
     this.teacherId = comment.teacherId;
     this.parentId = comment.parentId;
-    
-
-    
+  
 }
-//insrt a comment into a system
+//insert a comment into a system
 Comment.create = (newComment, result)=> {
     
     sql.query("INSERT INTO comments SET ?", newComment, (err, res)=>{

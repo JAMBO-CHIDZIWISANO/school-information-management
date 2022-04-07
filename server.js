@@ -80,6 +80,10 @@ require("./routes/subject.routes")(app)
 require("./routes/classes.routes")(app);
 require("./routes/terms.routes")(app);
 
+require("./routes/smiscomments.routes")(app);
+require("./routes/smisposts.routes")(app);
+
+
 //Set port, listen for requests
 const PORT =  process.env.PORT || 4000
 app.listen(PORT, ()=>console.log('helloo'));
