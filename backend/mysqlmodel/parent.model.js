@@ -50,7 +50,7 @@ Parent.findParentById = (parentId, result) => {
   Parent.findAllParents = (surname, result) => {
     let query = "SELECT * FROM parents";
     if (surname) {
-      query += ` WHERE lastname LIKE '%${surname}%'`;
+      query += ` WHERE surname LIKE '%${surname}%'`;
     }
     sql.query(query, (err, res) => {
       if (err) {
@@ -59,6 +59,23 @@ Parent.findParentById = (parentId, result) => {
         return;
       }
       console.log("parents: ", res);
+      result(null, res);
+    });
+  };
+
+   //retrieving last username
+   Parent.findUsername = (username, result) => {
+    let query = "select username from users order by updatedAt desc limit 1;";
+    if (username) {
+      query += ` WHERE username  LIKE '%${username}%'`;
+    }
+    sql.query(query, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+      console.log("username: ", res);
       result(null, res);
     });
   };

@@ -13,6 +13,8 @@ module.exports = app =>{
     // get all parent
     router.get("/getAllParents", parent.findAllParents);
 
+    router.get("/getLastUsername", parent.findUsername);
+
     // get one parent
     router.get("/parent/:parentId", parent.findOneParent);
 

@@ -125,7 +125,14 @@ function App() {
                    </Link>
                 </li>
                 )}
-                
+                 {showAdminBoard&&(
+                  <li>
+                  <Link to="/admin/parents-records" className="nav-text">
+                    <PeopleAlt/>
+                    Parent Records
+                   </Link>
+                </li>
+                )}
                 {currentUser &&(
                   <li>
                     <Link to="/comments" className="nav-text">

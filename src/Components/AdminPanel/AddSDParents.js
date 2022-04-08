@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import userService from "../services/user.service";
 import AuthService from "../services/auth.service";
+import userService from "../services/user.service";
+import React,{useState} from 'react'
+import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import { PersonAddAlt1Sharp } from "@mui/icons-material";
 
-
-const AddParent = () => {
+const AddSDParents = () => {
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -118,20 +120,32 @@ const AddParent = () => {
       );
 
   };
-
   return (
-
-      <div className="container">
+    <div className="container">
+      <hr/>
+      <div style={{textAlign: "right"}}>
+      <Link to={"/admin/parents-records"}> 
+        <Button variant="primary">
+          back
+        </Button>
+        </Link>
+        <Link to={"/admin/add-sdparent"}> 
+            <Button variant="primary">
+                <PersonAddAlt1Sharp/>
+            </Button>
+        </Link>
+      </div>
+      <hr/>
+      
         <div  className="col-md-6">
-        {/* <div className="col-xs-6 col-sm-6 col-md-6"> */}
         <br></br> <br></br>
         <h3 className="text-center" >Parent Sign Up Form</h3><hr/>
-        <form onSubmit={handleRegister} autoComplete="off" className="form-inline">
+        <form onSubmit={handleRegister} autoComplete="off" className="">
           {!successful && (
             <div>
 
 
-              <div className="form-group" >
+              <div className="form-group mt-3" >
                 <label htmlFor="username">Username</label>
                 <input
                   type="text"
@@ -142,7 +156,7 @@ const AddParent = () => {
                   required  placeholder="Enter username"
                 />
               </div>
-              <div className="form-group">
+              <div className="form-group mt-3">
                 <label htmlFor="email">Email</label>
                 <input
                   type="text"
@@ -153,7 +167,7 @@ const AddParent = () => {
                   required
                 />
               </div>
-              <div className="form-group">
+              <div className="form-group mt-3">
                 <label htmlFor="password">Password</label>
                 <input
                   type="password"
@@ -164,13 +178,13 @@ const AddParent = () => {
                   required
                 />
               </div>
-              <div className="form-group">
+              <div className="form-group mt-3">
                 <button className="btn btn-primary btn-block">Sign Up</button>
               </div>
             </div>
           )}
           {message && (
-            <div className="form-group">
+            <div className="form-group mt-3">
               <div
                 className={ successful ? "alert alert-success" : "alert alert-danger" }
                 role="alert"
@@ -186,7 +200,7 @@ const AddParent = () => {
       <div className="col-md-6" >
       <form onSubmit={addParent}>
 
-      <div className="form-group" >
+      <div className="form-group mt-3" >
         <strong htmlFor="parentId">Username</strong>
         <input type="text" className="form-control" name="parentId"
             value={parentId} onChange={onChangeParentId}
@@ -194,21 +208,21 @@ const AddParent = () => {
         />
       </div>
 
-        <div className="form-group" >
+        <div className="form-group mt-3" >
         <strong htmlFor="firstname">Firstname</strong>
         <input type="text" className="form-control" name="firstname"
             value={firstname} onChange={onChangeFirstname} required
         />
       </div>
 
-      <div className="form-group">
+      <div className="form-group mt-3">
         <strong htmlFor="phoneNo">Surname</strong>
         <input type="text" className="form-control" name="surname"
             value={surname} onChange={onChangeSurname} required
         />
       </div>
 
-      <div className="form-group">
+      <div className="form-group mt-3">
         <strong htmlFor="gender">Gender</strong>
         <select type="text" 
           className="form-control" 
@@ -221,20 +235,20 @@ const AddParent = () => {
           <option>Female</option>
           </select> 
       </div>
-      <div className="form-group">
+      <div className="form-group mt-3">
         <strong htmlFor="phone">Phone Number</strong>
-        <input type="phone" className="form-control" name="phone"
+        <input type="tel" className="form-control" name="phone"
             value={phoneNo} onChange={onChangePhoneNo} required
         />
       </div>
-      <div className="form-group">
+      <div className="form-group mt-3">
         <strong htmlFor="address">Address</strong>
         <input type="text" className="form-control" name="address"
             value={address} onChange={onChangeAddress} required
         />
       </div>
 
-      <div className="form-group">
+      <div className="form-group mt-3">
         <strong htmlFor="userId">userId</strong>
         <input type="text" className="form-control" name="userId"
             value={userId} onChange={onChangeUserId}
@@ -242,7 +256,7 @@ const AddParent = () => {
         />
       </div>
 
-        <div className="form-group">
+        <div className="form-group mt-3">
             <button className="btn btn-primary btn-block">Submit</button>
         </div>
 
@@ -253,6 +267,7 @@ const AddParent = () => {
     </div>
 
 
-  );
-};
-export default AddParent;
+  )
+}
+
+export default AddSDParents

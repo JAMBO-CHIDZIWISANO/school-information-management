@@ -32,8 +32,21 @@ exports.create = (req, res)=>{
 
 // Retrieve all parent from the database (with condition).
 exports.findAllParents =(req, res) => {
-  const lastname = req.query.lastname;
-  Parent.findAllParents(lastname, (err, data) => {
+  const surname = req.query.surname;
+  Parent.findAllParents(surname, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Parents."
+      });
+    else res.send(data);
+  });
+};
+
+//retrieve last username
+exports.findUsername =(req, res) => {
+  const username = req.query.username;
+  Parent.findUsername(username, (err, data) => {
     if (err)
       res.status(500).send({
         message:

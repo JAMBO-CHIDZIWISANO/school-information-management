@@ -42,7 +42,7 @@ const AllStudentsMarks = () => {
             <th>Subject</th>
             <th>Student Score</th>
             <th>Total Score</th>
-            <th>Percentage (%)</th>
+            <th>Percentage(%)</th>
             <th>Grade</th>
             <th>Type</th>
            

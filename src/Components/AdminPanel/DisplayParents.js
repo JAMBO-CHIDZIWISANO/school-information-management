@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react"
 import {Link} from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
-import "./Home.css";
+//import "./Home.css";
+import { Button, Table } from "react-bootstrap";
+import { Edit, PersonAddAlt1Sharp } from "@mui/icons-material";
 
 const DisplayParents = () => {
     const [data, setData] = useState([]);
@@ -30,10 +32,26 @@ const DisplayParents = () => {
     };
 
   return (
-    <div style={{marginTop: "40px"}}>
+    <div style={{marginTop: "40px"}} className="container">
+
+<hr />
+      <div style={{textAlign: "right"}}>
+
+      {/* <Link to={"/admin/parents-records"}> 
+        <Button  variant="primary">
+          back
+        </Button>
+        </Link> */}
+        <Link to={"/admin/add-sdparent"}> 
+            <Button variant="primary">
+                <PersonAddAlt1Sharp/>
+            </Button>
+        </Link>
+      </div>
+      <hr/>
       
-        <h1>LIST OF Parents</h1>
-        <table className="table">
+        <h1 className="text-center">LIST OF Parents</h1>
+        <Table className="table-bordered table-hover table-striped">
             <thead>
                 <tr>
                     <th>No. </th>
@@ -58,7 +76,9 @@ const DisplayParents = () => {
                                 <td>{item.address}</td>
                                 <td>
                                     <Link to={`/update/&{item.id}`}>
-                                       <button className="btn btn-edit" >Edit</button>
+                                        <Button variant="primary">
+                                            <Edit/>
+                                        </Button>
                                     </Link>
                                     <button className="btn btn-delete" onClick={() => deleteUser(item.parentId)}>Delete</button>
                                 </td>
@@ -66,7 +86,7 @@ const DisplayParents = () => {
                     )
                 })}
             </tbody>
-        </table>
+        </Table>
         
     </div>
   )

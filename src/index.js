@@ -14,6 +14,10 @@ import BoardParent from "./Components/BoardParent";
 import BoardUser from "./Components/BoardUser";
 import Profile from "./Components/Profile";
 
+import AddSDParents from './Components/AdminPanel/AddSDParents';
+import AddParent from './Components/AdminPanel/AddParent';
+import DisplayParents from './Components/AdminPanel/DisplayParents';
+
 import Announcements from "./Components/AdminPanel/Announcements"
 import SubjectList from './Components/AdminPanel/SubjectList';
 import ManageSubjects from './Components/AdminPanel/ManageSubjects'
@@ -57,6 +61,10 @@ ReactDOM.render(
         <Route path='/admin/add-student' element={<AddStudent/>}/>
         <Route path="/admin/exam-records" element={<ExamsRecords/>}/>
         <Route path="/admin/spersonal-details" element={<SPersonalDetailsForm/>} />
+
+        <Route path='/admin/add-sdparent' element={<AddSDParents/>}/>
+        <Route path='/admin/add-pdparent' element={<AddParent/>}/>
+        <Route path='/admin/parents-records' element={<DisplayParents/>}/>
 
       </Routes>
     </Router>,
