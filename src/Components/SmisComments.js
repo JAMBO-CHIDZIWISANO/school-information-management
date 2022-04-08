@@ -3,16 +3,22 @@ import React, {useEffect, useState} from "react";
 import { toast } from "react-toastify";
 
 const SmisComments = () => {
-    const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
+  const [comment, setComment] = useState([]);
 
   const loadData = async () => {
-      const response = await axios.get("http://localhost:4000/api/smis/getAllSmisPosts");
+      const response = await axios.get("http://localhost:4000/api/smis/getAllSmisPosts"); 
       setData(response.data);    
   };
+  const loadComment = async () => {
+    const response = await axios.get("http://localhost:4000/api/smis/getAllSmiscomments"); 
+    setComment(response.data);    
+};
   // refresh window
 
   useEffect(() => {
       loadData();
+      loadComment();
   }, []);
 
   // deleting user
@@ -28,39 +34,27 @@ const SmisComments = () => {
 
   return (
     <div>
-      <table className="table">
-        <thead>
-
-          <tr>
-            <th style={{textAlign: "center"}}>No. </th>
-            <th style={{textAlign: "center"}}>Post Title</th>
-            <th style={{textAlign: "center"}}>Post Body</th>
-            <th style={{textAlign: "center"}}>Username</th>
-            <th style={{textAlign: "center"}}>Action</th> 
-                    
-          </tr>
-          </thead>
-
-          <tbody>
-          {data.map((item, index) => {
+      <div className="posts">
+      {data.map((item, index) => {
             return (
-              <tr key={item.smisPostsId}>
-                <th scope="row">{index+1}</th>
-                <td>{item.postTitle}</td>
-                <td>{item.postBody}</td>
-                <td>{item.username}</td>
-
-              {/* <b>No data found to display.</b> */}
-              <td>
-                  <button className="btn btn-edit" >Edit</button>
-                  <button className="btn btn-delete" onClick={() => deletePost(item.smisPostsId)}>Delete</button>
-              </td>
-  
-          </tr>
+                <div index={index} className="subjects">
+                    Post Title : <h3>{item.username}</h3>
+                    Post Subject :<h3>{item.title}</h3>
+                    Post Body : <h3>{item.smisPosts}</h3>
+                </div>               
             )
         })}
-        </tbody>
-      </table>
+      </div>
+      
+  
+        {/* <b>No data found to display.</b>
+        <td>
+            <button className="btn btn-edit" >Edit</button>
+            <button className="btn btn-delete" onClick={() => deletePost(item.smisPostsId)}>Delete</button>
+        </td>
+ */}
+
+
         <div className="commentsRightside">
           <div className="addCommentContainer">
             <input type="text" placeholder="comment...." autoComplete="off" />
@@ -68,6 +62,13 @@ const SmisComments = () => {
           </div>
 
           <div className="listOfComments"></div>
+          {comment.map((item, index) => {
+            return (
+                <div index={index} className="subjects">
+                    Comments :<h3>{item.smisComments}</h3>
+                </div>               
+            )
+        })}
         </div>
     </div>
   );

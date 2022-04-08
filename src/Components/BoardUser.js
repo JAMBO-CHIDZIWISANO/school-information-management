@@ -53,12 +53,7 @@ const BoardUser = () => {
         */}
         <SmisPosts />
         <SmisComments/>
-        {
-          comment.map((item)=>
-          <h1>{item.postBody}...{item.commentBody}</h1>
-          )
-        }
-        
+       
       </div>
       </div>
 
