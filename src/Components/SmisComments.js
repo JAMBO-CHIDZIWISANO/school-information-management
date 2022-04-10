@@ -38,24 +38,17 @@ const SmisComments = () => {
       <div className="posts ">
       {data.map((item, index) => {
             return (
-                <div index={index} className="subjects">
-                    Post Title : <h3>{item.username}</h3>
-                    Post Subject :<h3>{item.title}</h3>
-                    Post Body : <h3>{item.smisPosts}</h3>
+                <div index={index} className="post">
+                  <div className="title">Post Title : <h3>{item.username}</h3></div>
+                    <div className="body">Post Subject :<h3>{item.title}</h3></div>
+                    <div className="footer">Post Body : <h3>{item.smisPosts}</h3></div>
+                    
                 </div>               
             )
         })}
       </div>
-      
-  
-        {/* <b>No data found to display.</b>
-        <td>
-            <button className="btn btn-edit" >Edit</button>
-            <button className="btn btn-delete" onClick={() => deletePost(item.smisPostsId)}>Delete</button>
-        </td>
- */}
-
-        <div className="commentsRightside">
+       
+        <div className="rightSide">
           <div className="addCommentContainer">
             <input type="text" placeholder="comment...." autoComplete="off" />
             <button>Add Comment</button>
@@ -64,7 +57,7 @@ const SmisComments = () => {
           <div className="listOfComments"></div>
           {comment.map((item, index) => {
             return (
-                <div index={index} className="subjects">
+                <div index={index} className="comment">
                     Comments :<h3>{item.smisComments}</h3>
                 </div>               
             )
