@@ -8,7 +8,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import App from './App';
 import Login from "./Login"
 import BoardAdmin from "./Components/BoardAdmin";
-import BoardTeacher from "./Components/BoardTeacher";
 import BoardStudent from "./Components/BoardStudent";
 import BoardParent from "./Components/BoardParent";
 import BoardUser from "./Components/BoardUser";
@@ -22,6 +21,7 @@ import Announcements from "./Components/AdminPanel/Announcements"
 import SubjectList from './Components/AdminPanel/SubjectList';
 import ManageSubjects from './Components/AdminPanel/ManageSubjects'
 import AddSubject from './Components/AdminPanel/AddSubject'
+import BoardTeacher from "./Components/BoardTeacher";
 
 import ViewTeachers from './Components/AdminPanel/ViewTeachers'
 import AddTSecurityDetails from './Components/TeachersDetails/AddTSecurityDetails';
@@ -55,6 +55,7 @@ ReactDOM.render(
         <Route path="/admin/teacher-record" element={<Display/>} />
         <Route path="/admin/add-sdteacher" element={<AddTSecurityDetails/>} />
         <Route path='/admin/add-tpersondetails' element={< AddTeacher/>}/>
+        <Route path="/admin/teachers-details" element={<Display/>} />
         <Route path="/admin" element={<BoardAdmin/>} />
 
         <Route path="/admin/students-details" element={<StudentDetails/>}/>

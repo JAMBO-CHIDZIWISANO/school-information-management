@@ -12,6 +12,7 @@ import * as AiIcons from "react-icons/ai";
 import { IconContext } from "react-icons/lib";
 import AuthService from "./Components/services/auth.service"
 import { Book, Dashboard, Message, PeopleAlt, Person } from "@mui/icons-material";
+import { Notifications } from "@mui/icons-material";
 
 
       
@@ -105,6 +106,9 @@ function App() {
                   <li>
                   <Link to="/comments" className="nav-text">
                     <Message/>
+                  </Link>
+                  <Link to="/admin/announcements" className="nav-text">
+                    <Notifications/>
                     announcements
                    </Link>
                 </li>
@@ -117,7 +121,18 @@ function App() {
                    </Link>
                 </li>
                 )}
-                {showAdminBoard&&(
+              
+
+                {showAdminBoard &&(
+                  <li>
+                  <Link to="/admin/teachers-details" className="nav-text">
+                    <PeopleAlt/>
+                    Teacher Records
+                   </Link>
+                </li>
+                )}    
+                
+                {currentUser &&(
                   <li>
                   <Link to="/admin/teacher-record" className="nav-text">
                     <PeopleAlt/>

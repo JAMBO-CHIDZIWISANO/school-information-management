@@ -5,16 +5,16 @@
 
 // const CurrentUser = () => {
 
-//     const current = AuthService.getCurrentUser();
-//     const [ data, setData ] = useState([])
+  //   const current = AuthService.getCurrentUser()
+  //   const [ data, setData ] = useState()
 
-//     const loadData = () => {
-//       const response = await axios.get(`http://localhost:4000/api/smis/studentd/${current.username}`);
-//       setData(response.data);
-//     };
-//       useEffect(() => {
-//         loadData();
-//   }, []);
+  //   const load= () => {
+  //     const response =  axios.get(`http://localhost:4000/api/smis/studentd/${current.username}`);
+  //     return setData(response.data);
+  //   };
+  //     useEffect(() => {
+  //       load();
+  // }, []);
 
 //     return (
 //     <div className="container">
