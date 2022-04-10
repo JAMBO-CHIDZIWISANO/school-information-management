@@ -28,7 +28,7 @@ import AddTSecurityDetails from './Components/TeachersDetails/AddTSecurityDetail
 import Display from './Components/TeachersDetails/DisplayTeachers';
 import AddTeacher from './Components/TeachersDetails/AddTeacher';
 
-
+import SmisComments from './Components/SmisComments';
 //import StudentList from "./Components/StudentDetails/StudentList"
 import StudentDetails from "./Components/StudentDetails/StudentDetails"
 import ExamsRecords from "./Components/StudentDetails/ExamsRecords"
@@ -65,6 +65,13 @@ ReactDOM.render(
         <Route path='/admin/add-sdparent' element={<AddSDParents/>}/>
         <Route path='/admin/add-pdparent' element={<AddParent/>}/>
         <Route path='/admin/parents-records' element={<DisplayParents/>}/>
+
+        <Route path='/view-posts' element={<SmisComments/>}/>
+
+
+        
+
+        
 
       </Routes>
     </Router>,

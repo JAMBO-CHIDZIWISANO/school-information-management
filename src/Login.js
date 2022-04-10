@@ -2,7 +2,6 @@
 import React, { useState}from 'react'
 import { useNavigate } from 'react-router-dom'
 import AuthService from './Components/services/auth.service';
-import pic from './assets/login.jpeg'
 const Login = () => {
     
         //initializing the password and username state

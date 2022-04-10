@@ -64,7 +64,7 @@ class AddSubject extends Component {
 
   return (
 
-    <div>
+    <div className='container'>
 
       {/* buttons for navigating to manage subjects and view subjects pages class */}
       <hr />

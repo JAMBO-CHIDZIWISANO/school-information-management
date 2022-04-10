@@ -90,9 +90,7 @@ const Display = () => {
 
                                     <button className="btn btn-delete" onClick={() => deleteTeacher(item.teacherId)}>Delete</button>
 
-                                    <Link to={`/view/&{item.id}`}>
-                                       <button className="btn btn-view" >View</button>
-                                    </Link>
+                                   
 
                                 </td>
                         </tr>

@@ -11,7 +11,7 @@ import * as AiIcons from "react-icons/ai";
 //import {AppSideBar} from './AppSideBar';
 import { IconContext } from "react-icons/lib";
 import AuthService from "./Components/services/auth.service"
-import { PeopleAlt, Person } from "@mui/icons-material";
+import { Book, Dashboard, Message, PeopleAlt, Person } from "@mui/icons-material";
 
 
       
@@ -96,15 +96,15 @@ function App() {
                 {showAdminBoard&&(
                   <li>
                   <Link to="/admin" className="nav-text">
-                    <AiIcons.AiFillHome/>
-                    Admin
+                    <Dashboard/>
+                    Admin Dashboard
                    </Link>
                 </li>
                 )}
-                {showAdminBoard&&(
+                {currentUser&&(
                   <li>
-                  <Link to="/admin/announcements" className="nav-text">
-                    <AiIcons.AiFillHome/>
+                  <Link to="/comments" className="nav-text">
+                    <Message/>
                     announcements
                    </Link>
                 </li>
@@ -133,21 +133,21 @@ function App() {
                    </Link>
                 </li>
                 )}
-                {currentUser &&(
-                  <li>
-                    <Link to="/comments" className="nav-text">
-                      <AiIcons.AiFillHome/>
-                      posts
-                    </Link>
-                  </li>
-                )}
                 
+                {showAdminBoard&&(
+                  <li>
+                  <Link to="/admin/addSubject" className="nav-text">
+                    <Book/>
+                    Subjects Records
+                   </Link>
+                </li>
+                )}
                 
                 {showTeacherBoard &&(
                   <li>
                     <Link to="/teacher" className="nav-text">
-                      <AiIcons.AiFillHome/>
-                      teacher
+                      <Dashboard/>
+                      Teacher Dashboard
                     </Link>
                   </li>
                 )}

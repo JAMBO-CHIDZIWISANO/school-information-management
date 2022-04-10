@@ -33,8 +33,9 @@ const SmisComments = () => {
 };
 
   return (
-    <div>
-      <div className="posts">
+    <div className="container mt-4">
+      <hr/>
+      <div className="posts ">
       {data.map((item, index) => {
             return (
                 <div index={index} className="subjects">
@@ -53,7 +54,6 @@ const SmisComments = () => {
             <button className="btn btn-delete" onClick={() => deletePost(item.smisPostsId)}>Delete</button>
         </td>
  */}
-
 
         <div className="commentsRightside">
           <div className="addCommentContainer">
