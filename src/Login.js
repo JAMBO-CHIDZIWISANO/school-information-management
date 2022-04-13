@@ -2,7 +2,6 @@
 import React, { useState}from 'react'
 import { useNavigate } from 'react-router-dom'
 import AuthService from './Components/services/auth.service';
-import pic from './assets/login.jpeg'
 const Login = () => {
     
         //initializing the password and username state
@@ -89,21 +88,21 @@ const Login = () => {
                                                 className="form-control form-control-lg" />    
                                         </div> 
 
-                                        <div className="form-outline mb-4">
-                                            <label 
-                                                className="form-label" 
-                                                htmlFor="password">Password
-                                            </label>
-                                            
-                                            <input 
-                                                type="password" 
-                                                placeholder="Enter your Password"
-                                                name='password'
-                                                value={password}
-                                                onChange={onChangePassword}
-                                                id="password" 
-                                                className="form-control form-control-lg" />
-                                        </div>
+                        <div className="form-outline mb-4">
+                            <label 
+                                className="form-label" 
+                                htmlFor="password">Password
+                            </label>
+                            
+                            <input 
+                                type="password" 
+                                placeholder="Enter your Password"
+                                name='password'
+                                value={password}
+                                onChange={onChangePassword}
+                                id="password" 
+                                className="form-control form-control-lg" />
+                        </div>
 
                                         <div className="pt-1 mb-4">
                                             <button 
@@ -128,6 +127,9 @@ const Login = () => {
                         
             </div>
         </div>
+    
+                
+           
     </section>
                    
                 

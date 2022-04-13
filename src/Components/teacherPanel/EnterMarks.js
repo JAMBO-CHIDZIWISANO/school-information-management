@@ -180,9 +180,11 @@ class EnterMarks extends Component {
             <label htmlFor="type">Type</label>
             <select
               value={this.state.type} 
+              className="form-control"
+              type="text"
               onChange={this.onChangeType}
               required>
-                <option></option>
+                <option>Tap to choose</option>
                 <option>End-Of-Term</option>
                 <option>Assessment</option>
             </select>

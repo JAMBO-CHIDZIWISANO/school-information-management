@@ -14,7 +14,7 @@ exports.create = (req, res)=>{
       absentReason: req.body.absentReason,
       present: req.body.present || false,
       studentId: req.body.studentId,
-      classId: req.body.classId,
+     // classId: req.body.classId,
       termId: req.body.termId,
     });
 

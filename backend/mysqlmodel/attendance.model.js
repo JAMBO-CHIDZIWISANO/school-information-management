@@ -6,7 +6,7 @@ const Attendance= function(attendance) {
     this.present = attendance.present;
     this.absentReason = attendance.absentReason;
     this.studentId= attendance.studentId;
-    this.classId = attendance.classId;
+    //this.classId = attendance.classId;
     this.termId = attendance.termId;
 
     

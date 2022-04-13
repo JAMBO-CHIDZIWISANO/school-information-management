@@ -18,45 +18,29 @@ export default class Profile extends Component {
     const { currentUser } = this.state;
 
     return (
-      <div className="container">
-        
-        <header className="">
+      <div className="container justify-content-center aligh-items-center">
+        <hr/>
+        <div className=" text-center  mt-6">
+      
+          <h2>School Management Information System</h2>
        
-        </header>
+        </div>
        
-        <div className="user-profile">
-          <div className="profile-pic">
-            <h1>Your Picture Here</h1>
-          </div>
+        <div className=" justify-content-center aligh-items-center text-center">
+
+          <hr/>
+          
         <p>
           <strong>username:</strong>{" "}
           {currentUser.username}
         </p>
         <p>
           
-          <strong>First Name:</strong>{" "}
-          {currentUser.username}
-        </p>
-        <p>
-          <strong>Surname:</strong>{" "}
-          {currentUser.username}
-        </p>
-        <p>
-          <strong>Current Class:</strong>{" "}
-          {currentUser.username}
-        </p>
-        <p>
-          <strong>Physical Address:</strong>{" "}
-          {currentUser.username}
-        </p>
-        <p>
-          <strong>Contact Numbers:</strong>{" "}
+          <strong>Email Address:</strong>{" "}
           {currentUser.email}
         </p>
-        <p>
-          <strong>E-mail Address:</strong>{" "}
-          {currentUser.username}
-        </p>
+        
+       
         <strong>Authorities:</strong>
         <ul>
           {currentUser.roles &&
@@ -64,7 +48,7 @@ export default class Profile extends Component {
         </ul>
         </div>
         <div>
-          {/* <CurrentUser/> */}
+         
         </div>
       </div>
     );

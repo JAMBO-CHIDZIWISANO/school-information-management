@@ -199,10 +199,10 @@ db.student.hasMany(db.attendance, {
 });
 
 //one to many  class and 
-db.class.hasMany(db.attendance, {
-  foreignKey: "classId",
-  targetKey: "classId"
-});
+// db.class.hasMany(db.attendance, {
+//   foreignKey: "classId",
+//   targetKey: "classId"
+// });
 
 //one to many term and attendance
 db.term.hasMany(db.attendance, {

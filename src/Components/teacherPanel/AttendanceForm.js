@@ -7,7 +7,7 @@ class AttendanceForm extends Component {
         this.onChangeAttendanceDate = this.onChangeAttendanceDate.bind(this);
         this.onChangePresent = this.onChangePresent.bind(this);
         this.onChangeAbsentReason = this.onChangeAbsentReason.bind(this)
-        this.onChangeClassId = this.onChangeClassId.bind(this)
+       // this.onChangeClassId = this.onChangeClassId.bind(this)
         this.onChangeStudentId = this.onChangeStudentId.bind(this)
         this.onChangeTermId = this.onChangeTermId.bind(this)
     
@@ -15,7 +15,7 @@ class AttendanceForm extends Component {
     
         this.state = {
           attendanceDate: "",
-          classId: "",
+         // classId: "",
           termId:"",
           studentId: "",
           present:"",
@@ -27,9 +27,9 @@ class AttendanceForm extends Component {
       onChangeAttendanceDate(e){
         this.setState({ attendanceDate: e.target.value})
       }
-      onChangeClassId(e){
-        this.setState({classId: e.target.value})
-      }
+      // onChangeClassId(e){
+      //   this.setState({classId: e.target.value})
+      // }
       onChangeTermId(e){
         this.setState({termId: e.target.value})
       }
@@ -47,7 +47,7 @@ class AttendanceForm extends Component {
         e.preventDefault()
         const data = {
             attendanceDate: this.state.attendanceDate,
-            classId:this.state.classId,
+           // classId:this.state.classId,
             termId:this.state.termId,
             studentId: this.state.studentId,
             present:this.state.present,
@@ -63,7 +63,7 @@ class AttendanceForm extends Component {
           });
         this.setState({
             attendanceDate: "",
-            classId: "",
+           // classId: "",
             termId:"",
             studentId: "",
             present:"",
@@ -99,7 +99,7 @@ class AttendanceForm extends Component {
                   placeholder='attendanceDate'/>
               </div>
     
-              <div className='form-group'>
+              {/* <div className='form-group'>
                 <label htmlFor='classId'>class</label>
                 <input
                   name='classId'
@@ -108,7 +108,7 @@ class AttendanceForm extends Component {
                   className='form-control form-control-lg'
                   id='classId'
                   placeholder='class'/>
-              </div>
+              </div> */}
     
               <div className='form-group'>
                 <label htmlFor='termId'>term </label>

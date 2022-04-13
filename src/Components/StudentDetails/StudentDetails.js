@@ -3,10 +3,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import {  PersonAddAlt1Sharp, ViewList } from "@mui/icons-material";
 import StudentList from "./StudentList";
-import AllStudentsMarks from "./AllStudentsMarks";
+//import AllStudentsMarks from "./AllStudentsMarks";
 const StudentDetails = () => {
   return (
-    <div>
+    <div className="container">
        <hr />
     <div>
         
@@ -33,9 +33,10 @@ const StudentDetails = () => {
             <StudentList/>
         </div>
         <hr/>
-        <div>
+        {/* <div>
             <AllStudentsMarks/>
-        </div>
+        </div> */}
+        {/* <hr/> */}
     </div>
     </div>
   )

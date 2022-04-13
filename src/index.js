@@ -8,7 +8,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import App from './App';
 import Login from "./Login"
 import BoardAdmin from "./Components/BoardAdmin";
-import BoardTeacher from "./Components/BoardTeacher";
 import BoardStudent from "./Components/BoardStudent";
 import BoardParent from "./Components/BoardParent";
 import BoardUser from "./Components/BoardUser";
@@ -22,13 +21,14 @@ import Announcements from "./Components/AdminPanel/Announcements"
 import SubjectList from './Components/AdminPanel/SubjectList';
 import ManageSubjects from './Components/AdminPanel/ManageSubjects'
 import AddSubject from './Components/AdminPanel/AddSubject'
+import BoardTeacher from "./Components/BoardTeacher";
 
 import ViewTeachers from './Components/AdminPanel/ViewTeachers'
 import AddTSecurityDetails from './Components/TeachersDetails/AddTSecurityDetails';
 import Display from './Components/TeachersDetails/DisplayTeachers';
 import AddTeacher from './Components/TeachersDetails/AddTeacher';
 
-
+import SmisComments from './Components/SmisComments';
 //import StudentList from "./Components/StudentDetails/StudentList"
 import StudentDetails from "./Components/StudentDetails/StudentDetails"
 import ExamsRecords from "./Components/StudentDetails/ExamsRecords"
@@ -55,6 +55,7 @@ ReactDOM.render(
         <Route path="/admin/teacher-record" element={<Display/>} />
         <Route path="/admin/add-sdteacher" element={<AddTSecurityDetails/>} />
         <Route path='/admin/add-tpersondetails' element={< AddTeacher/>}/>
+        <Route path="/admin/teachers-details" element={<Display/>} />
         <Route path="/admin" element={<BoardAdmin/>} />
 
         <Route path="/admin/students-details" element={<StudentDetails/>}/>
@@ -65,6 +66,13 @@ ReactDOM.render(
         <Route path='/admin/add-sdparent' element={<AddSDParents/>}/>
         <Route path='/admin/add-pdparent' element={<AddParent/>}/>
         <Route path='/admin/parents-records' element={<DisplayParents/>}/>
+
+        <Route path='/view-posts' element={<SmisComments/>}/>
+
+
+        
+
+        
 
       </Routes>
     </Router>,
