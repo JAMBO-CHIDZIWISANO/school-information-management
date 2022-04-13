@@ -1,6 +1,9 @@
 import axios from 'axios';
 import React, { Component } from 'react'
 import PostList from './postList';
+import SmisPosts from '../SmisPosts'
+
+
 class Announcements extends Component {
 
 
@@ -68,62 +71,11 @@ class Announcements extends Component {
 
   return (
     <div>
-      <div className='px-5 wrapper mt-4 '>
-        <form onSubmit={this.onSubmit} className=' mt-4'>
-
-        <div className='form-group'>
-            <label htmlFor='teacherId'>Enter you Username </label>
-            <input
-              name='teacherId'
-              value={this.state.teacherId}
-              onChange={this.onChangeTeacherId}
-              className='form-control form-control-sm'
-              id='teacherId'
-              placeholder="username..."/>
-          </div>
-
-          <div className='form-group'>
-            <label htmlFor='postTitle'>Title</label>
-            <input   
-              name='postTitle'
-              value={this.state.postTitle}
-              onChange={this.onChangeTitle}
-              className='form-control form-control-sm'
-              id='postTitle'
-              placeholder='postTitle'/>
-          </div>
-
-          <div className='form-group'>
-            <label htmlFor='postBody'>post Body</label>
-            <textarea
-              name='postBody'
-              value={this.state.postBody}
-              onChange={this.onChangePostBody}
-              className='form-control form-control-lg'
-              id='postBody'
-              placeholder='post body'/>
-          </div>
-
-          
-
-          <div>
-            <input 
-              type="submit" 
-              value="create post" 
-              className="btn btn-primary btn-block" />
-            </div>
-          </form>
-      </div>
-
+      
       <div>
+        <SmisPosts />
         <PostList/>
-
       </div>
-
-      <div>
-
-      </div>
-
     </div>
   )}
 }

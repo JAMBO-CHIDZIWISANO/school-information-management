@@ -82,29 +82,30 @@ class SmisPosts extends Component {
         </Link>
       </div>
       <hr/>
-      <div className='px-5 wrapper mt-4 '>
+      <div className="d-flex justify-content-center aligh-items-center">
+        
         <form onSubmit={this.onSubmit} className='col-md-4'>
-        <div className='subject'><h3>Create Post</h3><hr/></div>
-          <div className='form-group'>
+        <div className='create-post'><h3>Create Post</h3><hr/></div>
+          <div class="form-outline">
             <strong>Username</strong>
             <input name='username' value={this.state.username}
               onChange={this.onChangeUsername}
-              className='form-control form-control-sm'
-              Code='subjectCode' placeholder="Username..."/>
+              className='form-control form-control-lg'
+              Code='username' placeholder="Username..."/>
           </div>
 
           <div className='form-group'>
             <strong >Title</strong>
             <input  name='title' value={this.state.title}
               onChange={this.onChangeTitle}
-              className='form-control form-control-sm'
+              className='form-control form-control-lg'
               id='title' placeholder='Post title'/>
           </div>  
           <div className='form-group'>
             <strong >Post Body</strong>
             <input  name='smisposts' value={this.state.smisPosts}
               onChange={this.onChangeSmisPosts}
-              className='form-control form-control-sm'
+              className='form-control form-control-lg'
               id='smisposts' placeholder='Post body'/>
           </div>         
 

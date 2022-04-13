@@ -3,7 +3,6 @@ import Posts from './Posts'
 import axios from 'axios'
 import CommentForm from './usersComments/CommentForm'
 import MessageScroll from './usersComments/MessageScroll'
-import SmisPosts from './SmisPosts'
 import SmisComments from './SmisComments'
  
 
@@ -51,7 +50,7 @@ const BoardUser = () => {
         <CommentForm autoFocus={false} />
         <MessageScroll/> 
         */}
-        <SmisPosts />
+       
         <SmisComments/>
        
       </div>

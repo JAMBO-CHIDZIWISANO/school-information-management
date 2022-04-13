@@ -343,14 +343,9 @@ const AddTSecurityDetails = () => {
               <div className="form-group mt-3">
                 <button className="btn btn-primary btn-block">Submit</button>
                 
-              </div>
-
-              
-           
+              </div>          
         </form>
-        </div>
-
-      
+        </div>      
     </div>
   )
 }
