@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react'
 import {Link} from "react-router-dom";
+import Sms from "./Sms"
 
 class SmisPosts extends Component {
 
@@ -82,7 +83,12 @@ class SmisPosts extends Component {
         </Link>
       </div>
       <hr/>
-      <div className="d-flex justify-content-center aligh-items-center">
+
+      <div className='row'>
+
+        
+
+      {/* <div className="d-flex justify-content-center aligh-items-center"> */}
         
         <form onSubmit={this.onSubmit} className='col-md-4'>
         <div className='create-post'><h3>Create Post</h3><hr/></div>
@@ -108,17 +114,21 @@ class SmisPosts extends Component {
               className='form-control form-control-lg'
               id='smisposts' placeholder='Post body'/>
           </div>         
-
           <div>
             <input 
               type="submit"  value="Submit" 
               className="btn btn-primary btn-block" />
             </div>
           </form>
+        {/* </div> */}
+
+       
+
         </div>
+
       <div>
     </div>
-      <hr />
+     
     </div>
   )}
 }
