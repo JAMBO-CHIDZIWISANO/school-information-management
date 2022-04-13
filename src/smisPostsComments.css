@@ -1,4 +1,4 @@
-/* style for Smiscomments and Smisposts  */
+style for Smiscomments and Smisposts 
  
 
 .post {
@@ -145,8 +145,6 @@
   
   .addCommentContainer input,
   button {
-    width: 400px;
-    height: 70px;
     border-radius: 8px;
     border: none;
   }
@@ -204,8 +202,6 @@
   
   .loginContainer input,
   button {
-    width: 200px;
-    height: 50px;
     border-radius: 8px;
     border: none;
     margin: 10px;

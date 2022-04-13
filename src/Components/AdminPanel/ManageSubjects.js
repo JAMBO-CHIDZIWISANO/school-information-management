@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { toast } from "react-toastify";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import ModeEditIcon from '@mui/icons-material/ModeEdit';
 
 
 const ManageSubjects = () => {
@@ -38,10 +40,10 @@ const ManageSubjects = () => {
         <table className="table">
             <thead>
                 <tr>
-                    <th style={{textAlign: "center"}}>No. </th>
-                    <th style={{textAlign: "center"}}>Subject Code</th>
-                    <th style={{textAlign: "center"}}>Subject name</th>
-                    <th style={{textAlign: "center"}}>Action</th>
+                    <th>No. </th>
+                    <th>Subject Code</th>
+                    <th>Subject name</th>
+                    <th>Action</th>
                 </tr>
             </thead>
 
@@ -55,12 +57,10 @@ const ManageSubjects = () => {
                     
                         <td>
                             <Link to={`/update/&{item.id}`}>
-                                <button className="btn btn-view" >Edit</button>
+                                <button className="btn btn-view" ><ModeEditIcon/></button>
                             </Link>
-                                <button className="btn btn-delete" onClick={() =>deleteSubject(item.subjectCode)} >Delete</button>
-                            <Link to={`/view/&{item.id}`}>
-                                <button className="btn btn-view" >View</button>
-                            </Link>   
+                                <button className="btn btn-delete" onClick={() =>deleteSubject(item.subjectCode)} ><DeleteOutlinedIcon/></button>
+                               
                         </td>
                     </tr>
                    )
