@@ -32,7 +32,7 @@ Teacher.create = (newTeacher, result)=> {
 
 //retrieving one teacher
 Teacher.findTeacherById = (teacherId, result) => {
-    sql.query(`SELECT * FROM teachers WHERE teacherId LIKE '%${teacherId}%'`, (err, res) => {
+    sql.query(`SELECT firstname, surname, gender, qualification, joinDate.dataOnly(@dateTimeValue) as join_date FROM teachers WHERE teacherId LIKE '%${teacherId}%'`, (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(err, null);
@@ -50,7 +50,7 @@ Teacher.findTeacherById = (teacherId, result) => {
 
   //retrieving all teachers
   Teacher.findAllTeachers = (surname, result) => {
-    let query = "SELECT * FROM teachers";
+    let query = "SELECT firstname, surname, gender, qualification, DATE(joinDate) as join_date FROM teachers";
     if (surname) {
       query += ` WHERE lastname LIKE '%${surname}%'`;
     }
