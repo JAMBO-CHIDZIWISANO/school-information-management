@@ -29,6 +29,8 @@ import Display from './Components/TeachersDetails/DisplayTeachers';
 import AddTeacher from './Components/TeachersDetails/AddTeacher';
 
 import SmisComments from './Components/SmisComments';
+import PostComments from './Components/PostComments'
+
 //import StudentList from "./Components/StudentDetails/StudentList"
 import StudentDetails from "./Components/StudentDetails/StudentDetails"
 import ExamsRecords from "./Components/StudentDetails/ExamsRecords"
@@ -68,6 +70,7 @@ ReactDOM.render(
         <Route path='/admin/parents-records' element={<DisplayParents/>}/>
 
         <Route path='/view-posts' element={<SmisComments/>}/>
+        <Route path='/postComments/:smisPostsId' element={<PostComments/>}/>
 
 
         
