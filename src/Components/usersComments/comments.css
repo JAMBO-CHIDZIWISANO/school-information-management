@@ -95,7 +95,7 @@
 .replies {
   margin-top: 20px;
 } */
-
+/* 
 * {
   box-sizing: border-box;
   margin: 0;
@@ -119,7 +119,7 @@ form input[type="text"] {
   border-bottom: 1px solid lightgray;
   padding: 12px 20px 12px 0;
   background-color: transparent;
-}
+} */
 
 .commentBox {
   position: relative;

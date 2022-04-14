@@ -1,11 +1,12 @@
 import { Container, Grid } from '@mui/material'
 import React from 'react'
+import NoticeBoard from './NoticeBoard'
 const BoardAdmin = () => {
   return (
-    <Container >
+    <div className='container'>
       
-      
-    </Container>
+    <NoticeBoard/>
+    </div>
   )
 }
 

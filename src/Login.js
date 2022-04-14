@@ -60,7 +60,7 @@ const Login = () => {
             <div className="d-flex justify-content-center aligh-items-center">
                 <div className=" ">
                     
-                                <div className=" col-md-10  ">
+                                <div className="   ">
                         
                                     <form onSubmit={handleLogin} >
 
@@ -68,9 +68,10 @@ const Login = () => {
                                             <span className="h1 fw-bold "><h2>BANGULA SECONDARY SCHOOL</h2></span>
                                         </div>
 
-                                        <h2 className="fw-normal text-center">Sign In</h2>
+                                        <h2 className="fw-bold text-center">SIGN IN</h2>
+                                        <hr/>
                                         
-                                        <div className="form-outline mb-4">
+                                        <div className="form-group">
                                             <label 
                                                 className="form-label" 
                                                 htmlFor="username">Username
@@ -88,7 +89,7 @@ const Login = () => {
                                                 className="form-control form-control-lg" />    
                                         </div> 
 
-                        <div className="form-outline mb-4">
+                        <div className="form-group">
                             <label 
                                 className="form-label" 
                                 htmlFor="password">Password
@@ -104,12 +105,12 @@ const Login = () => {
                                 className="form-control form-control-lg" />
                         </div>
 
-                                        <div className="pt-1 mb-4">
+                                        <div className="">
                                             <button 
                                                 className="btn btn-primary btn-lg btn-block"
                                                 >
                                                 {loading&&( <span className='spinner-border spinner-border-sm'></span>)}
-                                                <span>Sign in</span>
+                                                Sign in
                                             </button>
                                         
                                         {/* showing the error message if not connected to server, user input wrong username or password*/}                                 

@@ -154,36 +154,40 @@ const AddTSecurityDetails = () => {
       </div>
       <hr/>
 
-        <div className="col-md-6">
+      <div className='row'>
+
+        <div className="col-12 col-md-6 col-lg-4">
         <h3 className="text-center" >Teacher Sign Up Form</h3><hr/>
         <form onSubmit={handleRegister}>
           {!successful && (
           <div className="" >
-            <div className="form-group mt-3" >
+            <div className="form-group mt-5" >
               <strong htmlFor="username">Username</strong>
               <input
                 type="text"
                 className="form-control"
                 name="username"
+                autoComplete='false'
                 value={username}
                 onChange={onChangeUsername}
                 required
               />
             </div>
 
-            <div className="form-group mt-3">
+            <div className="form-group mt-5">
               <strong htmlFor="email">Email</strong>
               <input
                 type="text"
                 className="form-control"
                 name="email"
+                autoComplete='false'
                 value={email}
                 onChange={onChangeEmail}
                 required
               />
             </div>
 
-            <div className="form-group mt-3">
+            <div className="form-group mt-5">
               <strong htmlFor="password">Password</strong>
               <input
                 type="password"
@@ -195,7 +199,7 @@ const AddTSecurityDetails = () => {
               />
             </div>
 
-            <div className="form-group mt-3">
+            <div className="form-group mt-4">
               <button className="btn btn-primary btn-block">Sign Up</button>
 
             
@@ -219,22 +223,29 @@ const AddTSecurityDetails = () => {
         </form>
       </div>
 
-      <div className="col-md-6">
+      <div className="col-12 col-md-6 col-lg-8">
       <h3 className="text-center" >Personal Details</h3><hr/>
       <form autoComplete="false" onSubmit={handleAdd} >
-      <div className="form-group mt-3">
-              <strong htmlFor="userId">Username </strong>
-              <input
-                type="text"
-                className="form-control"
-                name="userId"
-                value={userId}
-                onChange={onChangeUserId}
-                required
-              />
+      
+
+        <div className='row'>
+
+          <div className='col-md-4'>
+            <div className="form-group mt-3">
+            <strong htmlFor="userId">Username </strong>
+            <input
+              type="text"
+              className="form-control"
+              name="userId"
+              value={userId}
+              onChange={onChangeUserId}
+              required
+            />
             </div>
-            
-              <div className="form-group mt-3" >
+          </div>
+
+          <div className='col-md-4'>
+          <div className="form-group mt-3" >
                 <strong htmlFor="teacherId">repeat username</strong>
                 <input
                   type="text"
@@ -245,8 +256,26 @@ const AddTSecurityDetails = () => {
                   required
                 />
               </div>
+          </div>
+          <div className='col-md-4'>
+          <div className="form-group mt-3">
+                <strong htmlFor="phoneNo">Phone No</strong>
+                <input
+                  type="tel"
+                  className="form-control"
+                  name="phoneNo"
+                  value={phoneNo}
+                  onChange={onChangePhoneNo}
+                  required
+                />
+              </div>
+          </div>
 
-              <div className="form-group mt-3" >
+        </div>
+        <div className='row'>
+
+          <div className='col-md-6'>
+          <div className="form-group mt-3" >
                 <strong htmlFor="firstname">Firstname</strong>
                 <input
                   type="text"
@@ -257,8 +286,9 @@ const AddTSecurityDetails = () => {
                   required
                 />
               </div>
-
-              <div className="form-group mt-3">
+          </div>
+          <div className='col-md-6'>
+          <div className="form-group mt-3">
                 <strong htmlFor="surname">surname</strong>
                 <input
                   type="text"
@@ -271,8 +301,14 @@ const AddTSecurityDetails = () => {
                 />
               </div>
 
-              
-              <div className="form-group mt-3">
+          </div>
+
+        </div>
+
+        <div className='row'>
+
+          <div className='col-md-4'>
+          <div className="form-group mt-3">
                 <strong htmlFor="gender">Gender</strong>
                 <select 
                   value={gender} 
@@ -287,20 +323,26 @@ const AddTSecurityDetails = () => {
                 </select>
               </div>
 
-              <div className="form-group mt-3">
-                <strong htmlFor="phoneNo">Phone No</strong>
+          </div>
+          <div className='col-md-4'>
+          <div className="form-group mt-3">
+                <strong htmlFor="joinDate">Join Date</strong>
                 <input
-                  type="tel"
+                  type="date"
                   className="form-control"
-                  name="phoneNo"
-                  value={phoneNo}
-                  onChange={onChangePhoneNo}
+                  name="joinDate"
+                  value={joinDate}
+                  onChange={onChangeJoinDate}
                   required
                 />
               </div>
-              
+          
+            
+          </div>
 
-              <div className="form-group mt-3">
+          <div className='col-md-4'>
+            
+          <div className="form-group mt-3">
                 <strong htmlFor="qualification">Qualification</strong>
                 <select 
                   value={qualification} 
@@ -315,20 +357,12 @@ const AddTSecurityDetails = () => {
                   <option>Master's Degree</option>
                 </select>
               </div>
+              
+            </div>
 
-              <div className="form-group mt-3">
-                <strong htmlFor="joinDate">Join Date</strong>
-                <input
-                  type="date"
-                  className="form-control"
-                  name="joinDate"
-                  value={joinDate}
-                  onChange={onChangeJoinDate}
-                  required
-                />
-              </div>
+        </div>
 
-              <div className="form-group mt-3">
+              <div className="form-group ">
                 <strong htmlFor="schoolId">school code</strong>
                 <input
                   type="text"
@@ -340,12 +374,13 @@ const AddTSecurityDetails = () => {
                 />
               </div>
 
-              <div className="form-group mt-3">
+              <div className="form-group ">
                 <button className="btn btn-primary btn-block">Submit</button>
                 
               </div>          
         </form>
-        </div>      
+        </div>  
+        </div>    
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, {Component, useState} from 'react'
-//import './styles.css'
+//import '../styles.css'
 class Sms extends Component {
 
     constructor(props){
@@ -55,9 +55,10 @@ render() {
     <div className='container' onSubmit={this.onSubmit}>
       
 
-      <form className='  mt-5 col-md-4' >
+      <form className='  ' >
         <h1 className='text-center'> Send SMS</h1>
-        <div className='form-group'>
+        <hr/>
+        <div className='form-group mt-5'>
             <label htmlFor='phoneNumber'>Phone Number</label>
             <input 
                 placeholder='phone number'
@@ -66,23 +67,23 @@ render() {
                 id="phoneNumber"
                 value={this.state.phoneNumber}
                 onChange={this.onChangePhoneNumber}
-                className="form-control input-block-level"
+                className="form-control input-block-level form-control-lg mt-2"
             />
         </div>
-        <div className='form-group'>
+        <div className='form-group mt-3'>
             <label htmlFor='message'>Message</label>
-            <input 
+            <textarea 
                 placeholder='message'
                 type='tel'
                 name="message"
                 id="message"
                 value={this.state.message}
                 onChange={this.onChangeMessage}
-                className="form-control input-block-level"
+                className="form-control input-block-level form-control-lg mt-2"
             />
         </div>
 
-        <button >submit</button>
+        <button className='btn btn-primary btn-block mt-2'>submit</button>
       </form>
     </div>
   )}

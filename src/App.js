@@ -1,4 +1,4 @@
-import "./AppStyle.css";
+//import "./AppStyle.css";
  
 import "./AppSideBar"
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -59,10 +59,10 @@ function App() {
               <h2 className="text-white">SMIS</h2>
             </div>
 
-            <div className="d-flex ms-auto order-5">
+            <div className=" ms-auto order-5">
 
               {currentUser ?(
-                        <div className="list-unstyled d-flex nav-text">
+                        <div className="list-unstyled ">
                           <li><Link to="/profile">
                           <MenuItem>
                             < ListItemIcon>
@@ -91,14 +91,15 @@ function App() {
                 <li className="navibar-toggle">
                     <Link to="#" className="menu-bars">
                         <AiIcons.AiOutlineClose/>
+                       
                     </Link>
                 </li>
                 
                 {showAdminBoard&&(
                   <li>
                   <Link to="/admin" className="nav-text">
-                    <Dashboard/>
-                    Admin Dashboard
+                    <Dashboard />
+                     Dashboard
                    </Link>
                 </li>
                 )}
