@@ -16,7 +16,7 @@ exports.create = (req, res)=>{
     });
 
       // Save post in the database
-      Smiscomments.create(smiscomments, (err, data) => {
+      Smiscomments.create(smiscomments, async (err, data) => {
     if (err)
       res.status(500).send({
         message:
@@ -29,7 +29,7 @@ exports.create = (req, res)=>{
 // Retrieve all posts from the database (with condition).
 exports.findAllSmisComments =(req, res) => {
   const smisComments = req.query.smisComments;
-  Smiscomments.getAllSmiscomments(smisComments, (err, data) => {
+  Smiscomments.getAllSmiscomments(smisComments, async (err, data) => {
     if (err) res.status(500).send({
         message:
         err.message || "Some error occurred while retrieving SmisComments."
@@ -40,7 +40,7 @@ exports.findAllSmisComments =(req, res) => {
 
 //retrieve one SmisComments using their id
 exports.findOneSmisComment = (req, res) => {
-    Smiscomments.findSmiscommentById(req.params.smisCommentsId, (err, data) => {
+    Smiscomments.findSmiscommentById(req.params.smisCommentsId, async (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({

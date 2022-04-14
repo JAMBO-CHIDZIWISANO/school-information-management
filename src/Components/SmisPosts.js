@@ -38,21 +38,9 @@ const SmisPosts = () => {
 
   return (
     <div>
-        <div>
-
-        {/* buttons for navigating to manage posts and view posts */}
-        <hr />
-        <div style={{textAlign: "right"}}>
-          <Link to={"/view-posts"}> 
-            <input type="button" value="View Posts" className="btn btn-primary btn-block" />
-          </Link>
-          <Link to={"/admin/manage-posts"}> 
-            <input type="button" value="Manage Posts" className="btn btn-primary btn-block" />
-          </Link>
-        </div>
-        <hr/>
         
-        </div>
+
+        
         <div className='createPostPage'>
           
           <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>

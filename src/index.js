@@ -18,6 +18,8 @@ import AddParent from './Components/AdminPanel/AddParent';
 import DisplayParents from './Components/AdminPanel/DisplayParents';
 
 import Announcements from "./Components/AdminPanel/Announcements"
+import NoticeBoard from './Components/NoticeBoard';
+
 import SubjectList from './Components/AdminPanel/SubjectList';
 import ManageSubjects from './Components/AdminPanel/ManageSubjects'
 import AddSubject from './Components/AdminPanel/AddSubject'
@@ -48,7 +50,7 @@ ReactDOM.render(
         <Route path="/student" element={<BoardStudent/>} />
         <Route path="/parent" element={<BoardParent/>} />
         <Route path="/comments" element={<BoardUser/>} />
-        <Route path="/admin/announcements" element={<Announcements/>} />
+        <Route path="/admin/announcements" element={<NoticeBoard/>} />
         <Route path="/view-subjects" element={<SubjectList/>} />
         <Route path="/admin/manage-subjects" element={<ManageSubjects/>} />
         <Route path="/admin/addSubject" element={<AddSubject/>} />
