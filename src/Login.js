@@ -56,20 +56,10 @@ const Login = () => {
   return (
     
     <section className='vh-100'  >
-        <div className="container py-5 ">
+    
             <div className="d-flex justify-content-center aligh-items-center">
                             <div className='px-5 wrapper mt-4'>
-                        <form onSubmit={handleLogin}  className='px-5 wrapper mt-4'>
-
-                            <div className="d-flex align-items-center text-center">
-                                <span className="h1 fw-bold "><h2>BANGULA SECONDARY SCHOOL<hr /></h2></span>
-                            </div>
-                            <div className="fw-normal text-center"><h2>Sign In</h2></div><br/>
-
-                            <div    className="form-control form-control-lg">
-                <div className=" ">
-                    
-                                <div className="   ">
+                        
                         
                                     <form onSubmit={handleLogin} >
 
@@ -139,31 +129,12 @@ const Login = () => {
                                          )}
                                         </div> 
                                     </form>
-                                </div>
-                            </div>
-                            </div>
-                            <div className='px-6 wrapper mt-3'>
-                                <button className="btn btn-primary btn-lg btn-block"
-                                    >
-                                    {loading&&( <span className='spinner-border spinner-border-sm'></span>)}
-                                    Sign in
-                                </button>
                             
-                            {/* showing the error message if not connected to server, user input wrong username or password*/}                                 
-                            {message && (
-                                <div className="">
-                                    <div className="alert alert-danger" role="alert">
-                                    {message}
-                                    </div>
-                                </div>
-                                )}
-                            </div> 
-                     </form>
                      </div>
                     
                     </div>
     
-            </div>
+          
         
     
                 
