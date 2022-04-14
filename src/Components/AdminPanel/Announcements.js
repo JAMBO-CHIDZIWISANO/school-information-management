@@ -70,12 +70,20 @@ class Announcements extends Component {
   render(){
 
   return (
-    <div>
+    <div className='container'>
       
-      <div>
+      <div className='row'>
+     
+        <div className='span6'>
         <SmisPosts />
+        </div>
+        <div className='span6'>
         <PostList/>
+        </div>
+
+      
       </div>
+     
     </div>
   )}
 }

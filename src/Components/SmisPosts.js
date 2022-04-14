@@ -2,6 +2,8 @@ import axios from 'axios';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import {Link} from "react-router-dom";
 import * as Yup from 'yup';
+import React, { Component } from 'react'
+
 
 const SmisPosts = () => {
   const initialValues = {
@@ -83,8 +85,58 @@ const SmisPosts = () => {
         </div>
 
 
+{/* 
 
 
+    <div className='container'>
+
+      <form onSubmit={this.onSubmit} className=''>
+        
+        <div className='create-post'>
+          <h1>Create Post</h1><hr/>
+        </div>
+        
+        <div class="form-group">
+            <label>Username</label>
+            <input 
+              name='username' 
+              value={this.state.username}
+              onChange={this.onChangeUsername}
+              className='form-control'
+              id='username' 
+              placeholder="Username..."
+            />
+        </div>
+
+        <div className='form-group'>
+          <label >Title</label>
+          <input  
+            name='title' 
+            value={this.state.title}
+            onChange={this.onChangeTitle}
+            className='form-control '
+            id='title' 
+            placeholder='Post title'
+          />
+        </div>
+
+        <div className='form-group'>
+          <label >Post Body</label>
+          <textarea  
+            name='smisposts' 
+            value={this.state.smisPosts}
+            onChange={this.onChangeSmisPosts}
+            className='form-control'
+            id='smisposts' 
+            placeholder='Post body'
+          />
+        </div>
+
+        <div>
+          <button className="btn btn-primary btn-block" >submit</button>
+        </div>
+      </form> */}
+      
     </div>
   )
 }

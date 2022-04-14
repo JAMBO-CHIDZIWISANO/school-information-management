@@ -160,8 +160,11 @@ const SSecurityDetailsForm = () => {
         </div>
         <hr/>
 
-        <div className="col-md-6">
-        <h3 className="text-center" >Student Security Details Form</h3><hr/>
+        <div className="row">
+
+            <div className="col-12 col-md-6 col-lg-4">
+            <div className="">
+        <h3 className="text-center" >Student Security Details</h3><hr/>
 
         <form onSubmit={handleRegister}>
        
@@ -171,7 +174,7 @@ const SSecurityDetailsForm = () => {
             <strong htmlFor="username">Username</strong>
             <input
             type="text"
-            className="form-control"
+            className="form-control mt-3"
             name="username"
             value={username}
             onChange={onChangeUsername}
@@ -182,7 +185,7 @@ const SSecurityDetailsForm = () => {
             <strong htmlFor="email">Email</strong>
             <input
             type="text"
-            className="form-control"
+            className="form-control mt-3"
             name="email"
             value={email}
             onChange={onChangeEmail}
@@ -193,7 +196,7 @@ const SSecurityDetailsForm = () => {
             <strong htmlFor="password">Password</strong>
             <input
             type="password"
-            className="form-control"
+            className="form-control mt-3"
             name="password"
             value={password}
             onChange={onChangePassword}
@@ -230,12 +233,17 @@ const SSecurityDetailsForm = () => {
         </form>
         </div>
 
-        <div className="col-md-6">
+            </div>
+            <div className="col-12 col-md-6 col-lg-8">
+            
         <h3 className="text-center" >student personal  Information</h3><hr/>
 
+           
         <form autoComplete="off" onSubmit={addStudent}>
+        <div className="row">
 
-            <div className="form-group mt-3">
+            <div className="col-12 col-md-4 col-lg-4">
+            <div className="form-group ">
                 <strong htmlFor="userId">userId</strong>
                 <input 
                     type="text" 
@@ -246,8 +254,9 @@ const SSecurityDetailsForm = () => {
                     required
                 />
             </div>
-
-            <div className="form-group mt-3" >
+            </div>
+            <div className="col-12 col-md-4 col-lg-4">
+            <div className="form-group " >
                 <strong htmlFor="studentId">student Id</strong>
                 <input 
                     type="text" 
@@ -258,8 +267,26 @@ const SSecurityDetailsForm = () => {
                     required
                 />
             </div>
+            </div>
+            <div className="col-12 col-md-4 col-lg-4">
+            <div className="form-group ">
+                <strong htmlFor="classId">class</strong>
+                <input 
+                    type="text" 
+                    className="form-control" 
+                    name="classId"
+                    value={classId} 
+                    onChange={onChangeClassId} 
+                    required
+                />
+            </div>
+            </div>
 
-            <div className="form-group mt-3" >
+        </div>
+
+        <div className="row">
+            <div className="col-12 col-md-6 col-lg-6">
+            <div className="form-group " >
                 <strong htmlFor="firstname">Firstname</strong>
                 <input 
                     type="text" 
@@ -270,8 +297,9 @@ const SSecurityDetailsForm = () => {
                     required
                 />
             </div>
-
-            <div className="form-group mt-3">
+            </div>
+            <div className="col-12 col-md-6 col-lg-6">
+            <div className="form-group ">
                 <strong htmlFor="surname">Surname</strong>
                 <input 
                     type="text" 
@@ -281,8 +309,14 @@ const SSecurityDetailsForm = () => {
                     onChange={onChangeSurname} required
                 />
             </div>
+            </div>
 
-            <div className="form-group mt-3">
+        </div>
+
+            
+        <div className="row">
+            <div className="col-12 col-md-6 col-lg-6">
+            <div className="form-group ">
                 <strong htmlFor="DoB">Date of Birth</strong>
                 <input 
                 type="date" 
@@ -292,8 +326,9 @@ const SSecurityDetailsForm = () => {
                 onChange={onChangeDoB} required
                 />
             </div>
-
-            <div className="form-group mt-3">
+            </div>
+            <div className="col-12 col-md-6 col-lg-6">
+            <div className="form-group ">
                 <strong htmlFor="gender">Gender</strong>
                 <select 
                     value={gender} 
@@ -308,7 +343,12 @@ const SSecurityDetailsForm = () => {
                 </select>
             </div>
 
-            <div className="form-group mt-3">
+            </div>
+        </div>
+
+        <div className="row">
+            <div className="col-12 col-md-6 col-lg-6">
+            <div className="form-group">
                 <strong htmlFor="parentId">parent username</strong>
                 <input 
                     type="text" 
@@ -319,20 +359,9 @@ const SSecurityDetailsForm = () => {
                     required
                 />
             </div>
-
-            <div className="form-group mt-3">
-                <strong htmlFor="classId">class</strong>
-                <input 
-                    type="text" 
-                    className="form-control" 
-                    name="classId"
-                    value={classId} 
-                    onChange={onChangeClassId} 
-                    required
-                />
             </div>
-
-                <div className="form-group mt-3">
+            <div className="col-12 col-md-6 col-lg-6">
+            <div className="form-group ">
                     <strong htmlFor="schoolId">school code</strong>
                     <input 
                         type="text" 
@@ -343,6 +372,22 @@ const SSecurityDetailsForm = () => {
                         required
                     />
                 </div>
+            </div>
+        </div>
+            
+
+            
+
+            
+
+            
+
+            
+            
+
+            
+
+               
 
                 <div className="form-group mt-3">
                     
@@ -362,9 +407,13 @@ const SSecurityDetailsForm = () => {
             )}
 
         </form>
-        </div>
+      
 
 
+            </div>
+
+        
+             </div>
       
     </div>
   )

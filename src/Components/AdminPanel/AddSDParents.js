@@ -137,8 +137,9 @@ const AddSDParents = () => {
       </div>
       <hr/>
       
-        <div  className="col-md-6">
-        <br></br> <br></br>
+      <div className="row">
+        <div  className="col-12 col-md-6 col-lg-4">
+        
         <h3 className="text-center" >Parent Sign Up Form</h3><hr/>
         <form onSubmit={handleRegister} autoComplete="off" className="">
           {!successful && (
@@ -149,7 +150,7 @@ const AddSDParents = () => {
                 <label htmlFor="username">Username</label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control  mt-3"
                   name="username"
                   value={username}
                   onChange={onChangeUsername}
@@ -160,7 +161,7 @@ const AddSDParents = () => {
                 <label htmlFor="email">Email</label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control  mt-3"
                   name="email"
                   value={email}
                   onChange={onChangeEmail}
@@ -171,7 +172,7 @@ const AddSDParents = () => {
                 <label htmlFor="password">Password</label>
                 <input
                   type="password"
-                  className="form-control"
+                  className="form-control  mt-3"
                   name="password"
                   value={password}
                   onChange={onChangePassword}
@@ -195,34 +196,63 @@ const AddSDParents = () => {
           )}
         </form>
       </div>
-      <br></br> <br></br>
+      
 
-      <div className="col-md-6" >
+      <div className="col-12 col-md-8 col-lg-8" >
+        <h2>Parent Personal Details</h2><hr/>
       <form onSubmit={addParent}>
+        <div className="row">
+          <div className="col-12 col-md-6 col-lg-6">
+            <div className="form-group " >
+              <strong htmlFor="parentId">Username</strong>
+              <input type="text" className="form-control" name="parentId"
+                value={parentId} onChange={onChangeParentId}
+                placeholder="Same as username"
+              />
+            </div>
+          </div>
 
-      <div className="form-group mt-3" >
-        <strong htmlFor="parentId">Username</strong>
-        <input type="text" className="form-control" name="parentId"
-            value={parentId} onChange={onChangeParentId}
-            placeholder="Same as username"
-        />
-      </div>
+        <div className="col-12 col-md-6 col-lg-6">
+          <div className="form-group ">
+            <strong htmlFor="userId">userId</strong>
+            <input type="text" className="form-control" name="userId"
+                value={userId} onChange={onChangeUserId}
+                placeholder="Same as username" 
+            />
+          </div>
+        </div>
+          
+        </div>
 
-        <div className="form-group mt-3" >
+      <div className="row">
+
+      <div className="col-12 col-md-6 col-lg-6">
+        <div className="form-group " >
         <strong htmlFor="firstname">Firstname</strong>
         <input type="text" className="form-control" name="firstname"
             value={firstname} onChange={onChangeFirstname} required
         />
       </div>
+        </div>
 
-      <div className="form-group mt-3">
+        <div className="col-12 col-md-6 col-lg-6">
+        <div className="form-group ">
         <strong htmlFor="phoneNo">Surname</strong>
         <input type="text" className="form-control" name="surname"
             value={surname} onChange={onChangeSurname} required
         />
       </div>
+        </div>
+        
+        
 
-      <div className="form-group mt-3">
+      </div>
+
+        
+      <div className="row">
+
+        <div className="col-12 col-md-6 col-lg-6">
+        <div className="form-group ">
         <strong htmlFor="gender">Gender</strong>
         <select type="text" 
           className="form-control" 
@@ -235,26 +265,29 @@ const AddSDParents = () => {
           <option>Female</option>
           </select> 
       </div>
-      <div className="form-group mt-3">
+
+        </div>
+        <div className="col-12 col-md-6 col-lg-6">
+        <div className="form-group ">
         <strong htmlFor="phone">Phone Number</strong>
         <input type="tel" className="form-control" name="phone"
             value={phoneNo} onChange={onChangePhoneNo} required
         />
       </div>
-      <div className="form-group mt-3">
+        </div>
+
+      </div>
+      
+
+           
+      <div className="form-group ">
         <strong htmlFor="address">Address</strong>
-        <input type="text" className="form-control" name="address"
+        <input type="text" className="form-control form-control-lg" name="address"
             value={address} onChange={onChangeAddress} required
         />
       </div>
 
-      <div className="form-group mt-3">
-        <strong htmlFor="userId">userId</strong>
-        <input type="text" className="form-control" name="userId"
-            value={userId} onChange={onChangeUserId}
-            placeholder="Same as username" 
-        />
-      </div>
+      
 
         <div className="form-group mt-3">
             <button className="btn btn-primary btn-block">Submit</button>
@@ -263,7 +296,7 @@ const AddSDParents = () => {
       
     </form>
     </div>
-
+    </div>
     </div>
 
 
