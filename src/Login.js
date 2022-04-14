@@ -56,11 +56,10 @@ const Login = () => {
   return (
     
     <section className='vh-100'  >
-        <div className="container py-5 ">
+    
             <div className="d-flex justify-content-center aligh-items-center">
-                <div className=" ">
-                    
-                                <div className="   ">
+                            <div className='px-5 wrapper mt-4'>
+                        
                         
                                     <form onSubmit={handleLogin} >
 
@@ -89,17 +88,24 @@ const Login = () => {
                                                 className="form-control form-control-lg" />    
                                         </div> 
 
-                        <div className="form-group">
+                        {/* <div className="form-group">
                             <label 
                                 className="form-label" 
                                 htmlFor="password">Password
                             </label>
                             
-                            <input 
-                                type="password" 
-                                placeholder="Enter your Password"
-                                name='password'
-                                value={password}
+                            <div className='form-group'>
+                            <strong>Username</strong>
+                            <input type="text" autoComplete="false"
+                                placeholder="Enter your Username"
+                                onChange={onChangeUsername} name="username"
+                                value={username} required id="username" 
+                                className="form-control form-control-lg"            />                                    
+                            </div> */}
+                            <div>
+                            <strong>Password</strong>
+                            <input type="password" placeholder="Enter your Password"
+                                name='password' value={password}
                                 onChange={onChangePassword}
                                 id="password" 
                                 className="form-control form-control-lg" />
@@ -123,11 +129,13 @@ const Login = () => {
                                          )}
                                         </div> 
                                     </form>
-                                </div>
-                            </div>
-                        
-            </div>
-        </div>
+                            
+                     </div>
+                    
+                    </div>
+    
+          
+        
     
                 
            

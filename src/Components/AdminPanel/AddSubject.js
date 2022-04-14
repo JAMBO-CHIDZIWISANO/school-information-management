@@ -78,31 +78,41 @@ class AddSubject extends Component {
         </Link>
       </div>
       <hr/>
-      <div className='px-5 wrapper mt-4 '>
-        <form onSubmit={this.onSubmit} className='col-md-3'>
-        <div className='subject'><h3>Add Subject</h3><hr/></div>
+      <div className='px-5 wrapper mt-4'>
+      <div className="d-flex justify-content-center aligh-items-center"><h3>ADD SUBJECT</h3><hr/></div>
+
+      <div className="d-flex justify-content-center aligh-items-center">
+
+        <form onSubmit={this.onSubmit} className='col-md-5'>
+       <div className="form-control form-control-lg" >
+
           <div className='form-group'>
             <strong>Subject Code</strong>
             <input name='subjectCode' value={this.state.subjectCode}
               onChange={this.onChangeSubjectCode}
-              className='form-control form-control-sm'
+              className='form-control form-control-lg'
               Code='subjectCode' placeholder="Subject Code..."/>
-          </div>
+            </div>
 
-          <div className='form-group'>
+            <div className='form-group'>
             <strong >Subject Name</strong>
             <input  name='subjectName' value={this.state.subjectName}
               onChange={this.onChangeSubjectName}
-              className='form-control form-control-sm'
-              id='subjectName' placeholder='Subject Name'/>
-          </div>         
-
-          <div>
-            <input 
-              type="submit"  value="Submit Subject" 
-              className="btn btn-primary btn-block" />
+              className='form-control form-control-lg'
+              id='subjectName' placeholder='Subject Name'
+              
+              />
+            </div>  
             </div>
+            <div className='px-6 wrapper mt-3'>   
+            <input 
+              type="submit"  value="Submit Subject"  
+              className="btn btn-primary btn-lg btn-block" />
+            </div>
+
+
           </form>
+          </div>
         </div>
       <div>
     </div>
