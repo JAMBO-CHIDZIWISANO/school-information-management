@@ -15,7 +15,7 @@ module.exports = app =>{
     router.get("/getAllSmiscomments", smisComments.findAllSmisComments);
 
     // get one subject
-    router.get("/smisComments/:smisCommentsId", smisComments.findOneSmisComment);
+    router.get("/smisComments/:smisPostsId", smisComments.findOneSmisComment);
 
     // update subject
     router.put("/smisComments/:smisCommentsId", smisComments.updateSmisCommentById);

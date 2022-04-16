@@ -2,6 +2,7 @@
 import React, { useState}from 'react'
 import { useNavigate } from 'react-router-dom'
 import AuthService from './Components/services/auth.service';
+
 const Login = () => {
     
         //initializing the password and username state
@@ -60,85 +61,67 @@ const Login = () => {
             <div className="d-flex justify-content-center aligh-items-center">
                             <div className='px-5 wrapper mt-4'>
                         
-                        
-                                    <form onSubmit={handleLogin} >
 
-                                        <div className="d-flex align-items-center text-center">
-                                            <span className="h1 fw-bold "><h2>BANGULA SECONDARY SCHOOL</h2></span>
-                                        </div>
+            <form onSubmit={handleLogin} >
 
-                                        <h2 className="fw-bold text-center">SIGN IN</h2>
-                                        <hr/>
-                                        
-                                        <div className="form-group">
-                                            <label 
-                                                className="form-label" 
-                                                htmlFor="username">Username
-                                            </label>
-                                             
-                                            <input 
-                                                type="text" 
-                                                autoComplete="false"
-                                                placeholder="Enter your Username"
-                                                onChange={onChangeUsername}
-                                                name="username"
-                                                value={username}
-                                                required
-                                                id="username" 
-                                                className="form-control form-control-lg" />    
-                                        </div> 
+                <div className="d-flex align-items-center text-center">
+                    <span className="h1 fw-bold "><h2>BANGULA SECONDARY SCHOOL</h2></span>
+                </div>
 
-                        {/* <div className="form-group">
-                            <label 
-                                className="form-label" 
-                                htmlFor="password">Password
-                            </label>
-                            
-                            <div className='form-group'>
-                            <strong>Username</strong>
-                            <input type="text" autoComplete="false"
-                                placeholder="Enter your Username"
-                                onChange={onChangeUsername} name="username"
-                                value={username} required id="username" 
-                                className="form-control form-control-lg"            />                                    
-                            </div> */}
-                            <div>
-                            <strong>Password</strong>
-                            <input type="password" placeholder="Enter your Password"
-                                name='password' value={password}
-                                onChange={onChangePassword}
-                                id="password" 
-                                className="form-control form-control-lg" />
-                        </div>
-
-                                        <div className="">
-                                            <button 
-                                                className="btn btn-primary btn-lg btn-block"
-                                                >
-                                                {loading&&( <span className='spinner-border spinner-border-sm'></span>)}
-                                                Sign in
-                                            </button>
-                                        
-                                        {/* showing the error message if not connected to server, user input wrong username or password*/}                                 
-                                        {message && (
-                                            <div className="">
-                                                <div className="alert alert-danger" role="alert">
-                                                {message}
-                                                </div>
-                                            </div>
-                                         )}
-                                        </div> 
-                                    </form>
-                            
-                     </div>
-                    
-                    </div>
-    
-          
-        
-    
+                <h2 className="fw-bold text-center">SIGN IN</h2>
+                <hr/>
                 
-           
+                <div className="form-group">
+                <strong>Username</strong>
+                    
+                    <input 
+                        type="text" 
+                        autoComplete="false"
+                        placeholder="Enter your Username"
+                        onChange={onChangeUsername}
+                        name="username"
+                        value={username}
+                        required
+                        id="username" 
+                        className="form-control form-control-lg" />    
+                </div> 
+            <div>
+            <strong>Password</strong>
+            <input type="password" placeholder="Enter your Password"
+                name='password' value={password}
+                onChange={onChangePassword}
+                id="password" 
+                className="form-control form-control-lg" />
+        </div>
+
+                        <div className="">
+                            <button 
+                                className="btn btn-primary btn-lg btn-block"
+                                >
+                                {loading&&( <span className='spinner-border spinner-border-sm'></span>)}
+                                Sign in
+                            </button>
+                        
+                        {/* showing the error message if not connected to server, user input wrong username or password*/}                                 
+                        {message && (
+                            <div className="">
+                                <div className="alert alert-danger" role="alert">
+                                {message}
+                                </div>
+                            </div>
+                            )}
+                        </div> 
+                    </form>
+            
+        </div>
+    
+    </div>
+
+
+
+
+
+
     </section>
                    
                 

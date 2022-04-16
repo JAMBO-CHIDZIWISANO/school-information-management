@@ -73,6 +73,8 @@ ReactDOM.render(
 
         <Route path='/view-posts' element={<SmisComments/>}/>
         <Route path='/postComments/:smisPostsId' element={<PostComments/>}/>
+        <Route path='/viewcomments' element={<SmisComments/>}/>
+
 
 
         

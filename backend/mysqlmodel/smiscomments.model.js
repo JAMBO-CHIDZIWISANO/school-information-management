@@ -4,6 +4,7 @@ const sql = require("../models/mysqldb")
 const Smiscomments = function(smiscomments) {
     this.smisCommentsId = smiscomments.smisCommentsId;
     this.smisComments = smiscomments.smisComments;
+    this.smisPostsId = smiscomments.smisPostsId;
 }
 //insert a smisComment into the database system
 Smiscomments.create = (newSmiscomments, result)=> {
@@ -22,8 +23,8 @@ Smiscomments.create = (newSmiscomments, result)=> {
 }
 
 //retrieving one smisComments
-Smiscomments.findSmiscommentById = (smisCommentsId, result) => {
-    sql.query(`SELECT smiscomments FROM smiscomments WHERE smisCommentsId LIKE '%${smisCommentsId}%'`, (err, res) => {
+Smiscomments.findSmiscommentById = (smisPostsId, result) => {
+    sql.query(`select smiscomments.smisComments from smiscomments join smisposts on smiscomments.smisPostsId = smisposts.smisPostsId where smiscomments.smisPostsId = ${smisPostsId}`, (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(err, null);
@@ -43,7 +44,8 @@ Smiscomments.findSmiscommentById = (smisCommentsId, result) => {
   Smiscomments.getAllSmiscomments = (smisCommentsId, result) => {
     let query = "SELECT * FROM smiscomments";
     if (smisCommentsId) {
-      query += ` WHERE smisCommentsId LIKE '%${smisCommentsId}%'`;
+      query += ` WHERE smisCommentsId = ${smisCommentsId}`;
+      
     }
     sql.query(query, (err, res) => {
       if (err) {

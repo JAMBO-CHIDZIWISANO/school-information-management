@@ -1,11 +1,14 @@
 import axios from 'axios';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import {Link} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import * as Yup from 'yup';
-import React, { Component } from 'react'
+import React from 'react'
 
 
 const SmisPosts = () => {
+
+  // defining navigation to posts
+  const navigate = useNavigate();
   const initialValues = {
     title: "",
     smisPosts: "",
@@ -15,7 +18,7 @@ const SmisPosts = () => {
   // form validation using yup library by defining the required inputs or variable
   const validationSchema = Yup.object().shape({
     title: Yup.string().required("You must type a Title for your Post"),
-    smisPosts: Yup.string().required("Type Full post Here"),
+    smisPosts: Yup.string().min(2).max(100).required("Type Full post Here"),
     username: Yup.string().min(3).max(15).required("Enter username as provided by Admin"), 
   });
   //creating onSubmit function and will pass data as an argument from formik
@@ -24,25 +27,17 @@ const SmisPosts = () => {
     console.log(data)
     // now sending it to database usig post api
     axios.post("http://localhost:4000/api/smis/addSmisPosts", data).then((response) => {
-      console.log(response.data)
+      navigate('/viewcomments');
+
 
     })
-    
+  };
 
-    this.setState({
-      username: "",
-      title: "",  
-      smisPosts: "", 
-    })
-  }
+
 
   return (
-    <div>
-        
-
-        
+    <div>  
         <div className='createPostPage'>
-          
           <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
               <Form className="formContainer">
                   <strong>Title</strong>

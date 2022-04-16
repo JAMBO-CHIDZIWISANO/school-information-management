@@ -12,7 +12,7 @@ exports.create = (req, res)=>{
     const smiscomments = new Smiscomments({
         smisCommentsId: req.body.smisCommentsId,
         smisComments: req.body.smisComments,
-        
+        smisPostsId: req.body.smisPostsId, 
     });
 
       // Save post in the database
@@ -40,16 +40,16 @@ exports.findAllSmisComments =(req, res) => {
 
 //retrieve one SmisComments using their id
 exports.findOneSmisComment = (req, res) => {
-    Smiscomments.findSmiscommentById(req.params.smisCommentsId, async (err, data) => {
+    Smiscomments.findSmiscommentById(req.params.smisPostsId, async (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Not found Subject with id ${req.params.smisCommentsId}.`
+          message: `Not found Subject with id ${req.params.smisPostsId}.`
         });
       } 
       else {
         res.status(500).send({
-          message: "Error retrieving Subject with id " + req.params.smisCommentsId
+          message: "Error retrieving Subject with id " + req.params.smisPostsId
         });
       }
     } else res.send(data);
