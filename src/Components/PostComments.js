@@ -76,13 +76,16 @@ const PostComments = () => {
         
         <div className="listOfComments">
         
-              {/* {comment.map((item) =>{
-                   <div className="comment">
-                   <strong >ParentName Comment : </strong><br/>{item.smisComments}
-               </div>   
-               })} 
+               {comment.map((item, key) =>{
+               return (
+                  <div className="comment" key={key}>
+                    <strong >ParentName Comment : </strong><br/>{item.smisComments}
+                  </div>
+                  ) }
+               )  
+                }
                          
-         */}
+        
         </div>
     </div>
     </div>

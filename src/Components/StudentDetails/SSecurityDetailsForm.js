@@ -141,11 +141,7 @@ const SSecurityDetailsForm = () => {
         </div>
 
         <div style={{textAlign: "right"}}>
-            <Link to={"/admin/students"}> 
-                <Button variant="primary">
-                    <ViewList/>Students
-                </Button>       
-            </Link>
+            
             <Link to={"/admin/exam-records"}> 
                 <Button variant="primary">
                     <ViewList/>Examinations

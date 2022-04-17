@@ -17,9 +17,9 @@ const sequelize = new Sequelize(
       acquire: config.pool.acquire,
       idle: config.pool.idle
     },
-  //   define: {
-  //     timestamps: false
-  //   },
+    define: {
+      timestamps: false
+    },
    }
 );
 

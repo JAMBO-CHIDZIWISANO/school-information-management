@@ -30,9 +30,9 @@ Smiscomments.findSmiscommentById = (smisPostsId, result) => {
         result(err, null);
         return;
       }
-      if (res.length) {
-        console.log("found smiscomments: ", res[0]);
-        result(null, res[0]);
+      if (res) {
+        console.log("found smiscomments: ", res);
+        result(null, res);
         return;
       }
       // not found smisComments with the id
@@ -40,69 +40,69 @@ Smiscomments.findSmiscommentById = (smisPostsId, result) => {
     });
   };
 
-  //retrieving all smisComments
-  Smiscomments.getAllSmiscomments = (smisCommentsId, result) => {
-    let query = "SELECT * FROM smiscomments";
-    if (smisCommentsId) {
-      query += ` WHERE smisCommentsId = ${smisCommentsId}`;
-      
-    }
-    sql.query(query, (err, res) => {
-      if (err) {
-        console.log("error: ", err);
-        result(null, err);
-        return;
-      }
-      console.log("smisComments: ", res);
-      result(null, res);
-    });
-  };
-
-  //update subject by their id
-  Smiscomments.updateSmiscommentById = (smisCommentsId, smiscomments, result) => {
+//retrieving all smisComments
+Smiscomments.getAllSmiscomments = (smisCommentsId, result) => {
+  let query = "SELECT * FROM smiscomments";
+  if (smisCommentsId) {
+    query += ` WHERE smisCommentsId = ${smisCommentsId}`;
     
-    sql.query(
-      `UPDATE smiscomments SET smiscomments = ? WHERE smisCommentsId = ${smisCommentsId}`,
-      
-      [ smiscomments.smisComments,  
-        smisCommentsId],
-
-      (err, res) => {
-        if (err) {
-          console.log("error: ", err);
-          result(null, err);
-          return;
-        }
-        if (res.affectedRows == 0) {
-
-          // not found smisComments with the id
-          result({ kind: "not_found" }, null);
-          return;
-        }
-        console.log("updated smiscomments: ", 
-        { smisCommentsId: smisCommentsId, ...smiscomments });
-        result(null, { smisCommentsId: smisCommentsId, ...smiscomments });
-      }
-    );
   }
+  sql.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    console.log("smisComments: ", res);
+    result(null, res);
+  });
+};
 
-  //delete al smisComments by code
-  Smiscomments.deleteSmiscomments = (smisCommentsId, result) => {
+//update subject by their id
+Smiscomments.updateSmiscommentById = (smisCommentsId, smiscomments, result) => {
+  
+  sql.query(
+    `UPDATE smiscomments SET smiscomments = ? WHERE smisCommentsId = ${smisCommentsId}`,
     
-    sql.query(`DELETE FROM smiscomments WHERE smisCommentsId = ${smisCommentsId}`, smisCommentsId, (err, res) => {
+    [ smiscomments.smisComments,  
+      smisCommentsId],
+
+    (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(null, err);
         return;
       }
       if (res.affectedRows == 0) {
-        // not found smisComments with the code
+
+        // not found smisComments with the id
         result({ kind: "not_found" }, null);
         return;
       }
-      console.log("deleted smisComments with smisCommentsId: ", smisCommentsId);
-      result(null, res);
-    });
-  };
+      console.log("updated smiscomments: ", 
+      { smisCommentsId: smisCommentsId, ...smiscomments });
+      result(null, { smisCommentsId: smisCommentsId, ...smiscomments });
+    }
+  );
+}
+
+//delete all smisComments by code
+Smiscomments.deleteSmiscomments = (smisCommentsId, result) => {
+  
+  sql.query(`DELETE FROM smiscomments WHERE smisCommentsId = ${smisCommentsId}`, smisCommentsId, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    if (res.affectedRows == 0) {
+      // not found smisComments with the code
+      result({ kind: "not_found" }, null);
+      return;
+    }
+    console.log("deleted smisComments with smisCommentsId: ", smisCommentsId);
+    result(null, res);
+  });
+};
 
 module.exports = Smiscomments;

@@ -73,6 +73,24 @@ exports.findOneParent = (req, res) => {
   });
 };
 
+//retrieve one parent using their username
+exports.findLoggedInParent = (req, res) => {
+  Parent.findParentByUsername(req.params.username, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found parent with id ${req.params.username}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Error retrieving parent with id " + req.params.username
+        });
+      }
+    } else res.send(data);
+  });
+};
+
+
 
 //update a parent
 exports.updateParentById = (req, res) => {
