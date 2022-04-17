@@ -80,7 +80,7 @@ const Display = () => {
                                 <td>{item.surname}</td>
                                 <td>{item.gender}</td>
                                 <td>{item.qualification}</td>
-                                <td>{item.join_date}</td>
+                                <td>{item.joinDate}</td>
                                 <td>
 
                                 

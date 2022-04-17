@@ -53,6 +53,8 @@ const DisplayParents = () => {
         <h1 className="text-center">LIST OF Parents</h1>
         <Table className="table-bordered table-hover table-striped">
             <thead>
+               
+                
                 <tr>
                     <th>No. </th>
                     <th>Firstname</th>

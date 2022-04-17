@@ -50,7 +50,7 @@ Teacher.findTeacherById = (teacherId, result) => {
 
   //retrieving all teachers
   Teacher.findAllTeachers = (surname, result) => {
-    let query = "SELECT firstname, surname, gender, qualification, DATE(joinDate) as join_date FROM teachers";
+    let query = "SELECT * FROM teachers";
     if (surname) {
       query += ` WHERE lastname LIKE '%${surname}%'`;
     }

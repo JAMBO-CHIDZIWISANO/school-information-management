@@ -17,7 +17,7 @@ const PostComments = () => {
   const {smisPostsId} = useParams();
   const {smisCommentsId} = useParams();
   const [smisPostObject, setSmisPostObject] = useState({});
-  const [comment, setComment] = useState({});
+  const [comment, setComment] = useState([]);
   const [newComment, setNewComment] = useState("");
 
   useEffect( () => {
@@ -76,11 +76,13 @@ const PostComments = () => {
         
         <div className="listOfComments"></div>
         
-              {/* {comment.map((item, key) =>{ */}
-                   <div className="comment">
-                   <strong >ParentName Comment : </strong><br/>{comment.smisComments}
-               </div>   
-              {/* })} */}
+               {comment.map((item, key) =>{
+               return (
+                  <div className="comment" key={key}>
+                    <strong >ParentName Comment : </strong><br/>{item.smisComments}
+                  </div>) }
+               )  
+                }
                          
         
         </div>

@@ -159,3 +159,16 @@ exports.findForm1Students =(req, res) => {
     else res.send(data);
   });
 };
+
+//number of male and female students
+exports.findNumberOfMaleAndFemaleStudents =(req, res) => {
+  const gender = req.query.gender;
+  Student.findNumberOfMaleAndFemaleStudents(gender, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Students."
+      });
+    else res.send(data);
+  });
+};

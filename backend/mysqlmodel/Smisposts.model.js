@@ -8,6 +8,7 @@ const Smisposts = function(smisposts) {
     this.username = smisposts.username;
   
 }
+
 //inserting a comment into a database
 Smisposts.create = (newSmisPosts, result)=> {
     

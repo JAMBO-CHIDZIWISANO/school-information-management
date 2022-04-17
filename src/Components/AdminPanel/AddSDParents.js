@@ -141,7 +141,7 @@ const AddSDParents = () => {
         <div  className="col-12 col-md-6 col-lg-4">
         
         <h3 className="text-center" >Parent Sign Up Form</h3><hr/>
-        <form onSubmit={handleRegister} autoComplete="off" className="">
+        <form onSubmit={handleRegister}  autoComplete="off" className="">
           {!successful && (
             <div>
 
@@ -200,7 +200,7 @@ const AddSDParents = () => {
 
       <div className="col-12 col-md-8 col-lg-8" >
         <h2>Parent Personal Details</h2><hr/>
-      <form onSubmit={addParent}>
+      <form >
         <div className="row">
           <div className="col-12 col-md-6 col-lg-6">
             <div className="form-group " >
@@ -290,7 +290,7 @@ const AddSDParents = () => {
       
 
         <div className="form-group mt-3">
-            <button className="btn btn-primary btn-block">Submit</button>
+            <button onClick={addParent} className="btn btn-primary btn-block">Submit</button>
         </div>
 
       

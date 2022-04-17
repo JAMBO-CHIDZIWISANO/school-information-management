@@ -174,7 +174,23 @@ Student.findStudentById = (studentId, result) => {
   Student.findForm1Students = (surname, result) => {
     let query = " select users.username, students.firstname, students.surname, users.email from users join  students on users.username=students.userId join classes on students.classId= classes.classId join schools on schools.schoolId=students.schoolId where classes.classId = 1 and schools.schoolId=1;";
     if (surname) {
-      query += ` WHERE lastname LIKE '%${surname}%'`;
+      query += ` WHERE surname LIKE '%${surname}%'`;
+    }
+    sql.query(query, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+      console.log("students: ", res);
+      result(null, res);
+    });
+  };
+
+  Student.findNumberOfMaleAndFemaleStudents = (gender, result) => {
+    let query = "Select sum(CASE WHEN (gender = 'male' && classId=1) THEN 1 ELSE 0 END) as Male_count1, sum(CASE WHEN (gender='female' && classId=1) then 1 else 0 end) as female_count1, sum(CASE when (gender='male' && classId=2) then 1 else 0 end) as male_count2, sum(CASE when (gender='female' && classId=2) then 1 else 0 end) as female_count2, sum(CASE when (gender='male' && classId=3) then 1 else 0 end) as male_count3, sum(CASE when (gender='female' && classId=3) then 1 else 0 end) as female_count3, sum(CASE when (gender='male' && classId=4) then 1 else 0 end) as male_count4, sum(CASE when (gender='female' && classId=4) then 1 else 0 end) as male_count4, count(*) as all_students from students;";
+    if (gender) {
+      query += ` WHERE gender LIKE '%${gender}%'`;
     }
     sql.query(query, (err, res) => {
       if (err) {

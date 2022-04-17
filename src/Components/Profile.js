@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import AuthService from "./services/auth.service";
-import CurrentUser from "../CurrentUser";
-import axios from 'axios'
 export default class Profile extends Component {
   constructor(props) {
     super(props);
