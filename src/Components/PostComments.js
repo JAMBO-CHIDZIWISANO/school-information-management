@@ -15,9 +15,8 @@ const PostComments = () => {
 
   const navigate = useNavigate();
   const {smisPostsId} = useParams();
-  const {smisCommentsId} = useParams();
   const [smisPostObject, setSmisPostObject] = useState({});
-  const [comment, setComment] = useState({});
+  const [comment, setComment] = useState([]);
   const [newComment, setNewComment] = useState("");
 
   useEffect( () => {
@@ -25,9 +24,10 @@ const PostComments = () => {
       setSmisPostObject(response.data) 
   });
 
-  //   axios.get(`http://localhost:4000/api/smis/smisComments/${smisCommentsId}`).then((response) => {
-  //     setComment(response.data)
-  //  });
+    axios.get(`http://localhost:4000/api/smis/smisComments/${smisPostsId}`).then((response) => {
+      console.log(response)
+      setComment(response.data)
+   });
    
 }, []);
     // now sending it to database usig post api
@@ -36,22 +36,22 @@ const PostComments = () => {
       smisComments: newComment, smisPostsId: smisPostsId }).then((response) => {
     // navigate('/viewcomments');
     // refreshing to add new comments automatically
-    const newCommentAdded = {smisComments: newComment, smisPostsId: smisPostsId };
+    const newCommentAdded = {smisComments: newComment };
     setComment([...comment, newCommentAdded]);
     setNewComment("");
     });
   };
  
    
-  const loadComment = async () => {
-    const response = await axios.get(`http://localhost:4000/api/smis/smisComments/${smisPostsId}`);
-    setComment(response.data);    
-  };
-  // refresh window
+  // const loadComment = async () => {
+  //   const response = await axios.get(`http://localhost:4000/api/smis/smisComments/${smisPostsId}`);
+  //   setComment(response.data);    
+  // };
+  // // refresh window
 
-    useEffect(() => {
-      loadComment();
-    }, []);
+  //   useEffect(() => {
+  //     loadComment();
+  //   }, []);
 
 
   return (
@@ -74,16 +74,17 @@ const PostComments = () => {
           <button className='commentbutton' onClick={sendComment}>Send Comment</button>
         </div>
         
-        <div className="listOfComments"></div>
+        <div className="listOfComments">
         
-              {/* {comment.map((item, key) =>{ */}
+              {/* {comment.map((item) =>{
                    <div className="comment">
-                   <strong >ParentName Comment : </strong><br/>{comment.smisComments}
+                   <strong >ParentName Comment : </strong><br/>{item.smisComments}
                </div>   
-              {/* })} */}
+               })} 
                          
-        
+         */}
         </div>
+    </div>
     </div>
     </div>
   
