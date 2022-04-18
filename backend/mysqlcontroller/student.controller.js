@@ -172,3 +172,37 @@ exports.findNumberOfMaleAndFemaleStudents =(req, res) => {
     else res.send(data);
   });
 };
+
+//retrieve one Student using their id
+exports.studentExamResults = (req, res) => {
+  Student.studentExamResults(req.params.studentId, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found student with id ${req.params.studentId}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Error retrieving Student with id " + req.params.studentId
+        });
+      }
+    } else res.send(data);
+  });
+};
+
+//retrieve one Student using their id
+exports.studentPersonalInfo = (req, res) => {
+  Student.studentPersonalInfo(req.params.studentId, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found student with id ${req.params.studentId}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Error retrieving Student with id " + req.params.studentId
+        });
+      }
+    } else res.send(data);
+  });
+};

@@ -63,21 +63,21 @@ function App() {
 
               {currentUser ?(
                         <div className="list-unstyled ">
-                          <li><Link to="/profile">
+                          <><Link to="/profile">
                           <MenuItem>
                             < ListItemIcon>
                               <Person fontSize="small" />
                             </ListItemIcon>
                             Profile
-                          </MenuItem></Link></li>
-                          <li><a href='/' onClick={logOut}> 
+                          </MenuItem></Link></>
+                          <><a href='/' onClick={logOut}> 
                           <MenuItem>
                             < ListItemIcon>
                               <Logout fontSize="small" />
                             </ListItemIcon>
                             Logout
                           </MenuItem> 
-                    </a></li>
+                    </a></>
                         </div>
                   ):(
                           null      

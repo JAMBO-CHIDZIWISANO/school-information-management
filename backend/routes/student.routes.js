@@ -33,6 +33,12 @@ module.exports = app =>{
     // //get one student
     router.get("/student/:studentId", student.findOneStudent);
 
+    // //get exam results for one student
+    router.get("/student/exam/:studentId", student.studentExamResults);
+
+    // //get exam results for one student
+    router.get("/studentinfo/:studentId", student.studentPersonalInfo);
+
     // //update student
     router.put("/student/:studentId", student.updateStudentById);
 

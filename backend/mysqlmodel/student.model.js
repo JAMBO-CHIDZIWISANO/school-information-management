@@ -203,6 +203,43 @@ Student.findStudentById = (studentId, result) => {
     });
   };
 
+  //retrieve a student examination results
+Student.studentExamResults = (studentId, result) => {
+  sql.query(`select u.subjectName, m.student_score, m.total_score, round((m.student_score/m.total_score)*100,2) as grade from students s inner join classes c on s.classId=c.classId join student_marks m on m.studentId = s.studentId join subjects u on m.subjectCode=u.subjectCode join terms t on m.termId=t.termId where s.studentId like '%${studentId}%' group by u.subjectCode; `, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+    if (res) {
+      console.log("found student: ", res);
+      result(null, res);
+      return;
+    }
+    // not found student with the id
+    result({ kind: "not_found" }, null);
+  });
+};
+
+  //retrieve a student person info
+  Student.studentPersonalInfo = (studentId, result) => {
+    sql.query(`select s.firstname, s.surname, t.termName, c.className from students s inner join classes c on s.classId=c.classId join student_marks m on m.studentId = s.studentId  join terms t on m.termId=t.termId where s.userId like '%${studentId}%' group by s.studentId;`, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
+      if (res) {
+        console.log("found student: ", res);
+        result(null, res);
+        return;
+      }
+      // not found student with the id
+      result({ kind: "not_found" }, null);
+    });
+  };
+  
+
 
 
 module.exports = Student;
