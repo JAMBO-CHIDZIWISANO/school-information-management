@@ -205,7 +205,7 @@ Student.findStudentById = (studentId, result) => {
 
   //retrieve a student examination results
 Student.studentExamResults = (studentId, result) => {
-  sql.query(`select u.subjectName, m.student_score, m.total_score, round((m.student_score/m.total_score)*100,2) as grade from students s inner join classes c on s.classId=c.classId join student_marks m on m.studentId = s.studentId join subjects u on m.subjectCode=u.subjectCode join terms t on m.termId=t.termId where s.studentId like '%${studentId}%' group by u.subjectCode; `, (err, res) => {
+  sql.query(`select u.subjectName, m.student_score, m.total_score, round((m.student_score/m.total_score)*100,2) as grade,CASE WHEN (round((m.student_score/m.total_score)*100,2))>=80 THEN 'A=distinction' WHEN (round((m.student_score/m.total_score)*100,2))>=70 THEN 'B=very good' WHEN (round((m.student_score/m.total_score)*100,2))>=60 THEN 'C=good' WHEN (round((m.student_score/m.total_score)*100,2))>=50 THEN 'D=average' ELSE 'F=fail' END AS remarks from students s inner join classes c on s.classId=c.classId join student_marks m on m.studentId = s.studentId join subjects u on m.subjectCode=u.subjectCode join terms t on m.termId=t.termId where s.studentId like '%${studentId}%' group by u.subjectCode; `, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -223,7 +223,7 @@ Student.studentExamResults = (studentId, result) => {
 
   //retrieve a student person info
   Student.studentPersonalInfo = (studentId, result) => {
-    sql.query(`select s.firstname, s.surname, t.termName, c.className from students s inner join classes c on s.classId=c.classId join student_marks m on m.studentId = s.studentId  join terms t on m.termId=t.termId where s.userId like '%${studentId}%' group by s.studentId;`, (err, res) => {
+    sql.query(`select s.studentId,s.firstname,s.surname,c.className,t.termName, sum(round((m.student_score/m.total_score)*100,2)) as marks from student_marks m join students s on m.studentId=s.studentId join classes c on s.classId=c.classId join terms t on t.termId=m.termId where m.type like '%End-Of_Term%' and m.studentId like '${studentId}'  group by studentId order by marks desc;`, (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(err, null);

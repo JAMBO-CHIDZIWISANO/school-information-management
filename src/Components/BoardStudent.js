@@ -27,34 +27,38 @@ const BoardStudent = () => {
             studentPInfo.map((it, ky)=>{
               return(
               <div key={ky}>
-                
-             <div className='row text-center mb-4'>
-               <div className='col-8 col-md-2 col-lg-2'>
-                  {it.firstname}
-               </div>
-               <div className='col-8 col-md-2 col-lg-2'>
-               {it.surname}
-               </div>
-               <div className='col-8 col-md-2 col-lg-2'>
-               {it.className}
-               </div>
-               <div className='col-8 col-md-2 col-lg-2'>
-               {it.termName}
-               </div>
-            </div>
-
-            <div className='row'>   
                
+
+            <div className='row card-content'> 
+            <div className=''>
+
+            </div>
+            <div className='card-body'>
           <Table>
             
             <thead>
-             
-             
+              
             <tr>
+              <td>
+                Full Name:
+              </td>
+              <td>
+              {it.firstname}
+              </td>
+              <td>
+              {it.surname}
+              </td>
+              <td>
+                Reg#:
+              {currentUser.username}
+              </td>
+            </tr>
+            <tr className='' variant="primary">
               <th>Subjects</th>
               <th>Student Score</th>
               <th>Total Score</th>
               <th>Grade(%)</th>
+              <th>remarks</th>
             </tr>
            
             </thead>
@@ -66,20 +70,38 @@ const BoardStudent = () => {
                 <td>{item.student_score}</td>
                 <td>{item.total_score}</td>
                 <td>{item.grade}</td>
+                <td>{item.remarks}</td>
               </tr>
              
                )
               })
               }
-               <tr>
+               <tr> 
+                 <td>total marks :</td>
+                 <td></td>
+                 <td></td>
+                 <td>{it.marks}</td>
                
+
                
               </tr>
-              {currentUser.email}
+              <tr> 
+                 <td>Class: </td>
+                 <td>{it.className}</td>
+                 <td>Term: </td>
+                 <td>{it.termName}</td>
+               
+
+               
+              </tr>
+             
               
             </tbody>
           </Table>
           </div>
+
+          </div>
+                    
           </div>
          )
         })
