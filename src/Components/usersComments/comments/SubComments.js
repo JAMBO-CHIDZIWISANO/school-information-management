@@ -47,7 +47,7 @@ const SubComments = (props) => {
     
     
       return (
-        <>
+        <div>
         <section className='messageContainer'>
             <div className='messageUser'>{props.user}</div>
             <i className='fas fa-user-circle'></i>
@@ -69,7 +69,7 @@ const SubComments = (props) => {
           </showReply.Provider>
                     
         </section>
-        </>
+        </div>
       )
     }
     

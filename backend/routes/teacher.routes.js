@@ -14,6 +14,9 @@ module.exports = app =>{
     //get one teacher
     router.get("/teacher/:teacherId", teacher.findOneTeacher);
 
+     //get one teacher timetable
+     router.get("/teacher-timetable/:teacherId", teacher.findTeacherTimetable);
+
     //update teacher
     router.put("/teacher/:teacherId", teacher.updateTeacherById);
 

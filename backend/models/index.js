@@ -108,32 +108,25 @@ db.school.hasMany(db.teacher, {
   onUpdate: "cascade"
 });
 
-//many to many relationships students and subjects
-db.student.belongsToMany(db.subject, {
-  through: "student_subjects",
-  foreignKey: "studentId",
-  otherKey: "subjectCode"
-});
-db.subject.belongsToMany(db.student, {
-  through: "student_subjects",
-  foreignKey: "subjectCode",
-  otherKey: "studentId"
-});
-
-//many to many relationships teacher and students
-db.teacher.belongsToMany(db.subject, {
-  through: "teacher_subjects",
+//one to many relationships teacher and students
+db.teacher.hasMany(db.classlesson, {
   foreignKey: "teacherId",
-  otherKey: "subjectCode"
-});
-db.subject.belongsToMany(db.teacher, {
-  through: "teacher_subjects",
-  foreignKey: "subjectCode",
-  otherKey: "teacherId"
+  targetKey: "teacherId",
+  onDelete: "cascade",
+  onUpdate: "cascade"
 });
 
-// one to one relationship between lesson and room
-db.classroom.hasOne(db.classlesson, {
+//one to many relationships teacher and students
+db.class.hasMany(db.classlesson, {
+  foreignKey: "classId",
+  targetKey: "classId",
+  onDelete: "cascade",
+  onUpdate: "cascade"
+});
+
+
+//one to many relationship between lesson and room
+db.classroom.hasMany(db.classlesson, {
   foreignKey: "roomId",
   targetKey: "roomId"
 });

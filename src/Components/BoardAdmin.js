@@ -1,11 +1,11 @@
 
 import React from 'react'
-//import ApexChart from './ApexChart'
+import Timetableform from './timetable/Timetableform'
 const BoardAdmin = () => {
   return (
     <div className='container mt-5'>
       
-      <div className='row'>
+      <div className='row '>
         <div className='col-12 col-md-4 col-lg-3'>
           <h1>number of students</h1>
         </div>
@@ -18,9 +18,8 @@ const BoardAdmin = () => {
         <div className='col-12 col-md-4 col-lg-3'>
           <h1>examinations</h1>
         </div>
-
       </div>
-  
+      <Timetableform/>
     </div>
   )
 }

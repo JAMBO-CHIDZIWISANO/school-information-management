@@ -188,7 +188,7 @@ Student.findStudentById = (studentId, result) => {
   };
 
   Student.findNumberOfMaleAndFemaleStudents = (gender, result) => {
-    let query = "Select sum(CASE WHEN (gender = 'male' && classId=1) THEN 1 ELSE 0 END) as Male_count1, sum(CASE WHEN (gender='female' && classId=1) then 1 else 0 end) as female_count1, sum(CASE when (gender='male' && classId=2) then 1 else 0 end) as male_count2, sum(CASE when (gender='female' && classId=2) then 1 else 0 end) as female_count2, sum(CASE when (gender='male' && classId=3) then 1 else 0 end) as male_count3, sum(CASE when (gender='female' && classId=3) then 1 else 0 end) as female_count3, sum(CASE when (gender='male' && classId=4) then 1 else 0 end) as male_count4, sum(CASE when (gender='female' && classId=4) then 1 else 0 end) as male_count4, count(*) as all_students from students;";
+    let query = "Select SUM(CASE WHEN (classId=1) THEN 1 ELSE 0 END) AS form1, SUM(CASE WHEN (classId=2) THEN 1 ELSE 0 END) AS form2, SUM(CASE WHEN (classId=3) THEN 1 ELSE 0 END) AS form3, SUM(CASE WHEN (classId=4) THEN 1 ELSE 0 END) AS form4, sum(CASE WHEN (gender = 'male' && classId=1) THEN 1 ELSE 0 END) as Male_count1, sum(CASE WHEN (gender='female' && classId=1) then 1 else 0 end) as female_count1, sum(CASE when (gender='male' && classId=2) then 1 else 0 end) as male_count2, sum(CASE when (gender='female' && classId=2) then 1 else 0 end) as female_count2, sum(CASE when (gender='male' && classId=3) then 1 else 0 end) as male_count3, sum(CASE when (gender='female' && classId=3) then 1 else 0 end) as female_count3, sum(CASE when (gender='male' && classId=4) then 1 else 0 end) as male_count4, sum(CASE when (gender='female' && classId=4) then 1 else 0 end) as male_count4, count(*) as all_students from students;";
     if (gender) {
       query += ` WHERE gender LIKE '%${gender}%'`;
     }
@@ -238,8 +238,25 @@ Student.studentExamResults = (studentId, result) => {
       result({ kind: "not_found" }, null);
     });
   };
-  
 
+  //retrieve a time table depending on the class of a student
+  Student.studentTimetable = (studentId, result) => {
+    sql.query(`  SELECT l.day, l.lesson_startTime, l.lesson_endTime, r.roomName,s.subjectName from classlessons l join classrooms r on l.roomId=r.roomId join subjects s on s.subjectCode=l.subjectCode join classes c on l.classId=c.classId join students t on t.classId=c.classId where t.studentId like '${studentId}';`, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
+      if (res) {
+        console.log("found time table: ", res);
+        result(null, res);
+        return;
+      }
+      // not found student with the id
+      result({ kind: "not_found" }, null);
+    });
+  };
+  
 
 
 module.exports = Student;

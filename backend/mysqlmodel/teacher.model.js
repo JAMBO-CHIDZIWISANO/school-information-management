@@ -101,7 +101,7 @@ Teacher.findTeacherById = (teacherId, result) => {
   //delete al teacher by id
   Teacher.deleteTeacher = (teacherId, result) => {
     
-    sql.query("DELETE FROM teachers WHERE teacherId = ?", 
+    sql.query("DELETE t,u FROM users u join teachers t  on u.username=t.userId  WHERE t.teacherId=  ?", 
     
     teacherId, (err, res) => {
       if (err) {
@@ -114,9 +114,29 @@ Teacher.findTeacherById = (teacherId, result) => {
         result({ kind: "not_found" }, null);
         return;
       }
-      console.log("deleted teacher with teacherId: ", teacherId);
+      console.log("deleted teacher with teacher: ", teacherId);
       result(null, res);
     });
   };
+
+  //retrieving one teacher timetable
+Teacher.findTeacherTimetable = (teacherId, result) => {
+  sql.query(`SELECT l.day, l.lesson_startTime, l.lesson_endTime, r.roomName,s.subjectName,c.className FROM classlessons l JOIN classrooms r ON l.roomId=r.roomId JOIN subjects s ON s.subjectCode=l.subjectCode JOIN classes c ON l.classId=c.classId  WHERE l.teacherId LIKE '${teacherId}' GROUP BY l.day ORDER BY l.classId asc;`, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+    if (res) {
+      console.log("found teacher: ", res);
+      result(null, res);
+      return;
+    }
+    // not found teacher with the id
+    result({ kind: "not_found" }, null);
+  });
+};
+  
+
 
 module.exports = Teacher;

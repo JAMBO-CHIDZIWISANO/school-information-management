@@ -137,7 +137,7 @@ require("./routes/marks.routes")(app)
 require("./routes/subject.routes")(app)
 require("./routes/classes.routes")(app);
 require("./routes/terms.routes")(app);
-
+require("./routes/lessons.routes")(app);
 require("./routes/smiscomments.routes")(app);
 require("./routes/smisposts.routes")(app);
 

@@ -58,7 +58,7 @@ const Comment = (props) => {
   const deleteMessage = () => {}
 
   return (
-    <>
+    <div>
     <section className='messageContainer'>
         <div className='messageUser'>{props.user}</div>
         <i class='fas fa-user-circle'></i>
@@ -88,7 +88,7 @@ const Comment = (props) => {
       </section>
       )}
     </section>
-    </>
+    </div>
   )
 }
 

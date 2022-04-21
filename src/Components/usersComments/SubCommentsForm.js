@@ -56,14 +56,14 @@ const SubCommentsForm = (props) => {
           {showCommentLine && <div className="commentLine"></div>}
           </section>
           {showButtons && (
-            <>
+            <div>
             <button className="commentButton sendButton" disabled={enableButton} onClick={sendComment}>Comment</button>
             <button className="commentButton" style={{color:"gray", backgroundColor:"transparent" }} 
               onClick ={ () => {
                 setShowButtons(false);
                 message.current.value = ""
               }} >Cancel</button>
-            </>
+            </div>
             )}
       </form>
     </div>  

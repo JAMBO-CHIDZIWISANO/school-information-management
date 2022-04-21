@@ -56,14 +56,14 @@ const CommentForm = (props) => {
           {showCommentLine && <div className="commentLine"></div>}
           </section>
           {showButtons && (
-            <>
+            <div>
             <button className="commentButton sendButton" disabled={enableButton} onClick={sendComment}>Comment</button>
-            <button className="commentButton" style={{color:"gray", backgroundColor:"transparent" }} 
+            <button className="commentButton" style={{color:"gray" }} 
               onClick ={ () => {
                 setShowButtons(false);
                 message.current.value = ""
               }} >Cancel</button>
-            </>
+            </div>
             )}
       </form>
     </div>  

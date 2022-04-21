@@ -64,7 +64,7 @@ const MessageScroll = (props) => {
   console.log("this is "+JSON.stringify(username));
 
   return (
-  <>
+  <div>
       <Comment user={JSON.stringify(user)} editable={false} message={messages} likes={25} />
       <div className='bottomBar'>  <div className='loader'></div> </div> 
     {/* using dynamic data from database instead of the above dummy data above*/}
@@ -86,7 +86,7 @@ const MessageScroll = (props) => {
             )
         })}
     {messages.length > 9 && showBottomBar ? <div className='bottomBar'>  <div className='loader'></div> </div>: null}
-  </>
+  </div>
   )
 }
 

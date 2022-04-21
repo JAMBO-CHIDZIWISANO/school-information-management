@@ -7,7 +7,6 @@ class AttendanceForm extends Component {
         this.onChangeAttendanceDate = this.onChangeAttendanceDate.bind(this);
         this.onChangePresent = this.onChangePresent.bind(this);
         this.onChangeAbsentReason = this.onChangeAbsentReason.bind(this)
-       // this.onChangeClassId = this.onChangeClassId.bind(this)
         this.onChangeStudentId = this.onChangeStudentId.bind(this)
         this.onChangeTermId = this.onChangeTermId.bind(this)
     
@@ -15,7 +14,6 @@ class AttendanceForm extends Component {
     
         this.state = {
           attendanceDate: "",
-         // classId: "",
           termId:"",
           studentId: "",
           present:"",
@@ -27,9 +25,7 @@ class AttendanceForm extends Component {
       onChangeAttendanceDate(e){
         this.setState({ attendanceDate: e.target.value})
       }
-      // onChangeClassId(e){
-      //   this.setState({classId: e.target.value})
-      // }
+     
       onChangeTermId(e){
         this.setState({termId: e.target.value})
       }
@@ -63,7 +59,6 @@ class AttendanceForm extends Component {
           });
         this.setState({
             attendanceDate: "",
-           // classId: "",
             termId:"",
             studentId: "",
             present:"",
@@ -98,17 +93,6 @@ class AttendanceForm extends Component {
                   id='attendanceDate'
                   placeholder='attendanceDate'/>
               </div>
-    
-              {/* <div className='form-group'>
-                <label htmlFor='classId'>class</label>
-                <input
-                  name='classId'
-                  value={this.state.classId}
-                  onChange={this.onChangeClassId}
-                  className='form-control form-control-lg'
-                  id='classId'
-                  placeholder='class'/>
-              </div> */}
     
               <div className='form-group'>
                 <label htmlFor='termId'>term </label>
@@ -158,11 +142,8 @@ class AttendanceForm extends Component {
               
     
               <div>
-                <input 
-                  type="submit" 
-                  value="create post" 
-                  className="btn btn-primary btn-block" />
-                </div>
+                <button className="btn btn-primary btn-block">submit</button>
+               </div>
               </form>
           </div>
     

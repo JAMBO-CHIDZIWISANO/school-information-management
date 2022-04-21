@@ -2,6 +2,7 @@ module.exports = (sequelize, Sequelize) => {
     const Classrooms = sequelize.define("classrooms", {
       roomId: {
         type: Sequelize.INTEGER,
+        autoIncrement: true,
         primaryKey: true
       },
       roomName: {

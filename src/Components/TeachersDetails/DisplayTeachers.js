@@ -52,11 +52,13 @@ const Display = () => {
         </Link>
       </div>
       <hr/>
+      
         </div>
 
 
       
         <h1 className="text-center ">LIST OF TEACHERS</h1>
+
 
         <Table className="table-hover table-bordered table-striped">
             <thead>

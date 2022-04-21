@@ -107,3 +107,20 @@ exports.deleteTeacher = (req, res) => {
     } else res.send({ message: `Teacher was deleted successfully!` });
   });
 };
+
+//retrieve one teacher timetable
+exports.findTeacherTimetable = (req, res) => {
+  Teacher.findTeacherTimetable(req.params.teacherId, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found teacher with id ${req.params.teacherId}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Error retrieving teacher with id " + req.params.teacherId
+        });
+      }
+    } else res.send(data);
+  });
+};

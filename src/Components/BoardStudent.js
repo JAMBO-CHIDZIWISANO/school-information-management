@@ -1,11 +1,17 @@
-import { TextField } from '@mui/material';
+
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import { useReactToPrint } from 'react-to-print';
 import { Table } from 'react-bootstrap';
 import authService from './services/auth.service';
+import StudentTimetable from './StudentDetails/StudentTimetable';
 const BoardStudent = () => {
   const [studentExam, setStudentExam] = useState([]);
   const [studentPInfo, setStudentPInfo] = useState([])
+  const componentRef = useRef();
+  const handlePrintSchoolReport = useReactToPrint({
+    content:()=>componentRef.current,
+  })
   const  currentUser = authService.getCurrentUser();
 
   const examResults = async()=>{
@@ -23,6 +29,11 @@ const BoardStudent = () => {
   },[])
   return (
     <div className='container mt-5'>
+
+          <button onClick={handlePrintSchoolReport}>print school report</button>
+          <div ref={componentRef}>
+
+          
           {
             studentPInfo.map((it, ky)=>{
               return(
@@ -106,7 +117,10 @@ const BoardStudent = () => {
          )
         })
       }
-      
+      </div>
+      <div>
+        <StudentTimetable/>
+      </div>
     </div>
   )
 }

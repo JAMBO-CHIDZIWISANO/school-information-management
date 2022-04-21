@@ -19,11 +19,7 @@ class EnterMarks extends Component {
       student_score: "",
       total_score:"",
       studentId:"",
-      
-      // selectClass: [],
-      // classId:"",
-      // className:"",
-
+    
       selectSubject : [],
       subjectName: "",
       subjectCode:"",
@@ -48,18 +44,7 @@ class EnterMarks extends Component {
     this.setState({selectSubject: subjectOptions})
   }
 
-  // async getClasses(){
-  //   const res = await axios.get('http://localhost:4000/api/smis/getAllClasses')
-  //   const data = res.data
-
-  //   const classesOptions = data.map(item => ({
-  //     "value" : item.classId,
-  //     "label" : item.className
-
-  //   }))
-  //   this.setState({selectClass: classesOptions})
-  // }
-
+  
   async getTerm(){
     const res = await axios.get('http://localhost:4000/api/smis/getAllTerms')
     const data = res.data
@@ -74,7 +59,6 @@ class EnterMarks extends Component {
 
   componentDidMount(){
     
-    //this.getClasses()
     this.getSubjects()
     this.getTerm()
   }
@@ -132,7 +116,6 @@ class EnterMarks extends Component {
         type: this.state.type,
         subjectCode:this.state.subjectCode,
         termId:this.state.termId,
-       // classId: this.state.classId
     })
   } 
 
@@ -189,14 +172,6 @@ class EnterMarks extends Component {
                 <option>Assessment</option>
             </select>
           </div>
-
-          {/* <div className='form-group mt-3'>
-            <Select 
-              placeholder="Select Class"
-              options={this.state.selectClass} 
-              onChange={this.onChangeClassId.bind(this)}
-            />
-          </div> */}
 
           <div className='form-group mt-3'>
             <Select 
