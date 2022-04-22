@@ -64,6 +64,7 @@ Student.findStudentById = (studentId, result) => {
       result(null, res);
     });
   };
+  
 
   //update student by their id
   Student.updateStudentById = (studentId, student, result) => {
@@ -187,6 +188,7 @@ Student.findStudentById = (studentId, result) => {
     });
   };
 
+  //count all students depending on the class and gender
   Student.findNumberOfMaleAndFemaleStudents = (gender, result) => {
     let query = "Select SUM(CASE WHEN (classId=1) THEN 1 ELSE 0 END) AS form1, SUM(CASE WHEN (classId=2) THEN 1 ELSE 0 END) AS form2, SUM(CASE WHEN (classId=3) THEN 1 ELSE 0 END) AS form3, SUM(CASE WHEN (classId=4) THEN 1 ELSE 0 END) AS form4, sum(CASE WHEN (gender = 'male' && classId=1) THEN 1 ELSE 0 END) as Male_count1, sum(CASE WHEN (gender='female' && classId=1) then 1 else 0 end) as female_count1, sum(CASE when (gender='male' && classId=2) then 1 else 0 end) as male_count2, sum(CASE when (gender='female' && classId=2) then 1 else 0 end) as female_count2, sum(CASE when (gender='male' && classId=3) then 1 else 0 end) as male_count3, sum(CASE when (gender='female' && classId=3) then 1 else 0 end) as female_count3, sum(CASE when (gender='male' && classId=4) then 1 else 0 end) as male_count4, sum(CASE when (gender='female' && classId=4) then 1 else 0 end) as male_count4, count(*) as all_students from students;";
     if (gender) {
@@ -203,6 +205,22 @@ Student.findStudentById = (studentId, result) => {
     });
   };
 
+//count all students
+Student.countAllStudents = (gender, result) => {
+  let query = "Select  sum(CASE when (gender='male') then 1 else 0 end) as male_count, sum(CASE when (gender='female') then 1 else 0 end) as female_count, count(*) as all_students from students;";
+  if (gender) {
+    query += ` WHERE gender LIKE '%${gender}%'`;
+  }
+  sql.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    console.log("students: ", res);
+    result(null, res);
+  });
+};
   //retrieve a student examination results
 Student.studentExamResults = (studentId, result) => {
   sql.query(`select u.subjectName, m.student_score, m.total_score, round((m.student_score/m.total_score)*100,2) as grade,CASE WHEN (round((m.student_score/m.total_score)*100,2))>=80 THEN 'A=distinction' WHEN (round((m.student_score/m.total_score)*100,2))>=70 THEN 'B=very good' WHEN (round((m.student_score/m.total_score)*100,2))>=60 THEN 'C=good' WHEN (round((m.student_score/m.total_score)*100,2))>=50 THEN 'D=average' ELSE 'F=fail' END AS remarks from students s inner join classes c on s.classId=c.classId join student_marks m on m.studentId = s.studentId join subjects u on m.subjectCode=u.subjectCode join terms t on m.termId=t.termId where s.studentId like '%${studentId}%' group by u.subjectCode; `, (err, res) => {

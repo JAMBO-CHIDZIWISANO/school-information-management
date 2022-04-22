@@ -124,3 +124,29 @@ exports.findTeacherTimetable = (req, res) => {
     } else res.send(data);
   });
 };
+
+// Retrieve all teachers from the database (with condition).
+exports.findAllTeachersTimetable =(req, res) => {
+  const teacherId = req.query.teacherId;
+  Teacher.findAllTeachersTimetable(teacherId, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving teachers."
+      });
+    else res.send(data);
+  });
+};
+
+//count of male and female and all teachers at school
+exports.countAllTeachers=(req, res) => {
+  const gender = req.query.gender;
+  Teacher.countAllTeacher(gender, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving teachers."
+      });
+    else res.send(data);
+  });
+};

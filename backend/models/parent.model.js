@@ -1,5 +1,11 @@
+
+//export sequelize
 module.exports = (sequelize, Sequelize) => {
+
+    //create table parents
     const Parent = sequelize.define("parents", {
+
+        /**parents table attributes */
         parentId: {
             type: Sequelize.STRING,
             primaryKey: true

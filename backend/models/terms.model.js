@@ -1,5 +1,11 @@
+
+//export sequelize
 module.exports = (sequelize, Sequelize) => {
-    const Term = sequelize.define("terms", {
+  
+  //create table terms
+  const Term = sequelize.define("terms", {
+
+    /**term table attributes */
       termId: {
         type: Sequelize.INTEGER,
         primaryKey: true

@@ -173,6 +173,18 @@ exports.findNumberOfMaleAndFemaleStudents =(req, res) => {
   });
 };
 
+//count of male and female and all students at school
+exports.countAllStudents=(req, res) => {
+  const gender = req.query.gender;
+  Student.countAllStudents(gender, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Students."
+      });
+    else res.send(data);
+  });
+};
 //retrieve one Student using their id
 exports.studentExamResults = (req, res) => {
   Student.studentExamResults(req.params.studentId, (err, data) => {

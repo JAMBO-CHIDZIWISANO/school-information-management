@@ -8,6 +8,7 @@ import '../smisPostsComments.css'
 
 import { useNavigate} from "react-router-dom";
 import * as Yup from 'yup';
+import { Link } from 'react-router-dom';
 
 /// nnnnnnnnnnnnnnnnn
 
@@ -55,7 +56,17 @@ const PostComments = () => {
 
 
   return (
-    <div className='conatiner'>
+    <div className='container'>
+
+      <hr />
+      <div style={{textAlign: "right"}}>
+        <Link to={"/view-posts"}> 
+          <input type="button" value="Back" className="btn btn-primary btn-block" />
+        </Link>
+        
+      </div>
+      <hr/>
+
     <div className="singlePost">
       
       <div className="postToComment">

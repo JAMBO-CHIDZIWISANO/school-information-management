@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, {useState, useEffect} from "react";
+import { Link } from "react-router-dom";
 import { useParams, useNavigate} from "react-router-dom";
 import { toast } from "react-toastify";
 import '../smisPostsComments.css'
@@ -29,12 +30,13 @@ const SmisComments = () => {
   
   return (
     <div className="postPage">
+      
       <div className="allPosts">
         <div className="posts">
           {data.map((item, index) => {
             return (
               <div index={index} className="post" onClick={() => {navigate(`/postComments/${item.smisPostsId}`)}}>
-                    <div className="singletitle"><strong>Post Subject :</strong><h4>{item.title}</h4></div>
+                    <div className="singletitle"><h4>{item.title}</h4></div>
                     <div className="singlebody">{item.smisPosts}</div>
                     <div className="singlefooter"><strong>Posted By : </strong>{item.username}</div>
                 </div>               

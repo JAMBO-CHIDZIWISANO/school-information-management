@@ -1,5 +1,11 @@
+
+//export sequelizer
 module.exports = (sequelize, Sequelize) => {
+
+  //create table school
     const School = sequelize.define("schools", {
+
+      /**school table attributes */
       schoolId: {
         type: Sequelize.INTEGER,
         primaryKey: true

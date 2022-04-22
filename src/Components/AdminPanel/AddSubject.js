@@ -69,9 +69,7 @@ class AddSubject extends Component {
       {/* buttons for navigating to manage subjects and view subjects pages class */}
       <hr />
       <div style={{textAlign: "right"}}>
-        <Link to={"/view-subjects"}> 
-          <input type="button" value="View Sujects" className="btn btn-primary btn-block" />
-        </Link>
+       
         <Link to={"/admin/manage-subjects"}> 
           <input type="button" value="Manage Sujects" className="btn btn-primary btn-block" />
         </Link>

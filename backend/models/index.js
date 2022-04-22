@@ -1,8 +1,11 @@
 
+//calling database configuration
 const config = require("../config/db.config.js");
 
+//initialise sequelizer
 const Sequelize = require("sequelize");
-//sequelizing
+
+//sequelizing database
 const sequelize = new Sequelize(
   config.DB,
   config.USER,
@@ -23,7 +26,10 @@ const sequelize = new Sequelize(
    }
 );
 
+//database sequelize construct
 const db = {};
+
+//sequelize all db tables to the mysql server
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 db.user = require("../models/user.models")(sequelize, Sequelize);
@@ -35,29 +41,24 @@ db.school = require("../models/school.model")(sequelize, Sequelize);
 db.subject = require("../models/subject.model")(sequelize, Sequelize);
 db.classlesson = require("../models/classlessons.model")(sequelize,Sequelize);
 db.classroom = require("../models/classrooms.model")(sequelize, Sequelize);
-db.post = require("../models/posts.model")(sequelize, Sequelize);
-db.comment = require("../models/comments.model")(sequelize, Sequelize);
 db.class = require("../models/class.model")(sequelize, Sequelize);
 db.term = require("../models/terms.model")(sequelize, Sequelize);
 db.mark = require("../models/studentMarks.model")(sequelize, Sequelize);
 db.attendance = require("../models/attendance.model")(sequelize, Sequelize);
-
 db.smiscomments = require("../models/smiscomments.model")(sequelize, Sequelize);
 db.smisposts = require("../models/Smisposts.model")(sequelize, Sequelize);
 
-
-
-//teachers and users table 1 to 1 relationship
+//1 to 1 relationship between teachers and users
 db.user.hasOne(db.teacher, {
     foreignKey: "userId",
     targetKey: "userId"});
 
-//students and users table 1 to 1 relationship
+//1 to 1 relationship between students and users 
 db.user.hasOne(db.student, {
     foreignKey: "userId",
     targetKey: "userId"});
 
-//parents and users table 1 to 1 relationship
+//1 to 1 relationship between parents and users
 db.user.hasOne(db.parent, {
     foreignKey: "userId",
     targetKey: "userId",
@@ -75,7 +76,7 @@ db.user.belongsToMany(db.role, {
   otherKey: "roleId"
 });
 
-//one to many relationship
+//one to many relationship between parent and student
 db.parent.hasMany(db.student, {
   foreignKey: "parentId",
   targetKyKey: "parentId",
@@ -89,10 +90,9 @@ db.smisposts.hasMany(db.smiscomments, {
   targetKyKey: "smisPostsId",
   onDelete: "cascade",
   onUpdate: "cascade"
-  
-})
+});
 
-//one to many relationship
+//one to many relationship between school and student
 db.school.hasMany(db.student, {
   foreignKey: "schoolId",
   targetKyKey: "schoolId",
@@ -124,7 +124,6 @@ db.class.hasMany(db.classlesson, {
   onUpdate: "cascade"
 });
 
-
 //one to many relationship between lesson and room
 db.classroom.hasMany(db.classlesson, {
   foreignKey: "roomId",
@@ -137,46 +136,20 @@ db.subject.hasMany(db.classlesson, {
   targetKey: "subjectCode"
 });
 
-//one to many teacher and post
-db.teacher.hasMany(db.post, {
-  foreignKey: "teacherId",
-  targetKey: "teacherId",
-  onDelete: "cascade",
-  onUpdate: "cascade"
-});
-
-//one to many teacher and comments
-db.teacher.hasMany(db.comment,{
-  foreignKey: "teacherId",
-  targetKey: "teacherId",
-  onDelete: "cascade",
-  onUpdate: "cascade"
-});
-
-//one to many parent and comment
-db.parent.hasMany(db.comment, {
-  foreignKey: "parentId",
-  targetKey: "parentId",
-  onDelete: "cascade",
-  onUpdate: "cascade"
-});
-
 // one to many term and marks
 db.term.hasMany(db.mark, {
   foreignKey: "termId",
   targetKey: "termId"
 })
 
-
-
 // one to many student and marks
-
 db.student.hasMany(db.mark, {
   foreignKey: "studentId",
   targetKey: "studentId",
   onDelete: "cascade",
   onUpdate: "cascade"
 });
+
 // one to many class and student
 db.class.hasMany(db.student,{
   foreignKey: "classId",
@@ -191,18 +164,13 @@ db.student.hasMany(db.attendance, {
   onUpdate: "cascade"
 });
 
-//one to many  class and 
-// db.class.hasMany(db.attendance, {
-//   foreignKey: "classId",
-//   targetKey: "classId"
-// });
-
 //one to many term and attendance
 db.term.hasMany(db.attendance, {
   foreignKey: "termId",
   targetKey: "termId"
 });
 
+//one to many subject and mark relatiobship
 db.subject.hasMany(db.mark, {
   foreignKey: "subjectCode",
   targetKey: "subjectCode"

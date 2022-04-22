@@ -29,6 +29,9 @@ module.exports = app =>{
     //get all form 4 students
     router.get("/getNumberOfMaleAndFemaleStudents", student.findNumberOfMaleAndFemaleStudents);
 
+    //get all form 4 students
+    router.get("/getNumberofAllStudents", student.countAllStudents);
+
     // //get all form 1 students
     router.get("/timetable/:studentId", student.studentTimetable);
 

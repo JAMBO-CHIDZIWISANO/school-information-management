@@ -62,7 +62,7 @@ const SmisPosts = () => {
                   name = "username"
                   placeholder="Your username"
                   />
-                  <button type='submit'>Post</button>
+                  <button type='submit' className='btn btn-primary'>Post</button>
               </Form>
           </Formik>
         </div>

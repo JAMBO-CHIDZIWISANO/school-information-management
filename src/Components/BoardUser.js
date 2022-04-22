@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react'
-import Posts from './Posts'
 import axios from 'axios'
 // import CommentForm from './usersComments/CommentForm'
 // import MessageScroll from './usersComments/MessageScroll'

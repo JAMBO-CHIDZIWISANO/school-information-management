@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import { toast } from "react-toastify";
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
+import { Link } from "react-router-dom";
 
 
 
@@ -33,6 +34,14 @@ const PostList = () => {
   return (
     <div>
       <div className="container py-5 ">
+      <hr />
+      <div style={{textAlign: "right"}}>
+        <Link to={"/admin/announcements"}> 
+          <input type="button" value="Back" className="btn btn-primary btn-block" />
+        </Link>
+        
+      </div>
+      <hr/>
       <table className="table" >
         <thead>
           <tr>

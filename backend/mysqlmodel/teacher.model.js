@@ -137,6 +137,38 @@ Teacher.findTeacherTimetable = (teacherId, result) => {
   });
 };
   
+  //retrieving all teachers timetable
+  Teacher.findAllTeachersTimetable = (teacherId, result) => {
+    let query = "SELECT l.lessonId, t.surname, t.teacherId, l.day, l.lesson_startTime, l.lesson_endTime, r.roomName,s.subjectName,c.className FROM classlessons l JOIN classrooms r ON l.roomId=r.roomId JOIN subjects s ON s.subjectCode=l.subjectCode JOIN classes c ON l.classId=c.classId JOIN teachers t on t.teacherId=l.teacherId ORDER BY l.classId asc;";
+    if (teacherId) {
+      query += ` WHERE lastname LIKE '%${teacherId}%'`;
+    }
+    sql.query(query, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+      console.log("teachers: ", res);
+      result(null, res);
+    });
+  };
 
+  //count all students
+Teacher.countAllTeacher = (gender, result) => {
+  let query = "Select  sum(CASE when (gender='male') then 1 else 0 end) as male_count, sum(CASE when (gender='female') then 1 else 0 end) as female_count, count(*) as all_teachers from teachers; ";
+  if (gender) {
+    query += ` WHERE gender LIKE '%${gender}%'`;
+  }
+  sql.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    console.log("teachers: ", res);
+    result(null, res);
+  });
+};
 
 module.exports = Teacher;

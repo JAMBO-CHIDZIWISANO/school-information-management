@@ -163,83 +163,115 @@ class Timetableform extends Component {
         return(
             <div className='container'>
 
-                <form onSubmit={this.onSubmit}>
+                <form onSubmit={this.onSubmit} className='col-md-6 '>
+                    
+                    <div className='row'>
+                        <div className='col-12 col-md-12 col-lg-12 '>
+                            <div className='form-group'>
+                            <label htmlFor='day'>Day</label>
+                            <select
+                                name='day'
+                                type='text'
+                                placeholder='day'
+                                value={this.state.day}
+                                onChange={this.onChangeDay}
+                                id="day"
+                                className='form-control'
+                            >
+                                <option>Tap to choose</option>
+                                <option>Monday</option>
+                                <option>Tuesday</option>
+                                <option>Wednesday</option>
+                                <option>Thursday</option>
+                                <option>Friday</option>
+                            </select>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div className='row'>
+                        <div className='col-12 col-md-6 col-lg-6 '>
+                            <div className='form-group'>
+                            <label htmlFor='lesson_startTime'>start</label>
+                            <input
+                                name='lesson_startTime'
+                                type='time'
+                                placeholder='start'
+                                value={this.state.lesson_startTime}
+                                onChange={this.onChangeStartTime}
+                                id="lesson_startTime"
+                                className='form-control'
+                            />
 
-                    <div className='form-group'>
-                        <label htmlFor='day'>Day</label>
-                        <select
-                             name='day'
-                             type='text'
-                             placeholder='day'
-                             value={this.state.day}
-                             onChange={this.onChangeDay}
-                             id="day"
-                             className='form-control'
-                        >
-                            <option>Tap to choose</option>
-                            <option>Monday</option>
-                            <option>Tuesday</option>
-                            <option>Wednesday</option>
-                            <option>Thursday</option>
-                            <option>Friday</option>
-                        </select>
+                            </div>
+                        </div>
+                        <div className='col-12 col-md-6 col-lg-6 '>
+                            <div className='form-group'>
+                            <label htmlFor='lesson_endTime'>end</label>
+                            <input
+                                name='lesson_endTime'
+                                type='time'
+                                placeholder='end'
+                                value={this.state.lesson_endTime}
+                                onChange={this.onChangeEndTime}
+                                id="lesson_endTime"
+                                className='form-control'
+                            />
 
+                            </div>
+                        </div>
                     </div>
-                    <div className='form-group'>
-                        <label htmlFor='lesson_startTime'>start</label>
-                        <input
-                            name='lesson_startTime'
-                            type='time'
-                            placeholder='start'
-                            value={this.state.lesson_startTime}
-                            onChange={this.onChangeStartTime}
-                            id="lesson_startTime"
-                            className='form-control'
-                        />
+                    <div className='row'>
+                        <div className='col-12 col-md-6 col-lg-6 ' >
+                            <div className='form-group mt-3'>
+                                <Select 
+                                placeholder="Select Subject"
+                                options={this.state.selectSubject} 
+                                onChange={this.onChangeSubjectCode.bind(this)}
+                                />
+                            </div>
+                        </div>
+                        <div className='col-12 col-md-6 col-lg-6 ' >
+                            <div className='form-group mt-3'>
+                            <Select
 
+                                placeholder='select teacher'
+                                options={this.state.selectTeachers}
+                                onChange={this.onChangeTeacherId.bind(this)}
+                            />
+                            </div>
+                        </div>
                     </div>
-                    <div className='form-group'>
-                        <label htmlFor='lesson_endTime'>end</label>
-                        <input
-                            name='lesson_endTime'
-                            type='time'
-                            placeholder='end'
-                            value={this.state.lesson_endTime}
-                            onChange={this.onChangeEndTime}
-                            id="lesson_endTime"
-                            className='form-control'
-                        />
+                    <div className='row'>
+                        <div className='col-12 col-md-6 col-lg-6 ' >
+                            <div className='form-group mt-3'>
+                            <Select 
+                            placeholder="Select class"
+                            options={this.state.selectClass} 
+                            onChange={this.onChangeClassId.bind(this)}
+                            />
+                            </div>
+                        </div>
+                        <div className='col-12 col-md-6 col-lg-6 ' >
+                            <div className='form-group mt-3'>
+                            <Select 
+                            placeholder="Select classroom "
+                            options={this.state.selectRoom} 
+                            onChange={this.onChangeRoomId.bind(this)}
+                            />
+                            </div>
+                    
+                        </div>
+                    </div>
+                        
 
-                    </div>
-                    <div className='form-group mt-3'>
-                        <Select 
-                        placeholder="Select Subject"
-                        options={this.state.selectSubject} 
-                        onChange={this.onChangeSubjectCode.bind(this)}
-                        />
-                    </div>
-                    <div className='form-group mt-3'>
-                        <Select 
-                        placeholder="Select classroom "
-                        options={this.state.selectRoom} 
-                        onChange={this.onChangeRoomId.bind(this)}
-                        />
-                    </div>
-                    <div className='form-group mt-3'>
-                        <Select
-
-                            placeholder='select teacher'
-                            options={this.state.selectTeachers}
-                            onChange={this.onChangeTeacherId.bind(this)}
-                        />
-                    </div>
-                    <div className='form-group mt-3'>
-                        <Select 
-                        placeholder="Select class"
-                        options={this.state.selectClass} 
-                        onChange={this.onChangeClassId.bind(this)}
-                        />
-                    </div>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
 
                     <button className="btn btn-primary btn-block" >submit</button>
                 </form>
