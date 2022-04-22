@@ -56,7 +56,7 @@ render() {
       
 
       <form className='  ' >
-        <h1 className='text-center'> Send SMS</h1>
+        <h2 className='text-center'> Send SMS</h2>
         <hr/>
         <div className='form-group mt-5'>
             <label htmlFor='phoneNumber'>Phone Number</label>

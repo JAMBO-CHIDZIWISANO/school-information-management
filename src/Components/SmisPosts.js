@@ -39,7 +39,10 @@ const SmisPosts = () => {
     <div>  
         <div className='createPostPage'>
           <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+                
               <Form className="formContainer">
+              <h2 className='text-center'> Create Post</h2>
+                <hr/>
                   <strong>Title</strong>
                   {/* displaying error messages between label and input fields */}
                   <ErrorMessage name="title" component="span" /> 
@@ -66,59 +69,6 @@ const SmisPosts = () => {
               </Form>
           </Formik>
         </div>
-
-
-{/* 
-
-
-    <div className='container'>
-
-      <form onSubmit={this.onSubmit} className=''>
-        
-        <div className='create-post'>
-          <h1>Create Post</h1><hr/>
-        </div>
-        
-        <div class="form-group">
-            <label>Username</label>
-            <input 
-              name='username' 
-              value={this.state.username}
-              onChange={this.onChangeUsername}
-              className='form-control'
-              id='username' 
-              placeholder="Username..."
-            />
-        </div>
-
-        <div className='form-group'>
-          <label >Title</label>
-          <input  
-            name='title' 
-            value={this.state.title}
-            onChange={this.onChangeTitle}
-            className='form-control '
-            id='title' 
-            placeholder='Post title'
-          />
-        </div>
-
-        <div className='form-group'>
-          <label >Post Body</label>
-          <textarea  
-            name='smisposts' 
-            value={this.state.smisPosts}
-            onChange={this.onChangeSmisPosts}
-            className='form-control'
-            id='smisposts' 
-            placeholder='Post body'
-          />
-        </div>
-
-        <div>
-          <button className="btn btn-primary btn-block" >submit</button>
-        </div>
-      </form> */}
       
     </div>
   )
@@ -126,110 +76,3 @@ const SmisPosts = () => {
 
 export default SmisPosts
  
-//   constructor(props){
-//     super(props);
-//     this.onChangeUsername = this.onChangeUsername.bind(this);
-//     this.onChangeTitle = this.onChangeTitle.bind(this);
-//     this.onChangeSmisPosts = this.onChangeSmisPosts.bind(this);
-       
-//     this.onSubmit = this.onSubmit.bind(this);
-//     this.state = {
-//       username: "",
-//       title: "",
-//       smisPosts: "",
-//     }
-//   }
- 
-//   onChangeUsername(e){
-//     this.setState({ username: e.target.value})
-//   }
-//   onChangeTitle(e){
-//     this.setState({ title: e.target.value})
-//   }
-//   onChangeSmisPosts(e){
-//     this.setState({ smisPosts: e.target.value})
-//   }
-
-//   onSubmit(e){
-//     e.preventDefault()
-//     const data = {
-//         username: this.state.username,
-//         title: this.state.title,
-//         smisPosts: this.state.smisPosts,
-//     };
-//     console.log(data);
-
-//     axios.post("http://localhost:4000/api/smis/addSmisPosts", data)
-//       .then((res)=>{
-//         console.log(res.data)
-//       }).catch((error)=>{
-//         console.log(error)
-//       });
-
-//     this.setState({
-//       username: "",
-//       title: "",  
-//       smisPosts: "", 
-//     })
-//   } 
-
-//   //retrieve subjects arrays and display them
-//   state = {
-//     smisPosts: []
-//   }
-
-//   componentDidMount() {
-//     axios.get('https://localhost:4000/api/smis/getAllSmisPosts')
-//     .then(res => {
-//       const posts = res.data
-//       this.setState({posts})
-//     })
-//     .catch(err => console.log("Couldn't fetch data. Error: " + err))
-//   }
-
-//   render(){
-
-//   return (
-
-//     <div>
-
-//       <div className="d-flex justify-content-center aligh-items-center">
-        
-//         <form onSubmit={this.onSubmit} className='col-md-4'>
-//         <div className='create-post'><h3>Create Post</h3><hr/></div>
-          
-
-//           <div className='form-group'>
-//             <strong >Title</strong>
-//             <input  name='title' value={this.state.title}
-//               onChange={this.onChangeTitle}
-//               className='form-control form-control-lg'
-//               id='title' placeholder='Post title'/>
-//           </div>  
-//           <div className='form-group'>
-//             <strong >Post Body</strong>
-//             <input  name='smisposts' value={this.state.smisPosts}
-//               onChange={this.onChangeSmisPosts}
-//               className='form-control form-control-lg'
-//               id='smisposts' placeholder='Post body'/>
-//           </div> 
-//           <div class="form-outline">
-//             <strong>Username</strong>
-//             <input name='username' value={this.state.username}
-//               onChange={this.onChangeUsername}
-//               className='form-control form-control-lg'
-//               Code='username' placeholder="Username..."/>
-//           </div>        
-
-//           <div>
-//             <input 
-//               type="submit"  value="Submit" 
-//               className="btn btn-primary btn-block" />
-//             </div>
-//           </form>
-//         </div>
-//       <div>
-//     </div>
-//       <hr />
-//     </div>
-//   )}

@@ -1,7 +1,6 @@
 import React from 'react'
 import Sms from './Sms'
 import SmisPosts from './SmisPosts'
-import PostList from './AdminPanel/postList'
 import { Link } from 'react-router-dom'
 
 const NoticeBoard = () => {
@@ -30,7 +29,7 @@ const NoticeBoard = () => {
          
         </div>
         <div>
-            <PostList/>
+           
         </div>
       
     </div>
