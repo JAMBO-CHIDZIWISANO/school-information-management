@@ -57,7 +57,7 @@ exports.findOneSubject = (req, res) => {
 };
 
 
-//update a post
+//update a subject
 exports.updateSubjectById = (req, res) => {
   // Validate Request
   if (!req.body) {
@@ -80,7 +80,9 @@ exports.updateSubjectById = (req, res) => {
             message: "Error updating subject with id " + req.params.subjectCode
           });
         }
-      } else res.send(data);
+      } else{
+         res.send(data)
+        };
     }
   );
 };

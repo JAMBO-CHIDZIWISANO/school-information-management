@@ -74,7 +74,6 @@ Classlessons.findLessonById = (lessonId, result) => {
         lessons.lesson_endTime,
         lessons.teacherId,
         lessons.subjectCode,
-         
         lessons.roomId, 
         lessons.day,
         lessons.classId,

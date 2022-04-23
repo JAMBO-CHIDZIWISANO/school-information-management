@@ -60,9 +60,9 @@ Subject.findSubjectById = (subjectCode, result) => {
   Subject.updateSubjectById = (subjectCode, subject, result) => {
     
     sql.query(
-      "UPDATE subjects SET SubjectName = ? WHERE subjectCode = ?",
+      `UPDATE subjects SET subjectName = ? WHERE subjectCode LIKE '%${subjectCode}'`,
       
-      [ subject.SubjectName,  
+      [ subject.subjectName,  
         subjectCode],
 
       (err, res) => {
@@ -73,7 +73,7 @@ Subject.findSubjectById = (subjectCode, result) => {
         }
         if (res.affectedRows == 0) {
 
-          // not found Teacher with the id
+          // not found subject with the id
           result({ kind: "not_found" }, null);
           return;
         }

@@ -44,7 +44,6 @@ import StudentDetails from "./Components/StudentDetails/StudentDetails"
 import ExamsRecords from "./Components/StudentDetails/ExamsRecords"
 import AddStudent from './Components/StudentDetails/SSecurityDetailsForm';
 import SPersonalDetailsForm from "./Components/StudentDetails/SPersonalDetailsForm"
-
 import Showtimetable from './Components/timetable/Showtimetable';
 
 ReactDOM.render(
@@ -71,8 +70,8 @@ ReactDOM.render(
         <Route path="/admin/manage-subjects" element={<ManageSubjects/>} />
         <Route path="/admin/addSubject" element={<AddSubject/>} />
         
-        <Route path="/admin/viewTeachers" element={<ViewTeachers/>} />
-        <Route path="/admin/teacher-record" element={<Display/>} />
+        <Route path="/admin/viewTeachers" element={<Display/>} />
+        <Route path="/admin/teacher-record" element={<ViewTeachers/>} />
         <Route path="/admin/add-sdteacher" element={<AddTSecurityDetails/>} />
         <Route path='/admin/add-tpersondetails' element={< AddTeacher/>}/>
         <Route path="/admin/teachers-details" element={<Display/>} />

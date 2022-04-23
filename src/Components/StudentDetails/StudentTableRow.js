@@ -6,6 +6,8 @@ import { Delete, Edit } from "@mui/icons-material";
 const StudentTableRow = (props) => {
 
   const {studentId, firstname, surname, gender, DoB } = props.obj;
+
+  
   
   //delete operation
   const deleteStudent = () => {

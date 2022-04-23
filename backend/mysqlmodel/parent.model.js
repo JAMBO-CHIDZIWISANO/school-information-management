@@ -127,11 +127,11 @@ Parent.findAllParents = (surname, result) => {
 Parent.updateParentById = (parentId, parent, result) => {
   
   sql.query(
-    `UPDATE parents SET firstname = ?, surname = ?, phoneNo = ?, gender = ?, address = ?, userId = ? WHERE parentId LIKE '${parentId}'`
+    `UPDATE parents SET firstname = ?, surname = ?, phoneNo = ?, gender = ?, address = ?, userId = ? WHERE parentId = '${parentId}'`,
     
-    [ parent.firstname, 
-      parent.PhoneNo, 
+    [ parent.firstname,
       parent.surname, 
+      parent.phoneNo, 
       parent.gender, 
       parent.address, 
       parent.userId, 

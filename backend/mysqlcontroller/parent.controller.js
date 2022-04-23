@@ -150,7 +150,9 @@ exports.updateParentById = (req, res) => {
             message: "Error updating parent with id " + req.params.parentId
           });
         }
-      } else res.send(data);
+      } else {
+        res.send(data)
+      };
     }
   );
 };

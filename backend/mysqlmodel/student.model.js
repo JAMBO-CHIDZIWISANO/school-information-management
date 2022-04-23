@@ -70,14 +70,14 @@ Student.findStudentById = (studentId, result) => {
   Student.updateStudentById = (studentId, student, result) => {
     
     sql.query(
-      `UPDATE students SET firstname = ?, DoB = ?, surname = ?, gender = ?, address = ?, classId = ? WHERE studentId LIKE '%${studentId}'`,
+      `UPDATE students SET firstname = ?,surname = ?, gender = ?,DoB = ?,  classId = ?,parentId=? WHERE studentId = '${studentId}'`,
       
       [ student.firstname, 
         student.surname, 
         student.gender, 
-        student.address,
         student.DoB, 
         student.classId, 
+        student.parentId,
         studentId],
 
       (err, res) => {

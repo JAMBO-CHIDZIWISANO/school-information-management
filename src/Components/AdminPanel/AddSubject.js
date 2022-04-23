@@ -11,6 +11,7 @@ class AddSubject extends Component {
     this.onChangeSubjectName = this.onChangeSubjectName.bind(this);
        
     this.onSubmit = this.onSubmit.bind(this);
+
     this.state = {
       subjectCode: "",
       subjectName: "", 
@@ -59,6 +60,8 @@ class AddSubject extends Component {
     })
     .catch(err => console.log("Couldn't fetch data. Error: " + err))
   }
+
+ 
 
   render(){
 

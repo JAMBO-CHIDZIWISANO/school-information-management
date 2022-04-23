@@ -1,14 +1,38 @@
-import React from 'react'
 import { Link } from 'react-router-dom';
 import { toast } from "react-toastify";
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 
+import { Button, Modal } from "react-bootstrap";
+
 
 const ManageSubjects = () => {
     const [subject, setSubject] = useState([]);
+
+    //for edit modal
+    const [RowData,setRowData] = useState([])
+    const [EditShow, setEditShow] = useState(false)
+    const handEditShow = () => {setEditShow(true)}
+    const handleViewClose = () => {setEditShow(false)}
+   
+    //define local state that store form data
+    const [subjectCode, setSubjectCode] = useState("") 
+    const [subjectName, setSubjectName] = useState("")
+
+    const handleEdit =()=>{
+        const url = `http://localhost:4000/api/smis/subject/${subjectCode}`
+        const Credentials = {subjectName, subjectCode}
+        axios.put(url, Credentials)
+        .then(response=>{
+            setRowData( response.data);
+            window.location.reload()
+         
+        })
+            
+    }
+  
 
     // display subjects in the table for easy management
     const loadSubject = async () => {
@@ -18,6 +42,7 @@ const ManageSubjects = () => {
     // reload window
     useEffect( () => {
         loadSubject();
+       
     }, []);
     // deleting subject
     const deleteSubject = (subjectCode) => {
@@ -56,9 +81,9 @@ const ManageSubjects = () => {
                         <td>{item.subjectName}</td>
                     
                         <td>
-                            <Link to={`/update/&{item.id}`}>
-                                <button className="btn btn-view" ><ModeEditIcon/></button>
-                            </Link>
+                            
+                                <Button className="btn btn-edit"  onClick={()=>{handEditShow(setRowData(item),setSubjectCode(item._subjectCode))}}><ModeEditIcon/></Button>
+                           
                                 <button className="btn btn-delete" onClick={() =>deleteSubject(item.subjectCode)} ><DeleteOutlinedIcon/></button>
                                
                         </td>
@@ -68,6 +93,45 @@ const ManageSubjects = () => {
                     
             </tbody>
         </table>
+
+        <div className='modal-box-view'>
+                <Modal
+                    show={EditShow}
+                    onHide={handleViewClose}
+                    backdrop="static"
+                    keyboard={false}
+                >
+                    <Modal.Header>
+                        <Modal.Title>Edit Subject</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className='form-group mt-3'>
+                            <label htmlFor='subjectCode'>Subject Code</label>
+                            <input 
+                                type="text"
+                                className='form-control'
+                                onChange={(e)=>setSubjectCode(e.target.value)}
+                                defaultValue={RowData.subjectCode}
+                            />
+                        </div>
+                        <div className='form-group mt-3'>
+                            <label htmlFor='subjectName'>Subject Name</label>
+                            <input 
+                                type="text"
+                                className='form-control'
+                                onChange={(e)=>setSubjectName(e.target.value)}
+                                defaultValue={RowData.subjectName}
+                            />
+                        </div>
+                        <Button onClick={handleEdit} type="submit" variant="secondary" className='btn btn-success mt-4'>Update</Button>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant='secondary'  onClick={handleViewClose}>Close</Button>
+                    </Modal.Footer> 
+                </Modal>
+        </div>
+
+       
     </div>
   )
 }
