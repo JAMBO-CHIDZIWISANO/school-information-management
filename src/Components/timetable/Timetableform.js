@@ -246,6 +246,7 @@ class Timetableform extends Component {
                         <div className='col-12 col-md-6 col-lg-6 ' >
                             <div className='form-group mt-3'>
                             <Select 
+                            
                             placeholder="Select class"
                             options={this.state.selectClass} 
                             onChange={this.onChangeClassId.bind(this)}

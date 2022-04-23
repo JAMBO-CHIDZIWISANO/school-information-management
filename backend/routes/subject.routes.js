@@ -14,6 +14,9 @@ module.exports = app =>{
     // get all subjects
     router.get("/getAllSubjects", subject.findAllSubjects);
 
+    // count all subjects
+    router.get("/countAllSubjects", subject.countAllSubjects);
+
     // get one subject
     router.get("/subject/:subjectCode", subject.findOneSubject);
 

@@ -104,8 +104,23 @@ Subject.findSubjectById = (subjectCode, result) => {
       result(null, res);
     });
   };
-
   
+  //count all subjects
+  Subject.countAllSubjects = (subjectCode, result) => {
+    let query = "  select count(*) as subjects from subjects;";
+    if (subjectCode) {
+      query += ` WHERE subjectCode LIKE '%${subjectCode}%'`;
+    }
+    sql.query(query, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+      console.log("subjects: ", res);
+      result(null, res);
+    });
+  };
 
 
 module.exports = Subject;

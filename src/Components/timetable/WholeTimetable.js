@@ -7,6 +7,8 @@ const WholeTimetable = () => {
   const [tableData, setTableData] = useState([]);
 
   const timeTable = async () => {
+    
+    //declare state variables
       const response = await axios.get("http://localhost:4000/api/smis/getAllTeachersTimetable");
       setTableData(response.data);    
   };

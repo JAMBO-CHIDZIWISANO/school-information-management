@@ -1,39 +1,73 @@
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import NumberOfStudents from './AdminPanel/NumberOfStudents'
 import NumberOfTeachers from './AdminPanel/NumberOfTeachers'
+import { Link } from 'react-router-dom'
 
 const BoardAdmin = () => {
+
+  //decraling subjects count variables
+  const [countSubjects, setCountSubjects] = useState([])
+
+  const subjectCount = async () =>{
+    const response = await axios.get('http://localhost:4000/api/smis/countAllSubjects');
+    setCountSubjects(response.data)
+  }
+
+  useEffect(()=>{
+    subjectCount();
+  },[]);
+
  
   return (
     <div className='container mt-5'>
       
       <div className='row '>
-        <div className='col-12 col-md-4 col-lg-3 '>
-          <h3 className='card-header'>number of students</h3>
+        <div className='col-12 col-md-4 col-lg-3 card card-margin mx-2 '>
+        <div className="card-header no-border">
+                <h5 class="card-title">Number Of Students</h5>
+            </div>
           <div className='card-body'>
              <NumberOfStudents/>
           </div>
+          <div class="widget-49-meeting-action">
+            <Link to="/admin/students-details" className='btn btn-primary'>View All</Link>
+          </div>
         </div>
-        <div className='col-12 col-md-4 col-lg-3 '>
-          <h3 className='card-header'>number of teachers</h3>
+
+        <div className='col-12 col-md-4 col-lg-3 card card-margin mx-2'>
+        <div class="card-header no-border">
+                <h5 className="card-title">Number Of Teachers</h5>
+            </div>
           <div className='card-body'>
             <NumberOfTeachers/>
           </div>
+          <div className="widget-49-meeting-action">
+            <Link to="/admin/teachers-details" className='btn btn-primary'>View All</Link>
+          </div>
         </div>
-        <div className='col-12 col-md-4 col-lg-3 '>
-          <h3 className='card-header'>number of Subjects</h3>
+        <div className='col-12 col-md-4 col-lg-3  card card-margin mx-2'>
+        <div className="card-header no-border">
+                <h5 className="card-title">Number of Subjects</h5>
+            </div>
           <div className='card-body'>
+            {countSubjects.map((item,i)=>{
+              return(
+                <h3 key={i} className="text-center justify-text-center align-text-center">
+                  {item.subjects}
+                </h3>
+              )
+            }
+            
+            )}
              
              </div>
+             <div className="widget-49-meeting-action">
+            <Link to="/admin/manage-subjects" className='btn btn-primary'>View All</Link>
+          </div>
         </div>
-        <div className='col-12 col-md-4 col-lg-3 '>
-          <h3 className='card-header'>examinations</h3>
-          <div className='card-body'>
-             
-            </div>
-        </div>
+       
       </div>
       
     </div>

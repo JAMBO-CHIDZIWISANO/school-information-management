@@ -24,6 +24,7 @@ const app = express();//alias
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN; 
 const senderNumber = process.env.TWILIO_PHONE_NUMBER; 
+
 var client = new twilio(accountSid, authToken);
 
 //defualt cors route
@@ -47,12 +48,14 @@ app.get('/', (req, res)=>{
     res.json({message:'helloworld'});
 });
 
+
 //send sms text from twilio
 app.post('/send-sms', async (req, res)=>{
+   
     client.messages.create({
         to: req.body.phoneNumber,
         from: senderNumber,
-        body: "Message: "+ req.body.message,
+        body: req.body.message,
     }).then(message=> console.log(message))
 
     .catch(error=>console.log(error))

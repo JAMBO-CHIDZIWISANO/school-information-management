@@ -102,3 +102,14 @@ exports.deleteSubject = (req, res) => {
   });
 };
 
+// count all possubject from the database (with condition).
+exports.countAllSubjects =(req, res) => {
+  const subjectCode = req.query.subjectCode;
+  Subject.countAllSubjects(subjectCode, (err, data) => {
+    if (err) res.status(500).send({
+        message:
+        err.message || "Some error occurred while retrieving posts."
+      });
+    else res.send(data);
+  });
+};

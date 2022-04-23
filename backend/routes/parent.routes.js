@@ -18,8 +18,14 @@ module.exports = app =>{
     // get one parent
     router.get("/parent/:parentId", parent.findOneParent);
 
+    // get one parent
+    router.get("/childrenExam/:parentId", parent.findChildrenExamByparnetId);
+
      // get one parent
      router.get("/parents/:username", parent.findLoggedInParent);
+
+     // get one parent
+     router.get("/children/:username", parent.findChildrenByPUsername);
 
     // update parent
     router.put("/parent/:parentId", parent.updateParentById);

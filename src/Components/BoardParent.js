@@ -1,8 +1,7 @@
 import React from 'react'
-import DisplayParents from './AdminPanel/DisplayParents'
-import SmisComments from './SmisComments'
 
-import GetCurrentUser from './GetCurrentUser'
+import GetCurrentUser from './LoginParent';
+
 const BoardParent = () => {
   return (
     <div>
