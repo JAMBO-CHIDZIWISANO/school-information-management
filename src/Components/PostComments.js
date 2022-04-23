@@ -3,8 +3,7 @@ import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
 import '../smisPostsComments.css'
 
-
-/// nnnnnnnnnnnnnnnn
+//
 
 import { useNavigate} from "react-router-dom";
 import * as Yup from 'yup';
@@ -43,8 +42,8 @@ const PostComments = () => {
     });
   };
  
-   
-  // const loadComment = async () => {
+   // edit function
+  // const editComments = async () => {
   //   const response = await axios.get(`http://localhost:4000/api/smis/smisComments/${smisPostsId}`);
   //   setComment(response.data);    
   // };

@@ -11,15 +11,9 @@ const GetCurrentUser = () => {
     const currentUser = authService.getCurrentUser();
     const parentInfo = async ()=>{
         const response = await axios(`http://localhost:4000/api/smis/parents/${currentUser.username}`);
-        //const data = await response.json();
-    
-        //update the state
-        //setData(data);
         setData(response.data);
-
        
     }
-
     useEffect(()=>{
         parentInfo();
     },[]);
