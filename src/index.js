@@ -18,7 +18,6 @@ import Profile from "./Components/Profile";
 
 //import files for parents functional web requirements
 import AddSDParents from './Components/AdminPanel/AddSDParents';
-import AddParent from './Components/AdminPanel/AddParent';
 import DisplayParents from './Components/AdminPanel/DisplayParents';
 
 //importing files for announcement and notices
@@ -31,20 +30,19 @@ import PostList from './Components/AdminPanel/postList';
 import SubjectList from './Components/AdminPanel/SubjectList';
 import ManageSubjects from './Components/AdminPanel/ManageSubjects'
 import AddSubject from './Components/AdminPanel/AddSubject'
+
 import BoardTeacher from "./Components/BoardTeacher";
 
 //files for teacehers managements
 import ViewTeachers from './Components/AdminPanel/ViewTeachers'
 import AddTSecurityDetails from './Components/TeachersDetails/AddTSecurityDetails';
-import Display from './Components/TeachersDetails/DisplayTeachers';
-import AddTeacher from './Components/TeachersDetails/AddTeacher';
 
 //files for students managements
-import StudentDetails from "./Components/StudentDetails/StudentDetails"
-import ExamsRecords from "./Components/StudentDetails/ExamsRecords"
+import StudentsDetailsPanel from './Components/StudentDetails/StudentsDetailsPanel';
+import ExamsRecords from "./Components/StudentDetails/StudentsExamResults"
 import AddStudent from './Components/StudentDetails/SSecurityDetailsForm';
-import SPersonalDetailsForm from "./Components/StudentDetails/SPersonalDetailsForm"
 import Showtimetable from './Components/timetable/Showtimetable';
+ 
 
 ReactDOM.render(
 
@@ -70,19 +68,14 @@ ReactDOM.render(
         <Route path="/admin/manage-subjects" element={<ManageSubjects/>} />
         <Route path="/admin/addSubject" element={<AddSubject/>} />
         
-        <Route path="/admin/viewTeachers" element={<Display/>} />
         <Route path="/admin/teacher-record" element={<ViewTeachers/>} />
         <Route path="/admin/add-sdteacher" element={<AddTSecurityDetails/>} />
-        <Route path='/admin/add-tpersondetails' element={< AddTeacher/>}/>
-        <Route path="/admin/teachers-details" element={<Display/>} />
 
-        <Route path="/admin/students-details" element={<StudentDetails/>}/>
+        <Route path="/admin/students-details" element={<StudentsDetailsPanel/>}/>
         <Route path='/admin/add-student' element={<AddStudent/>}/>
         <Route path="/admin/exam-records" element={<ExamsRecords/>}/>
-        <Route path="/admin/spersonal-details" element={<SPersonalDetailsForm/>} />
 
         <Route path='/admin/add-sdparent' element={<AddSDParents/>}/>
-        <Route path='/admin/add-pdparent' element={<AddParent/>}/>
         <Route path='/admin/parents-records' element={<DisplayParents/>}/>
 
         <Route path='/admin/generate-timetable' element={< Showtimetable />}/>

@@ -12,15 +12,15 @@ module.exports = app =>{
    //router.get("/get", school.findAll);
 
      //get one school
-    // router.get("/te/:schoolId", school.findOne);
+    router.get("/school/:schoolId", school.findOneSchool);
 
-     //update school
-     //router.put("/:schoolId", school.update);
-
-
+    //update school
+    router.put("/school/:schoolId", school.updateSchoolById);
 
 
-     app.use("/api/school/", router);
+
+
+     app.use("/api/smis/", router);
 
 
 }

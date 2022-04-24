@@ -17,6 +17,7 @@ exports.create = (req, res)=>{
       termId: req.body.termId,
       studentId: req.body.studentId,
       subjectCode: req.body.subjectCode,
+      ayearId: req.body.ayearId,
       });
 
       // Save Mmark in the database

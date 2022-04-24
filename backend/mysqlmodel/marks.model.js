@@ -9,6 +9,7 @@ const Mark = function(mark) {
     this.termId = mark.termId;
     this.studentId = mark.studentId;  
     this.subjectCode = mark.subjectCode;
+    this.ayearId = mark.ayearId;
 }
 
 //insert a mark into a system
@@ -85,11 +86,12 @@ Mark.findMarkById = (markId, result) => {
   Mark.updateMarkById = (markId, mark, result) => {
     
     sql.query(
-      "UPDATE student_marks SET type = ?, marks = ?, subjectCode= ? WHERE markId = ?",
+      "UPDATE student_marks SET type = ?, marks = ?, subjectCode= ?, ayearId WHERE markId = ?",
       
       [ mark.type, 
         mark.marks, 
-        mark.subjectCode, 
+        mark.subjectCode,
+        ayearId, 
         markId],
 
       (err, res) => {

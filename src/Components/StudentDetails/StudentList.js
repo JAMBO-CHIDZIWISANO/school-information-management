@@ -7,6 +7,7 @@ import Form1Students from "./Form1Students"
 import Form2Students from "./Form2Students"
 import Form3Students from "./Form3Students"
 import Form4Students from "./Form4Students"
+import StudentDetails from "./StudentDetails";
 import {Modal, Button} from  'react-bootstrap'
 import { toast } from "react-toastify";
 
@@ -68,7 +69,10 @@ const StudentList = () => {
   return (
  
 
-    <div className="row">
+    <div className="">
+      <div>
+        <StudentDetails/>
+      </div>
       <h2 className="text-center">Table for All Students</h2>
     <div className="">
 
@@ -193,21 +197,7 @@ const StudentList = () => {
 
     </div>
 
-    <div>
-      <Form1Students/>
-    </div>
-
-    <div>
-      <Form2Students/>
-    </div>
-
-    <div>
-    <Form3Students/>
-    </div>
-
-    <div>
-      <Form4Students/>
-    </div>
+    
   </div>
   );
 };

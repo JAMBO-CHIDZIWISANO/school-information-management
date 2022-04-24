@@ -77,7 +77,7 @@ const PostComments = () => {
       </div>
         
       <div className="commentOnPost">
-        <div className="addCommentContainer">
+        <div className="addCommentContainer control">
           <input className='commentInput' type="text" placeholder="Write your comment...." 
           autoComplete="off" onChange={(event) => {setNewComment(event.target.value)}}
           value={newComment} />

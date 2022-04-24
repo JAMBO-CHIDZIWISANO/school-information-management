@@ -28,4 +28,56 @@ School.create = (newSchool, result)=>{
     });
 }
 
+//update school by their id
+School.updateSchoolById = (schoolId, school, result) => {
+  
+    sql.query(
+      `UPDATE schools SET schoolName = ?, schoolAdress = ?, schoolPhoneNo = ?, schoolLocation = ? WHERE schoolId = '${schoolId}'`,
+      
+      [ school.schoolName,
+        school.schoolAdress, 
+        school.schoolPhoneNo, 
+        school.schoolLocation, 
+        schoolId],
+  
+      (err, res) => {
+        if (err) {
+          console.log("error: ", err);
+          result(null, err);
+          return;
+        }
+        if (res.affectedRows == 0) {
+  
+          // not found school with the id
+          result({ kind: "not_found" }, null);
+          return;
+        }
+        console.log("updated school: ", 
+        { schoolId: schoolId, ...school });
+        result(null, { schoolId: schoolId, ...school });
+      }
+    );
+  }
+
+//retrieving single school object
+School.findschoolById = (schoolId, result) => {
+    sql.query(`SELECT * FROM schools WHERE schoolId LIKE '%${schoolId}%'`, (err, res) => {
+      
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+      if (res) {
+        console.log("found school: ", res);
+        result(null, res);
+        return;
+      }
+      // not found schools with the id
+      result({ kind: "not_found" }, null);
+    });
+  };
+
+  
+
 module.exports = School;

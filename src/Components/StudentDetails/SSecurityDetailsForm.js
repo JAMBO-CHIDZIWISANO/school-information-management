@@ -131,8 +131,9 @@ const SSecurityDetailsForm = () => {
 
   return (
     <div className="container">
+       
         <hr />
-        <div style={{textAlign: "left"}}>
+        <div >
             <Link to="/admin/students-details">
                 <Button variant="primary">
                     <ArrowBackSharp/>

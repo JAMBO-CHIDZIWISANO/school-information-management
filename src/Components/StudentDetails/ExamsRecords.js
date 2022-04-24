@@ -14,13 +14,7 @@ const ExamsRecords = () => {
     <div className='container'>
         <div>
         <hr />
-        <div style={{textAlign: "left"}}>
-        <Link to="/admin/students-details">
-          <Button variant="primary">
-            <ArrowBackSharp/>
-          </Button>
-        </Link>
-        </div>
+        
       <div style={{textAlign: "right"}}>
       
         <Link to={"/admin/exam-records"}> 
