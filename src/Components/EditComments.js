@@ -1,17 +1,21 @@
 import axios from 'axios';
 import React, {useEffect, useState, useRef} from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, navigate } from 'react-router-dom'
 import '../smisPostsComments.css'
+
+//
+
+import { useNavigate} from "react-router-dom";
+import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
 
 
 /// nnnnnnnnnnnnnnnnn
 
-const PostComments = (props) => {
+const EditComments = (props) => {
 
   const navigate = useNavigate();
   const {smisPostsId} = useParams();
-  const {smisCommentsId} = useParams();
   const [smisPostObject, setSmisPostObject] = useState({});
   const [comment, setComment] = useState([]);
   const [newComment, setNewComment] = useState("");
@@ -78,10 +82,6 @@ const PostComments = (props) => {
   //   useEffect(() => {
   //     loadComment();
   //   }, []);
-  const editComment = () => {
-    navigate('/admin/editComments');
-
-  }
 
 
   return (
@@ -95,27 +95,17 @@ const PostComments = (props) => {
         
       </div>
       <hr/>
-
-    <div className="singlePost">
-      
-      <div className="postToComment">
-        <div className="posts" id='onePost'>         
-            <div className="singletitle"><strong></strong><h4>{smisPostObject.title}</h4></div>
-            <div className="singlebody">{smisPostObject.smisPosts}</div>
-            <div className="singlefooter"><strong>Posted By : </strong>{smisPostObject.username}</div>
-        </div>
-      </div>
-     
-      <div className="commentOnPost">
-        <div className="addCommentContainer control">
-          <input className='commentInput' type="text" placeholder="Write your comment...." 
+      <div className="editcomment">
+        <div className="addCommentContainer">
+           
+          <textarea className='commentInput' autoFocus={props.autoFocus} type="text" placeholder="Write your comment...." 
           autoComplete="off" onChange={(event) => {setNewComment(event.target.value)}}
           value={newComment}  ref={message} 
           onFocus={commentFocus}
           onKeyUp={commentStroke} />
            {showButtons && (
             <div>
-            <button className="btn btn-primary" disabled={enableButton} onClick={sendComment}>Comment</button>
+            <button className="btn btn-primary" disabled={enableButton} onClick={sendComment}>Update</button>
             <button className="btn btn-danger" disabled={enableButton}  
               onClick ={ () => {
                 setShowButtons(false);
@@ -127,11 +117,11 @@ const PostComments = (props) => {
           {/* <button className='commentbutton'  onClick={sendComment}>Send Comment</button> */}
         </div>
         
-        <div className="listOfComments"  >
+        <div className="listOfComments">
         
                {comment.map((item, key) =>{
                return (
-                  <div className="comment" key={key} onClick={() => {navigate(`/editComments`)}} >
+                  <div className="comment" key={key}>
                     <strong >ParentName Comment : </strong><br/>{item.smisComments}
                     
                   </div>
@@ -145,11 +135,10 @@ const PostComments = (props) => {
     </div>
 
     </div>
-    </div>
 
   
   )
 }
 
-export default PostComments
+export default EditComments
 

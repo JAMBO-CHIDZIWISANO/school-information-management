@@ -24,6 +24,7 @@ const Comment = (props) => {
   // toggle when cancel button  and Reply button are pressed
   const changeOpenReply = ()=> {
     setOpenReply(prevState => prevState = !prevState);
+
   }
   // toggle up and down arrows
   let arrow = <i className='fas fa-caret-down'></i>

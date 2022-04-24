@@ -25,6 +25,9 @@ import NoticeBoard from './Components/NoticeBoard';
 import SmisComments from './Components/SmisComments';
 import PostComments from './Components/PostComments'
 import PostList from './Components/AdminPanel/postList';
+import EditComments from './Components/EditComments';
+
+
 
 //files for subjects managements
 import SubjectList from './Components/AdminPanel/SubjectList';
@@ -61,8 +64,12 @@ ReactDOM.render(
         <Route path="/admin/announcements" element={<NoticeBoard/>} />
         <Route path='/view-posts' element={<SmisComments/>}/>
         <Route path='/postComments/:smisPostsId' element={<PostComments/>}/>
+        <Route path='/postComments' element={<PostComments/>}/>
         <Route path='/viewcomments' element={<SmisComments/>}/>
         <Route path='/admin/manage-posts' element={<PostList/>} />
+        <Route path='/admin/editComments' element={<EditComments/>} />
+        <Route path='/editComments' element={<EditComments/>} />
+        
 
         <Route path="/view-subjects" element={<SubjectList/>} />
         <Route path="/admin/manage-subjects" element={<ManageSubjects/>} />

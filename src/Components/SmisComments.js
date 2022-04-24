@@ -29,10 +29,14 @@ const SmisComments = () => {
 
   
   return (
-    <div className="postPage">
-      
-      <div className="allPosts">
-        <div className="posts">
+    
+    <div className="container">
+      <div className="userComments">
+        <h6>Click on the Post to comment</h6>
+    <div className="">
+    <div className="postToComment">
+    <div className="posts">     
+ 
           {data.map((item, index) => {
             return (
               <div index={index} className="post" onClick={() => {navigate(`/postComments/${item.smisPostsId}`)}}>
@@ -42,9 +46,11 @@ const SmisComments = () => {
                 </div>               
             )
         })}
-          </div>
-         </div>
-       
+    
+    </div>
+      </div>
+    </div>
+    </div>
     </div>
   );
 }

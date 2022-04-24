@@ -3,12 +3,15 @@ import React, {useEffect, useState} from "react";
 import { toast } from "react-toastify";
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 
 
 
 const PostList = () => {
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
+
 
   const loadData = async () => {
       const response = await axios.get("http://localhost:4000/api/smis/getAllSmisPosts");
@@ -30,6 +33,10 @@ const PostList = () => {
       setTimeout(() => loadData(), 500);
     }
 };
+  const editComment = () => {
+    navigate('/admin/editComments');
+
+  }
 
   return (
     <div>
@@ -39,6 +46,7 @@ const PostList = () => {
         <Link to={"/admin/announcements"}> 
           <input type="button" value="Back" className="btn btn-primary btn-block" />
         </Link>
+       
         
       </div>
       <hr/>
@@ -62,7 +70,7 @@ const PostList = () => {
                 <td>{item.smisPosts}</td>
               {/* <b>No data found to display.</b> */}
               <td>
-                  <button className="btn btn-edit" ><ModeEditIcon/></button>
+                  <button className="btn btn-edit" onClick={editComment}><ModeEditIcon/></button>
                   <button className="btn btn-delete" onClick={() => deletePost(item.postId)}><DeleteOutlinedIcon /></button>
               </td>
             </tr>
