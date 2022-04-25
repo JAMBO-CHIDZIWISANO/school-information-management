@@ -79,10 +79,6 @@ const PostComments = (props) => {
     }
    }
 
-  const editComment = () => {
-    navigate('/admin/editComments');
-  }
-
   return (
     <div className='container'>
       <div className='userComments'>
@@ -105,10 +101,7 @@ const PostComments = (props) => {
         <div className="addCommentContainer control" 
           onFocus={commentFocus}
           onKeyUp={commentStroke}>
-
-
-
-<form onSubmit={sendComment} autoComplete="off" className="form-inline">
+        <form onSubmit={sendComment} autoComplete="off" className="form-inline">
           {/* {!successful && ( */}
             <div>
               <div className="form-group" >
@@ -127,65 +120,43 @@ const PostComments = (props) => {
                 <textarea
                   type="text"
                   className="form-control"
-                  name="comment"                  
+                  name="comment" 
+                  placeholder="Write your comment...."                  
                   required
                   onChange={(event) => {setNewComment(event.target.value)}}
                   value={newComment}
                 />
               </div>
-             
-              <div className="form-group">
-                <button className="btn btn-primary btn-block">send comment</button>
-              </div>
+              {showButtons && (
+            <div>
+            <button className="btn btn-primary" disabled={enableButton} >Comment</button>
+            <button className="btn btn-danger" disabled={enableButton}  
+              onClick ={ () => {
+                setShowButtons(false);
+                setNewComment("");
+                setCommentUser("");
+
+              }} >Cancel</button>
             </div>
-          {/* )}
-          {message && (
-            <div className="form-group">
-              <div
-                className={ successful ? "alert alert-success" : "alert alert-danger" }
-                role="alert"
-              >
-                {message}
-              </div>
+            )}
+              
             </div>
-          )} */}
         </form>
       </div>
-    
-
-            
-       
-    
-
-{/*             
-             <input name='username' 
-              className='form-control form-control-lg'
-             
-              onChange={(event) => {setCommentUser(event.target.value)}}
-              value={commentUser} 
-              placeholder="Write your Username..."
-              />
-       
-          <textarea  type="text" placeholder="Write your comment...." 
-          autoComplete="off" onChange={(event) => {setNewComment(event.target.value)}}
-          value={newComment}  ref={message}
-          className='form-control form-control-lg'
-
-          /> */}
-        
-           
-         
         </div>
-        <div className="listOfComments"  >  
+        <div className="listOfComments" 
+                   >  
                {comment.map((item, key) =>{
                return (
-                  <div className="comment" key={key} >
+                  <div className="comment" key={key}  onFocus={commentFocus}
+                  onKeyUp={commentStroke}>
                     <strong ></strong><br/>{item.username}
                     <strong ></strong><br/>{item.smisComments}
                   </div>
+                  
                   ) }
                )  
-                }              
+                }                           
         </div>
     </div>
     </div>
