@@ -12,7 +12,7 @@ import App from './App';
 import Login from "./Login"
 import BoardAdmin from "./Components/BoardAdmin";
 import BoardStudent from "./Components/BoardStudent";
-import BoardParent from "./Components/BoardParent";
+import BoardParent from "./Components/Parent/BoardParent";
 import BoardUser from "./Components/BoardUser";
 import Profile from "./Components/Profile";
 
@@ -35,6 +35,7 @@ import ManageSubjects from './Components/AdminPanel/ManageSubjects'
 import AddSubject from './Components/AdminPanel/AddSubject'
 
 import BoardTeacher from "./Components/BoardTeacher";
+import TeacherTabPanel from './Components/teacherPanel/TeacherTabPanel'
 
 //files for teacehers managements
 import ViewTeachers from './Components/AdminPanel/ViewTeachers'
@@ -56,7 +57,7 @@ ReactDOM.render(
         <Route path="/" exact element={<Login/>} />
         <Route path="/profile" element={<Profile/>} />
         <Route path="/admin" element={<BoardAdmin/>} />
-        <Route path="/teacher" element={<BoardTeacher/>} />
+        <Route path="/teacher" element={<TeacherTabPanel/>} />
         <Route path="/student" element={<BoardStudent/>} />
         <Route path="/parent" element={<BoardParent/>} />
 

@@ -12,6 +12,7 @@ class EnterMarks extends Component {
     this.onChangeStudentScore = this.onChangeStudentScore.bind(this);
     this.onChangeTotalScore = this.onChangeTotalScore.bind(this);
     this.onChangeStudentId = this.onChangeStudentId.bind(this)
+    this.onChanngeFullmarks = this.onChanngeFullmarks.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
@@ -19,6 +20,7 @@ class EnterMarks extends Component {
       student_score: "",
       total_score:"",
       studentId:"",
+      fullmarks: "",
     
       selectSubject : [],
       subjectName: "",
@@ -26,7 +28,11 @@ class EnterMarks extends Component {
 
       selectTerm:[],
       termId: "",
-      termName:""
+      termName:"",
+
+      selectYear:[],
+      ayearId:"",
+      academicyear:"",
      
       
     }
@@ -57,10 +63,25 @@ class EnterMarks extends Component {
     this.setState({selectTerm: termsOptions})
   }
 
+  //retrieve academic year from backend
+  async getYear(){
+    const res = await axios.get('http://localhost:4000/api/smis/getAllAYears')
+    const data = res.data
+
+    const yearOptions = data.map(item => ({
+      "value" : item.ayearId,
+      "label" : item.academicyear
+
+    }))
+    this.setState({selectYear: yearOptions})
+  }
+
+  //mount function that retrieve data from backend 
   componentDidMount(){
     
     this.getSubjects()
     this.getTerm()
+    this.getYear()
   }
 
  
@@ -70,16 +91,26 @@ class EnterMarks extends Component {
   onChangeTotalScore(e){
     this.setState({total_score: e.target.value})
   }
+
+  onChanngeFullmarks(e){
+    this.setState({fullmarks: e.target.value})
+  }
+
+  //handle student id input field change
   onChangeStudentId(e){
     this.setState({studentId: e.target.value})
   }
+
+  //handle exam type input field change
   onChangeType(e){
     this.setState({ type: e.target.value})
   }
-  // onChangeClassId(e){
-  //   console.log(e)
-  //  this.setState({classId:e.value, className:e.label})
-  // }
+
+  //handle years input field change
+  onChangeYearId(e){
+    console.log(e)
+   this.setState({ayearId:e.value, academicyear:e.label})
+  }
   onChangeTermId(e){
     console.log(e)
    this.setState({termId:e.value, termName:e.label})
@@ -89,6 +120,7 @@ class EnterMarks extends Component {
    this.setState({subjectCode:e.value, subjectName:e.label})
   }
   
+  //handle submit results form events
   onSubmit(e){
     e.preventDefault()
     const data = {
@@ -98,8 +130,9 @@ class EnterMarks extends Component {
         studentId: this.state.studentId,
         type: this.state.type,
         subjectCode: this.state.subjectCode,
-       // classId: this.state.classId,
-        termId: this.state.termId
+        ayearId: this.state.ayearId,
+        termId: this.state.termId,
+        fullmarks: this.state.fullmarks,
     };
 
     axios.post("http://localhost:4000/api/smis/addMark", data)
@@ -116,6 +149,8 @@ class EnterMarks extends Component {
         type: this.state.type,
         subjectCode:this.state.subjectCode,
         termId:this.state.termId,
+        ayearId:this.state.ayearId,
+        fullmarks: this.state.fullmarks,
     })
   } 
 
@@ -124,78 +159,124 @@ class EnterMarks extends Component {
   return (
     <div>
       <div className='px-5 wrapper mt-4 '>
+
         <form onSubmit={this.onSubmit} className=' mt-4'>
+          
+          <div className='row'>
 
-          <div className='form-group'>
-            <label htmlFor='student_score'>student score</label>
-            <input   
-              name='student_score'
-              value={this.state.student_score}
-              onChange={this.onChangeStudentScore}
-              className='form-control form-control-sm'
-              id='student_score'
-              placeholder='student score'/>
+              <div className='col-12 col-md-4 col-lg-3'>
+                <div className='form-group'>
+                  <label htmlFor='studentId'>student: </label>
+                  <input
+                    name='studentId'
+                    value={this.state.studentId}
+                    onChange={this.onChangeStudentId}
+                    className='form-control form-control-sm'
+                    id='studentId'
+                    placeholder="student "/>
+                </div>
+              </div>
+              <div className='col-12 col-md-4 col-lg-3'>
+                <div className='form-group'>
+                  <label htmlFor='student_score'>student score</label>
+                  <input   
+                    name='student_score'
+                    type="number"
+                    value={this.state.student_score}
+                    onChange={this.onChangeStudentScore}
+                    className='form-control form-control-sm'
+                    id='student_score'
+                    placeholder='student score'/>
+                </div>
+              </div>
+              <div className='col-12 col-md-5 col-lg-3'>
+                <div className='form-group'>
+                    <label htmlFor='student_score'>total score</label>
+                    <input   
+                      name='total_score'
+                      type="number"
+                      value={this.state.total_score}
+                      onChange={this.onChangeTotalScore}
+                      className='form-control form-control-sm'
+                      id='total_score'
+                      placeholder='total score'/>
+                </div>
+              </div>
+
+              <div className='col-12 col-md-4 col-lg-3'>
+              <div className='form-group mt-2'>
+                
+                <select
+                    value={this.state.fullmarks} 
+                    className="form-control"
+                    type="number"
+                    onChange={this.onChanngeFullmarks}
+                    required>
+                      <option>Full Mark</option>
+                      <option>100</option>
+                </select>
+              </div>
+              </div>
+
           </div>
 
-          <div className='form-group'>
-            <label htmlFor='student_score'>total score</label>
-            <input   
-              name='total_score'
-              value={this.state.total_score}
-              onChange={this.onChangeTotalScore}
-              className='form-control form-control-sm'
-              id='total_score'
-              placeholder='total score'/>
+          <div className='row'>
+            <div className='col-12 col-md-6 col-lg-6'>
+              <div className="form-group mt-2 ">
+                
+                <select
+                  value={this.state.type} 
+                  className="form-control"
+                  type="text"
+                  onChange={this.onChangeType}
+                  required>
+                    <option>Exam Type</option>
+                    <option>End-Of-Term</option>
+                    <option>Assessment</option>
+                </select>
+              </div>
+            </div>
+            <div className='col-12 col-md-6 col-lg-6'>
+              <div className='form-group mt-2 '>
+                <Select 
+                  placeholder="Select Subject"
+                  options={this.state.selectSubject} 
+                  onChange={this.onChangeSubjectCode.bind(this)}
+                />
+              </div>
+            </div>
+            
           </div>
-
-          <div className='form-group'>
-            <label htmlFor='studentId'>student: </label>
-            <input
-              name='studentId'
-              value={this.state.studentId}
-              onChange={this.onChangeStudentId}
-              className='form-control form-control-sm'
-              id='studentId'
-              placeholder="student "/>
-          </div>
-
-          <div className="form-group mt-3">
-            <label htmlFor="type">Type</label>
-            <select
-              value={this.state.type} 
-              className="form-control"
-              type="text"
-              onChange={this.onChangeType}
-              required>
-                <option>Tap to choose</option>
-                <option>End-Of-Term</option>
-                <option>Assessment</option>
-            </select>
+         
+          <div className='row'>
+            <div className='col-12 col-md-6 col-lg-6'>
+              <div className='form-group mt-2'>
+                <Select 
+                  placeholder="Select Term"
+                  options={this.state.selectTerm}
+                  
+                  onChange={this.onChangeTermId.bind(this)}
+                />
+              </div>
+            </div>
+            <div className='col-12 col-md-6 col-lg-6'>
+              <div className='form-group mt-2 '>
+                <Select 
+                  placeholder="Select Year"
+                  options={this.state.selectYear}
+                  
+                  onChange={this.onChangeYearId.bind(this)}
+                />
+              </div>
+            </div>
           </div>
 
           <div className='form-group mt-3'>
-            <Select 
-              placeholder="Select Subject"
-              options={this.state.selectSubject} 
-              onChange={this.onChangeSubjectCode.bind(this)}
-            />
-          </div>
-
-          <div className='form-group mt-3'>
-            <Select 
-              placeholder="Select Term"
-              options={this.state.selectTerm}
-               
-              onChange={this.onChangeTermId.bind(this)}
-            />
-          </div>
-
-          <div className='form-group mt-3'>
-            <input 
+            <button 
               type="submit" 
               value="submit" 
               className="btn btn-primary btn-block" 
-            />
+            > submit</button>
           </div>
         </form>
       </div>

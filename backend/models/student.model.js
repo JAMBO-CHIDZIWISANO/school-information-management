@@ -15,7 +15,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING
         },
         DoB: {
-            type: Sequelize.DATEONLY,
+            type: Sequelize.STRING,
            
         }
        

@@ -69,7 +69,7 @@ Parent.findParentByUsername = (username, result) => {
 
 //retrieve children info of logged parent data
 Parent.findChildrenByPUsername = (username, result) => {
-  sql.query(`  SELECT s.firstname, s.surname, c.className  from parents p join users u on u.username=p.userId join students s on s.parentId=p.parentId join classes c on c.classId=s.classId where u.username = '${username}'`, (err, res) => {
+  sql.query(`  SELECT s.studentId, s.firstname, s.surname, c.className  from parents p join users u on u.username=p.userId join students s on s.parentId=p.parentId join classes c on c.classId=s.classId where u.username = '${username}'`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -87,7 +87,7 @@ Parent.findChildrenByPUsername = (username, result) => {
 };
 
 Parent.findChildrenExamByparentId = (parentId, result) => {
-  sql.query(`select u.subjectName, m.student_score, m.total_score, round((m.student_score/m.total_score)*100,2) as grade, s.studentId ,CASE WHEN (round((m.student_score/m.total_score)*100,2))>=80 THEN 'A=distinction' WHEN (round((m.student_score/m.total_score)*100,2))>=70 THEN 'B=very good' WHEN (round((m.student_score/m.total_score)*100,2))>=60 THEN 'C=good' WHEN (round((m.student_score/m.total_score)*100,2))>=50 THEN 'D=average' ELSE 'F=fail' END AS remarks from students s inner join classes c on s.classId=c.classId join student_marks m on m.studentId = s.studentId JOIN parents p on s.parentId=p.parentId join subjects u on m.subjectCode=u.subjectCode join terms t on m.termId=t.termId where p.parentId like '${parentId}' order by s.studentId;`, (err, res) => {
+  sql.query(`select m.subjectCode, u.subjectName, m.student_score, m.total_score, round((m.student_score/m.total_score)*100,2) as grade, s.studentId ,CASE WHEN (round((m.student_score/m.total_score)*100,2))>=80 THEN 'A=distinction' WHEN (round((m.student_score/m.total_score)*100,2))>=70 THEN 'B=very good' WHEN (round((m.student_score/m.total_score)*100,2))>=60 THEN 'C=good' WHEN (round((m.student_score/m.total_score)*100,2))>=50 THEN 'D=average' ELSE 'F=fail' END AS remarks from students s inner join classes c on s.classId=c.classId join student_marks m on m.studentId = s.studentId JOIN parents p on s.parentId=p.parentId join subjects u on m.subjectCode=u.subjectCode join terms t on m.termId=t.termId where p.parentId like '${parentId}' order by s.studentId;`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -177,5 +177,23 @@ Parent.deleteParent = (parentId, result) => {
   });
 };
 
+
+//retrieve a student person info
+Parent.childrenPersonalInfo = (parentId, result) => {
+  sql.query(`SELECT s.studentId, s.firstname, s.surname, c.className, t.termName, sum(fullmarks) as fullmarks, case when ((((sum((m.student_score/m.total_score)*100))/(sum(fullmarks)))*100)>=50 and (count(subjectCode)>=6) ) then 'pass' else 'fail' end as status, sum(round((m.student_score/m.total_score)*100,2)) as marks, CASE WHEN ((((sum((m.student_score/m.total_score)*100))/(sum(fullmarks)))*100)>=80 and (count(subjectCode)>=6)) THEN 'Grade A Excellent' WHEN ((((sum((m.student_score/m.total_score)*100))/(sum(fullmarks)))*100)>=70 and (count(subjectCode)>=6)) THEN 'Grade B, Very good' WHEN ((((sum((m.student_score/m.total_score)*100))/(sum(fullmarks)))*100)>=60 and (count(subjectCode)>=6)) THEN 'Grade C, Good' WHEN ((((sum((m.student_score/m.total_score)*100))/(sum(fullmarks)))*100)>=50 and (count(subjectCode)>=6)) THEN 'Grade D, Average pass' ELSE 'Grade F, Needs support' END AS comments from student_marks m join students s on m.studentId=s.studentId join parents p on s.parentId=p.parentId join classes c on s.classId=c.classId join terms t on t.termId=m.termId where m.type like '%End-Of-Term%' and p.parentId = '${parentId}'  group by studentId, m.termId,m.ayearId order by marks desc;`, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+    if (res) {
+      console.log("found student: ", res);
+      result(null, res);
+      return;
+    }
+    // not found student with the id
+    result({ kind: "not_found" }, null);
+  });
+};
 
 module.exports = Parent;

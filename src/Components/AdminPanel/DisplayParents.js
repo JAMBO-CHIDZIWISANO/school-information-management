@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import {Link} from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
-//import "./Home.css";
+import { useReactToPrint } from "react-to-print";
+
 import { Button, Table, Modal } from "react-bootstrap";
-import { Edit, PersonAddAlt1Sharp } from "@mui/icons-material";
+import { DeleteOutline, Edit, PersonAddAlt1Sharp } from "@mui/icons-material";
 
 const DisplayParents = () => {
     const [pData, setPData] = useState([]);
@@ -59,17 +60,22 @@ const DisplayParents = () => {
         }
     };
 
+    //define print list of parent function refs
+    const componentRef = useRef()
+    const handlePrintListofParents = useReactToPrint({
+        content: ()=>componentRef.current,
+    });
+
   return (
     <div style={{marginTop: "40px"}} className="container">
 
 <hr />
       <div style={{textAlign: "right"}}>
 
-      {/* <Link to={"/admin/parents-records"}> 
-        <Button  variant="primary">
-          back
+        <Button variant="primary"
+            onClick={handlePrintListofParents}>
+                print parents List
         </Button>
-        </Link> */}
         <Link to={"/admin/add-sdparent"}> 
             <Button variant="primary">
                 <PersonAddAlt1Sharp/>
@@ -77,7 +83,7 @@ const DisplayParents = () => {
         </Link>
       </div>
       <hr/>
-      
+        <div ref={componentRef}>
         <h1 className="text-center">LIST OF Parents</h1>
         <Table className="table-bordered table-hover table-striped">
             <thead>
@@ -110,13 +116,14 @@ const DisplayParents = () => {
                                             <Edit/>
                                         </Button>
                                     
-                                    <button className="btn btn-delete" onClick={() => deleteUser(item.parentId)}>Delete</button>
+                                    <button className="btn btn-delete" onClick={() => deleteUser(item.parentId)}><DeleteOutline/></button>
                                 </td>
                         </tr>
                     )
                 })}
             </tbody>
         </Table>
+        </div>
 
         <div className='modal-box-view'>
                 <Modal

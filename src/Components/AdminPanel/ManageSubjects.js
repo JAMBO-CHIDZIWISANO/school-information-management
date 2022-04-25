@@ -55,7 +55,7 @@ const ManageSubjects = () => {
     };
 
   return (
-    <div className='teachers'>
+    <div className='container'>
         <br/><h2 className='manage-subjects' style={{textAlign: "center"}}> Manage Subjects</h2>
         <hr/>
             <Link to={'/admin/addSubject'}>

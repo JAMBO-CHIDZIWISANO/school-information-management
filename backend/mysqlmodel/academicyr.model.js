@@ -26,7 +26,7 @@ Academic.create = (newAcademic, result)=> {
 
 //retrieving all academic
 Academic.findAllAcademic = (academicyear, result) => {
-  let query = "select ayearId, academicyear from academicyears order by ayearId limit 4 desc;";
+  let query = "select ayearId, academicyear from academicyears order by ayearId desc limit 4 ;";
   if (academicyear) {
     query += ` WHERE academicyear LIKE '%${academicyear}%'`;
   }

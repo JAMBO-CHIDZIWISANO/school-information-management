@@ -10,6 +10,7 @@ const Mark = function(mark) {
     this.studentId = mark.studentId;  
     this.subjectCode = mark.subjectCode;
     this.ayearId = mark.ayearId;
+    this.fullmarks = mark.fullmarks;
 }
 
 //insert a mark into a system
@@ -138,7 +139,7 @@ Mark.findMarkById = (markId, result) => {
   
   
   Mark.findForm1ExamResults = (markId, result) => {
-    let query = "    select students.firstname, students.surname, classes.className, subjects.subjectName, student_marks.student_score, student_marks.total_score, student_marks.type, round((student_marks.student_score/student_marks.total_score)*100,2) AS percent, CASE WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=80 THEN 'A=distinction' WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=70 THEN 'B=very good' WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=60 THEN 'C=good' WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=50 THEN 'D=average' ELSE 'F=fail' END AS Grade FROM students INNER JOIN student_marks ON students.studentId=student_marks.studentId INNER JOIN subjects ON student_marks.subjectCode=subjects.subjectCode JOIN classes ON students.classId=classes.classId WHERE classes.classId=1 GROUP BY subjects.subjectName ORDER BY students.userId;";
+    let query = "    select students.firstname, students.surname, subjects.subjectName, student_marks.student_score, student_marks.total_score, student_marks.type, round((student_marks.student_score/student_marks.total_score)*100,2) AS percent, CASE WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=80 THEN 'A=distinction' WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=70 THEN 'B=very good' WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=60 THEN 'C=good' WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=50 THEN 'D=average' ELSE 'F=fail' END AS Grade FROM students INNER JOIN student_marks ON students.studentId=student_marks.studentId INNER JOIN subjects ON student_marks.subjectCode=subjects.subjectCode JOIN classes ON students.classId=classes.classId WHERE classes.classId=1 GROUP BY subjects.subjectName ORDER BY students.userId;";
     
     if (markId) {
       query += ` WHERE markId LIKE '%${markId}%'`;
@@ -156,7 +157,7 @@ Mark.findMarkById = (markId, result) => {
 
 
   Mark.findForm4ExamResults = (markId, result) => {
-    let query = " select students.firstname, students.surname, classes.className, subjects.subjectName, student_marks.student_score, student_marks.total_score, student_marks.type, round((student_marks.student_score/student_marks.total_score)*100,2) AS percent, CASE WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=80 THEN 'A=distinction' WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=70 THEN 'B=very good' WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=60 THEN 'C=good' WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=50 THEN 'D=average' ELSE 'F=fail' END AS Grade FROM students INNER JOIN student_marks ON students.studentId=student_marks.studentId INNER JOIN subjects ON student_marks.subjectCode=subjects.subjectCode JOIN classes ON students.classId=classes.classId WHERE classes.classId=4 GROUP BY subjects.subjectName ORDER BY students.userId;";
+    let query = " select students.firstname, students.surname, subjects.subjectName, student_marks.student_score, student_marks.total_score, student_marks.type, round((student_marks.student_score/student_marks.total_score)*100,2) AS percent, CASE WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=80 THEN 'A=distinction' WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=70 THEN 'B=very good' WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=60 THEN 'C=good' WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=50 THEN 'D=average' ELSE 'F=fail' END AS Grade FROM students INNER JOIN student_marks ON students.studentId=student_marks.studentId INNER JOIN subjects ON student_marks.subjectCode=subjects.subjectCode JOIN classes ON students.classId=classes.classId WHERE classes.classId=4 GROUP BY subjects.subjectName ORDER BY students.userId;";
     if (markId) {
       query += ` WHERE markId LIKE '%${markId}%'`;
     }
@@ -173,7 +174,7 @@ Mark.findMarkById = (markId, result) => {
 
 
   Mark.findForm3ExamResults = (markId, result) => {
-    let query = " select students.firstname, students.surname, classes.className, subjects.subjectName, student_marks.student_score, student_marks.total_score, student_marks.type, round((student_marks.student_score/student_marks.total_score)*100,2) AS percent, CASE WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=80 THEN 'A=distinction' WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=70 THEN 'B=very good' WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=60 THEN 'C=good' WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=50 THEN 'D=average' ELSE 'F=fail' END AS Grade FROM students INNER JOIN student_marks ON students.studentId=student_marks.studentId INNER JOIN subjects ON student_marks.subjectCode=subjects.subjectCode JOIN classes ON students.classId=classes.classId WHERE classes.classId=3 GROUP BY subjects.subjectName ORDER BY students.userId;";
+    let query = " select students.firstname, students.surname, subjects.subjectName, student_marks.student_score, student_marks.total_score, student_marks.type, round((student_marks.student_score/student_marks.total_score)*100,2) AS percent, CASE WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=80 THEN 'A=distinction' WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=70 THEN 'B=very good' WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=60 THEN 'C=good' WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=50 THEN 'D=average' ELSE 'F=fail' END AS Grade FROM students INNER JOIN student_marks ON students.studentId=student_marks.studentId INNER JOIN subjects ON student_marks.subjectCode=subjects.subjectCode JOIN classes ON students.classId=classes.classId WHERE classes.classId=3 GROUP BY subjects.subjectName ORDER BY students.userId;";
     if (markId) {
       query += ` WHERE markId LIKE '%${markId}%'`;
     }
@@ -190,7 +191,7 @@ Mark.findMarkById = (markId, result) => {
 
   //form 2 results
   Mark.findForm2ExamResults = (markId, result) => {
-    let query = " select students.firstname, students.surname, classes.className, subjects.subjectName, student_marks.student_score, student_marks.total_score, student_marks.type, round((student_marks.student_score/student_marks.total_score)*100,2) AS percent, CASE WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=80 THEN 'A=distinction' WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=70 THEN 'B=very good' WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=60 THEN 'C=good' WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=50 THEN 'D=average' ELSE 'F=fail' END AS Grade FROM students INNER JOIN student_marks ON students.studentId=student_marks.studentId INNER JOIN subjects ON student_marks.subjectCode=subjects.subjectCode JOIN classes ON students.classId=classes.classId WHERE classes.classId=2 GROUP BY subjects.subjectName ORDER BY students.userId;";
+    let query = " select students.firstname, students.surname, subjects.subjectName, student_marks.student_score, student_marks.total_score, student_marks.type, round((student_marks.student_score/student_marks.total_score)*100,2) AS percent, CASE WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=80 THEN 'A=distinction' WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=70 THEN 'B=very good' WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=60 THEN 'C=good' WHEN (round((student_marks.student_score/student_marks.total_score)*100,2))>=50 THEN 'D=average' ELSE 'F=fail' END AS Grade FROM students INNER JOIN student_marks ON students.studentId=student_marks.studentId INNER JOIN subjects ON student_marks.subjectCode=subjects.subjectCode JOIN classes ON students.classId=classes.classId WHERE classes.classId=2 GROUP BY subjects.subjectName ORDER BY students.userId;";
     if (markId) {
       query += ` WHERE markId LIKE '%${markId}%'`;
     }

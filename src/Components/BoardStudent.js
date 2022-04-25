@@ -2,7 +2,7 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react'
 import { useReactToPrint } from 'react-to-print';
-import { Table } from 'react-bootstrap';
+import { Button, Table } from 'react-bootstrap';
 import authService from './services/auth.service';
 import StudentTimetable from './StudentDetails/StudentTimetable';
 const BoardStudent = () => {
@@ -27,19 +27,26 @@ const BoardStudent = () => {
     studentInfo();
     
   },[])
+
+  
   return (
-    <div className='container mt-5'>
+    <div className='container mt-5 mb-5'>
 
-          <button onClick={handlePrintSchoolReport}>print school report</button>
+      <div style={{textAlign: "right"}}>
+        <Button onClick={handlePrintSchoolReport} >print school report</Button>
+      </div>
+      <hr/>
+
+          
           <div ref={componentRef}>
-
+          
           
           {
             studentPInfo.map((it, ky)=>{
               return(
               <div key={ky}>
                
-
+                
             <div className='row card-content'> 
             <div className=''>
 
@@ -48,7 +55,11 @@ const BoardStudent = () => {
           <Table>
             
             <thead>
-              
+
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
             <tr>
               <td>
                 Full Name:
@@ -56,20 +67,28 @@ const BoardStudent = () => {
               <td>
               {it.firstname}
               </td>
+              
+            </tr>
+            <tr>
+              <td>Surname: </td>
               <td>
               {it.surname}
               </td>
+            </tr>
+              
+            <tr>
+              <td>Reg#:</td>
               <td>
-                Reg#:
+                
               {currentUser.username}
               </td>
             </tr>
-            <tr className='' variant="primary">
-              <th>Subjects</th>
-              <th>Student Score</th>
-              <th>Total Score</th>
-              <th>Grade(%)</th>
-              <th>remarks</th>
+            <tr className='' >
+              <td>Subjects</td>
+              <td>Student Score</td>
+              <td>Total Score</td>
+              <td>Grade(%)</td>
+              <td>remarks</td>
             </tr>
            
             </thead>
@@ -88,12 +107,28 @@ const BoardStudent = () => {
               })
               }
                <tr> 
-                 <td>total marks :</td>
                  <td></td>
                  <td></td>
-                 <td>{it.marks}</td>
+                 <td>Full Marks :</td>
+                 <td>{it.fullmarks}</td>
                
 
+               
+              </tr>
+              <tr> 
+                 <td></td>
+                 <td></td>
+                 <td>Marks Obtained :</td>
+                 <td>{it.marks}</td>
+               
+              </tr>
+              <tr> 
+                 
+                 <td>Status :</td>
+                 
+                 <td >{it.status}</td>
+                 <td>Comment</td>
+                 <td>{it.comments}</td>
                
               </tr>
               <tr> 
@@ -101,8 +136,6 @@ const BoardStudent = () => {
                  <td>{it.className}</td>
                  <td>Term: </td>
                  <td>{it.termName}</td>
-               
-
                
               </tr>
              

@@ -173,3 +173,21 @@ exports.deleteParent = (req, res) => {
     } else res.send({ message: `parent was deleted successfully!` });
   });
 };
+
+
+//retrieve one Student using their id
+exports.childrenPersonalInfo = (req, res) => {
+  Parent.childrenPersonalInfo(req.params.parentId, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found parent child with id ${req.params.parentId}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Error retrieving parent child with id " + req.params.parentId
+        });
+      }
+    } else res.send(data);
+  });
+};

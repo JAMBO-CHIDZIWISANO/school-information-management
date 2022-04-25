@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import AttendanceList from './AttendanceList';
 class AttendanceForm extends Component {
 
     constructor(props){
@@ -146,7 +147,9 @@ class AttendanceForm extends Component {
                </div>
               </form>
           </div>
-    
+          <div className='mt-5'>
+            <AttendanceList/>
+          </div>
         </div>
     
 

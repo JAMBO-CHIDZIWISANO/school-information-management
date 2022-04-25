@@ -4,7 +4,6 @@ import React,{useState} from 'react'
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { PersonAddAlt1Sharp } from "@mui/icons-material";
-
 const AddSDParents = () => {
 
   const [username, setUsername] = useState("");
@@ -142,7 +141,7 @@ const AddSDParents = () => {
         
         <h3 className="text-center" >Parent Sign Up Form</h3><hr/>
         <form onSubmit={handleRegister}  autoComplete="off" className="">
-          {!successful && (
+         
             <div>
 
 
@@ -183,7 +182,7 @@ const AddSDParents = () => {
                 <button className="btn btn-primary btn-block">Sign Up</button>
               </div>
             </div>
-          )}
+         
           {message && (
             <div className="form-group mt-3">
               <div

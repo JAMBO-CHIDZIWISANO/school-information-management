@@ -121,7 +121,7 @@ Teacher.findTeacherById = (teacherId, result) => {
 
   //retrieving one teacher timetable
 Teacher.findTeacherTimetable = (teacherId, result) => {
-  sql.query(`SELECT l.day, l.lesson_startTime, l.lesson_endTime, r.roomName,s.subjectName,c.className FROM classlessons l JOIN classrooms r ON l.roomId=r.roomId JOIN subjects s ON s.subjectCode=l.subjectCode JOIN classes c ON l.classId=c.classId  WHERE l.teacherId LIKE '${teacherId}' GROUP BY l.day ORDER BY l.classId asc;`, (err, res) => {
+  sql.query(`SELECT l.day, l.lesson_startTime, l.lesson_endTime, r.roomName,s.subjectName,c.className FROM classlessons l JOIN classrooms r ON l.roomId=r.roomId JOIN subjects s ON s.subjectCode=l.subjectCode JOIN classes c ON l.classId=c.classId  WHERE l.teacherId = '${teacherId}' ORDER BY l.classId asc;`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
