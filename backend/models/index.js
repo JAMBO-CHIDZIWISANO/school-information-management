@@ -65,6 +65,14 @@ db.user.hasOne(db.parent, {
     targetKey: "userId",
   });
 
+ // one to many relationship between user and comments
+ db.user.hasMany(db.smiscomments, {
+   foreignKey: "username",
+   targetKey: "username",
+   onDelete: "cascade",
+   onUpdate: "cascade"
+ });
+ 
 //many to many relationship between user and role table
 db.role.belongsToMany(db.user, {
   through: "user_roles",

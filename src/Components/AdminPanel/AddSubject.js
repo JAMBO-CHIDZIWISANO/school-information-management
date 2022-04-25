@@ -80,12 +80,9 @@ class AddSubject extends Component {
       <hr/>
       <div className='px-5 wrapper mt-4'>
       <div className="d-flex justify-content-center aligh-items-center"><h3>ADD SUBJECT</h3><hr/></div>
-
       <div className="d-flex justify-content-center aligh-items-center">
-
         <form onSubmit={this.onSubmit} className='col-md-5'>
        <div className="form-control form-control-lg" >
-
           <div className='form-group'>
             <strong>Subject Code</strong>
             <input name='subjectCode' value={this.state.subjectCode}
@@ -93,14 +90,12 @@ class AddSubject extends Component {
               className='form-control form-control-lg'
               Code='subjectCode' placeholder="Subject Code..."/>
             </div>
-
             <div className='form-group'>
             <strong >Subject Name</strong>
             <input  name='subjectName' value={this.state.subjectName}
               onChange={this.onChangeSubjectName}
               className='form-control form-control-lg'
               id='subjectName' placeholder='Subject Name'
-              
               />
             </div>  
             </div>
@@ -109,8 +104,6 @@ class AddSubject extends Component {
               type="submit"  value="Submit Subject"  
               className="btn btn-primary btn-lg btn-block" />
             </div>
-
-
           </form>
           </div>
         </div>

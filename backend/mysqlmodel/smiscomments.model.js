@@ -5,6 +5,7 @@ const Smiscomments = function(smiscomments) {
     this.smisCommentsId = smiscomments.smisCommentsId;
     this.smisComments = smiscomments.smisComments;
     this.smisPostsId = smiscomments.smisPostsId;
+    this.username = smiscomments.username;
 }
 //insert a smisComment into the database system
 Smiscomments.create = (newSmiscomments, result)=> {
@@ -24,7 +25,7 @@ Smiscomments.create = (newSmiscomments, result)=> {
 
 //retrieving one smisComments
 Smiscomments.findSmiscommentById = (smisPostsId, result) => {
-    sql.query(`select smiscomments.smisComments from smiscomments join smisposts on smiscomments.smisPostsId = smisposts.smisPostsId where smiscomments.smisPostsId = ${smisPostsId}`, (err, res) => {
+    sql.query(`select smiscomments.smisComments, smiscomments.username from smiscomments join smisposts on smiscomments.smisPostsId = smisposts.smisPostsId where smiscomments.smisPostsId = ${smisPostsId}`, (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(err, null);

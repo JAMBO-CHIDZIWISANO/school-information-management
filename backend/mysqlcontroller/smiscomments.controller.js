@@ -13,6 +13,8 @@ exports.create = (req, res)=>{
         smisCommentsId: req.body.smisCommentsId,
         smisComments: req.body.smisComments,
         smisPostsId: req.body.smisPostsId, 
+        username: req.body.username, 
+        
     });
 
       // Save post in the database
