@@ -148,10 +148,20 @@ const PostComments = (props) => {
                    >  
                {comment.map((item, key) =>{
                return (
-                  <div className="comment" key={key}  onFocus={commentFocus}
-                  onKeyUp={commentStroke}>
+                  <div className="comment" key={key}  onClick={commentFocus}
+                  onKeyUp={commentStroke} >
                     <strong ></strong><br/>{item.username}
                     <strong ></strong><br/>{item.smisComments}
+                    {showButtons && (
+            <div>
+            <button className="btn btn-primary" disabled={enableButton} >Cancel</button>
+            <button className="btn btn-danger" disabled={enableButton}  
+              onClick ={ () => {
+                setShowButtons(false);
+                
+              }} >Delete</button>
+            </div>
+            )}
                   </div>
                   
                   ) }
