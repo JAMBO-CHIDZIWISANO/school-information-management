@@ -121,7 +121,7 @@ Teacher.findTeacherById = (teacherId, result) => {
 
   //retrieving one teacher timetable
 Teacher.findTeacherTimetable = (teacherId, result) => {
-  sql.query(`SELECT l.day, l.lesson_startTime, l.lesson_endTime, r.roomName,s.subjectName,c.className FROM classlessons l JOIN classrooms r ON l.roomId=r.roomId JOIN subjects s ON s.subjectCode=l.subjectCode JOIN classes c ON l.classId=c.classId  WHERE l.teacherId = '${teacherId}' ORDER BY l.classId asc;`, (err, res) => {
+  sql.query(`select s.subjectName as 'subject',c.day, c.lesson_startTime,c.lesson_endTime,r.roomName,l.className  from teachers t join teacher_subjects j on t.teacherId=j.teacherId join subjects s on j.subjectCode=s.subjectCode join classlessons c on c.subjectCode=s.subjectCode join classrooms r on r.roomId=c.roomId join classes l on l.classId=c.classId where t.teacherId='${teacherId}' order by l.classId asc;`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -139,7 +139,7 @@ Teacher.findTeacherTimetable = (teacherId, result) => {
   
   //retrieving all teachers timetable
   Teacher.findAllTeachersTimetable = (teacherId, result) => {
-    let query = "SELECT l.lessonId, t.surname, t.teacherId, l.day, l.lesson_startTime, l.lesson_endTime, r.roomName,s.subjectName,c.className FROM classlessons l JOIN classrooms r ON l.roomId=r.roomId JOIN subjects s ON s.subjectCode=l.subjectCode JOIN classes c ON l.classId=c.classId JOIN teachers t on t.teacherId=l.teacherId ORDER BY l.classId asc;";
+    let query = "SELECT l.lessonId,t.teacherId, t.surname, l.day, l.lesson_startTime, l.lesson_endTime, r.roomName,s.subjectName,c.className FROM classlessons l JOIN classrooms r ON l.roomId=r.roomId JOIN subjects s ON s.subjectCode=l.subjectCode JOIN teacher_subjects e on e.subjectCode=s.subjectCode join teachers t on t.teacherId=e.teacherId join classes c ON l.classId=c.classId ORDER BY l.classId asc;";
     if (teacherId) {
       query += ` WHERE lastname LIKE '%${teacherId}%'`;
     }

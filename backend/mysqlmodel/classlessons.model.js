@@ -8,7 +8,7 @@ const Classlessons= function(lesson) {
     this.lesson_endTime = lesson.lesson_endTime;
     this.roomId = lesson.roomId;
     this.subjectCode = lesson.subjectCode;
-    this.teacherId = lesson.teacherId;
+    
     this.classId = lesson.classId;
     
 }
@@ -68,11 +68,11 @@ Classlessons.findLessonById = (lessonId, result) => {
   Classlessons.updateLessonById = (lessonId, lessons, result) => {
     
     sql.query(
-      "UPDATE classLessons SET day=?, lesson_startTime = ?, lesson_endTime = ?subjectCode=?, roomId=?, teacherId=?, classId=?  WHERE lessonId = ?",
+      "UPDATE classLessons SET day=?, lesson_startTime = ?, lesson_endTime = ?subjectCode=?, roomId=?, classId=?  WHERE lessonId = ?",
       
       [ lessons.lesson_startTime,
         lessons.lesson_endTime,
-        lessons.teacherId,
+        
         lessons.subjectCode,
         lessons.roomId, 
         lessons.day,

@@ -16,7 +16,7 @@ exports.create = (req, res)=>{
         day: req.body.day,
         roomId: req.body.roomId,
         subjectCode: req.body.subjectCode,
-        teacherId: req.body.teacherId,
+      
         classId: req.body.classId,
 
     });

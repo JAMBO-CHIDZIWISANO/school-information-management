@@ -87,12 +87,13 @@ Mark.findMarkById = (markId, result) => {
   Mark.updateMarkById = (markId, mark, result) => {
     
     sql.query(
-      "UPDATE student_marks SET type = ?, marks = ?, subjectCode= ?, ayearId WHERE markId = ?",
+      "UPDATE student_marks SET type = ?, student_score = ?, total_score=?,subjectCode= ? WHERE markId = ?",
       
       [ mark.type, 
-        mark.marks, 
+        mark.student_score,
+        mark.total_score,
         mark.subjectCode,
-        ayearId, 
+         
         markId],
 
       (err, res) => {

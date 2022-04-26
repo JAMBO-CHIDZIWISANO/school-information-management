@@ -241,7 +241,7 @@ Student.studentExamResults = (studentId, result) => {
 
   //retrieve a student person info
   Student.studentPersonalInfo = (studentId, result) => {
-    sql.query(`SELECT s.studentId, s.firstname, s.surname, c.className, t.termName, sum(fullmarks) as fullmarks, case when ((((sum((m.student_score/m.total_score)*100))/(sum(fullmarks)))*100)>=50 and (count(subjectCode)>=6) ) then 'pass' else 'fail' end as status, sum(round((m.student_score/m.total_score)*100,2)) as marks, CASE WHEN ((((sum((m.student_score/m.total_score)*100))/(sum(fullmarks)))*100)>=80 and (count(subjectCode)>=6)) THEN 'Grade A Excellent' WHEN ((((sum((m.student_score/m.total_score)*100))/(sum(fullmarks)))*100)>=70 and (count(subjectCode)>=6)) THEN 'Grade B, Very good' WHEN ((((sum((m.student_score/m.total_score)*100))/(sum(fullmarks)))*100)>=60 and (count(subjectCode)>=6)) THEN 'Grade C, Good' WHEN ((((sum((m.student_score/m.total_score)*100))/(sum(fullmarks)))*100)>=50 and (count(subjectCode)>=6)) THEN 'Grade D, Average pass' ELSE 'Grade F, Needs support' END AS comments from student_marks m join students s on m.studentId=s.studentId join classes c on s.classId=c.classId join terms t on t.termId=m.termId where m.type like '%End-Of-Term%' and s.studentId = '${studentId}'  group by studentId order by marks desc;`, (err, res) => {
+    sql.query(`SELECT s.studentId, s.firstname, s.surname, c.className, t.termName, sum(m.total_score) as fullmarks, case when ((sum(m.student_score)/sum(m.total_score))*100)>50 then 'pass' else 'fail' end as status, sum(m.student_score) as marks, CASE WHEN ((sum(m.student_score)/sum(m.total_score))*100)>=80 THEN 'Grade A Excellent' WHEN ((sum(m.student_score)/sum(m.total_score))*100)>=70 THEN 'Grade B, Very good' WHEN ((sum(m.student_score)/sum(m.total_score))*100)>=60 THEN 'Grade C, Good' WHEN ((sum(m.student_score)/sum(m.total_score))*100)>=50 THEN 'Grade D, Average pass' ELSE 'Grade F, Needs support' END AS comments from student_marks m join students s on m.studentId=s.studentId join classes c on s.classId=c.classId join terms t on t.termId=m.termId where m.type like '%End-Of-Term%' and s.studentId = '${studentId}'  group by studentId order by marks desc;`, (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(err, null);
@@ -259,7 +259,7 @@ Student.studentExamResults = (studentId, result) => {
 
   //retrieve a time table depending on the class of a student
   Student.studentTimetable = (studentId, result) => {
-    sql.query(`  SELECT l.day, l.lesson_startTime, l.lesson_endTime, r.roomName,s.subjectName from classlessons l join classrooms r on l.roomId=r.roomId join subjects s on s.subjectCode=l.subjectCode join classes c on l.classId=c.classId join students t on t.classId=c.classId where t.studentId like '${studentId}';`, (err, res) => {
+    sql.query(`select s.subjectName as 'subject', c.day, c.lesson_startTime, c.lesson_endTime, r.roomName, l.className  from students t join student_subjects j on t.studentId=j.studentId join subjects s on j.subjectCode=s.subjectCode join classlessons c on c.subjectCode=s.subjectCode join classrooms r on r.roomId=c.roomId join classes l on l.classId=c.classId where t.studentId='${studentId}';`, (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(err, null);

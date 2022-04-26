@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import { Link, useNavigate } from "react-router-dom";
+import { useParams } from "react-router";
 
 
 
@@ -63,7 +64,7 @@ const PostList = () => {
           <tbody>
           {data.map((item, index) => {
             return (
-              <tr key={item.postId}>
+              <tr key={item.smisPostsId}>
                 <th scope="row">{index+1}</th>
                 <td>{item.username}</td>
                 <td>{item.title}</td>
@@ -71,7 +72,7 @@ const PostList = () => {
               {/* <b>No data found to display.</b> */}
               <td>
                   <button className="btn btn-edit" onClick={editComment}><ModeEditIcon/></button>
-                  <button className="btn btn-delete" onClick={() => deletePost(item.postId)}><DeleteOutlinedIcon /></button>
+                  <button className="btn btn-delete" onClick={() => deletePost(item.smisPostsId)}><DeleteOutlinedIcon /></button>
               </td>
             </tr>
             )

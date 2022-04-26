@@ -40,7 +40,7 @@ const TeacherTimeTable = () => {
             { teacherTimetable.map((item, i)=>{
         return(
               <tr  key={i}>
-                <td>{item.subjectName}</td>
+                <td>{item.subject}</td>
                 <td>{item.day}</td>
                 <td>{item.lesson_startTime}</td>
                 <td>{item.lesson_endTime}</td>

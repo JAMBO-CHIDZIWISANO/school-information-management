@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react'
 import Select from 'react-select'
-
+import UpdateMarks from '../StudentDetails/updateMarks';
 class EnterMarks extends Component {
 
   constructor(props){
@@ -268,6 +268,9 @@ class EnterMarks extends Component {
             > submit</button>
           </div>
         </form>
+      </div>
+      <div>
+        <UpdateMarks/>
       </div>
     </div>
   )}

@@ -27,9 +27,9 @@ class Timetableform extends Component {
             roomName: "",
             roomId: "",
 
-            selectTeachers: [],
-            surname: "",
-            teacherId: "",
+            // selectTeachers: [],
+            // surname: "",
+            // teacherId: "",
 
             selectClass: [],
             classId:"",
@@ -62,19 +62,19 @@ class Timetableform extends Component {
         this.setState({selectRoom: roomOptions})
     }
 
-    async getTeachers(){
-        const res = await axios.get('http://localhost:4000/api/smis/getAllLessonTeacher')
-        const data = res.data
+    // async getTeachers(){
+    //     const res = await axios.get('http://localhost:4000/api/smis/getAllLessonTeacher')
+    //     const data = res.data
     
-        const teacherOptions = data.map(d => ({
-          "value" : d.teacherId,
-          "label" : d.surname 
+    //     const teacherOptions = data.map(d => ({
+    //       "value" : d.teacherId,
+    //       "label" : d.surname 
           
           
     
-        }));
-        this.setState({selectTeachers: teacherOptions})
-    }
+    //     }));
+    //     this.setState({selectTeachers: teacherOptions})
+    // }
 
     async getClass(){
         const res = await axios.get('http://localhost:4000/api/smis/getAllclasses')
@@ -95,7 +95,7 @@ class Timetableform extends Component {
         
         this.getSubjects()
         this.getRooms()
-        this.getTeachers()
+        //.getTeachers()
         this.getClass()
       }
 
@@ -118,10 +118,10 @@ class Timetableform extends Component {
         this.setState({roomId:e.value, roomName:e.label})
     }
     
-    onChangeTeacherId(e){
-        console.log(e)
-        this.setState({teacherId:e.value, surname:e.label })
-    }
+    // onChangeTeacherId(e){
+    //     console.log(e)
+    //     this.setState({teacherId:e.value, surname:e.label })
+    // }
     onChangeClassId(e){
         console.log(e)
         this.setState({classId:e.value, className:e.label })
@@ -133,7 +133,7 @@ class Timetableform extends Component {
             lesson_startTime: this.state.lesson_startTime,
             lesson_endTime: this.state.lesson_endTime,
             subjectCode: this.state.subjectCode,
-            teacherId: this.state.teacherId,
+            
             roomId: this.state.roomId,
             classId: this.state.classId,
 
@@ -152,7 +152,7 @@ class Timetableform extends Component {
             lesson_endTime: "",
             subjectCode: "",
             roomId: "",
-            teacherId: "",
+            
             classId:""
 
         });
@@ -232,14 +232,14 @@ class Timetableform extends Component {
                             </div>
                         </div>
                         <div className='col-12 col-md-6 col-lg-6 ' >
-                            <div className='form-group mt-3'>
+                            {/* <div className='form-group mt-3'>
                             <Select
 
                                 placeholder='select teacher'
                                 options={this.state.selectTeachers}
                                 onChange={this.onChangeTeacherId.bind(this)}
                             />
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <div className='row'>
