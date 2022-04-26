@@ -3,6 +3,10 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useNavigate} from "react-router-dom";
 import * as Yup from 'yup';
 import React from 'react'
+import '../smisPostsComments.css'
+import { toast } from "react-toastify";
+
+
 
 
 const SmisPosts = () => {
@@ -27,9 +31,8 @@ const SmisPosts = () => {
     console.log(data)
     // now sending it to database usig post api
     axios.post("http://localhost:4000/api/smis/addSmisPosts", data).then((response) => {
-      // navigate('/viewcomments');
-
-
+      // navigate('/viewcomments')
+      toast.success("done");
     })
   };
 

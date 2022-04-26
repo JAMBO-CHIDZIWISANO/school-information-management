@@ -1,7 +1,6 @@
 style for Smiscomments and Smisposts 
  
 .userComments {    
-  align-items: center;
   width: 80%;
   background-color: white;
   place-content: center;
@@ -108,21 +107,23 @@ style for Smiscomments and Smisposts
     border: dodgerblue;
   }
   
-  .addCommentContainer textarea {
+  /* .addCommentContainer textarea {
     border: 2px solid dodgerblue;
     height: 70px;
     width: 350px;
     margin-top: 40px;
 
-  }
+  } */
 
 
   .listOfComments {
-  flex: 80%;
-  width: 80%;
-  display: flex;
+  width: 90%;
+  place-content: center;
+
   flex-direction: column;
   align-items: center;
+  padding-left: 199px;
+
 }
 
 .listOfComments .comment {
@@ -130,6 +131,25 @@ style for Smiscomments and Smisposts
   height: auto;
   padding: 30px;
   border: 1px solid lightgray;
+  background-color: white;
   border-radius: 5px;
   margin-top: 20px;
+}
+
+.delbtn {
+  float: right;
+}
+.formSize {
+  width: 82%;
+  place-content: center;
+  align-items: center; 
+  padding-left: 198px;
+}
+
+.pt-5{
+  background-color: rgb(199, 193, 186);
+}
+
+#span {
+  color: red;
 }

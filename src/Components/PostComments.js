@@ -1,9 +1,12 @@
 import axios from 'axios';
 import React, {useEffect, useState, useRef} from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import { toast } from "react-toastify";
 import '../smisPostsComments.css'
 import { Link } from 'react-router-dom';
 import authservice from './services/auth.service'
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+
 
 const PostComments = (props) => {
 
@@ -13,19 +16,19 @@ const PostComments = (props) => {
     const [smisPostObject, setSmisPostObject] = useState({});
     const [comment, setComment] = useState([]);
     const [newComment, setNewComment] = useState("");
-  
     const [userName, setUserName] = useState([]);
     const [commentUser, setCommentUser] = useState("");
-    
-    const user = authservice.getCurrentUser();
-
+    const user = authservice.getCurrentUser(); 
     
     
-    // const onChangeGender = (e) => {
-    //   const gender = e.target.value;
-    //   setGender(gender);
-    // };
-  
+    const deleteComment = (smisCommentsId) => {
+      if (window.confirm('Action is irriversible! Do you really want to delete this?')){
+          axios.delete(`http://localhost:4000/api/smis/smisComments/${smisCommentsId}`);
+          toast.success('Comment Deleted Successfully');
+          // reload window after sometime
+          setTimeout( () => window.location.reload(), 500);
+      }
+    };  
     
     useEffect( () => {
       axios.get(`http://localhost:4000/api/smis/smisPosts/${smisPostsId}`).then((response) => {
@@ -42,17 +45,19 @@ const PostComments = (props) => {
         e.preventDefault();
         axios.post("http://localhost:4000/api/smis/addSmisComment",{
           smisComments: newComment, username: commentUser, smisPostsId: smisPostsId}).then((response) => {
-        // navigate('/viewcomments');
         // refreshing to add new comments automatically
         const newCommentAdded = {smisComments: newComment};
         const commentUsername =  {username: commentUser};
         
         setComment([...comment, newCommentAdded]);
         setUserName([...userName, commentUsername]);
+        toast.success('Comment Deleted Successfully');
         window.location.reload();
         setNewComment("");
         setCommentUser("");
+
         });
+
       }
         
   // another comment input and can be removed though
@@ -97,15 +102,16 @@ const PostComments = (props) => {
             <div className="singlefooter"><strong>Posted By : </strong>{smisPostObject.username}</div>
         </div>
       </div>
-      <div className="commentOnPost">
-        <div className="addCommentContainer control" 
+     
+         <div className='formSize'>        
+          <form onSubmit={sendComment}  
           onFocus={commentFocus}
-          onKeyUp={commentStroke}>
-        <form onSubmit={sendComment} autoComplete="off" className="form-inline">
+          onKeyUp={commentStroke} 
+          autoComplete="off" className="pt-5">
           {/* {!successful && ( */}
             <div>
               <div className="form-group" >
-                <label htmlFor="username">Username</label>
+         
                 <input
                   type="text"
                   className="form-control"
@@ -116,7 +122,6 @@ const PostComments = (props) => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="comment"></label>
                 <textarea
                   type="text"
                   className="form-control"
@@ -142,6 +147,9 @@ const PostComments = (props) => {
               
             </div>
         </form>
+        </div>
+
+        
       </div>
         </div>
         <div className="listOfComments" 
@@ -154,12 +162,16 @@ const PostComments = (props) => {
                     <strong ></strong><br/>{item.smisComments}
                     {showButtons && (
             <div>
-            <button className="btn btn-primary" disabled={enableButton} >Cancel</button>
-            <button className="btn btn-danger" disabled={enableButton}  
+            <button className="delbtn" 
+                  anabled={enableButton} 
+                  onClick={() =>deleteComment(item.smisCommentsId)}
+                  
+                   ><DeleteOutlinedIcon/></button>
+
+            {/* <button className="btn btn-danger"   
               onClick ={ () => {
                 setShowButtons(false);
-                
-              }} >Delete</button>
+              }} >Delete</button> */}
             </div>
             )}
                   </div>
@@ -168,15 +180,8 @@ const PostComments = (props) => {
                )  
                 }                           
         </div>
-    </div>
-    </div>
-
-     </div>
-  
-
-  
+    </div> 
 )
-
-              }
+}
 export default PostComments
 
