@@ -19,6 +19,10 @@ code {
     monospace;
 }
 
+.multi-select {
+  max-width: 300px;
+}
+
 
 form{position: relative;
     background: #ffffff;

@@ -118,14 +118,6 @@ db.school.hasMany(db.teacher, {
 });
 
 //one to many relationships teacher and students
-db.teacher.hasMany(db.classlesson, {
-  foreignKey: "teacherId",
-  targetKey: "teacherId",
-  onDelete: "cascade",
-  onUpdate: "cascade"
-});
-
-//one to many relationships teacher and students
 db.class.hasMany(db.classlesson, {
   foreignKey: "classId",
   targetKey: "classId",

@@ -10,7 +10,7 @@ const Mark = function(mark) {
     this.studentId = mark.studentId;  
     this.subjectCode = mark.subjectCode;
     this.ayearId = mark.ayearId;
-    this.fullmarks = mark.fullmarks;
+    
 }
 
 //insert a mark into a system

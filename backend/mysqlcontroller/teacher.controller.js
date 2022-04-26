@@ -150,3 +150,16 @@ exports.countAllTeachers=(req, res) => {
     else res.send(data);
   });
 };
+
+//retrieve student Id
+exports.teachersId=(req, res) => {
+  const teacherId = req.query.teacherId;
+  Teacher.teachersId(teacherId, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving teacher."
+      });
+    else res.send(data);
+  });
+};

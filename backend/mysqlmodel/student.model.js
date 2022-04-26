@@ -275,6 +275,24 @@ Student.studentExamResults = (studentId, result) => {
     });
   };
   
+  
+//retrieve all students username
+Student.studentsId = (studentId, result) => {
+  let query = "SELECT studentId from students order by studentId desc;";
+  if (studentId) {
+    query += ` WHERE studentId LIKE '%${studentId}%'`;
+  }
+  sql.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    console.log("students: ", res);
+    result(null, res);
+  });
+};
+  
 
 
 module.exports = Student;

@@ -11,6 +11,9 @@ module.exports = app =>{
     // //create new students
     router.post("/addStudent", student.create);
 
+     // //create new students
+     router.get("/getStudentsId", student.studentsId);
+
     // //get all students
     router.get("/getAllStudents", student.findAllStudents);
 

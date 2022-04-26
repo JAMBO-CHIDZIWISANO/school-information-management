@@ -235,3 +235,17 @@ exports.studentTimetable = (req, res) => {
     } else res.send(data);
   });
 };
+
+
+//retrieve student Id
+exports.studentsId=(req, res) => {
+  const studentId = req.query.studentId;
+  Student.studentsId(studentId, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Students."
+      });
+    else res.send(data);
+  });
+};

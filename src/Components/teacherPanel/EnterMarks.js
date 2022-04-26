@@ -204,18 +204,7 @@ class EnterMarks extends Component {
               </div>
 
               <div className='col-12 col-md-4 col-lg-3'>
-              <div className='form-group mt-2'>
-                
-                <select
-                    value={this.state.fullmarks} 
-                    className="form-control"
-                    type="number"
-                    onChange={this.onChanngeFullmarks}
-                    required>
-                      <option>Full Mark</option>
-                      <option>100</option>
-                </select>
-              </div>
+              
               </div>
 
           </div>

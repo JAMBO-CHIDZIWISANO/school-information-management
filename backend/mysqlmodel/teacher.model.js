@@ -171,4 +171,21 @@ Teacher.countAllTeacher = (gender, result) => {
   });
 };
 
+//retrieve all teacher username
+Teacher.teachersId = (teacherId, result) => {
+  let query = "SELECT teacherId from teachers order by teacherId desc;";
+  if (teacherId) {
+    query += ` WHERE teacherId LIKE '%${teacherId}%'`;
+  }
+  sql.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    console.log("students: ", res);
+    result(null, res);
+  });
+};
+
 module.exports = Teacher;

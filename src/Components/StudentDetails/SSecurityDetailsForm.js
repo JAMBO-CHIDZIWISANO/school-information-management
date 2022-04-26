@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { Button} from "react-bootstrap";
 
 import React, {useState} from 'react'
+import GiveStudentSubjects from "./GiveStudentssubjects";
 
 const SSecurityDetailsForm = () => {
 
@@ -370,6 +371,8 @@ const SSecurityDetailsForm = () => {
                     />
                 </div>
             </div>
+
+           
         </div>
             
 
@@ -409,6 +412,9 @@ const SSecurityDetailsForm = () => {
 
             </div>
 
+            <div>
+                <GiveStudentSubjects/>
+            </div>
         
              </div>
       
