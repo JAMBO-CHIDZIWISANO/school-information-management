@@ -106,8 +106,13 @@ const PostComments = (props) => {
          <div className='formSize'>        
           <form onSubmit={sendComment}  
           onFocus={commentFocus}
+<<<<<<< Updated upstream
           onKeyUp={commentStroke} 
           autoComplete="off" className="pt-5">
+=======
+          onKeyUp={commentStroke}>
+        <form onSubmit={sendComment}  autoComplete="off" className="form-inline">
+>>>>>>> Stashed changes
           {/* {!successful && ( */}
             <div>
               <div className="form-group" >
@@ -162,6 +167,7 @@ const PostComments = (props) => {
                     <strong ></strong><br/>{item.smisComments}
                     {showButtons && (
             <div>
+<<<<<<< Updated upstream
             <button className="delbtn" 
                   anabled={enableButton} 
                   onClick={() =>deleteComment(item.smisCommentsId)}
@@ -169,6 +175,9 @@ const PostComments = (props) => {
                    ><DeleteOutlinedIcon/></button>
 
             {/* <button className="btn btn-danger"   
+=======
+            <button className="btn btn-danger" disabled={enableButton}  
+>>>>>>> Stashed changes
               onClick ={ () => {
                 setShowButtons(false);
               }} >Delete</button> */}

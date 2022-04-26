@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import AuthService from "./services/auth.service";
+import NumberOfStudents from './AdminPanel/NumberOfStudents'
+import NumberOfTeachers from './AdminPanel/NumberOfTeachers'
 export default class Profile extends Component {
   constructor(props) {
     super(props);
@@ -46,6 +48,8 @@ export default class Profile extends Component {
         </ul>
         </div>
         <div>
+        <div><NumberOfStudents /></div><br/>
+        <div><NumberOfTeachers /></div>
         </div>
       </div>
     );

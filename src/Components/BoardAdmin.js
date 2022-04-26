@@ -31,9 +31,9 @@ const BoardAdmin = () => {
           <div className='card-body'>
              <NumberOfStudents/>
           </div>
-          <div class="widget-49-meeting-action">
+          {/* <div class="widget-49-meeting-action">
             <Link to="/admin/students-details" className='btn btn-primary'>View All</Link>
-          </div>
+          </div> */}
         </div>
 
         <div className='col-12 col-md-4 col-lg-3 card card-margin mx-2'>
@@ -43,9 +43,9 @@ const BoardAdmin = () => {
           <div className='card-body'>
             <NumberOfTeachers/>
           </div>
-          <div className="widget-49-meeting-action">
+          {/* <div className="widget-49-meeting-action">
             <Link to="/admin/teachers-details" className='btn btn-primary'>View All</Link>
-          </div>
+          </div> */}
         </div>
         <div className='col-12 col-md-4 col-lg-3  card card-margin mx-2'>
         <div className="card-header no-border">

@@ -115,7 +115,6 @@ style for Smiscomments and Smisposts
 
   } */
 
-
   .listOfComments {
   width: 90%;
   place-content: center;
@@ -129,6 +128,7 @@ style for Smiscomments and Smisposts
 .listOfComments .comment {
   width: 80%;
   height: auto;
+  align-items: center;
   padding: 30px;
   border: 1px solid lightgray;
   background-color: white;

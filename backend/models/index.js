@@ -117,6 +117,31 @@ db.school.hasMany(db.teacher, {
   onUpdate: "cascade"
 });
 
+
+//many to many relationship between student and subject table
+db.student.belongsToMany(db.subject, {
+  through: "student_subjects",
+  foreignKey: "studentId",
+  otherKey: "subjectCode"
+});
+db.subject.belongsToMany(db.student, {
+  through: "student_subjects",
+  foreignKey: "subjectCode",
+  otherKey: "studentId"
+});
+
+//many to many relationship between teacher and subject table
+db.teacher.belongsToMany(db.subject, {
+  through: "teacher_subjects",
+  foreignKey: "teacherId",
+  otherKey: "subjectCode"
+});
+db.subject.belongsToMany(db.teacher, {
+  through: "teacher_subjects",
+  foreignKey: "subjectCode",
+  otherKey: "teacherId"
+});
+
 //one to many relationships teacher and students
 db.class.hasMany(db.classlesson, {
   foreignKey: "classId",
