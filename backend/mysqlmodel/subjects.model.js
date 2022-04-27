@@ -25,15 +25,15 @@ Subject.create = (newSubject, result)=> {
 
 //retrieving one subject
 Subject.findSubjectById = (subjectCode, result) => {
-    sql.query(`SELECT subjectCode, subjectName FROM subjects WHERE subjectCode LIKE '%${subjectCode}%'`, (err, res) => {
+    sql.query(`SELECT subjectCode FROM subjects WHERE subjectCode = '${subjectCode}'`, (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(err, null);
         return;
       }
-      if (res.length) {
-        console.log("found subject: ", res[0]);
-        result(null, res[0]);
+      if (res) {
+        console.log("found subject: ", res);
+        result(null, res);
         return;
       }
       // not found subject with the id
@@ -43,7 +43,7 @@ Subject.findSubjectById = (subjectCode, result) => {
 
   //retrieve students who take this subjects
   Subject.findStudentsBySubjectCode = (subjectCode, result) => {
-    sql.query(`  select s.firstname,s.studentId, c.subjectCode from students s join student_subjects j on s.studentId=j.studentId join subjects c on c.subjectCode=j.subjectCode WHERE c.subjectCode='${subjectCode}'`, (err, res) => {
+    sql.query(`SELECT ss.studentId from students s join student_subjects ss on s.studentId=ss.studentId join subjects b on ss.subjectCode=b.subjectCode where ss.subjectCode='${subjectCode}' group by s.studentId`, (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(err, null);

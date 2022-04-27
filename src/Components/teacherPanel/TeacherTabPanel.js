@@ -2,6 +2,9 @@ import { useState } from "react";
 import EnterMarks from './EnterMarks'
 import TeacherTimeTable from "../TeachersDetails/TeacherTimeTable";
 import AttendanceForm from "./AttendanceForm";
+import TeacherSubject from "./TeacherSubject";
+
+
 function StudentsDetailsPanel() {
     
     //defining toggle of the tab state
@@ -42,14 +45,14 @@ function StudentsDetailsPanel() {
           className={toggleState === 1 ? "content  active-content" : "content"}
         >
 
-            {/* <TeacherTimeTable/> */}
+            <TeacherSubject/>
           
         </div>
         
         <div
           className={toggleState === 2 ? "content  active-content" : "content"}
         >
-           <EnterMarks/>
+           {/* <EnterMarks/> */}
         </div>
         <div
           className={toggleState === 3 ? "content  active-content" : "content"}

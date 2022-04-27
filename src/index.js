@@ -36,6 +36,7 @@ import AddSubject from './Components/AdminPanel/Subjects/AddSubject'
 
 import BoardTeacher from "./Components/BoardTeacher";
 import TeacherTabPanel from './Components/teacherPanel/TeacherTabPanel'
+import EnterMarks from "./Components/teacherPanel/EnterMarks";
 
 //files for teacehers managements
 import ViewTeachers from './Components/AdminPanel/ViewTeachers'
@@ -73,6 +74,8 @@ ReactDOM.render(
         
 
         <Route path="/view-subjects" element={<SubjectList/>} />
+        <Route path="/enterMarks/:subjectCode" element={<EnterMarks/>} />
+        
         <Route path="/admin/manage-subjects" element={<ManageSubjects/>} />
         <Route path="/admin/addSubject" element={<AddSubject/>} />
         

@@ -24,7 +24,7 @@ const GradesForm = () => {
     }
 
     const studentSubjects = async ()=>{
-        const response = await axios.get(`http://localhost:4000/api/smis/students/subject/${subjectCode}`)
+        const response = await axios.get(`http://localhost:4000/api/smis/students/subject/BIO1`)
         setStudents(response.data)
     }  
     
@@ -33,11 +33,11 @@ const GradesForm = () => {
     },[])
 
     const onChangeSubjectCode=(e)=>{
-        const subjectCode= e.target.placeholder;
+        const subjectCode= e.target.value;
         setSubjectCode(subjectCode); 
     }
     const onChangeStudentId=(e)=>{
-        const studentId= e.target.placeholder;
+        const studentId= e.target.value;
 
         setStudentId(studentId); 
     }

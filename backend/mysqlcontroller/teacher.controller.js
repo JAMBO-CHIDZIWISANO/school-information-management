@@ -125,6 +125,23 @@ exports.findTeacherTimetable = (req, res) => {
   });
 };
 
+//retrieve one teacher's subjects
+exports.findTeacherSubjects = (req, res) => {
+  Teacher.findTeacherSubjects(req.params.teacherId, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found teacher with id ${req.params.teacherId}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Error retrieving teacher with id " + req.params.teacherId
+        });
+      }
+    } else res.send(data);
+  });
+};
+
 // Retrieve all teachers from the database (with condition).
 exports.findAllTeachersTimetable =(req, res) => {
   const teacherId = req.query.teacherId;

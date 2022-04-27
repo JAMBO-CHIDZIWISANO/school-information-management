@@ -97,6 +97,8 @@ Teacher.findTeacherById = (teacherId, result) => {
       }
     );
   }
+  //SELECT s.subjectCode, s.subjectName from teachers t join subjects s on t.teacherId = s.teacherId where t.teacherId='TR-03';
+
 
   //delete al teacher by id
   Teacher.deleteTeacher = (teacherId, result) => {
@@ -122,6 +124,24 @@ Teacher.findTeacherById = (teacherId, result) => {
   //retrieving one teacher timetable
 Teacher.findTeacherTimetable = (teacherId, result) => {
   sql.query(`select s.subjectName as 'subject',c.day, c.lesson_startTime,c.lesson_endTime,r.roomName,l.className  from teachers t join teacher_subjects j on t.teacherId=j.teacherId join subjects s on j.subjectCode=s.subjectCode join classlessons c on c.subjectCode=s.subjectCode join classrooms r on r.roomId=c.roomId join classes l on l.classId=c.classId where t.teacherId='${teacherId}' order by l.classId asc;`, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+    if (res) {
+      console.log("found teacher: ", res);
+      result(null, res);
+      return;
+    }
+    // not found teacher with the id
+    result({ kind: "not_found" }, null);
+  });
+};
+
+//retrieve teachers subjects
+Teacher.findTeacherSubjects = (teacherId, result) => {
+  sql.query(`SELECT s.subjectCode, s.subjectName from teachers t join subjects s on t.teacherId = s.teacherId where t.teacherId='${teacherId}' order by s.subjectCode asc;`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
