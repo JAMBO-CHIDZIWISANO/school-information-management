@@ -9,12 +9,14 @@ class AddSubject extends Component {
     super(props);
     this.onChangeSubjectCode = this.onChangeSubjectCode.bind(this);
     this.onChangeSubjectName = this.onChangeSubjectName.bind(this);
+    this.onChangeTeacherId = this.onChangeTeacherId.bind(this);
        
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       subjectCode: "",
       subjectName: "", 
+      teacherId: ""
     }
   }
  
@@ -24,12 +26,16 @@ class AddSubject extends Component {
   onChangeSubjectName(e){
     this.setState({subjectName: e.target.value})
   }
+  onChangeTeacherId(e){
+    this.setState({teacherId: e.target.value})
+  }
 
   onSubmit(e){
     e.preventDefault()
     const data = {
       subjectCode: this.state.subjectCode,
       subjectName: this.state.subjectName,
+      teacherId: this.state.teacherId,
     };
     console.log(data);
 
@@ -43,6 +49,7 @@ class AddSubject extends Component {
     this.setState({
       subjectCode: "",
       subjectName: "",
+      teacherId:this.state.teacherId,
       
     })
   } 
@@ -97,7 +104,15 @@ class AddSubject extends Component {
               className='form-control form-control-lg'
               id='subjectName' placeholder='Subject Name'
               />
-            </div>  
+            </div> 
+            <div className='form-group'>
+            <strong >Add Teacher</strong>
+            <input  name='teacherId' value={this.state.teacherId}
+              onChange={this.onChangeTeacherId}
+              className='form-control form-control-lg'
+              id='teacherId' placeholder='Teacher Name'
+              />
+            </div> 
             </div>
             <div className='px-6 wrapper mt-3'>   
             <input 

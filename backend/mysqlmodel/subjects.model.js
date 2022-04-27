@@ -4,8 +4,10 @@ const sql = require("../models/mysqldb")
 const Subject = function(subject) {
     this.subjectCode = subject.subjectCode;
     this.subjectName = subject.subjectName;
+    this.teacherId = subject.teacherId;
 }
-//insrt a teacher into a system
+
+//insert a subject into a system
 Subject.create = (newSubject, result)=> {
     
     sql.query("INSERT INTO subjects SET ?", newSubject, (err, res)=>{
@@ -34,14 +36,34 @@ Subject.findSubjectById = (subjectCode, result) => {
         result(null, res[0]);
         return;
       }
-      // not found teacher with the id
+      // not found subject with the id
       result({ kind: "not_found" }, null);
     });
   };
 
+  //retrieve students who take this subjects
+  Subject.findStudentsBySubjectCode = (subjectCode, result) => {
+    sql.query(`  select s.firstname,s.studentId, c.subjectCode from students s join student_subjects j on s.studentId=j.studentId join subjects c on c.subjectCode=j.subjectCode WHERE c.subjectCode='${subjectCode}'`, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
+      if (res) {
+        console.log("found students: ", res);
+        result(null, res);
+        return;
+      }
+      // not found subject with the id
+      result({ kind: "not_found" }, null);
+    });
+  };
+
+
+
   //retrieving all subjects
   Subject.findAllSubjects = (subjectCode, result) => {
-    let query = "SELECT subjectCode, subjectName FROM subjects";
+    let query = "SELECT subjectCode, subjectName,teacherId FROM subjects";
     if (subjectCode) {
       query += ` WHERE subjectCode LIKE '%${subjectCode}%'`;
     }
@@ -60,9 +82,10 @@ Subject.findSubjectById = (subjectCode, result) => {
   Subject.updateSubjectById = (subjectCode, subject, result) => {
     
     sql.query(
-      `UPDATE subjects SET subjectName = ? WHERE subjectCode LIKE '%${subjectCode}'`,
+      `UPDATE subjects SET subjectName = ?,teacherId = ? WHERE subjectCode LIKE '%${subjectCode}'`,
       
-      [ subject.subjectName,  
+      [ subject.subjectName, 
+        subject.teacherId, 
         subjectCode],
 
       (err, res) => {

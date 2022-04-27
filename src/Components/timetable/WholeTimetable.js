@@ -35,7 +35,7 @@ const WholeTimetable = () => {
           </thead>
 
           <tbody>
-          {tableData.map((item, index) => {
+          {tableData?.map((item, index) => {
             return (
               <tr key={item.lessonId}>
                 

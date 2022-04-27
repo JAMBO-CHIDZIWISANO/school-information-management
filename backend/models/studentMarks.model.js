@@ -11,9 +11,6 @@ module.exports = (sequelize, Sequelize) => {
       },
       total_score: {
         type: Sequelize.INTEGER
-      },
-      type: {
-        type: Sequelize.STRING
       }
     });
     return Mark;

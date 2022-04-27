@@ -13,11 +13,10 @@ exports.create = (req, res)=>{
       markId: req.body.markId,
       student_score: req.body.student_score,
       total_score: req.body.total_score,
-      type: req.body.type,
       termId: req.body.termId,
       studentId: req.body.studentId,
       subjectCode: req.body.subjectCode,
-      ayearId: req.body.ayearId,
+      
       
       });
 

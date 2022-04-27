@@ -42,7 +42,7 @@ function StudentsDetailsPanel() {
           className={toggleState === 1 ? "content  active-content" : "content"}
         >
 
-            <TeacherTimeTable/>
+            {/* <TeacherTimeTable/> */}
           
         </div>
         

@@ -47,7 +47,6 @@ db.mark = require("../models/studentMarks.model")(sequelize, Sequelize);
 db.attendance = require("../models/attendance.model")(sequelize, Sequelize);
 db.smiscomments = require("../models/smiscomments.model")(sequelize, Sequelize);
 db.smisposts = require("../models/Smisposts.model")(sequelize, Sequelize);
-db.academic = require("./academicyear.model")(sequelize,Sequelize);
 
 //1 to 1 relationship between teachers and users
 db.user.hasOne(db.teacher, {
@@ -131,15 +130,11 @@ db.subject.belongsToMany(db.student, {
 });
 
 //many to many relationship between teacher and subject table
-db.teacher.belongsToMany(db.subject, {
-  through: "teacher_subjects",
+db.teacher.hasMany(db.subject, {
   foreignKey: "teacherId",
-  otherKey: "subjectCode"
-});
-db.subject.belongsToMany(db.teacher, {
-  through: "teacher_subjects",
-  foreignKey: "subjectCode",
-  otherKey: "teacherId"
+  targetKey: "teacherId",
+  onDelete: "cascade",
+  onUpdate: "cascade"
 });
 
 //one to many relationships teacher and students
@@ -196,12 +191,6 @@ db.term.hasMany(db.attendance, {
   targetKey: "termId"
 });
 
-//one to many relationship
-
-db.academic.hasMany(db.mark, {
-  foreignKey:"ayearId",
-  targetKey: "ayearId"
-})
 //one to many subject and mark relatiobship
 db.subject.hasMany(db.mark, {
   foreignKey: "subjectCode",

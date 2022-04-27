@@ -12,8 +12,9 @@ const PostComments = (props) => {
 
     const navigate = useNavigate();
     const {smisPostsId} = useParams();
-    const {smisCommentsId} = useParams();
-    const [smisPostObject, setSmisPostObject] = useState({});
+    // const {smisCommentsId} = useParams();
+    const [smisPostObject ,setSmisPostObject] = useState([])
+    const [smisCommentsId, setSmisCommentsId] = useState({});
     const [comment, setComment] = useState([]);
     const [newComment, setNewComment] = useState("");
     const [userName, setUserName] = useState([]);
@@ -72,6 +73,10 @@ const PostComments = (props) => {
   const commentFocus = () => {
     setShowButtons(true);
   }
+
+  const clickComment = () => {
+    setShowButtons(true);
+  }
   
   // enable comment button when input has value
   const commentStroke = event => {
@@ -83,7 +88,7 @@ const PostComments = (props) => {
       setEnableButton(true);
     }
    }
-
+   
   return (
     <div className='container'>
       <div className='userComments'>
@@ -106,8 +111,8 @@ const PostComments = (props) => {
          <div className='formSize'>        
           <form onSubmit={sendComment}  
           onFocus={commentFocus}
-          onKeyUp={commentStroke}>
-        
+          onKeyUp={commentStroke} 
+          autoComplete="off" className="pt-5">
           {/* {!successful && ( */}
             <div>
               <div className="form-group" >
@@ -149,22 +154,26 @@ const PostComments = (props) => {
         </form>
         </div>
 
+        
       </div>
         </div>
         <div className="listOfComments" 
                    >  
                {comment.map((item, key) =>{
                return (
-                  <div className="comment" key={key}  onClick={commentFocus}
-                  onKeyUp={commentStroke} >
+                  <div className="comment" key={key}  
+                   onClick={clickComment}
+                   >
                     <strong ></strong><br/>{item.username}
                     <strong ></strong><br/>{item.smisComments}
                     {showButtons && (
             <div>
-            <button className="btn btn-danger" disabled={enableButton}  
-              onClick ={ () => {
-                setShowButtons(false);
-              }} >Delete</button> 
+            <button className="delbtn" 
+                  
+                  onClick={() =>deleteComment(item.smisCommentsId)}
+                  
+                   ><DeleteOutlinedIcon/></button>
+
             </div>
             )}
                   </div>

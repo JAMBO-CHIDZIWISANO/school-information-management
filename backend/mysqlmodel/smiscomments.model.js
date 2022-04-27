@@ -25,7 +25,7 @@ Smiscomments.create = (newSmiscomments, result)=> {
 
 //retrieving one smisComments
 Smiscomments.findSmiscommentById = (smisPostsId, result) => {
-    sql.query(`select smiscomments.smisComments, smiscomments.username from smiscomments join smisposts on smiscomments.smisPostsId = smisposts.smisPostsId where smiscomments.smisPostsId = ${smisPostsId}`, (err, res) => {
+    sql.query(`select smiscomments.smisComments, smiscomments.smisCommentsId, smiscomments.username from smiscomments join smisposts on smiscomments.smisPostsId = smisposts.smisPostsId where smiscomments.smisPostsId = ${smisPostsId}`, (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(err, null);

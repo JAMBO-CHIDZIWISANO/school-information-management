@@ -1,7 +1,6 @@
 import axios from "axios";
 import { Button } from "react-bootstrap";
 import Select from 'react-select'
-import MultiSelect from "react-multi-select-component";
 
 import React, { Component } from 'react';
 

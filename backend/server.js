@@ -76,9 +76,7 @@ require("./routes/terms.routes")(app);
 require("./routes/lessons.routes")(app);
 require("./routes/smiscomments.routes")(app);
 require("./routes/smisposts.routes")(app);
-require("./routes/academic.routes")(app)
 require("./routes/student-subject")(app)
-require('./routes/teacher_subjects')(app)
 
 //Set port, listen for requests
 const PORT =  process.env.PORT || 4000

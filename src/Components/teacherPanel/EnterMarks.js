@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { Component } from 'react'
 import Select from 'react-select'
 import UpdateMarks from '../StudentDetails/updateMarks';
+import GradesForm from './GradesForm';
 class EnterMarks extends Component {
 
   constructor(props){
@@ -269,9 +270,14 @@ class EnterMarks extends Component {
           </div>
         </form>
       </div>
+
       <div>
-        <UpdateMarks/>
+      <GradesForm/>
       </div>
+      
+      {/* <div>
+        <UpdateMarks/>
+      </div> */}
     </div>
   )}
 }

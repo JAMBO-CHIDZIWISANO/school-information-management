@@ -57,6 +57,19 @@ exports.updateSchoolById = (req, res) => {
     );
   };
   
+  // Retrieve all school data from the database (with condition).
+exports.findAllSchool =(req, res) => {
+  const schoolName = req.query.schoolName;
+  School.findAllSchool(schoolName, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving school."
+      });
+    else res.send(data);
+  });
+};
+
 
 //retrieve one school using their id
 exports.findOneSchool = (req, res) => {

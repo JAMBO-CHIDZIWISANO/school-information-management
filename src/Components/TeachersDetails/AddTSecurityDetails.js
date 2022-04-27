@@ -4,7 +4,6 @@ import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AuthService from '../services/auth.service';
 import userService from "../services/user.service";
-import GiveTeachersSubjects from './GiveTeacherSubjects';
 
 const AddTSecurityDetails = () => {
 
@@ -381,9 +380,6 @@ const AddTSecurityDetails = () => {
               </div>          
         </form>
         </div>  
-        </div>
-        <div>
-          <GiveTeachersSubjects/>
         </div>    
     </div>
   )

@@ -5,11 +5,9 @@ const Mark = function(mark) {
     this.markId = mark.markId;
     this.student_score = mark.student_score;
     this.total_score = mark.total_score;
-    this.type = mark.type;
     this.termId = mark.termId;
     this.studentId = mark.studentId;  
     this.subjectCode = mark.subjectCode;
-    this.ayearId = mark.ayearId;
     
 }
 
@@ -87,13 +85,13 @@ Mark.findMarkById = (markId, result) => {
   Mark.updateMarkById = (markId, mark, result) => {
     
     sql.query(
-      "UPDATE student_marks SET type = ?, student_score = ?, total_score=?,subjectCode= ? WHERE markId = ?",
+      "UPDATE student_marks SET student_score = ?, total_score = ?,subjectCode = ?, termId = ? WHERE markId = ?",
       
-      [ mark.type, 
+      [  
         mark.student_score,
         mark.total_score,
         mark.subjectCode,
-         
+        mark.termId,
         markId],
 
       (err, res) => {

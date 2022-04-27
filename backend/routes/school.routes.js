@@ -1,26 +1,26 @@
 
 module.exports = app =>{
     
-    const school = require("../mysqlcontroller/school.controller")
+  const school = require("../mysqlcontroller/school.controller")
 
-    var router = require("express").Router();
+  var router = require("express").Router();
 
-    //create new school
-    router.post("/add", school.create);
+  //create new school
+  router.post("/add", school.create);
 
-    //get all schools
-   //router.get("/get", school.findAll);
+  //get all schools
+ router.get("/getAllSchol", school.findAllSchool);
 
-     //get one school
-    router.get("/school/:schoolId", school.findOneSchool);
+   //get one school
+  router.get("/school/:schoolId", school.findOneSchool);
 
-    //update school
-    router.put("/school/:schoolId", school.updateSchoolById);
-
-
+  //update school
+  router.put("/school/:schoolId", school.updateSchoolById);
 
 
-     app.use("/api/smis/", router);
+
+
+   app.use("/api/smis/", router);
 
 
 }

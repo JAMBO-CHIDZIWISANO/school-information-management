@@ -12,6 +12,7 @@ exports.create = (req, res)=>{
     const subject = new Subject({
         subjectCode: req.body.subjectCode,
         subjectName: req.body.subjectName,
+        teacherId: req.body.teacherId,
         
     });
 
@@ -54,6 +55,24 @@ exports.findOneSubject = (req, res) => {
       }
     } else res.send(data);
   });
+};
+
+//retrieve students by SubjectCode 
+exports.findStudentsBySubjectCode = (req, res) => {
+  Subject.findStudentsBySubjectCode(req.params.subjectCode, (err, data) => {
+  if (err) {
+    if (err.kind === "not_found") {
+      res.status(404).send({
+        message: `Not found Subject with id ${req.params.subjectCode}.`
+      });
+    } 
+    else {
+      res.status(500).send({
+        message: "Error retrieving Subject with id " + req.params.subjectCode
+      });
+    }
+  } else res.send(data);
+});
 };
 
 

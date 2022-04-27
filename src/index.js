@@ -30,9 +30,9 @@ import EditComments from './Components/EditComments';
 
 
 //files for subjects managements
-import SubjectList from './Components/AdminPanel/SubjectList';
-import ManageSubjects from './Components/AdminPanel/ManageSubjects'
-import AddSubject from './Components/AdminPanel/AddSubject'
+import SubjectList from './Components/AdminPanel/Subjects/SubjectList';
+import ManageSubjects from './Components/AdminPanel/Subjects/ManageSubjects'
+import AddSubject from './Components/AdminPanel/Subjects/AddSubject'
 
 import BoardTeacher from "./Components/BoardTeacher";
 import TeacherTabPanel from './Components/teacherPanel/TeacherTabPanel'

@@ -78,6 +78,23 @@ School.findschoolById = (schoolId, result) => {
     });
   };
 
+  // retrieving school
+School.findAllSchool = (schoolName, result) => {
+  let query = "SELECT * FROM schools";
+  if (schoolName) {
+    query += ` WHERE schoolName LIKE '%${schoolName}%'`;
+  }
+  sql.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    console.log("Schools: ", res);
+    result(null, res);
+  });
+};
+
   
 
 module.exports = School;

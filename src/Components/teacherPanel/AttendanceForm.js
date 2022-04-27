@@ -148,7 +148,7 @@ class AttendanceForm extends Component {
               </form>
           </div>
           <div className='mt-5'>
-            <AttendanceList/>
+            {/* <AttendanceList/> */}
           </div>
         </div>
     
