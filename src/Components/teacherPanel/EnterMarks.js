@@ -167,43 +167,27 @@ const EnterMarks = () => {
             <th>
               
               
-              <Select 
-                type='text'
-                placeholder='student'
-                options={student.map((item) =>{
-                  return(
-                    <div>{item.studentId}</div>
-                  )
-                })} 
-                onChange={onChangeStudentId}
-              />
+  
+              <select onChange={onChangeStudentId}>
+
+              {student.map((item)=><option value={studentId}>{item.studentId}</option>)}
+
+              </select>
               
             </th>
             <th>
-            <Select 
-                  placeholder="subject"
-                  // value={subjectCod}
-                  options={subject.map((item) =>{
-                    return(
-                      <div>{item.subjectCode}</div>
-                    )
-                  })}                   
-                  onChange={onChangeSubjectCode}
-            />
-            </th>
             
-              {term.map((item,key ) =>{
-                    return(
-                      <th key={key}>
-                      <Select 
-                  placeholder="term"
-                  // value={termId}
-                  options={item.termId} 
-                  onChange={onChangeTermId}
-                      />
-                      </th>
-                    )
-                  })}
+            <select onChange={onChangeSubjectCode}>
+
+              {subject.map((item)=><option value={item.subjectCod}>{item.subjectCode}</option>)}
+
+            </select>
+            </th>
+            <select onChange={onChangeTermId}>
+
+              {term.map((item)=><option value={termId}>{item.termId}</option>)}
+
+              </select>
             
             
             <th>
