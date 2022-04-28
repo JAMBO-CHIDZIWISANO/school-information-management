@@ -59,7 +59,7 @@ exports.findOneSubject = (req, res) => {
 
 //retrieve students by SubjectCode 
 exports.findStudentsBySubjectCode = (req, res) => {
-  Subject.findStudentsBySubjectCode(req.params.subjectCode, (err, data) => {
+  Subject.findStudentsIdBySubjectCode(req.params.subjectCode, (err, data) => {
   if (err) {
     if (err.kind === "not_found") {
       res.status(404).send({
@@ -75,6 +75,41 @@ exports.findStudentsBySubjectCode = (req, res) => {
 });
 };
 
+//retrieve all students who take this subject by SubjectCode 
+exports.findStudentsWhoTakeSubject = (req, res) => {
+  Subject.findStudentsWhoTakeSubject(req.params.subjectCode, (err, data) => {
+  if (err) {
+    if (err.kind === "not_found") {
+      res.status(404).send({
+        message: `Not found Subject with id ${req.params.subjectCode}.`
+      });
+    } 
+    else {
+      res.status(500).send({
+        message: "Error retrieving Subject with id " + req.params.subjectCode
+      });
+    }
+  } else res.send(data);
+});
+};
+
+//retrieve students grades by SubjectCode 
+exports.findStudentsGradesBySubjectCode = (req, res) => {
+  Subject.findStudentsGradesBySubjectCode(req.params.subjectCode, (err, data) => {
+  if (err) {
+    if (err.kind === "not_found") {
+      res.status(404).send({
+        message: `Not found Subject with id ${req.params.subjectCode}.`
+      });
+    } 
+    else {
+      res.status(500).send({
+        message: "Error retrieving Subject with id " + req.params.subjectCode
+      });
+    }
+  } else res.send(data);
+});
+};
 
 //update a subject
 exports.updateSubjectById = (req, res) => {

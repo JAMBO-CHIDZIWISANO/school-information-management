@@ -39,6 +39,7 @@ StudentSubject.findSSubjectById = (studentId, result) => {
     });
   };
 
+  
   //retrieving all subjects
   StudentSubject.findAllSSubjects = (studentId, result) => {
     let query = "SELECT studentId, subjectCode FROM student_subjects";

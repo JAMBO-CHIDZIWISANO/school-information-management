@@ -12,7 +12,7 @@ const TeacherSubject = () => {
   const navigate = useNavigate()
 
   const subjectSubjects = async ()=>{
-    const response = await axios.get(`http://localhost:4000/api/smis/teacher-subjects/TR-01`)
+    const response = await axios.get(`http://localhost:4000/api/smis/teacher-subjects/${currentUser.username}`)
     setSubjects(response.data)
 }  
 

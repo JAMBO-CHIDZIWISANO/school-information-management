@@ -14,6 +14,7 @@ exports.create = (req, res)=>{
       student_score: req.body.student_score,
       total_score: req.body.total_score,
       termId: req.body.termId,
+      type: req.body.type,
       studentId: req.body.studentId,
       subjectCode: req.body.subjectCode,
       

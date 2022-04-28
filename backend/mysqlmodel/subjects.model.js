@@ -41,9 +41,45 @@ Subject.findSubjectById = (subjectCode, result) => {
     });
   };
 
-  //retrieve students who take this subjects
-  Subject.findStudentsBySubjectCode = (subjectCode, result) => {
+  //retrieve students Id who take this subjects
+  Subject.findStudentsIdBySubjectCode = (subjectCode, result) => {
     sql.query(`SELECT ss.studentId from students s join student_subjects ss on s.studentId=ss.studentId join subjects b on ss.subjectCode=b.subjectCode where ss.subjectCode='${subjectCode}' group by s.studentId`, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
+      if (res) {
+        console.log("found students: ", res);
+        result(null, res);
+        return;
+      }
+      // not found subject with the id
+      result({ kind: "not_found" }, null);
+    });
+  };
+
+  //retrieve all students who take this subjects
+  Subject.findStudentsWhoTakeSubject = (subjectCode, result) => {
+    sql.query(`SELECT ss.studentId, s.firstname,s.surname from students s join student_subjects ss on s.studentId=ss.studentId join subjects b on ss.subjectCode=b.subjectCode where ss.subjectCode ='${subjectCode}'group by s.studentId;`, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
+      if (res) {
+        console.log("found students: ", res);
+        result(null, res);
+        return;
+      }
+      // not found subject with the id
+      result({ kind: "not_found" }, null);
+    });
+  };
+
+  //retrieve students grades who take this subjects of subjectCode
+  Subject.findStudentsGradesBySubjectCode = (subjectCode, result) => {
+    sql.query(`SELECT m.markId, s.firstname, s.studentId, su.subjectCode, m.type, t.termName,m.student_score,m.total_score from students s join student_marks m on s.studentId=m.studentId join subjects su on m.subjectCode=su.subjectCode join terms t on t.termId=m.termId where m.subjectCode='${subjectCode}'`, (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(err, null);

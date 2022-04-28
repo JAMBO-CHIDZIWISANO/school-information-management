@@ -21,6 +21,12 @@ module.exports = app =>{
     router.get("/subject/:subjectCode", subject.findOneSubject);
 
     // get one subject
+    router.get("/subject/grades/:subjectCode", subject.findStudentsGradesBySubjectCode);
+
+    // get one subject
+    router.get("/allstudents/subjects/:subjectCode", subject.findStudentsWhoTakeSubject);
+
+    // get one subject
     router.get("/student/subject/:subjectCode", subject.findStudentsBySubjectCode);
 
     // update subject
