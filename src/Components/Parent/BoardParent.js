@@ -27,12 +27,7 @@ function BoardParent() {
         >
             Your Children Information
         </button>
-        <button
-          className={toggleState === 3 ? "tabs active-tabs" : "tabs"}
-          onClick={() => toggleTab(3)}
-        >
-          Children Exam Results
-        </button>
+       
         
 
       </div>
@@ -51,11 +46,7 @@ function BoardParent() {
         >
           <ChildrenInfo/>
         </div>
-        <div
-          className={toggleState === 3 ? "content  active-content" : "content"}
-        >
-           <ChildrenExam/>
-        </div>
+        
 
       </div>
     </div>

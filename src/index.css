@@ -54,10 +54,10 @@ form button{
 }
 
 
-.App {
+/* .App {
   background-color: darkgrey;
-}
-.navbar {
+} */
+/* .navbar {
   background-color:#1a83ff;
   height: 80px;
   display: flex;
@@ -129,7 +129,7 @@ form button{
   display: flex;
   justify-content: flex-start;
   align-items: center;
-}
+} */
 
 
 
@@ -176,13 +176,7 @@ body{
 }
 
 
-.widget-49-meeting-action {
-text-align: right;
 
-}
-.widget-49-meeting-action {
-text-transform: uppercase;
-}
 
 
 
@@ -296,4 +290,36 @@ button {
 }
 .black {
   color: black;
+}
+
+
+
+html {
+  font-family:arial;
+  font-size: 18px;
+}
+
+td {
+  border: 1px solid #726E6D;
+  padding: 15px;
+}
+
+.report{
+  font-weight:bold;
+  text-align:center;
+  background: #625D5D;
+  color:white;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.footer {
+  text-align:left;
+  font-weight:bold;
+}
+
+.reportbody >tr:nth-child(odd) {
+  background: #D1D0CE;
 }

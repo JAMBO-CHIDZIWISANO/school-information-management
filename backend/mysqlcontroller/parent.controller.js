@@ -92,15 +92,15 @@ exports.findLoggedInParent = (req, res) => {
 
 //retrieve children info of logged parent data
 exports.findChildrenByPUsername = (req, res) => {
-  Parent.findChildrenByPUsername(req.params.username, (err, data) => {
+  Parent.findChildrenByPUsername(req.params.parentId, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Not found children with id ${req.params.username}.`
+          message: `Not found children with id ${req.params.parentId}.`
         });
       } else {
         res.status(500).send({
-          message: "Error retrieving children with id " + req.params.username
+          message: "Error retrieving children with id " + req.params.parentId
         });
       }
     } else res.send(data);

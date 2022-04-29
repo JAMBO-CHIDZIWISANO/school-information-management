@@ -18,7 +18,7 @@ const TeacherTimeTable = () => {
   },[])
 
   return (
-    <div className='container mt-5'>
+    <div className='container '>
          
             <div className='card-body'>
           <Table>
@@ -40,7 +40,7 @@ const TeacherTimeTable = () => {
             { teacherTimetable.map((item, i)=>{
         return(
               <tr  key={i}>
-                <td>{item.subject}</td>
+                <td>{item.subjectName}</td>
                 <td>{item.day}</td>
                 <td>{item.lesson_startTime}</td>
                 <td>{item.lesson_endTime}</td>

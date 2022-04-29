@@ -47,20 +47,26 @@ import StudentsDetailsPanel from './Components/StudentDetails/StudentsDetailsPan
 import ExamsRecords from "./Components/StudentDetails/StudentsExamResults"
 import AddStudent from './Components/StudentDetails/SSecurityDetailsForm';
 import Showtimetable from './Components/timetable/Showtimetable';
- 
+ import ChildReportCard from './Components/Parent/ChildReportCard'
+ import ChildrenInfo from './Components/Parent/ChildrenInfo'
 
+import StudentTimetable from './Components/StudentDetails/StudentTimetable'
 ReactDOM.render(
 
   // routers for routing throughout the website
     <Router>
-        <App />
+        <App/>
       <Routes>
         <Route path="/" exact element={<Login/>} />
         <Route path="/profile" element={<Profile/>} />
         <Route path="/admin" element={<BoardAdmin/>} />
         <Route path="/teacher" element={<TeacherTabPanel/>} />
         <Route path="/student" element={<BoardStudent/>} />
+        <Route path="/student/timetable" element={<StudentTimetable/>} />
+
         <Route path="/parent" element={<BoardParent/>} />
+        <Route path='/school-report/:studentId' element={<ChildReportCard/>}/>
+
 
         <Route path="/comments" element={<BoardUser/>} />
         <Route path="/admin/announcements" element={<NoticeBoard/>} />
@@ -88,6 +94,7 @@ ReactDOM.render(
 
         <Route path='/admin/add-sdparent' element={<AddSDParents/>}/>
         <Route path='/admin/parents-records' element={<DisplayParents/>}/>
+        <Route path='/parent/childrenlist' element={<ChildrenInfo/>}/>
 
         <Route path='/admin/generate-timetable' element={< Showtimetable />}/>
 

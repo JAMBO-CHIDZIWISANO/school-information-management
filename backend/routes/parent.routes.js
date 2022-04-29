@@ -29,7 +29,7 @@ module.exports = app =>{
      router.get("/parents/:username", parent.findLoggedInParent);
 
      // get one parent
-     router.get("/children/:username", parent.findChildrenByPUsername);
+     router.get("/children/:parentId", parent.findChildrenByPUsername);
 
     // update parent
     router.put("/parent/:parentId", parent.updateParentById);

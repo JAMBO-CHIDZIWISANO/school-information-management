@@ -21,10 +21,10 @@ useEffect(()=>{
 },[])
 
   return (
-    <div>
+    <div className=''>
       {subjects.map((item, key) =>{
         return(
-          <div key={key} onClick={() => {navigate(`/enterMarks/${item.subjectCode}`)}}>
+          <div key={key} onClick={() => {navigate(`/enterMarks/${item.subjectCode}`)}} className="border mt-2">
       <div>{item.subjectCode} </div>
       <div> {item.subjectName}</div>
       </div>

@@ -33,15 +33,28 @@ const SchoolDetails = () => {
     
   return (
     <div className="container">
-      <div className="details2">
+      <div className="">
         {data?.map((item, key) => {
           return ( 
             <div key= {key=key} >
 
-        <div className="uza"><strong className="black">School :</strong>{" "}{item.schoolName}</div>
-        <div className="uza"><strong className="black">Address :</strong>{" "}{item.schoolAdress}</div>
-        <div className="uza"><strong className="black">Phone :</strong>{" "}{item.schoolPhoneNo}</div>
-        <div className="uza"><strong className="black">Location :</strong>{" "}{item.schoolLocation}</div>
+       
+
+        <div className="media-body text-center">
+                    <h4>{item.schoolName}  </h4>
+                    <small ><i >{item.schoolAdress}</i></small>
+                    <p>{item.schoolLocation}</p>
+          <strong className="black text-center">Phone :</strong>{" "}{item.schoolPhoneNo}
+        </div>
+        
+        
+          {/* <strong className="black">School :</strong>{" "}
+          <strong className="black">Address :</strong>{" "}
+          <strong className="black">Phone :</strong>{" "}{item.schoolPhoneNo}
+          <strong className="black">Location :</strong>{" "} */}
+        
+       
+        
         </div>
         )
         })

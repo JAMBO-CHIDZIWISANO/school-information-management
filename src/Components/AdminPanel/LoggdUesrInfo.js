@@ -3,7 +3,7 @@ import axios from 'axios'
 import girl from '../../assets/girl.jpg'
 import boy from '../../assets/img_avatar3.png'
 
-const NumberOfStudents = () => {
+const LoggedUserInfo = () => {
 
     const [counter, setCounter] = useState([]);
 
@@ -60,4 +60,4 @@ const NumberOfStudents = () => {
   )
 }
 
-export default NumberOfStudents
+export default LoggedUserInfo

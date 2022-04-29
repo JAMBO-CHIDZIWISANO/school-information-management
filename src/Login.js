@@ -2,6 +2,7 @@
 import React, { useState}from 'react'
 import { useNavigate } from 'react-router-dom'
 import AuthService from './Components/services/auth.service';
+import authService from './Components/services/auth.service';
 
 const Login = () => {
     
@@ -12,6 +13,8 @@ const Login = () => {
         //initializing error msg and data loading
         const [loading, setLoading] = useState(false);
         const [message, setMessage] = useState("");
+
+        const user = authService.getCurrentUser();
         
         //function that handle username inpute changes
         const onChangeUsername = (e) =>{
@@ -37,6 +40,7 @@ const Login = () => {
                 AuthService.login(username, password).then(
                     ()=>{
                         
+                        
                         navigate("/profile")
                         window.location.reload();
                         
@@ -57,6 +61,7 @@ const Login = () => {
   return (
     
     <section className='vh-100'  >
+        
     
             <div className="d-flex justify-content-center aligh-items-center">
                             <div className='px-5 wrapper mt-4'>
@@ -116,11 +121,6 @@ const Login = () => {
         </div>
     
     </div>
-
-
-
-
-
 
     </section>
                    

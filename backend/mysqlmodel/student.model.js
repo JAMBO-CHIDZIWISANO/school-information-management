@@ -223,7 +223,7 @@ Student.countAllStudents = (gender, result) => {
 };
   //retrieve a student examination results
 Student.studentExamResults = (studentId, result) => {
-  sql.query(`select u.subjectName, m.student_score, m.total_score, round((m.student_score/m.total_score)*100,2) as grade,CASE WHEN (round((m.student_score/m.total_score)*100,2))>=80 THEN 'A=distinction' WHEN (round((m.student_score/m.total_score)*100,2))>=70 THEN 'B=very good' WHEN (round((m.student_score/m.total_score)*100,2))>=60 THEN 'C=good' WHEN (round((m.student_score/m.total_score)*100,2))>=50 THEN 'D=average' ELSE 'F=fail' END AS remarks from students s inner join classes c on s.classId=c.classId join student_marks m on m.studentId = s.studentId join subjects u on m.subjectCode=u.subjectCode join terms t on m.termId=t.termId where s.studentId like '%${studentId}%' group by u.subjectCode; `, (err, res) => {
+  sql.query(`select u.subjectCode, u.subjectName,m.student_score, m.total_score, round((m.student_score/m.total_score)*100,2) as grade,CASE WHEN (round((m.student_score/m.total_score)*100,2))>=80 THEN 'A=distinction' WHEN (round((m.student_score/m.total_score)*100,2))>=70 THEN 'B=very good' WHEN (round((m.student_score/m.total_score)*100,2))>=60 THEN 'C=good' WHEN (round((m.student_score/m.total_score)*100,2))>=50 THEN 'D=average' ELSE 'F=fail' END AS remarks from students s inner join classes c on s.classId=c.classId join student_marks m on m.studentId = s.studentId join subjects u on m.subjectCode=u.subjectCode join terms t on m.termId=t.termId where s.studentId like '%${studentId}%' group by u.subjectCode; `, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -257,6 +257,7 @@ Student.studentExamResults = (studentId, result) => {
     });
   };
 
+
   //retrieve a time table depending on the class of a student
   Student.studentTimetable = (studentId, result) => {
     sql.query(`select s.subjectName as 'subject', c.day, c.lesson_startTime, c.lesson_endTime, r.roomName, l.className  from students t join student_subjects j on t.studentId=j.studentId join subjects s on j.subjectCode=s.subjectCode join classlessons c on c.subjectCode=s.subjectCode join classrooms r on r.roomId=c.roomId join classes l on l.classId=c.classId where t.studentId='${studentId}';`, (err, res) => {
@@ -274,8 +275,62 @@ Student.studentExamResults = (studentId, result) => {
       result({ kind: "not_found" }, null);
     });
   };
+
+  //retrieve a subjects depending on the class of a student
+  Student.studentSubjects = (studentId, result) => {
+    sql.query(`select ss.subjectCode, su.subjectName from students s join student_subjects ss on s.studentId=ss.studentId join subjects su on ss.subjectCode=su.subjectCode where ss.studentId='${studentId}';`, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
+      if (res) {
+        console.log("found subjects: ", res);
+        result(null, res);
+        return;
+      }
+      // not found student with the id
+      result({ kind: "not_found" }, null);
+    });
+  };
+
+  //count  subjects of a student
+  Student.countStudentSubjects = (studentId, result) => {
+    sql.query(`  select count(ss.subjectCode) as student_subjects from students s join student_subjects ss on s.studentId=ss.studentId join subjects su on ss.subjectCode=su.subjectCode where ss.studentId='${studentId}';`, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
+      if (res) {
+        console.log("found subjects: ", res);
+        result(null, res);
+        return;
+      }
+      // not found student with the id
+      result({ kind: "not_found" }, null);
+    });
+  };
+
+   //count  subjects of a student that marks are entered
+   Student.countEnterMarksSubjects = (studentId, result) => {
+    sql.query(`  select count(m.subjectCode) as enter_marks_student_subjects from students s join student_marks m on s.studentId=m.studentId where m.studentId='${studentId}';`, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
+      if (res) {
+        console.log("found subjects: ", res);
+        result(null, res);
+        return;
+      }
+      // not found student with the id
+      result({ kind: "not_found" }, null);
+    });
+  };
   
-  
+
 //retrieve all students username
 Student.studentsId = (studentId, result) => {
   let query = "SELECT studentId from students order by studentId desc;";

@@ -1,9 +1,14 @@
 import React,{useEffect, useState} from 'react'
 import authService from '../services/auth.service';
 import axios from 'axios';
+import img from "../../assets/img_avatar3.png"
+import { useNavigate, useParams } from 'react-router-dom';
 
 
 const ChildrenInfo = () => {
+
+    const navigate = useNavigate();
+    const {studentId} = useParams();
 
     const [children, setChildren] = useState([])
 
@@ -20,39 +25,23 @@ const ChildrenInfo = () => {
         
     },[]);
   return (
-    <div className='container'>
-      
-      <div className=''>
+    <div className='container mt-3 mb-3'>
+        <h3 className='text-center'>List Of Your Children Admitted At Our School</h3>
+        {children.map((item,i)=>{
+            return(
+                <div className="media border p-4  mt-2">
                     
-                    {
-                children.map((item,i)=>{
-                    return (
-                        <div key={i}>
-                        <table className='table mt-2'>
-                            <body>
-                            <tr>
-                                    <td>Username</td>
-                                    <td>{item.studentId}</td>
-                                </tr>
-                                <tr>
-                                    <td>Firstname</td>
-                                    <td>{item.firstname}</td>
-                                </tr>
-                                <tr>
-                                    <td>Surname</td>
-                                    <td>{item.surname}</td>
-                                </tr>
-                                <tr>
-                                    <td>Class</td>
-                                    <td>{item.className}</td>
-                                </tr>
-                            </body>
-                        </table>
-                        </div>
-                    )
-                })
-            }
+                <img src={img } alt="" className="mr-1 mt-1 rounded-circle" style={{width:30}}/>
+                <div className="media-body">
+                    <h4>{item.firstname} {item.surname} {item.studentId} <small onClick={() => {navigate(`/school-report/${item.studentId}`)}}><i ><button className='btn btn-primary btn-primary'>View Report Card</button> </i></small></h4>
+                    <p>{item.className} Student</p>
                 </div>
+                </div>
+            )
+        })}
+      
+      
+      
     </div>
   )
 }

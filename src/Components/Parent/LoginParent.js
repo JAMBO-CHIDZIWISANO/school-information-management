@@ -49,7 +49,7 @@ const GetCurrentUser = () => {
                                     <td>{item.firstname}</td>
                                 </tr>
                                 <tr>
-                                    <td>Surnamec</td>
+                                    <td>Surnamc</td>
                                     <td>{item.surname}</td>
                                 </tr>
                                 <tr>

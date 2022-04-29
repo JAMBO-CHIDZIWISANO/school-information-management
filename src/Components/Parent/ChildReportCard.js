@@ -3,62 +3,42 @@ import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react'
 import { useReactToPrint } from 'react-to-print';
 import { Button, Table } from 'react-bootstrap';
-import authService from './services/auth.service';
-const BoardStudent = () => {
-  const [studentExam, setStudentExam] = useState([]);
-  const [studentPInfo, setStudentPInfo] = useState([])
-  const [studentSubjectsCount, setStudentSubjectsCount] = useState([]);
-  const [marksSubjectsEntered, setMarksSubjectsEntered] = useState([]);
-  const componentRef = useRef();
-  const handlePrintSchoolReport = useReactToPrint({
-    content:()=>componentRef.current,
-  })
-  const  currentUser = authService.getCurrentUser();
+import { useParams  } from "react-router-dom";
 
-  const examResults = async()=>{
-    const res = await axios.get(`http://localhost:4000/api/smis/student/exam/${currentUser.username}`)
-    setStudentExam(res.data)
-  }
+const ChildReportCard = () => {
 
-  const enteredMarksCount = async()=>{
-    const res = await axios.get(`http://localhost:4000/api/smis/subjects/enteredmark/${currentUser.username}`)
-    setMarksSubjectsEntered(res.data)
-  }
-  const studentInfo = async()=>{
-    const res = await axios.get(`http://localhost:4000/api/smis/studentinfo/${currentUser.username}`)
-    setStudentPInfo(res.data)
-  }
-
-  const countStudentSubjects = async()=>{
-    const res = await axios.get(`http://localhost:4000/api/smis/subjects/count/${currentUser.username}`)
-    setStudentSubjectsCount(res.data)
-  }
-  useEffect(()=>{
-    examResults();
-    studentInfo();
-    countStudentSubjects();
-    enteredMarksCount();
+    const {studentId} = useParams();
     
-  },[])
+    const [studentExam, setStudentExam] = useState([]);
+    const [studentPInfo, setStudentPInfo] = useState([])
+    const componentRef = useRef();
+    const handlePrintSchoolReport = useReactToPrint({
+        content:()=>componentRef.current,
+    })
+    
 
-  
+    const examResults = async()=>{
+        const res = await axios.get(`http://localhost:4000/api/smis/student/exam/${studentId}`)
+        setStudentExam(res.data)
+    }
+    const studentInfo = async()=>{
+        const res = await axios.get(`http://localhost:4000/api/smis/studentinfo/${studentId}`)
+        setStudentPInfo(res.data)
+    }
+    useEffect(()=>{
+        examResults();
+        studentInfo();
+        
+    },[])
+
+    
   return (
     <div className='container mt-5 mb-5'>
-          {studentSubjectsCount.map((sc,i)=>{
-            return(
-              <div key={i}>
-                {marksSubjectsEntered.map((csm,index)=>{
-                  return(
-                    <div key={index}>
-                        if ({sc.student_subjects}==!{csm.enter_marks_student_subjects}) {
-                              <div className='container'>
-                                    <p> the exam are not yet out as some teacher did not finish entering marks </p>
-                              </div>
-                          } else {
-                            <div>
-                                <div style={{textAlign: "right"}}>
-            <Button onClick={handlePrintSchoolReport} >print school report</Button>
-          </div>
+     
+
+      <div style={{textAlign: "right"}}>
+        <Button onClick={handlePrintSchoolReport} >print school report</Button>
+      </div>
       
 
           
@@ -141,24 +121,9 @@ const BoardStudent = () => {
         })
       }
       </div>
-                            </div>
-                        }
-                    </div>
-                  )
-                })}
-                 
-              </div>
-              
-            )
-          })
-
-          }
-         
-
-      
       
     </div>
   )
 }
 
-export default BoardStudent
+export default ChildReportCard

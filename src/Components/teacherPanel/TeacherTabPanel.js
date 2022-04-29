@@ -24,15 +24,10 @@ function StudentsDetailsPanel() {
         >
             Your Timetable
         </button>
+        
         <button
           className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(2)}
-        >
-            Enter Student Marks
-        </button>
-        <button
-          className={toggleState === 3 ? "tabs active-tabs" : "tabs"}
-          onClick={() => toggleTab(3)}
         >
           Attendance
         </button>
@@ -44,18 +39,23 @@ function StudentsDetailsPanel() {
         <div
           className={toggleState === 1 ? "content  active-content" : "content"}
         >
-
-            <TeacherSubject/>
+          <div className="row">
+            <div className="col-12 col-md-8 col-lg-8">
+              <TeacherTimeTable/>
+            </div>
+            <div className="col-12 col-md-4 col-lg-4">
+              <h5>Your Subjects</h5>
+              <TeacherSubject/>
+            </div>
+          </div>
+            
+            
           
         </div>
         
+       
         <div
           className={toggleState === 2 ? "content  active-content" : "content"}
-        >
-           {/* <EnterMarks/> */}
-        </div>
-        <div
-          className={toggleState === 3 ? "content  active-content" : "content"}
         >
             <AttendanceForm/>
         </div>

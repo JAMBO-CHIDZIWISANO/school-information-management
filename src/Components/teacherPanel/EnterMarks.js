@@ -147,10 +147,10 @@ const deleteSubject = (markId) => {
   
 
   return (
-    <div className='container px-5 wrapper mt-4'>
+    <div className=' px-5 wrapper mt-4'>
       <div className='row'>
 
-        <div className='col-12 col-md-8 col-lg-8'>
+        <div className='col-12 col-md-10 col-lg-10'>
         <Button 
               
               onClick={onSubmit} 
@@ -164,6 +164,7 @@ const deleteSubject = (markId) => {
                       value={studentId}
                       className="form-control"
               >
+                <option>Student</option>
                 {student.map((item)=><option >{item.studentId}</option>)}
               </select>
               
@@ -220,6 +221,7 @@ const deleteSubject = (markId) => {
                 onChange={onChangeTotal_score}
               />
             </th>
+            <th>Action</th>
             
           </thead>
           <tbody>
@@ -245,7 +247,7 @@ const deleteSubject = (markId) => {
           </tbody>
         </table>
         </div>
-        <div className='col-12 col-md-4 col-lg-4'>
+        <div className='col-12 col-md-4 col-lg-4 mt-4'>
 
           {subject.map((su)=>{
             return(

@@ -68,8 +68,8 @@ Parent.findParentByUsername = (username, result) => {
 };
 
 //retrieve children info of logged parent data
-Parent.findChildrenByPUsername = (username, result) => {
-  sql.query(`  SELECT s.studentId, s.firstname, s.surname, c.className  from parents p join users u on u.username=p.userId join students s on s.parentId=p.parentId join classes c on c.classId=s.classId where u.username = '${username}'`, (err, res) => {
+Parent.findChildrenByPUsername = (parentId, result) => {
+  sql.query(`select s.studentId, s.firstname,s.surname, c.className from students s join classes c on s.classId=c.classId join parents p on s.parentId=p.parentId where p.parentId='${parentId}' group by s.studentId order by c.classId asc;`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);

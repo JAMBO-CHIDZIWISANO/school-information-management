@@ -1,4 +1,3 @@
- 
 //importing dependencies
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Logout from '@mui/icons-material/Logout';
@@ -12,18 +11,19 @@ import { Notifications } from "@mui/icons-material";
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-//importing files
 import "./AppSideBar"
 import AuthService from "./Components/services/auth.service"
 import { Avatar } from '@mui/material';
-
+//navbar
+import { FiMenu, FiX } from 'react-icons/fi';
+import './navbar.css'
 
 //app function
 function App() {
 
   //menu for profile and logout drop down
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
+  const opens = Boolean(anchorEl);
   //handle menu click event
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -32,6 +32,8 @@ function App() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const [open , setOpen] = useState(false);
 
   //declaring visibility of the authenticated routes
   const [showTeacherBoard, setShowTeacherBoard] = useState(false);
@@ -59,42 +61,177 @@ function App() {
 
 
   //variables for side nav bar states
-    const [sidebar, setSidebar] = useState(false);
-    const showSidebar = () => setSidebar(!sidebar);
+    // const [sidebar, setSidebar] = useState(false);
+    // const showSidebar = () => setSidebar(!sidebar);
     const getUser = AuthService.getCurrentUser();
     return (
+      
 
       <div className="App">
+
+       
         
-        <IconContext.Provider value={{color: '#fff'}}>
-        <header className='wrapp'>
+        {/* <IconContext.Provider value={{color: '#fff'}}> */}
+        {/* <header className='wrapp'>
         <div className="navbar" >
          
-            {/* closing the sidebar button */}
+            {/* closing the sidebar button
             <Link to="#" className="px-4">
                 <FaIcons.FaBars onClick={showSidebar}/>
-            </Link>
+            </Link> 
 
-            <div>
+             <div>
               <h2 className="text-white">SMIS</h2>
-            </div>
+            </div> *
 
             <div className=" ms-auto order-5">
 
-              {/* show the all logged users */}
-              {currentUser ?(
-                <div className="list-unstyled ">
-                  <div >
+              
+        </div>
+
+        </header> */}
+        <nav className='navbar'>
+          <div onClick={() => setOpen(!open)} className="nav-icon">
+            {open ? <FiX /> : <FiMenu />}
+          </div>
+          <Link to='#' className="nav-logo mb-3" onClick={()=>setOpen(false)}>
+                    SMIS
+          </Link>
+          <ul className={open? 'nav-links active' : 'nav-links'}>
+
+          {showAdminBoard&&(
+              <li className='nav-item'>
+              <Link to="/admin" className='nav-link' onClick={()=>setOpen(false)}>
+                
+                  Dashboard
+                </Link>
+            </li>
+            )}
+            {showAdminBoard&&(
+            <li className='nav-item'>
+              <Link to="/admin/announcements" className='nav-link' onClick={()=>setOpen(false)}>
+                
+                Publish News
+                </Link>
+            </li>
+            )}
+            {showAdminBoard&&(
+            <li className='nav-item'>
+              <Link to="/admin/students-details" className='nav-link' onClick={()=>setOpen(false)}>
+                
+                Student Records
+              </Link>
+            </li>
+            )}
+            {showAdminBoard &&(
+            <li className='nav-item'>
+              <Link to="/admin/teacher-record" className='nav-link' onClick={()=>setOpen(false)}>
+                
+                Teacher Records
+              </Link>
+            </li>
+            )}    
+              
+            {showAdminBoard&&(
+            <li className='nav-item'>
+            <Link to="/admin/parents-records" className='nav-link' onClick={()=>setOpen(false)}>
+              
+              Parent Records
+              </Link>
+            </li>
+            )}
+            
+            {showAdminBoard&&(
+              <li className='nav-item'>
+              <Link to="/admin/addSubject" className='nav-link' onClick={()=>setOpen(false)}>
+                
+                Subjects Records
+                </Link>
+            </li>
+            )}
+            
+            {showTeacherBoard &&(
+              <li className='nav-item'>
+                <Link to="/teacher" className='nav-link' onClick={()=>setOpen(false)}>
+                  
+                  Teacher Dashboard
+                </Link>
+              </li>
+            )}
+            
+            {showStudentBoard &&(
+              <li className='nav-item'>
+                <Link to="/student" className='nav-link' onClick={()=>setOpen(false)}>
+               
+                  Report 
+                </Link>
+              </li>
+            )}
+            {showStudentBoard &&(
+              <li className='nav-item'>
+                <Link to="/student/timetable" className='nav-link' onClick={()=>setOpen(false)}>
+               
+                  Time Table 
+                </Link>
+              </li>
+            )}
+            
+            {showParentBoard && (
+              <li className='nav-item'>
+                <Link to="/parent" className='nav-link' onClick={()=>setOpen(false)}>
+                 
+                  Parent Board
+                </Link>
+              </li>
+            )}
+            {showParentBoard && (
+              <li className='nav-item'>
+                <Link to="/parent/childrenlist" className='nav-link' onClick={()=>setOpen(false)}>
+                 
+                  Chilrden Info
+                </Link>
+              </li>
+            )}
+            {showTeacherBoard && (
+              <li className='nav-item'>
+                <Link to="/view-posts" className='nav-link' onClick={()=>setOpen(false)}>
+                  
+                   Announcements
+                </Link>
+              </li>
+            )}
+            {showParentBoard && (
+              <li className='nav-item'>
+                <Link to="/view-posts" className='nav-link' onClick={()=>setOpen(false)}>
+                  
+                  Announcements
+                </Link>
+              </li>
+            )}
+            {showAdminBoard && (
+              <li className='nav-item'>
+                <Link to="/admin/generate-timetable" className='nav-link' onClick={()=>setOpen(false)}>
+                  
+                  Time Table
+                </Link>
+              </li>
+            )}  
+
+
+            {currentUser ?(
+            <li className='nav-item'>
+          
+                
                     <Button
                       id="basic-button"
-                      aria-controls={open ? 'basic-menu' : undefined}
+                      aria-controls={opens ? 'basic-menu' : undefined}
                       aria-haspopup="true"
                       size="medium"
                       sx={{ ml: 2 }}
-                      aria-expanded={open ? 'true' : undefined}
+                      aria-expanded={opens ? 'true' : undefined}
                       onClick={handleClick}
-                      className='text-white'
                       
+                      className='nav-link'
 
                     >
                       <Avatar sx={{ width: 63, height: 63 }}>{getUser.username}</Avatar>
@@ -103,7 +240,7 @@ function App() {
                     <Menu
                       id="basic-menu"
                       anchorEl={anchorEl}
-                      open={open}
+                      open={opens}
                       onClose={handleClose}
                       MenuListProps={{
                         'aria-labelledby': 'basic-button',
@@ -147,7 +284,6 @@ function App() {
                       </MenuItem>
                       </Link>
 
-                      {/* <MenuItem onClick={handleClose}>My account</MenuItem> */}
                       
                       <a href='/' onClick={logOut}> 
                       <MenuItem onClick={handleClose}>
@@ -159,16 +295,20 @@ function App() {
                       </a>
 
                     </Menu>
-                  </div>
-   
-                </div>
-                  ):(
-                 null      
-              )}
-          </div>
-        </div>
-        </header>
-        {/* navigation on the side bar */}
+                 
+                   
+                
+                 
+
+            </li>
+            ):(
+              null      
+           )}
+          </ul>
+                       
+        </nav>
+        
+        {/* navigation on the side bar
         <nav className={sidebar ? 'navi-menu active': 'navi-menu'}>
           <ul className="nav-menu-items list-unstyled " onClick={showSidebar}>
             <li className="navibar-toggle">
@@ -176,111 +316,12 @@ function App() {
                     <AiIcons.AiOutlineClose/>
                 </Link>
             </li>
-            {showAdminBoard&&(
-              <li>
-              <Link to="/admin" className="nav-text">
-                <Dashboard />
-                  Dashboard
-                </Link>
-            </li>
-            )}
-            {showAdminBoard&&(
-            <li>
-              <Link to="/admin/announcements" className="nav-text">
-                <Notifications/>
-                Publish News
-                </Link>
-            </li>
-            )}
-            {showAdminBoard&&(
-            <li>
-              <Link to="/admin/students-details" className="nav-text">
-                <PeopleAlt/>
-                Student Records
-              </Link>
-            </li>
-            )}
-            {showAdminBoard &&(
-            <li>
-              <Link to="/admin/teacher-record" className="nav-text">
-                <PeopleAlt/>
-                Teacher Records
-              </Link>
-            </li>
-            )}    
-              
-            {showAdminBoard&&(
-            <li>
-            <Link to="/admin/parents-records" className="nav-text">
-              <PeopleAlt/>
-              Parent Records
-              </Link>
-            </li>
-            )}
+
             
-            {showAdminBoard&&(
-              <li>
-              <Link to="/admin/addSubject" className="nav-text">
-                <Book/>
-                Subjects Records
-                </Link>
-            </li>
-            )}
-            
-            {showTeacherBoard &&(
-              <li>
-                <Link to="/teacher" className="nav-text">
-                  <Dashboard/>
-                  Teacher Dashboard
-                </Link>
-              </li>
-            )}
-            
-            {showStudentBoard &&(
-              <li>
-                <Link to="/student" className="nav-text">
-                <AiIcons.AiFillHome/>
-                  Student Board 
-                </Link>
-              </li>
-            )}
-            
-            {showParentBoard && (
-              <li>
-                <Link to="/parent" className="nav-text">
-                  <AiIcons.AiFillHome/>
-                  Parent Board
-                </Link>
-              </li>
-            )}
-            {showTeacherBoard && (
-              <li>
-                <Link to="/view-posts" className="nav-text">
-                  <Campaign/>
-                   Announcements
-                </Link>
-              </li>
-            )}
-            {showParentBoard && (
-              <li>
-                <Link to="/view-posts" className="nav-text">
-                  <AiIcons.AiFillHome/>
-                  Announcements
-                </Link>
-              </li>
-            )}
-            {showAdminBoard && (
-              <li>
-                <Link to="/admin/generate-timetable" className="nav-text">
-                  <Schedule/>
-                  <h1> </h1>Time Table
-                </Link>
-              </li>
-            )}  
             
           </ul>
-        </nav>
-        </IconContext.Provider>
+        </nav> */}
+        {/* </IconContext.Provider> */}
         </div> 
     );
 }

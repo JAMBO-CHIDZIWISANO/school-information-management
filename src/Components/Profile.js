@@ -1,9 +1,8 @@
 import SchoolDetails from "./SchoolDetails";
 import React, {Component} from "react";
-import axios from "axios";
-
+import NumberOfStudents from "./AdminPanel/NumberOfStudents";
+import NumberOfTeachers from "./AdminPanel/NumberOfTeachers";
 import AuthService from "./services/auth.service";
-
 
 export default class Profile extends Component {
   constructor(props) {
@@ -20,19 +19,65 @@ export default class Profile extends Component {
     const { currentUser } = this.state;
 
     return (
-      <div className="container justify-content-center aligh-items-center">
-        <hr/>
-        <div className=" text-center  mt-6">
-      
-          <h2>School Management Information System</h2>
+      <div className="container justify-content-center align-items-center">
        
+        
+      <div className="row mt-2">
+      < SchoolDetails/>
+
+      </div>
+        
+       
+        
+        <hr/>
+
+      <div>
+            
+      <div className='row '>
+        <div className='col-12 col-md-4 col-lg-3 card card-margin mx-2 '>
+        <div className="card-header no-border">
+                <h5 class="card-title">Number Of Students</h5>
+            </div>
+          <div className='card-body'>
+             <NumberOfStudents/>
+          </div>
+          
         </div>
+
+        <div className='col-12 col-md-4 col-lg-3 card card-margin mx-2'>
+        <div class="card-header no-border">
+                <h5 className="card-title">Number Of Teachers</h5>
+            </div>
+          <div className='card-body'>
+            <NumberOfTeachers/>
+          </div>
+         
+        </div>
+        <div className='col-12 col-md-4 col-lg-3  card card-margin mx-2'>
+        <div className="card-header no-border">
+                <h5 className="card-title">User Information</h5>
+            </div>
+          <div className='card-body'>
+            
+          <div className="">
+                            <p>  Your Username : {currentUser.username} </p>
+                            <p>  Your Email:    {currentUser.email} </p>
+                            <p>Your Role :  {currentUser.roles &&
+                            currentUser.roles.map((role, index) => <> {role}</>)} </p>
+                    </div>
+          </div>
+            
+        </div>
+       
+      </div>
        
         <div className="details">
 
-          <hr/>
+          
+
+{/*          
           <div className="row">
-          <div className="col-12 col-md-6 col-lg-6" >  
+          <div className="" >  
           <div className="uza">
           <strong className="black">Username :</strong>{" "}
           {currentUser.username}
@@ -50,11 +95,11 @@ export default class Profile extends Component {
             currentUser.roles.map((role, index) => <> {role}</>)}
         </div>
         </div>
-          <div className="col-12 col-md-6 col-lg-6" >< SchoolDetails/>
+          
           </div>
-          </div>
-      
+       */}
         
+        </div>
         </div>
        
       </div>

@@ -236,6 +236,60 @@ exports.studentTimetable = (req, res) => {
   });
 };
 
+//retrieve one Student using their id
+exports.studentSubjects = (req, res) => {
+  Student.studentSubjects(req.params.studentId, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found subjects with id ${req.params.studentId}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Error retrieving subjects with id " + req.params.studentId
+        });
+      }
+    } else res.send(data);
+  });
+};
+
+//retrieve one Student using their id
+exports.countStudentSubjects = (req, res) => {
+  Student.countStudentSubjects(req.params.studentId, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found studentId with id ${req.params.studentId}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Error retrieving studentId with id " + req.params.studentId
+        });
+      }
+    } else res.send(data);
+  });
+};
+
+//count one Student subjects whose marks are entered using their id
+exports.countEnterMarksSubjects = (req, res) => {
+  Student.countEnterMarksSubjects(req.params.studentId, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found studentId with id ${req.params.studentId}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Error retrieving studentId with id " + req.params.studentId
+        });
+      }
+    } else res.send(data);
+  });
+};
+
+
+
+
 
 //retrieve student Id
 exports.studentsId=(req, res) => {

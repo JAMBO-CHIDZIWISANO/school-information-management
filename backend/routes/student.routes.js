@@ -38,6 +38,16 @@ module.exports = app =>{
     // //get all form 1 students
     router.get("/timetable/:studentId", student.studentTimetable);
 
+     // //get all form 1 students
+     router.get("/student/subjects/:studentId", student.studentSubjects);
+
+     // //get all form 1 students
+     router.get("/subjects/count/:studentId", student.countStudentSubjects);
+
+     // //get all form 1 students
+     router.get("/subjects/enteredmark/:studentId", student.countEnterMarksSubjects);
+
+
     // //get one student
     router.get("/student/:studentId", student.findOneStudent);
 
