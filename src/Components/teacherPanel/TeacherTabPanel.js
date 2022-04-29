@@ -24,10 +24,11 @@ function StudentsDetailsPanel() {
           <div className="row">
             <div className="">
               <TeacherTimeTable/>
+              
             </div>
-            
-              <h5>Your Subjects</h5>
-              <TeacherSubject/>
+            <div><h5 className="mt-3"><strong>Your Subjects</strong></h5>
+              <TeacherSubject/></div>
+             
             </div>
           </div>
             

@@ -18,8 +18,8 @@ const TeacherTimeTable = () => {
   },[])
 
   return (
-    <div className='container '>
-         
+    <div className='container mt-5'>
+         <h3 className="text-center">Time Table</h3>
             <div className='card-body'>
           <Table>
             

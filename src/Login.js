@@ -70,7 +70,7 @@ const Login = () => {
             <form onSubmit={handleLogin} >
 
                 <div className="d-flex align-items-center text-center">
-                    <span className="h1 fw-bold "><h2>BANGULA SECONDARY SCHOOL</h2></span>
+                    <span className="h1 fw-bold "><h2>ZOMBA SECONDARY SCHOOL</h2></span>
                 </div>
 
                 <h2 className="fw-bold text-center">SIGN IN</h2>
