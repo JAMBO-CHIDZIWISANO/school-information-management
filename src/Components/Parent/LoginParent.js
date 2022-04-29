@@ -41,23 +41,23 @@ const GetCurrentUser = () => {
                             
                             <body>
                                 <tr>
-                                    <td>Username</td>
+                                    <td><strong>Username</strong></td>
                                     <td>{item.parentId}</td>
                                 </tr>
                                 <tr>
-                                    <td>Firstname</td>
+                                    <td><strong>Firstname</strong></td>
                                     <td>{item.firstname}</td>
                                 </tr>
                                 <tr>
-                                    <td>Surnamc</td>
+                                    <td><strong>Surname</strong></td>
                                     <td>{item.surname}</td>
                                 </tr>
                                 <tr>
-                                    <td>Email</td>
+                                    <td><strong>Email</strong></td>
                                     <td>{item.email}</td>
                                 </tr>
                                 <tr>
-                                    <td> Phone Number </td>
+                                    <td><strong> Phone Number</strong> </td>
                                     <td>{item.phoneNo}</td>
                                 </tr>
                             </body>

@@ -17,33 +17,15 @@ function StudentsDetailsPanel() {
 
   return (
     <div className="container mb-5">
-      <div className="bloc-tabs">
-        <button
-          className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
-          onClick={() => toggleTab(1)}
-        >
-            Your Timetable
-        </button>
-        
-        <button
-          className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
-          onClick={() => toggleTab(2)}
-        >
-          Attendance
-        </button>
-        
+     
 
-      </div>
-
-      <div className="content-tabs">
-        <div
-          className={toggleState === 1 ? "content  active-content" : "content"}
-        >
+      
+        
           <div className="row">
-            <div className="col-12 col-md-8 col-lg-8">
+            <div className="">
               <TeacherTimeTable/>
             </div>
-            <div className="col-12 col-md-4 col-lg-4">
+            
               <h5>Your Subjects</h5>
               <TeacherSubject/>
             </div>
@@ -51,17 +33,10 @@ function StudentsDetailsPanel() {
             
             
           
-        </div>
+       
         
        
-        <div
-          className={toggleState === 2 ? "content  active-content" : "content"}
-        >
-            <AttendanceForm/>
-        </div>
 
-      </div>
-    </div>
   );
 }
 

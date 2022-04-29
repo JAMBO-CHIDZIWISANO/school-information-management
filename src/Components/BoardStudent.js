@@ -4,11 +4,12 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useReactToPrint } from 'react-to-print';
 import { Button, Table } from 'react-bootstrap';
 import authService from './services/auth.service';
+import SchoolDetails from './SchoolDetails'
 const BoardStudent = () => {
   const [studentExam, setStudentExam] = useState([]);
   const [studentPInfo, setStudentPInfo] = useState([])
-  const [studentSubjectsCount, setStudentSubjectsCount] = useState([]);
-  const [marksSubjectsEntered, setMarksSubjectsEntered] = useState([]);
+  //const [studentSubjectsCount, setStudentSubjectsCount] = useState([]);
+  // const [marksSubjectsEntered, setMarksSubjectsEntered] = useState([]);
   const componentRef = useRef();
   const handlePrintSchoolReport = useReactToPrint({
     content:()=>componentRef.current,
@@ -20,45 +21,39 @@ const BoardStudent = () => {
     setStudentExam(res.data)
   }
 
-  const enteredMarksCount = async()=>{
-    const res = await axios.get(`http://localhost:4000/api/smis/subjects/enteredmark/${currentUser.username}`)
-    setMarksSubjectsEntered(res.data)
-  }
+  // const enteredMarksCount = async()=>{
+  //   const res = await axios.get(`http://localhost:4000/api/smis/subjects/enteredmark/${currentUser.username}`)
+  //   setMarksSubjectsEntered(res.data)
+  // }
   const studentInfo = async()=>{
     const res = await axios.get(`http://localhost:4000/api/smis/studentinfo/${currentUser.username}`)
     setStudentPInfo(res.data)
   }
 
-  const countStudentSubjects = async()=>{
-    const res = await axios.get(`http://localhost:4000/api/smis/subjects/count/${currentUser.username}`)
-    setStudentSubjectsCount(res.data)
-  }
+  // const countStudentSubjects = async()=>{
+  //   const res = await axios.get(`http://localhost:4000/api/smis/studentinfo/${currentUser.username}`)
+  //   setStudentSubjectsCount(res.data)
+  // }
   useEffect(()=>{
     examResults();
     studentInfo();
-    countStudentSubjects();
-    enteredMarksCount();
+    //countStudentSubjects();
+    // enteredMarksCount();
     
   },[])
+
+    
+      
 
   
   return (
     <div className='container mt-5 mb-5'>
-          {studentSubjectsCount.map((sc,i)=>{
-            return(
-              <div key={i}>
-                {marksSubjectsEntered.map((csm,index)=>{
-                  return(
-                    <div key={index}>
-                        if ({sc.student_subjects}==!{csm.enter_marks_student_subjects}) {
-                              <div className='container'>
-                                    <p> the exam are not yet out as some teacher did not finish entering marks </p>
-                              </div>
-                          } else {
-                            <div>
-                                <div style={{textAlign: "right"}}>
-            <Button onClick={handlePrintSchoolReport} >print school report</Button>
-          </div>
+         
+         
+
+      <div style={{textAlign: "right"}}>
+        <Button onClick={handlePrintSchoolReport} >print school report</Button>
+      </div>
       
 
           
@@ -73,7 +68,7 @@ const BoardStudent = () => {
                 
             <div className='row card-content'> 
             <div className=''>
-
+                      <SchoolDetails/>
             </div>
             <header > 
                 <h6 className='text-center'>{it.firstname} {it.surname} Report Card</h6> 
@@ -141,21 +136,6 @@ const BoardStudent = () => {
         })
       }
       </div>
-                            </div>
-                        }
-                    </div>
-                  )
-                })}
-                 
-              </div>
-              
-            )
-          })
-
-          }
-         
-
-      
       
     </div>
   )

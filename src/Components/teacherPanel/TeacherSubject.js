@@ -24,10 +24,18 @@ useEffect(()=>{
     <div className=''>
       {subjects.map((item, key) =>{
         return(
-          <div key={key} onClick={() => {navigate(`/enterMarks/${item.subjectCode}`)}} className="border mt-2">
-      <div>{item.subjectCode} </div>
-      <div> {item.subjectName}</div>
-      </div>
+          <div key={key}  className="border mt-2" style={{width:470}}>
+
+                    
+                    {/* <img  alt="" className="mr-1 mt-1 rounded-circle" style={{width:30}}/> */}
+                    <div className="media-body" >
+                        <p>{item.subjectCode} {item.subjectName}  {item.studentId} <small><i >
+                          <button className='btn btn-primary btn-primary' onClick={() => {navigate(`/enterMarks/${item.subjectCode}`)}} >Click to Add Marks</button>
+                          </i></small></p>
+                    </div>
+                  </div>
+
+
       )
     })}
     </div>

@@ -119,7 +119,7 @@ const onSubmit = (e) => {
     termId,
     type,
     subjectCode
-)
+).then(window.location.reload())
 }
 
 const handleEdit =()=>{
@@ -151,12 +151,6 @@ const deleteSubject = (markId) => {
       <div className='row'>
 
         <div className='col-12 col-md-10 col-lg-10'>
-        <Button 
-              
-              onClick={onSubmit} 
-              
-              className="btn btn-primary " 
-            > Submit</Button>
         <table className='table-bordered table-responsive'>
           <thead>
             <th>
@@ -221,7 +215,7 @@ const deleteSubject = (markId) => {
                 onChange={onChangeTotal_score}
               />
             </th>
-            <th>Action</th>
+            <th><Button onClick={onSubmit} className="btn btn-primary " > Submit</Button></th>
             
           </thead>
           <tbody>

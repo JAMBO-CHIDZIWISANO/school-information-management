@@ -60,11 +60,11 @@ export default class Profile extends Component {
           <div className='card-body'>
             
           <div className="">
-                            <p>  Your Username : {currentUser.username} </p>
-                            <p>  Your Email:    {currentUser.email} </p>
-                            <p>Your Role :  {currentUser.roles &&
+                            <p>  Username : {currentUser.username} </p>
+                            <p>  Email:    {currentUser.email} </p>
+                            <p>  Role :  {currentUser.roles &&
                             currentUser.roles.map((role, index) => <> {role}</>)} </p>
-                    </div>
+            </div>
           </div>
             
         </div>

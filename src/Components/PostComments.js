@@ -90,7 +90,7 @@ const PostComments = (props) => {
    }
    
   return (
-    <div className='container'>
+    <div className='container mb-5'>
       <div className='userComments'>
       <hr />
       <div style={{textAlign: "right"}}>

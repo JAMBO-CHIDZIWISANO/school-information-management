@@ -1,7 +1,7 @@
 .navbar{
     height: 80px;
     width: 100%;
-    background: blue;
+    background: darkblue;
     color: white;
     display: flex;
     /* justify-content: space-between; */
@@ -13,12 +13,13 @@
 .nav-logo{
     text-decoration: none;
     color: white;
+    font-size: 28px;
 }
 
 .nav-links{
     display: grid;
     grid-template-columns: repeat(10,auto);
-    font-size:smaller;
+    font-size:18px;
     grid-gap: 5px;
     list-style: none;
     margin-top: 3px;

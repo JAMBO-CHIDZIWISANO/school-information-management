@@ -3,15 +3,22 @@
 
 .App {
   color: rgb(68, 62, 62);
-  background-color: rgb(68, 62, 62);;
+  background-color: rgb(68, 62, 62);
+ 
 }
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', */
+    /* 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif; */
+   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: "Source Sans Pro", Arial, sans-serif;
+  /* font-weight: 400; 
+  font-size: 15px;
+  line-height: 1.7;*/
+  /* color: #828282; */
+  background: #fff; 
 }
 
 code {
@@ -135,6 +142,8 @@ form button{
 
 body{
   background: #F4F7FD;
+  
+
 }
 
 .card-margin {

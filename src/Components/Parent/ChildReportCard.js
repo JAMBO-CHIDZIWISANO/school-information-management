@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useReactToPrint } from 'react-to-print';
 import { Button, Table } from 'react-bootstrap';
 import { useParams  } from "react-router-dom";
+import SchoolDetails from '../SchoolDetails';
 
 const ChildReportCard = () => {
 
@@ -34,15 +35,18 @@ const ChildReportCard = () => {
     
   return (
     <div className='container mt-5 mb-5'>
-     
-
       <div style={{textAlign: "right"}}>
-        <Button onClick={handlePrintSchoolReport} >print school report</Button>
+        <Button onClick={handlePrintSchoolReport} >Print School Report</Button>
       </div>
+
+      <div>
+      <div ref={componentRef}>
+          <SchoolDetails/>
+      
       
 
           
-          <div ref={componentRef}>
+         
           
           
           {
@@ -120,6 +124,7 @@ const ChildReportCard = () => {
          )
         })
       }
+      </div>
       </div>
       
     </div>

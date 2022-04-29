@@ -234,7 +234,7 @@ function App() {
                       className='nav-link'
 
                     >
-                      <Avatar sx={{ width: 63, height: 63 }}>{getUser.username}</Avatar>
+                      <Avatar sx={{ width: 60, height: 60, fontSize:14 }} className="avat">{getUser.username}</Avatar>
 
                     </Button>
                     <Menu
