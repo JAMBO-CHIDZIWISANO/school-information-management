@@ -65,8 +65,7 @@ const Login = () => {
     
             <div className="d-flex justify-content-center aligh-items-center">
                             <div className='px-5 wrapper mt-4'>
-                        
-
+                       
             <form onSubmit={handleLogin} >
 
                 <div className="d-flex align-items-center text-center">

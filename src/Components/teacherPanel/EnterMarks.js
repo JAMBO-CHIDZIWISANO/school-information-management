@@ -9,6 +9,34 @@ import ModeEditIcon from '@mui/icons-material/ModeEdit';
 
 const EnterMarks = () => {
 
+  //start
+
+
+  //one state of input fields with name and age properties.
+  const [inputFields, setInputFields] = useState([
+    {studentId: '', subjectCode:"", termId: '', type: '', student_score: '', total_score: '' }
+  ])
+
+  //function handling the changes of inputs
+  //index of array and event of input
+  const handleInputFieldsChanges = (index, event) => {
+    
+    //store data of input variable using index parameter
+    //and three dots operator
+    const data = [...inputFields];
+    data[index][event.target.name] = event.target.value;
+
+    //setting the data in input array
+    setInputFields(data);
+    
+  }
+
+
+  //start
+ 
+
+
+
     const {subjectCode} = useParams();
 
     //define local state that store form data
@@ -56,6 +84,11 @@ const EnterMarks = () => {
       axios.get(`http://localhost:4000/api/smis/student/subject/${subjectCode}`)
       .then((response) => {
         setStudent(response.data) 
+        
+        //start
+        const newfield = { studentId: '', subjectCode, termId: '', type: '', student_score: '', total_score: ''}
+        setInputFields([...inputFields, newfield])
+        //end
     });
 
       axios.get('http://localhost:4000/api/smis/getAllTerms')
@@ -108,6 +141,8 @@ const enterGrade = (student_score, total_score,studentId,termId,type,subjectCode
   })  
 }
 
+ //handle on click even
+
 //handle submit results form events
 const onSubmit = (e) => {
   e.preventDefault()
@@ -120,6 +155,7 @@ const onSubmit = (e) => {
     type,
     subjectCode
 ).then(window.location.reload())
+
 }
 
 const handleEdit =()=>{
@@ -148,8 +184,94 @@ const deleteSubject = (markId) => {
 
   return (
     <div className=' px-5 wrapper mt-4'>
-      <div className='row'>
+      
+      {/* start */}
+      <div>
+          <table>
+            
+            <tbody>
+            
+             
+                <div >
+                  {student.map((input,index)=>{
+                    return(
 
+                                 
+              <tr key={index}>
+                
+                
+                <td >
+                  <input
+                   
+                    name='studentId'
+                    placeholder='StudentId'
+                    value={input.studentId}
+                    onChange={event => handleInputFieldsChanges(index, event)}
+                  />
+                </td>
+                <td >
+                  <input
+                   
+                    name='subjectCode'
+                    placeholder='subject'
+                    value={input.subjectCode}
+                    onChange={event => handleInputFieldsChanges(index, event)}
+                  />
+                </td>
+                <td >
+                  <input
+                
+                    name='termId'
+                    placeholder='term'
+                    value={input.termId}
+                    onChange={event => handleInputFieldsChanges(index, event)}
+                  />
+                </td>
+                <td >
+                  <input
+                   
+                    name='type'
+                    placeholder='type'
+                    value={input.type}
+                    
+                    onChange={event => handleInputFieldsChanges(index, event)}
+                  />
+                </td>
+                <td >
+                  <input
+                  key={index}
+                    name='student_score'
+                    placeholder='obtained'
+                    value={input.student_score}
+                    onChange={event => handleInputFieldsChanges(index, event)}
+                  />
+                </td>
+                <td >
+                  <input
+                 
+                    name='total_score'
+                    placeholder='total'
+                    value={input.total_score}
+                    onChange={event => handleInputFieldsChanges(index, event)}
+                  />
+                </td>
+               
+              </tr>
+               )
+              })}
+
+                </div>
+          
+            
+            </tbody>
+          </table>
+          <button onClick={onSubmit}>Submit</button>
+          
+      </div>
+      {/* end */}
+
+      <div className='row'>
+       
         <div className='col-12 col-md-10 col-lg-10'>
         <table className='table-bordered table-responsive'>
           <thead>
