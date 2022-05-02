@@ -54,8 +54,18 @@ module.exports = app =>{
     // //get exam results for one student
     router.get("/student/exam/:studentId", student.studentExamResults);
 
-    // //get exam results for one student
+   // //get all form 1 students
+   router.get("/timetable/:studentId", student.studentTimetable);
+
+    //get all form 1 students
     router.get("/studentinfo/:studentId", student.studentPersonalInfo);
+
+
+   // //get all form 1 students
+   router.get("/term2exam/:studentId", student.studentPersonalInfoTerm2);
+
+   // //get all form 1 students
+   router.get("/term3exam/:studentId", student.studentPersonalInfoTerm3);
 
     // //update student
     router.put("/student/:studentId", student.updateStudentById);

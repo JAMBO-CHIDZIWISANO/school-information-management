@@ -5,37 +5,11 @@ import { useParams,  } from "react-router-dom";
 import { toast } from "react-toastify";
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
+import MarksTableForm from './MarksEntering.js/MarksTableForm';
+import SetTotal from './SetTotal';
 
 
 const EnterMarks = () => {
-
-  //start
-
-
-  //one state of input fields with name and age properties.
-  const [inputFields, setInputFields] = useState([
-    {studentId: '', subjectCode:"", termId: '', type: '', student_score: '', total_score: '' }
-  ])
-
-  //function handling the changes of inputs
-  //index of array and event of input
-  const handleInputFieldsChanges = (index, event) => {
-    
-    //store data of input variable using index parameter
-    //and three dots operator
-    const data = [...inputFields];
-    data[index][event.target.name] = event.target.value;
-
-    //setting the data in input array
-    setInputFields(data);
-    
-  }
-
-
-  //start
- 
-
-
 
     const {subjectCode} = useParams();
 
@@ -43,9 +17,12 @@ const EnterMarks = () => {
     const [markId, setMarkId] = useState("")
 
     const [student_score, setStudent_score] = useState("");
-    const [total_score, setTotal_score] = useState("");
     const [termId, setTermId] = useState("");
     const [studentId, setStudentId] = useState("");
+    const [subjectGrades1, setSubjectGrades1] = useState([]);
+    const [subjectGrades2, setSubjectGrades2] = useState([]);
+    const [subjectGrades3, setSubjectGrades3] = useState([]);
+
     const [subjectCod, setSubjectCode] = useState("");
     const [type, setType] = useState("")
 
@@ -85,11 +62,10 @@ const EnterMarks = () => {
       .then((response) => {
         setStudent(response.data) 
         
-        //start
-        const newfield = { studentId: '', subjectCode, termId: '', type: '', student_score: '', total_score: ''}
-        setInputFields([...inputFields, newfield])
-        //end
+        
     });
+
+    
 
       axios.get('http://localhost:4000/api/smis/getAllTerms')
       .then((response) => {
@@ -118,21 +94,17 @@ const onChangeStudent_score=(e)=>{
     const student_score= e.target.value;
     setStudent_score(student_score); 
 }
-const onChangeTotal_score=(e)=>{
-    const total_score= e.target.value;
-    setTotal_score(total_score); 
-}
 const onChangeType=(e)=>{
   const type= e.target.value;
   setType(type); 
 }
   
 
-const enterGrade = (student_score, total_score,studentId,termId,type,subjectCode) =>{
+const enterGrade = (student_score, studentId,termId,type,subjectCode) =>{
   return axios.post("http://localhost:4000/api/smis/addMark",{
       
       student_score,
-      total_score,
+     
       studentId,
       termId,
       type,
@@ -141,7 +113,6 @@ const enterGrade = (student_score, total_score,studentId,termId,type,subjectCode
   })  
 }
 
- //handle on click even
 
 //handle submit results form events
 const onSubmit = (e) => {
@@ -149,7 +120,7 @@ const onSubmit = (e) => {
   enterGrade(
           
     student_score,
-    total_score,
+   
     studentId,
     termId,
     type,
@@ -160,7 +131,7 @@ const onSubmit = (e) => {
 
 const handleEdit =()=>{
   const url = `http://localhost:4000/api/smis/mark/${markId}`
-  const Credentials = {markId, studentId, student_score, total_score,termId, type}
+  const Credentials = {markId, studentId, student_score, termId, type}
   axios.put(url, Credentials)
   .then(response=>{
       setRowData( response.data);
@@ -183,99 +154,23 @@ const deleteSubject = (markId) => {
   
 
   return (
-    <div className=' px-5 wrapper mt-4'>
-      
-      {/* start */}
-      <div>
-          <table>
-            
-            <tbody>
-            
-             
-                <div >
-                  {student.map((input,index)=>{
-                    return(
+    <div className=' px-5 wrapper mt-4 mb-5'>
+      <h4 className='text-center text-black w-bold'>Set Total Marks for {subjectCode} <hr/></h4>
 
-                                 
-              <tr key={index}>
-                
-                
-                <td >
-                  <input
-                   
-                    name='studentId'
-                    placeholder='StudentId'
-                    value={input.studentId}
-                    onChange={event => handleInputFieldsChanges(index, event)}
-                  />
-                </td>
-                <td >
-                  <input
-                   
-                    name='subjectCode'
-                    placeholder='subject'
-                    value={input.subjectCode}
-                    onChange={event => handleInputFieldsChanges(index, event)}
-                  />
-                </td>
-                <td >
-                  <input
-                
-                    name='termId'
-                    placeholder='term'
-                    value={input.termId}
-                    onChange={event => handleInputFieldsChanges(index, event)}
-                  />
-                </td>
-                <td >
-                  <input
-                   
-                    name='type'
-                    placeholder='type'
-                    value={input.type}
-                    
-                    onChange={event => handleInputFieldsChanges(index, event)}
-                  />
-                </td>
-                <td >
-                  <input
-                  key={index}
-                    name='student_score'
-                    placeholder='obtained'
-                    value={input.student_score}
-                    onChange={event => handleInputFieldsChanges(index, event)}
-                  />
-                </td>
-                <td >
-                  <input
-                 
-                    name='total_score'
-                    placeholder='total'
-                    value={input.total_score}
-                    onChange={event => handleInputFieldsChanges(index, event)}
-                  />
-                </td>
-               
-              </tr>
-               )
-              })}
-
-                </div>
-          
-            
-            </tbody>
-          </table>
-          <button onClick={onSubmit}>Submit</button>
-          
+      {/* <MarksTableForm/> */}
+      <div className=' '>
+        <SetTotal/>
       </div>
-      {/* end */}
-
+      
+      <h4 className='text-center text-black w-bold'>Add Marks for {subjectCode} <hr/></h4>
       <div className='row'>
        
         <div className='col-12 col-md-10 col-lg-10'>
+        
         <table className='table-bordered table-responsive'>
-          <thead>
-            <th>
+          <tbody>
+          <tr>
+            <td>
               <select onChange={onChangeStudentId}
                       value={studentId}
                       className="form-control"
@@ -284,30 +179,20 @@ const deleteSubject = (markId) => {
                 {student.map((item)=><option >{item.studentId}</option>)}
               </select>
               
-            </th>
-            <th>
+            </td>
             
-            <select onChange={onChangeSubjectCode}
-                    className="form-control"
-             >
-
-            
-
-              {subject.map((item)=><option value={subjectCod}>{item.subjectCode}</option>)}
-
-            </select>
-            </th>
-            <select onChange={onChangeTermId} 
+            <td>
+             <select onChange={onChangeTermId} 
                     value={termId}
-                    type="number"
+                    
                     className="form-control"
             >
               <option>Term</option>
               {term.map((item)=><option >{item.termId}</option>)}
 
             </select>
-            
-            <th>
+            </td>
+            <td>
             <select
                   onChange={onChangeType}
                   className="form-control"
@@ -318,8 +203,8 @@ const deleteSubject = (markId) => {
                     <option>End-Of-Term</option>
                     <option>Assessment</option>
             </select>
-            </th>
-            <th>
+            </td>
+            <td>
               <input
                 type='text'
                 placeholder='obtained Mark'
@@ -327,20 +212,14 @@ const deleteSubject = (markId) => {
                 className="form-control"
                 onChange={onChangeStudent_score}
               />
-            </th>
-            <th>
-              <input
-                type='text'
-                placeholder='total marks'
-                value={total_score}
-                className="form-control"
-                onChange={onChangeTotal_score}
-              />
-            </th>
-            <th><Button onClick={onSubmit} className="btn btn-primary " > Submit</Button></th>
-            
-          </thead>
-          <tbody>
+            </td>
+
+            <td>obtained</td>
+            <td>Total</td>
+           
+            <td><Button onClick={onSubmit} className="btn btn-primary " > Submit</Button></td>
+            </tr>
+          
             {showGrades.map((item,index)=>{
               return(
                 <tr key={index}> 
@@ -349,7 +228,7 @@ const deleteSubject = (markId) => {
                   <td>{item.termName}</td>
                   <td>{item.type}</td>
                   <td>{item.student_score}</td>
-                  <td>{item.total_score}</td>
+                  <td>{item.totalScore}</td>
                   <td>
                             
                     <Button className="btn btn-edit"  onClick={()=>{handEditShow(setRowData(item),setMarkId(item._markId))}}><ModeEditIcon/></Button>
@@ -449,16 +328,7 @@ const deleteSubject = (markId) => {
                                 defaultValue={RowData.student_score}
                             />
                         </div>
-                        <div className='form-group mt-3'>
-                            <label htmlFor='total_score'>total score</label>
-                            <input 
-                                type="text"
-                                className='form-control'
-                                onChange={(e)=>setTotal_score(e.target.value)}
-                                defaultValue={RowData.total_score}
-                            />
-                        </div>
-                        
+
                         <div className='form-group mt-3'>
                             <label htmlFor='type'>Type</label>
                             <input 

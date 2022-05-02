@@ -9,8 +9,8 @@ module.exports = (sequelize, Sequelize) => {
       student_score: {
         type: Sequelize.INTEGER
       },
-      total_score: {
-        type: Sequelize.INTEGER
+      type: {
+        type: Sequelize.STRING
       }
     });
     return Mark;

@@ -20,16 +20,7 @@ const SchoolDetails = () => {
       }, []);
     
  
-  //   const loadData = async () => {
-  //     const response = await axios.get(`http://localhost:4000/api/smis/school/${schoolId}`);
-  //     setData(response.data);   
-  //     console.log(data) 
-  // };
-  // // refresh window
-
-  //     useEffect(() => {
-  //         loadData();
-  //     }, []);
+ 
     
   return (
     <div className="container">

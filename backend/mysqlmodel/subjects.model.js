@@ -41,6 +41,24 @@ Subject.findSubjectById = (subjectCode, result) => {
     });
   };
 
+  //retrieving one total
+Subject.findTotalById = (subjectCode, result) => {
+  sql.query(`SELECT totalId, totalScore from totals where subjectCode = '${subjectCode}'`, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+    if (res) {
+      console.log("found total: ", res);
+      result(null, res);
+      return;
+    }
+    // not found subject with the id
+    result({ kind: "not_found" }, null);
+  });
+};
+
   //retrieve students Id who take this subjects
   Subject.findStudentsIdBySubjectCode = (subjectCode, result) => {
     sql.query(`SELECT ss.studentId from students s join student_subjects ss on s.studentId=ss.studentId join subjects b on ss.subjectCode=b.subjectCode where ss.subjectCode='${subjectCode}' group by s.studentId`, (err, res) => {
@@ -76,10 +94,11 @@ Subject.findSubjectById = (subjectCode, result) => {
       result({ kind: "not_found" }, null);
     });
   };
+  
 
   //retrieve students grades who take this subjects of subjectCode
   Subject.findStudentsGradesBySubjectCode = (subjectCode, result) => {
-    sql.query(`SELECT m.markId, s.firstname, s.studentId, su.subjectCode, m.type, t.termName,m.student_score,m.total_score from students s join student_marks m on s.studentId=m.studentId join subjects su on m.subjectCode=su.subjectCode join terms t on t.termId=m.termId where m.subjectCode='${subjectCode}'`, (err, res) => {
+    sql.query(`SELECT m.markId, s.firstname, s.studentId, su.subjectCode, m.type, t.termName,m.student_score, o.totalScore from students s join student_marks m on s.studentId=m.studentId join subjects su on m.subjectCode=su.subjectCode join totals o on o.subjectCode = su.subjectCode join terms t on t.termId=m.termId where m.subjectCode='${subjectCode}'`, (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(err, null);

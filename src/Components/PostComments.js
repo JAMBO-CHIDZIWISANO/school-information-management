@@ -52,7 +52,6 @@ const PostComments = (props) => {
         
         setComment([...comment, newCommentAdded]);
         setUserName([...userName, commentUsername]);
-        toast.success('Comment Deleted Successfully');
         window.location.reload();
         setNewComment("");
         setCommentUser("");

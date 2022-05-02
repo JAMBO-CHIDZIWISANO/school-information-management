@@ -11,8 +11,6 @@ const Student = function(student) {
     this.parentId = student.parentId;
     this.schoolId = student.schoolId;
     this.classId = student.classId;
-
-    
 }
 //insert a student into a system
 Student.create = (newStudent, result)=> {
@@ -23,7 +21,6 @@ Student.create = (newStudent, result)=> {
             result(err, null);
             return;
         }
-        
     console.log("created student: ", { studentId: res.insertStudentId, ...newStudent });
     result(null, { studentId: res.insertStudentId, ...newStudent });
         
@@ -223,7 +220,7 @@ Student.countAllStudents = (gender, result) => {
 };
   //retrieve a student examination results
 Student.studentExamResults = (studentId, result) => {
-  sql.query(`select u.subjectCode, u.subjectName,m.student_score, m.total_score, round((m.student_score/m.total_score)*100,2) as grade,CASE WHEN (round((m.student_score/m.total_score)*100,2))>=80 THEN 'A=distinction' WHEN (round((m.student_score/m.total_score)*100,2))>=70 THEN 'B=very good' WHEN (round((m.student_score/m.total_score)*100,2))>=60 THEN 'C=good' WHEN (round((m.student_score/m.total_score)*100,2))>=50 THEN 'D=average' ELSE 'F=fail' END AS remarks from students s inner join classes c on s.classId=c.classId join student_marks m on m.studentId = s.studentId join subjects u on m.subjectCode=u.subjectCode join terms t on m.termId=t.termId where s.studentId like '%${studentId}%' group by u.subjectCode; `, (err, res) => {
+  sql.query(`select u.subjectCode, u.subjectName,m.student_score, o.totalScore, round((m.student_score/o.totalScore)*100,2) as grade,CASE WHEN (round((m.student_score/o.totalScore)*100,2))>=80 THEN 'A=distinction' WHEN (round((m.student_score/o.totalScore)*100,2))>=70 THEN 'B=very good' WHEN (round((m.student_score/o.totalScore)*100,2))>=60 THEN 'C=good' WHEN (round((m.student_score/o.totalScore)*100,2))>=50 THEN 'D=average' ELSE 'F=fail' END AS remarks from students s inner join classes c on s.classId=c.classId join student_marks m on m.studentId = s.studentId join subjects u on m.subjectCode=u.subjectCode join totals o on o.subjectCode=u.subjectCode join terms t on m.termId=t.termId where s.studentId like '%${studentId}%' group by u.subjectCode; `, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -239,9 +236,9 @@ Student.studentExamResults = (studentId, result) => {
   });
 };
 
-  //retrieve a student person info
-  Student.studentPersonalInfo = (studentId, result) => {
-    sql.query(`SELECT s.studentId, s.firstname, s.surname, c.className, t.termName, sum(m.total_score) as fullmarks, case when ((sum(m.student_score)/sum(m.total_score))*100)>50 then 'pass' else 'fail' end as status, sum(m.student_score) as marks, CASE WHEN ((sum(m.student_score)/sum(m.total_score))*100)>=80 THEN 'Grade A Excellent' WHEN ((sum(m.student_score)/sum(m.total_score))*100)>=70 THEN 'Grade B, Very good' WHEN ((sum(m.student_score)/sum(m.total_score))*100)>=60 THEN 'Grade C, Good' WHEN ((sum(m.student_score)/sum(m.total_score))*100)>=50 THEN 'Grade D, Average pass' ELSE 'Grade F, Needs support' END AS comments from student_marks m join students s on m.studentId=s.studentId join classes c on s.classId=c.classId join terms t on t.termId=m.termId where m.type like '%End-Of-Term%' and s.studentId = '${studentId}'  group by studentId order by marks desc;`, (err, res) => {
+  //retrieve a student examination results
+  Student.studentExamResultsTerm2 = (studentId, result) => {
+    sql.query(`select u.subjectCode, u.subjectName,m.student_score, o.totalScore, round((m.student_score/o.totalScore)*100,2) as grade,CASE WHEN (round((m.student_score/o.totalScore)*100,2))>=80 THEN 'A=distinction' WHEN (round((m.student_score/o.totalScore)*100,2))>=70 THEN 'B=very good' WHEN (round((m.student_score/o.totalScore)*100,2))>=60 THEN 'C=good' WHEN (round((m.student_score/o.totalScore)*100,2))>=50 THEN 'D=average' ELSE 'F=fail' END AS remarks from students s inner join classes c on s.classId=c.classId join student_marks m on m.studentId = s.studentId join subjects u on m.subjectCode=u.subjectCode join totals o on o.subjectCode=u.subjectCode join terms t on m.termId=t.termId where t.termId=2 and s.studentId like '%${studentId}%' group by u.subjectCode; `, (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(err, null);
@@ -256,6 +253,80 @@ Student.studentExamResults = (studentId, result) => {
       result({ kind: "not_found" }, null);
     });
   };
+
+  //retrieve a student examination results
+  Student.studentExamResultsTerm2 = (studentId, result) => {
+    sql.query(`select u.subjectCode, u.subjectName,m.student_score, o.totalScore, round((m.student_score/o.totalScore)*100,2) as grade,CASE WHEN (round((m.student_score/o.totalScore)*100,2))>=80 THEN 'A=distinction' WHEN (round((m.student_score/o.totalScore)*100,2))>=70 THEN 'B=very good' WHEN (round((m.student_score/o.totalScore)*100,2))>=60 THEN 'C=good' WHEN (round((m.student_score/o.totalScore)*100,2))>=50 THEN 'D=average' ELSE 'F=fail' END AS remarks from students s inner join classes c on s.classId=c.classId join student_marks m on m.studentId = s.studentId join subjects u on m.subjectCode=u.subjectCode join totals o on o.subjectCode=u.subjectCode join terms t on m.termId=t.termId where t.termId=3 and s.studentId like '%${studentId}%' group by u.subjectCode; `, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
+      if (res) {
+        console.log("found student: ", res);
+        result(null, res);
+        return;
+      }
+      // not found student with the id
+      result({ kind: "not_found" }, null);
+    });
+  };
+  
+
+  //retrieve a student person info
+  Student.studentPersonalInfo = (studentId, result) => {
+    sql.query(`SELECT s.studentId, s.firstname, s.surname, c.className, t.termName, sum(o.totalScore) as fullmarks, case when ((sum(m.student_score)/sum(o.totalScore))*100)>50 then 'pass' else 'fail' end as status, sum(m.student_score) as marks, CASE WHEN ((sum(m.student_score)/sum(o.totalScore))*100)>=80 THEN 'Grade A Excellent' WHEN ((sum(m.student_score)/sum(o.totalScore))*100)>=70 THEN 'Grade B, Very good' WHEN ((sum(m.student_score)/sum(o.totalScore))*100)>=60 THEN 'Grade C, Good' WHEN ((sum(m.student_score)/sum(o.totalScore))*100)>=50 THEN 'Grade D, Average pass' ELSE 'Grade F, Needs support' END AS comments from student_marks m join students s on m.studentId=s.studentId join classes c on s.classId=c.classId join subjects su on m.subjectCode = su.subjectCode join totals o on su.subjectCode = o.subjectCode join terms t on t.termId=m.termId where m.termId=1 and m.type like '%End-Of-Term%' and s.studentId = '${studentId}'  group by studentId order by marks desc;`, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
+      if (res) {
+        console.log("found student: ", res);
+        result(null, res);
+        return;
+      }
+      // not found student with the id
+      result({ kind: "not_found" }, null);
+    });
+  };
+
+  //retrieve a student person info
+  Student.studentPersonalInfoTerm2 = (studentId, result) => {
+    sql.query(`SELECT s.studentId, s.firstname, s.surname, c.className, t.termName, sum(o.totalScore) as fullmarks, case when ((sum(m.student_score)/sum(o.totalScore))*100)>50 then 'pass' else 'fail' end as status, sum(m.student_score) as marks, CASE WHEN ((sum(m.student_score)/sum(o.totalScore))*100)>=80 THEN 'Grade A Excellent' WHEN ((sum(m.student_score)/sum(o.totalScore))*100)>=70 THEN 'Grade B, Very good' WHEN ((sum(m.student_score)/sum(o.totalScore))*100)>=60 THEN 'Grade C, Good' WHEN ((sum(m.student_score)/sum(o.totalScore))*100)>=50 THEN 'Grade D, Average pass' ELSE 'Grade F, Needs support' END AS comments from student_marks m join students s on m.studentId=s.studentId join classes c on s.classId=c.classId join subjects su on m.subjectCode = su.subjectCode join totals o on su.subjectCode = o.subjectCode join terms t on t.termId=m.termId where t.termId=2 and m.type like '%End-Of-Term%' and s.studentId = '${studentId}'  group by studentId order by marks desc;`, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
+      if (res) {
+        console.log("found student: ", res);
+        result(null, res);
+        return;
+      }
+      // not found student with the id
+      result({ kind: "not_found" }, null);
+    });
+  };
+
+  //retrieve a student person info
+  Student.studentPersonalInfoTerm3 = (studentId, result) => {
+    sql.query(`SELECT s.studentId, s.firstname, s.surname, c.className, t.termName, sum(o.totalScore) as fullmarks, case when ((sum(m.student_score)/sum(o.totalScore))*100)>50 then 'pass' else 'fail' end as status, sum(m.student_score) as marks, CASE WHEN ((sum(m.student_score)/sum(o.totalScore))*100)>=80 THEN 'Grade A Excellent' WHEN ((sum(m.student_score)/sum(o.totalScore))*100)>=70 THEN 'Grade B, Very good' WHEN ((sum(m.student_score)/sum(o.totalScore))*100)>=60 THEN 'Grade C, Good' WHEN ((sum(m.student_score)/sum(o.totalScore))*100)>=50 THEN 'Grade D, Average pass' ELSE 'Grade F, Needs support' END AS comments from student_marks m join students s on m.studentId=s.studentId join classes c on s.classId=c.classId join subjects su on m.subjectCode = su.subjectCode join totals o on su.subjectCode = o.subjectCode join terms t on t.termId=m.termId where t.termId=3 and m.type like '%End-Of-Term%' and s.studentId = '${studentId}'  group by studentId order by marks desc;`, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
+      if (res) {
+        console.log("found student: ", res);
+        result(null, res);
+        return;
+      }
+      // not found student with the id
+      result({ kind: "not_found" }, null);
+    });
+  };
+
 
 
   //retrieve a time table depending on the class of a student

@@ -57,6 +57,24 @@ exports.findOneSubject = (req, res) => {
   });
 };
 
+//retrieve one total using their id
+exports.findOneTotal = (req, res) => {
+  Subject.findTotalById(req.params.subjectCode, (err, data) => {
+  if (err) {
+    if (err.kind === "not_found") {
+      res.status(404).send({
+        message: `Not found total with id ${req.params.subjectCode}.`
+      });
+    } 
+    else {
+      res.status(500).send({
+        message: "Error retrieving total with id " + req.params.subjectCode
+      });
+    }
+  } else res.send(data);
+});
+};
+
 //retrieve students by SubjectCode 
 exports.findStudentsBySubjectCode = (req, res) => {
   Subject.findStudentsIdBySubjectCode(req.params.subjectCode, (err, data) => {

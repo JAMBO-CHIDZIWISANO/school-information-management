@@ -2,7 +2,7 @@ import React from "react";
 
 const StudentsTableRowMarks = (props) => {
 
-  const { firstname, surname, className, subjectName, student_score, total_score,percent,Grade,type } = props.obj;
+  const { firstname, surname, className, subjectName, student_score, totalScore,percent,Grade,type } = props.obj;
   
  
   
@@ -14,7 +14,7 @@ const StudentsTableRowMarks = (props) => {
         <td>{className}</td>
         <td>{subjectName}</td>
         <td>{student_score}</td>
-        <td>{total_score}</td>
+        <td>{totalScore}</td>
         <td>{percent}</td>
         <td>{Grade}</td>
         <td>{type}</td>

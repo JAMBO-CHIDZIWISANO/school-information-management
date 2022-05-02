@@ -12,13 +12,10 @@ exports.create = (req, res)=>{
     const mark = new Mark({
       markId: req.body.markId,
       student_score: req.body.student_score,
-      total_score: req.body.total_score,
       termId: req.body.termId,
       type: req.body.type,
       studentId: req.body.studentId,
-      subjectCode: req.body.subjectCode,
-      
-      
+      subjectCode: req.body.subjectCode
       });
 
       // Save Mmark in the database

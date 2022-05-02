@@ -68,15 +68,16 @@ require("./routes/school.routes")(app);
 require("./routes/student.routes")(app);
 require("./routes/teacher.routes")(app);
 require("./routes/parent.routes")(app);
-require("./routes/attendance.routes")(app)
-require("./routes/marks.routes")(app)
-require("./routes/subject.routes")(app)
+require("./routes/attendance.routes")(app);
+require("./routes/marks.routes")(app);
+require("./routes/subject.routes")(app);
 require("./routes/classes.routes")(app);
 require("./routes/terms.routes")(app);
 require("./routes/lessons.routes")(app);
 require("./routes/smiscomments.routes")(app);
 require("./routes/smisposts.routes")(app);
-require("./routes/student-subject")(app)
+require("./routes/student-subject")(app);
+require("./routes/Total.routes")(app);
 
 //Set port, listen for requests
 const PORT =  process.env.PORT || 4000

@@ -32,6 +32,8 @@
     "pino-colada": "^2.2.2",
     "rootpath": "^0.1.2",
     "sequelize": "^6.16.1",
+    "swagger-jsdoc": "^6.2.1",
+    "swagger-ui-express": "^4.3.0",
     "twilio": "^3.76.1"
   }
 }

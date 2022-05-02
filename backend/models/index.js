@@ -32,6 +32,7 @@ const db = {};
 //sequelize all db tables to the mysql server
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
+db.total = require("./totals")(sequelize, Sequelize); 
 db.user = require("../models/user.models")(sequelize, Sequelize);
 db.role = require("../models/role.model.js")(sequelize, Sequelize);
 db.teacher = require("../models/teacher.model.js")(sequelize, Sequelize);
@@ -47,6 +48,12 @@ db.mark = require("../models/studentMarks.model")(sequelize, Sequelize);
 db.attendance = require("../models/attendance.model")(sequelize, Sequelize);
 db.smiscomments = require("../models/smiscomments.model")(sequelize, Sequelize);
 db.smisposts = require("../models/Smisposts.model")(sequelize, Sequelize);
+
+//1 to many relationship with subjects
+db.subject.hasMany(db.total,{
+  foreignKey: "subjectCode",
+  targetKey:"subjectCode",
+})
 
 //1 to 1 relationship between teachers and users
 db.user.hasOne(db.teacher, {

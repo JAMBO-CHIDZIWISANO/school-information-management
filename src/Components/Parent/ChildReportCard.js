@@ -90,7 +90,7 @@ const ChildReportCard = () => {
                 <td>{item.subjectCode}</td>
                 <td colspan="2">{item.subjectName}</td>
                 <td>{item.student_score}</td>
-                <td>{item.total_score}</td>
+                <td>{item.totalScore}</td>
                 <td>{item.grade}</td>
                 <td>{item.remarks}</td>
               </tr>

@@ -57,7 +57,7 @@ const Form1ResultsRecords = () => {
                 
                 <td>{res.subjectName}</td>
                 <td>{res.student_score}</td>
-                <td>{res.total_score}</td>
+                <td>{res.totalScore}</td>
                 <td>{res.percent}</td>
                 <td>{res.Grade}</td>
                 <td>{res.type}</td>

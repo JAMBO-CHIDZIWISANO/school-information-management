@@ -60,7 +60,7 @@ const ChildrenExam = () => {
                             
                                     <td>{item.student_score}</td>
                                   
-                                    <td>{item.total_score}</td>
+                                    <td>{item.totalScore}</td>
                                    
                                     <td>{item.grade}</td>
                                     <td>{item.remarks}</td>
