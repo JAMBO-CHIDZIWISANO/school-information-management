@@ -1,4 +1,3 @@
-
 //importing dependencies
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -25,20 +24,16 @@ import NoticeBoard from './Components/NoticeBoard';
 import SmisComments from './Components/SmisComments';
 import PostComments from './Components/PostComments'
 import PostList from './Components/AdminPanel/postList';
-import EditComments from './Components/EditComments';
 
-
-
-//files for subjects managements
+//importing files for subjects managements and marks for exams
 import SubjectList from './Components/AdminPanel/Subjects/SubjectList';
 import ManageSubjects from './Components/AdminPanel/Subjects/ManageSubjects'
 import AddSubject from './Components/AdminPanel/Subjects/AddSubject'
-
 import BoardTeacher from "./Components/BoardTeacher";
 import TeacherTabPanel from './Components/teacherPanel/TeacherTabPanel'
 import EnterMarks from "./Components/teacherPanel/EnterMarks";
 
-//files for teacehers managements
+//importing files for teacher management
 import ViewTeachers from './Components/AdminPanel/ViewTeachers'
 import AddTSecurityDetails from './Components/TeachersDetails/AddTSecurityDetails';
 
@@ -53,7 +48,7 @@ import Showtimetable from './Components/timetable/Showtimetable';
 import StudentTimetable from './Components/StudentDetails/StudentTimetable'
 ReactDOM.render(
 
-  // routers for routing throughout the website
+  // routers for routing throughout the app
     <Router>
         <App/>
       <Routes>
@@ -75,8 +70,6 @@ ReactDOM.render(
         <Route path='/postComments' element={<PostComments/>}/>
         <Route path='/viewcomments' element={<SmisComments/>}/>
         <Route path='/admin/manage-posts' element={<PostList/>} />
-        <Route path='/admin/editComments' element={<EditComments/>} />
-        <Route path='/editComments' element={<EditComments/>} />
         
 
         <Route path="/view-subjects" element={<SubjectList/>} />
