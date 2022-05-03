@@ -19,7 +19,67 @@ module.exports = (app) =>{
      */
     app.delete("/api/smis/student/:studentId", student.deleteStudent);
 
-    // //create new students
+    
+// routes/student.routes.js
+/**
+ * @swagger
+ * /api/smis/addStudent:
+ *   post:
+ *     description: add student
+ *     parameters:
+ *      
+ *      - name: studentId
+ *        description: enter student id
+ *        in: formData
+ *        required: true
+ *        type: string
+ *      - name: firstname
+ *        description: enter firstname
+ *        in: formData
+ *        required: true
+ *        type: string
+ *      - name: surname
+ *        description: enter surname
+ *        in: formData
+ *        required: true
+ *        type: string
+ *      - name: gender
+ *        description: enter gender
+ *        in: formData
+ *        required: true
+ *        type: integer
+ *      - name: DoB
+ *        description: enter DoB
+ *        in: formData
+ *        required: true
+ *        type: date
+ *      - name: userId
+ *        description: enter userId
+ *        in: formData
+ *        required: true
+ *        type: string
+ *      - name: parentId
+ *        description: enter parentId
+ *        in: formData
+ *        required: true
+ *        type: string
+ *      - name: schoolId
+ *        description: enter schoolId
+ *        in: formData
+ *        required: true
+ *        type: string
+ *      - name: classId
+ *        description: enter classId
+ *        in: formData
+ *        required: true
+ *        type: string
+     *   responses:
+     *      200:
+     *         description: 'success'
+     *         
+     *         
+     *     
+     */
     app.post("/api/smis/addStudent", student.create);
 
     // routes/student.routes.js

@@ -141,6 +141,66 @@ module.exports = app =>{
     app.put("/api/smis/teacher/:teacherId", teacher.updateTeacherById);
 
     
+// routes/teacher.routes.js
+/**
+ * @swagger
+ * /api/smis/addTeacher:
+ *   post:
+ *     description: add teacher
+ *     parameters:
+ *      
+ *      - name: teacherId
+ *        description: enter teacher id
+ *        in: formData
+ *        required: true
+ *        type: string
+ *      - name: firstname
+ *        description: enter firstname
+ *        in: formData
+ *        required: true
+ *        type: string
+ *      - name: surname
+ *        description: enter surname
+ *        in: formData
+ *        required: true
+ *        type: string
+ *      - name: gender
+ *        description: enter gender
+ *        in: formData
+ *        required: true
+ *        type: string
+ *      - name: phoneNo
+ *        description: enter phoneNo
+ *        in: formData
+ *        required: true
+ *        type: integer
+ *      - name: userId
+ *        description: enter userId
+ *        in: formData
+ *        required: true
+ *        type: string
+ *      - name: schoolId
+ *        description: enter schoolId
+ *        in: formData
+ *        required: true
+ *        type: string
+ *      - name: joinDate
+ *        description: enter joinDate
+ *        in: formData
+ *        required: true
+ *        type: string
+ *      - name: qualification
+ *        description: enter qualification
+ *        in: formData
+ *        required: true
+ *        type: string
+     *   responses:
+     *      200:
+     *         description: 'success'
+     *         
+     *         
+     *     
+     */
     app.post("/api/smis/addTeacher", teacher.create);
 
     
