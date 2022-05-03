@@ -43,19 +43,6 @@ exports.findAllParents =(req, res) => {
   });
 };
 
-//retrieve last username
-exports.findUsername =(req, res) => {
-  const username = req.query.username;
-  Parent.findUsername(username, (err, data) => {
-    if (err)
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving Parents."
-      });
-    else res.send(data);
-  });
-};
-
 //retrieve one parent using their id
 exports.findOneParent = (req, res) => {
   Parent.findParentById(req.params.parentId, (err, data) => {

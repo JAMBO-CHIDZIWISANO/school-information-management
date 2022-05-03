@@ -1,26 +1,98 @@
+const ssubject = require("../mysqlcontroller/student_subjects.controller")
 
 module.exports = app =>{
 
-    const ssubject = require("../mysqlcontroller/student_subjects.controller")
 
-    var router = require("express").Router();
 
-    //delete subject
-    router.delete("/ssubject/:studentId", ssubject.deleteSSubject);
+        // routes/student-subject.js
+    /**
+     * @swagger
+     * /api/smis/smisComments/:smisCommentsId:
+     *   delete:
+    *      description: delete a single comment 
+    *      responses:
+     *         200:
+     *            description: success
+     *         
+     *     
+     */
+    app.delete("/api/smis/ssubject/:studentId", ssubject.deleteSSubject);
 
-    // create new subject
-    router.post("/addSSubject", ssubject.create);
+    
+    // routes/student-subject.js
 
-    // get all subjects
-    router.get("/getAllssubject", ssubject.findAllSSubjects);
+    /**
+ * @swagger
+ * /api/smis/addSSubject:
+ *   post:
+ *     description: add subject
+ *     parameters:
+ *      
+ *      - name: studentId
+ *        description: enter studentId
+ *        in: formData
+ *        required: true
+ *        type: string
+ *      - name: subjectCode
+ *        description: subjectCode
+ *        in: formData
+ *        required: true
+ *        type: string
+ *     
+     *   responses:
+     *      200:
+     *         description: 'success'
+     *         
+     *         
+     *     
+     */
+    app.post("/api/smis/addSSubject", ssubject.create);
 
-    // get one subject
-    router.get("/ssubject/:studentId", ssubject.findOneSSubject);
+    // routes/student-subject.js
 
-    // update subject
-    router.put("/ssubject/:studentId", ssubject.updateSubjectById);
+    /**
+     * @swagger
+     * /api/smis/getAllssubject:
+     *   get:
+    *      description: Retrieve a list of comments
+    *      responses:
+     *         200:
+     *            description: success
+     *         
+     *     
+     */
+    app.get("/api/smis/getAllssubject", ssubject.findAllSSubjects);
 
-    app.use("/api/smis", router);
+    
+    // routes/student-subject.js
+
+    /**
+     * @swagger
+     * /api/smis/ssubject/:studentId:
+     *   get:
+    *      description: Retrieve a list of comments
+    *      responses:
+     *         200:
+     *            description: success
+     *         
+     *     
+     */
+    app.get("/api/smis/ssubject/:studentId", ssubject.findOneSSubject);
+
+    // routes/student-subject.js
+
+    /**
+     * @swagger
+     * /api/smis/ssubject/:studentId:
+     *   put:
+    *      description: update subject
+    *      responses:
+     *         200:
+     *            description: success
+     *         
+     */  
+    app.put("/api/smis/ssubject/:studentId", ssubject.updateSubjectById);
+
 
 
 }

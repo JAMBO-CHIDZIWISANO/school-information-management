@@ -1,24 +1,58 @@
+const total = require("../mysqlcontroller/Total.controller")
 
-module.exports = app =>{
-    const total = require("../mysqlcontroller/Total.controller")
+module.exports = (app) =>{
 
-    var router = require("express").Router();
-
-    
     // create new total
-    router.post("/addTotal", total.create);
 
-    // get one total
-    router.get("/total/:totalId", total.findOneTotal);
+    
+// routes/Total.routes.js
+
+/**
+ * @swagger
+ * /api/smis/addTotal:
+ *   post:
+ *     description: add classes
+ *     parameters:
+ *      
+ *      - name: totalScore
+ *        description: enter totalScore
+ *        in: formData
+ *        required: true
+ *        type: integer
+ *      - name: subjectCode
+ *        description: code for subject in which total is setted
+ *        in: formData
+ *        required: true
+ *        type: string
+     *   responses:
+     *      200:
+     *         description: 'success'
+     *         
+     *         
+     *     
+     */
+    app.post("/api/smis/addTotal", total.create);
+
+    // routes/Total.routes.js
+/**
+ * @swagger
+ * /api/smis/total/{totalId}:
+ *  get:
+ *      description: get one total score
+ *      responses:
+ *          200: 
+ *              description: success
+ */
+    app.get("/api/smis/total/:totalId", total.findOneTotal);
 
     
     // get one total
-    router.put("/total/:totalId", total.updateTotalById);
+    app.put("/api/smis/total/:totalId", total.updateTotalById);
 
      //delete teacher
-     router.delete("/total/:totalId", total.deleteTotal);
+     app.delete("/api/smis/total/:totalId", total.deleteTotal);
 
 
-    app.use("/api/smis", router);
+    
 
 }

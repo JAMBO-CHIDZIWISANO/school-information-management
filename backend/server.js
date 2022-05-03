@@ -1,5 +1,6 @@
 const express = require("express");
 
+
 //morgan for easy error check of the routes
 const morgan = require("morgan")
 
@@ -18,7 +19,28 @@ const cors = require('cors');
 const db = require("./models");
 db.sequelize.sync();
 
+//swagger documentation
+
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUI = require('swagger-ui-express');
+
+const swaggerOptions = {
+  swaggerDefinition: {
+    info: {
+      title: "School Management Information System API",
+      version: '1.0.0',
+    },
+  },
+  apis: [ "./routes/*.js", 'server.js'],
+};
+
+
+
+
 const app = express();//alias
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 //twilio config
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
@@ -43,13 +65,41 @@ app.use(bodyParser.urlencoded({ extended: false}));
 //passing json
 app.use(bodyParser.json())
 
-//simple get route (welcome page server)
+/**
+ * @swagger
+ * /:
+ *  get:
+ *      description: default routes to try server
+ *      responses:
+ *          200: 
+ *              description: success
+ */
 app.get('/', (req, res)=>{
     res.json({message:'helloworld'});
 });
 
 
-//send sms text from twilio
+/**
+ * @swagger
+ * /send-sms:
+ *   post:
+ *     description: send sms
+ *     parameters:
+ *      
+ *      - name: phoneNumber
+ *        description: phone number to send sms
+ *        in: formData
+ *        required: true
+ *        type: string
+ *      - name: message
+ *        description: short message service txt to be sent
+ *        in: formData
+ *        required: true
+ *        type: string
+ *     responses:
+ *       201:
+ *         description: sent
+ */
 app.post('/send-sms', async (req, res)=>{
    
     client.messages.create({
@@ -61,7 +111,7 @@ app.post('/send-sms', async (req, res)=>{
     .catch(error=>console.log(error))
 })
 
-//api routes
+
 require("./routes/auth.routes")(app);
 require("./routes/user.routes")(app);
 require("./routes/school.routes")(app);

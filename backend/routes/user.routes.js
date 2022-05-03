@@ -3,6 +3,7 @@ const controller = require("../controllers/user.controller");
 
 module.exports = function(app) {
 
+  
   //routes authentication(make it private)
   app.use(function(req, res, next) {
     res.header(
@@ -14,8 +15,9 @@ module.exports = function(app) {
   
   //get public content
   app.get("/api/smis/all", controller.allAccess);
+  
+  
 
-  //accesses by all users content
   app.get( "/api/smis/user",
     [authJwt.verifyToken],
     controller.userBoard
@@ -33,7 +35,8 @@ module.exports = function(app) {
     controller.adminBoard,
   );
 
-  //get student content
+  
+  
   app.get("/api/smis/student",
     [authJwt.verifyToken, authJwt.isStudent],
     controller.studentBoard

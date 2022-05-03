@@ -1,12 +1,26 @@
+
+const classes = require("../mysqlcontroller/classes.controller")
 module.exports = app =>{
 
-    const classes = require("../mysqlcontroller/classes.controller")
+    
 
-    var router = require("express").Router();
+    
 
-    // //get all students
-    router.get("/getAllClasses", classes.findAllClasses);
+    // routes/classes.routes.js
 
-    app.use("/api/smis", router);
+    /**
+     * @swagger
+     * /api/smis/getAllClasses:
+     *   get:
+    *      description: Retrieve a list of classes
+    *      responses:
+     *         200:
+     *            description: success
+     *         
+     *     
+     */
+    app.get("/api/smis/getAllClasses", classes.findAllClasses);
+
+   
 
 }
